@@ -1,0 +1,52 @@
+﻿- var user = true
+if page != 'pages'
+
+  #top_panel
+    .body
+      .i-relative
+        .b-top-panel__decor
+      
+      if user
+        .person
+        
+          include ../../modules/user/include.jade
+          
+          a.sign_out( href="", title="Выйти" )
+          span.rating( title="Рейтинг" ) 89
+          //-<!--#include virtual="/components/info-message/template.html"-->
+          
+        include ../../modules/fav/top-panel.jade
+        
+        .add
+          span.submenu
+            span.body
+              span.pointer
+              a.first( href="/admin/stages/" ) Рецепт с пошаговыми фото
+              a( href="" ) Простой рецепт
+              a.last( href="http://site.foodclub.2px/blogs/group/5/blog/edit/new/" ) Запись в клуб
+          a.button( href="#" )
+            span Добавить
+        
+        .menu
+          span.kitchen
+            span.submenu
+              span.submenu_pointer
+              a.first( href="/personal/recipes/" ) Рецепты
+              a( href="/personal/topics/" ) Записи
+              a( href="/personal/comments/" ) Комментарии
+              a( href="/personal/opinions/" ) Отзывы
+              a( href="/personal/subscription/" ) Подписка
+              a.last( href="/personal/opinions/" ) Отзывы к моим рецептам
+            a( href="#" )
+              span
+                span Моя кухня
+          
+          .clear
+        .clear
+      
+      else
+        noindex
+          a.sign_in( href="" ) Войти
+          a.reg( href="" ) Зарегистрироваться
+          
+  #top_spacer

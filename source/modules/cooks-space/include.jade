@@ -1,0 +1,18 @@
+﻿#cooks_space
+  //-<!--#include virtual="/components/foodshot.last/template.html"-->
+  #cooks_feed
+    h2
+      a( href="/cooks/" ) Наши кулинары
+    
+    ul
+      - var n = 10
+      while n > 0
+        - n--
+        li
+          a.icon( href="/person/")
+            img( src="/upload/user/ca-ira.jpg" width="50" height="50" alt="" )
+          .author
+            a( href="/person/" ) ca-ira
+          .intro Всем привет! Я недавно начала вести свой кулинарный блог))) готовлю часто, но больше всего люблю вы...
+          .rating
+            span 1350

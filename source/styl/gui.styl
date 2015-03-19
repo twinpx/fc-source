@@ -1,0 +1,218 @@
+html
+  overflow-y scroll
+  
+*
+  padding 0
+  margin 0
+  
+body
+  font-size 11.5pt
+  width 100%
+  height 100%
+  background #ffffff
+  color $middle-grey
+  font-family $arial
+  
+img
+  border 0
+  vertical-align bottom
+
+table
+
+  &,
+  & td
+    border-collapse collapse
+  
+  td
+    vertical-align top
+p
+  margin-top 10px
+a
+  color $link
+  text-decoration none
+  
+a:hover
+  color $link-hover
+  
+a:focus
+  outline none
+  
+a img
+  cursor pointer
+  
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-weight normal
+  
+h1
+  color $dark-grey
+  font-size 26pt
+  font-family $georgia
+  margin 0 0 20px 0
+  
+  a
+    font-size 22pt
+    font-family $georgia
+
+    &.rss
+      margin-left 15px
+      display inline-block
+      width 12px
+      height 12px
+      font-size 10pt
+      text-indent -100px
+      overflow hidden
+      background embedurl( 'img/rss.gif' ) no-repeat 0 0
+      
+    &.rss img
+      display none
+
+
+    &.edit img,
+      display none
+      
+    &.fav
+      margin-left 10px
+      
+  .delete img
+    display none
+    
+h2
+  
+  &.club
+    margin-bottom 20px
+    
+  a
+    &.edit img
+      display none
+      
+    &.rss
+      margin-left 15px
+      display inline-block
+      
+  .delete img
+    display none
+      
+.pages_recipes
+
+  .delete,
+  .edit
+  
+    img
+      display none
+      
+      
+      
+      
+      
+h1 a.edit,
+h2 a.edit,
+.pages_recipes a.edit,
+.b-edit-button
+  margin-left 12px
+  display inline-block
+  width 12px
+  height 12px
+  background embedurl( 'img/edit.png' ) no-repeat 0 0
+  font-size 8pt
+  white-space nowrap
+  text-indent -200px
+  overflow hidden
+  vertical-align baseline
+  
+h1 a.edit:hover,
+h2 a.edit:hover,
+.pages_recipes a.edit:hover,
+a.b-edit-button:hover
+  background embedurl( 'img/edit-hover.png' ) no-repeat 0 0
+  
+h1 a.edit:active,
+h2 a.edit:active,
+.pages_recipes a.edit:active,
+a.b-edit-button:active
+  background embedurl( 'img/edit-active.png' ) no-repeat 0 0
+  
+h1 .delete,
+h2 .delete,
+.pages_recipes .delete,
+.b-delete-button
+  margin-left 10px
+  display inline-block
+  width 12px
+  height 12px
+  background embedurl( 'img/delete.png' ) no-repeat 0 0
+  font-size 8pt
+  white-space nowrap
+  text-indent -200px
+  overflow hidden
+  vertical-align middle
+  
+h1 .delete:hover,
+h2 .delete:hover,
+.pages_recipes .delete:hover,
+a.b-delete-button:hover
+  background embedurl( 'img/delete-hover.png' ) no-repeat 0 0
+  
+h1 .delete:active,
+h2 .delete:active,
+.pages_recipes .delete:active,
+a.b-delete-button:active
+  background embedurl( 'img/delete-active.png' ) no-repeat 0 0
+  
+h2, h2 *
+  font-size 18pt
+  font-family $georgia
+    
+.h1
+  font-size 22pt
+  color $dark-grey
+  margin 0 0 20px 0
+  
+  a
+    font-size 22pt
+  
+h3, h3 *
+  font-size 14pt
+  font-family $georgia
+  
+div.twtr-widget
+  margin-top 20px
+  
+  h3
+  
+    &,
+    & *
+      font-family $lucida !important
+  
+  h4
+    
+    &,
+    & *
+      font-weight bold !important
+  
+h5
+  color $grey
+  font-size 10pt
+  font-family $georgia
+  font-style italic
+  text-shadow 0 1px 0 #fff
+
+#ctrlcopy
+  height 1px
+  overflow hidden
+  position absolute
+  width 1px
+  margin 5px 0 0 -1px
+  line-height 0
+  opacity 0
+
+.clear,
+.i-clearfix
+	clear both
+	height 0
+	overflow hidden
+	width 1px

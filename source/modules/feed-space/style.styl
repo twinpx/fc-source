@@ -1,0 +1,132 @@
+@import '../../styl/component-include.styl'
+
+#feed_space
+  width 468px
+  float left
+  display inline
+  margin-right 11px
+  
+  h2
+    color #333333
+    border-bottom 1px solid $middle-grey
+    margin 0
+    font-style italic
+    font-size $small
+    padding 7px 0 16px
+    
+    a
+      font-size $small
+      
+  .topic_item
+    border-bottom 1px solid $light-grey
+    padding 28px 0 25px 0
+    margin-bottom -1px
+
+    .chain_path
+      margin-bottom 6px
+      
+    h3
+      margin-bottom 9px
+
+    .text
+      font-size 10pt
+      line-height $large-size
+      width 468px
+      overflow hidden
+      margin-bottom 20px
+
+    .text,
+    .tags,
+    .bar
+      margin-left 0
+      
+    .tags
+      font-size $xxx-small
+      margin-bottom 18px
+      
+      h6
+        font-size $xxx-small
+    
+    .bar
+      font-size 8pt
+      white-space nowrap
+    
+      .comments_icon
+        float right
+        width 50px
+        
+      .author
+        margin-right 40px
+    
+      .photo
+        position relative
+        margin-right 38px
+        display inline-block
+    
+        a
+          position absolute
+          top -9px
+          left 0
+    
+      .date
+        padding 0 0 5px 0
+        float none
+    
+      /*.comments a
+        display inline-block
+        background url(/images/icons.png) no-repeat scroll 0 -79px
+        padding-left 28px
+        height 16px
+        float none*/
+      
+    .admin_panel
+      display none
+
+.topic_item_brief
+  overflow hidden
+  border-top 1px solid $light-grey
+  padding 13px 0 16px 0
+
+  .bar
+    float right
+    width 50px
+    margin-top 3px
+    
+  .comments
+    margin 0
+  
+  h3
+    width 380px
+    font-size 10.5pt
+  
+    a
+      font-size 10.5pt
+
+  
+.choice
+  float right
+  margin-top 4px
+  
+  a,
+  span
+    font-family $georgia
+    font-style italic
+    font-size $xx-small
+    ib()
+    background $light-grey
+    padding 3px 7px
+    border-radius( 2px )
+    margin-left 1px
+    
+  a:hover
+      background $link
+      color #ffffff
+  span
+    cursor default
+      
+  &.add_recipe
+    background embedurl( 'img/add-recipe-bg.gif' ) no-repeat 0 0
+    color #ffffff
+    
+    &:hover
+      background embedurl( 'img/add-recipe-bg-hover.gif' ) no-repeat 0 0

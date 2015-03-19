@@ -1,0 +1,55 @@
+.recipe_list_item
+
+  .photo
+    display block
+    background #ffffff
+    border 1px solid $light-grey
+    box-shadow( 0 0 3px rgba(0,0,0,0.15) )
+    text-align center
+    margin-bottom 9px
+    padding 9px
+    
+    a
+      ib()
+      width 170px
+      height 113px
+      overflow hidden
+
+  h5,
+  h5 *
+    font-style normal
+    font-size $small
+    
+  h5
+    margin 0 0 5px 10px
+    
+    a
+      color $link
+    
+      &:hover
+        color $link-hover
+        
+  .author
+    color $grey
+    font-size 7pt
+    margin 0 0 9px 10px
+    
+  .info
+    margin 0 0 0 10px
+    
+.comments_icon
+  font-size $x-small
+  ib()
+  
+  a
+    text-decoration none
+    padding-left 28px
+    height 16px
+    background embedurl( 'img/comment.png' ) no-repeat 0 0
+    ib()
+    
+    &:hover
+      background embedurl( 'img/comment-hover.png' ) no-repeat 0 0
+      
+    &:active
+      background embedurl( 'img/comment-active.png' ) no-repeat 0 0

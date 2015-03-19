@@ -1,0 +1,173 @@
+﻿p.b-recipe-search__helper
+  noindex
+    a#search_helper_link.b-recipe-search__helper__link( href="#" ) Помощник
+    
+#search_helper( style="display:none;" )
+  .body
+    .menu
+      noindex
+        .item.act
+          a( href="#" rel="h_helper" ) Помощник поиска
+          span Помощник поиска
+        .item
+          a( href="#" rel="h_ingredients" ) Ингредиенты
+          span Ингредиенты
+        //<div class="item"><a href="#" rel="h_dishes">Типы блюд</a><span>Типы блюд</span></div>
+        .item.right
+          a( href="#" rel="h_cuisines" ) Национальные кухни
+          span Национальные кухни
+        .clear
+    
+    #h_helper.search_blocks
+      .column
+        .item
+          img( src="/images/search/diet.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['Низкокалорийные', 'Диетические', 'Постные']
+              li
+                a( href="/search/" )= val
+          
+      .column
+        .item
+          img( src="/images/search/dinner.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['Позавтракать', 'Пообедать', 'Поужинать', 'Поздний ужин']
+              li
+                a( href="/search/" )= val
+                
+      .column
+        .item
+          img( src="/images/search/quick.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['Холостяку', 'Быстренько', 'Хочется экзотики']
+              li
+                a( href="/search/" )= val
+                
+      .column.right
+        .item
+          img( src="/images/search/guests.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['День рождения', 'Удивить гостей', 'Романтический ужин', 'Вечеринка с друзьями']
+              li
+                a( href="/search/" )= val
+                
+      .clear
+      .random_dish
+        a( href="/recipe/" ) Случайное блюдо?
+        
+    #h_ingredients.search_blocks
+      noindex
+       #i_have_list
+          .bg
+            h2 У меня есть:
+            h2.stage_helper Ингредиенты:
+            #i_have_dash —
+            table
+            
+          #i_have_button Найти
+          #stage_button Найти
+        
+        #i_have_ingredients
+          .search_field
+            .search_input.b-form-field
+              input#helper_smartsearch.text( type="text" value="" data-placeholder="Введите название" )
+              .search_list
+                ul.search_list
+          
+          #i_have_ingredients_group
+            ul
+          #i_have_ingredients_list
+            h2
+            .column
+              ul
+            .column
+              ul
+            .clear
+          .clear
+        .clear
+        
+    #h_dishes.search_blocks
+      .column
+        .item
+          img( src="/images/search/diet.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['Низкокалорийные', 'Диетические', 'Постные']
+              li
+                a( href="/search/" )= val
+                
+      .column
+        .item
+          img( src="/images/search/dinner.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['Позавтракать', 'Пообедать', 'Поужинать', 'Поздний ужин']
+              li
+                a( href="/search/" )= val
+                
+      .column
+        .item
+          img( src="/images/search/quick.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['Холостяку', 'Быстренько', 'Хочется экзотики']
+              li
+                a( href="/search/" )= val
+                
+      .column.right
+        .item
+          img( src="/images/search/guests.jpg" width="200" height="150" alt="" )
+          ul
+            each val in ['День рождения', 'Удивить гостей', 'Романтический ужин', 'Вечеринка с друзьями']
+              li
+                a( href="/search/" )= val
+                
+      .clear
+    
+    #h_cuisines.search_blocks
+      .column
+        .item
+          img( src="/images/search/europe.jpg" width="200" height="150" alt="" )
+          h3 Европа
+          ul
+            each val in ['Австрийская кухня', 'Английская кухня', 'Болгарская кухня', 'Венгерская кухня', 'Немецкая кухня', 'Польская кухня', 'Португальская кухня', 'Чешская кухня', 'Шотландская кухня']
+              li
+                a( href="/search/" )= val
+      
+      
+      .column
+        .item
+          img( src="/images/search/mediterranean.jpg" width="200" height="150" alt="" )
+          h3 Средиземноморье
+          ul
+            each val in ['Греческая кухня', 'Испанская кухня', 'Итальянская кухня', 'Французская кухня']
+              li
+                a( href="/search/" )= val
+                
+        .item
+          img( src="/images/search/asia.jpg" width="200" height="150" alt="" )
+          h3 Азия
+          ul
+            each val in ['Индонезийская кухня', 'Китайская кухня', 'Тайская кухня', 'Японская кухня']
+              li
+                a( href="/search/" )= val
+                
+      .column
+        .item
+          img( src="/images/search/ussr.jpg" width="200" height="150" alt="" )
+          h3 Бывший СССР
+          ul
+            each val in ['Армянская кухня', 'Белорусская кухня', 'Грузинская кухня', 'Русская кухня', 'Узбекская кухня', 'Украинская кухня']
+              li
+                a( href="/search/" )= val
+                
+      .column.right
+        .item
+          img( src="/images/search/america.jpg" width="200" height="150" alt="" )
+          h3 Америка
+          ul
+            each val in ['Американская кухня', 'Бразильская кухня', 'Кубинская кухня', 'Мексиканская кухня', 'Ямайская кухня']
+              li
+                a( href="/search/" )= val
+                
+                
+      .clear
+    .slide_up_button
+      div

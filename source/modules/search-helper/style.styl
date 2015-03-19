@@ -1,0 +1,329 @@
+@import '../../styl/component-include.styl'
+
+
+.b-recipe-search
+
+  &__helper
+    font-size $x-small
+    margin 7px 0 0 8px
+    padding-bottom 1px
+
+    &__link
+      font-size $x-small
+      text-decoration none
+      
+#search_helper
+  background #ffffff
+  position absolute
+  top 0
+  left 0
+  width 100%
+  display block
+  z-index 61
+  
+  .body
+    width 900px
+    margin 0 auto
+    
+  .menu
+    padding 31px 0 36px 0
+    background url(/images/search_border.gif) repeat-x left bottom
+    
+    .item
+      float left
+      padding-right 200px
+      padding-top 11px
+      
+      a
+        text-decoration none
+        font-family Arial, serif
+        display inline
+        
+      span
+        display none
+        font-size 21pt
+        font-family Georgia, Times, serif
+        color #333333
+        
+    .act
+      padding-top 0
+      padding-right 200px
+      
+      a
+        display none
+      
+      span
+        display inline
+
+    .right
+      float right
+      padding-right 0
+
+  .search_blocks
+    margin 20px 0 30px 0
+    
+    .column
+      float left
+      width 200px
+      padding-right 33px
+      
+    .right
+      float right
+      padding-right 0
+      
+    .item
+      background #666666
+      margin-bottom 10px
+      
+      img
+        display block
+        margin-bottom 12px
+        
+      h3
+        color #9a9a9a
+        margin -5px 0 6px 15px
+        
+      ul
+        background #666666
+        padding 0 0 20px 15px
+        margin 0
+        
+      li
+        list-style-type none
+        padding-bottom 7px
+        
+      a
+        color #ffffff
+        font-size 10pt
+        
+        &:hover
+          color #ffffff
+
+  .random_dish
+    text-align center
+    margin 30px 0
+    
+  .slide_up_button
+    height 75px
+    background url(/images/slide_up.gif) no-repeat center center
+    cursor pointer
+  
+    div
+      background url(/images/search_border.gif) repeat-x left top
+      height 1px
+
+#h_helper
+  display block
+  
+#h_ingredients
+  display none
+  
+#h_dishes
+  display none
+  
+#h_cuisines
+  display none
+
+#i_have_list
+  float left
+  width 200px
+  
+  .bg
+    background #666666
+    padding 15px 18px 30px 18px
+    
+  h2
+    color #cccccc
+
+    &.stage_helper
+      display none
+      
+  table
+    margin-top 7px
+    width 164px
+    
+    td
+      background url(/images/i_have_dots.gif) repeat-x 0 bottom
+      vertical-align bottom
+      padding-top 8px
+      
+      span
+        background #666666
+        color #ffffff
+        font-size 10pt
+        
+      &.icon
+        width 15px
+        background none
+        padding-left 5px
+        
+        a.delete
+          display block
+          font-size 0
+          width 9px
+          height 9px
+          background url(/images/icons/delete_i_have.gif) no-repeat 0 0
+          
+          &:hover
+            background-position 0 -9px
+
+
+#i_have_dash
+  text-align center
+  color #cccccc
+  
+#i_have_button
+  text-align center
+  margin-top 10px
+  height 38px
+  background url(/images/pink_button_bg.gif) repeat-x 0 0
+  color #ffffff
+  font-size 18pt
+  font-family Georgia, Times, serif
+  cursor pointer
+  padding-top 11px
+  
+#stage_button
+  text-align center
+  margin-top 10px
+  height 38px
+  background url(/images/pink_button_bg.gif) repeat-x 0 0
+  color #ffffff
+  font-size 18pt
+  font-family Georgia, Times, serif
+  cursor pointer
+  padding-top 11px
+  display none
+
+#i_have_ingredients
+  float left
+  padding-left 10px
+
+  &_group
+    float left
+    width 192px
+    background #f9f9f9
+    
+    ul
+      margin 14px
+      
+    li
+      list-style-type none
+      
+    *
+      font-size 9pt
+      text-decoration none
+      
+    span
+      display none
+      color #333333
+      
+    a
+      display inline
+      
+    li.act
+      span
+        display inline
+      
+      a
+        display none
+        
+  &_list
+    float right
+    width 486px
+    background #f9f9f9
+    
+    h2
+      color #999999
+      margin 8px 0 0 10px
+      
+    ul
+      margin 14px 14px 14px 40px
+      
+    li
+      list-style-type none
+      padding-bottom 1px
+      
+    a
+      font-size 9pt
+      text-decoration none
+      
+    li.selected
+      list-style-image url(/images/marker_black.gif)
+      
+      a
+        color #000000
+        
+        &:hover
+          color #666666
+
+
+
+#helper_smartsearch
+  width 668px
+  height 40px
+  font-family Georgia, Times, serif
+  font-size 22pt
+  padding 4px 10px 3px 10px
+  color #333333
+  line-height 35px
+  
+#i_have_ingredients .search_field
+  margin-bottom 10px
+
+  &__placeholder__text
+    color #333333
+    font-family Georgia,Times,serif
+    font-size 22pt
+    line-height normal
+    padding-top 8px
+    padding-left 12px
+
+
+  &.search_list
+    position relative
+    
+    ul
+      position absolute
+      top 0
+      left 0
+      background-color #ffffff
+      border-left 1px solid #c3c3c3
+      border-right 1px solid #c3c3c3
+      border-bottom 1px solid #c3c3c3
+      border-top none
+      width 688px
+      display none
+      padding 9px 0 10px 0
+      margin 0
+      
+    li
+      list-style-type none
+      cursor default
+      margin 1px 2px
+      padding 5px 6px 5px 6px
+      overflow hidden
+      font-size 10pt
+      color #990000
+      
+    &:hover
+      background-color #666666
+      color #ffffff
+
+//Stages
+#search_helper.stage_helper
+
+  .menu
+    display none
+
+  #i_have_list h2
+    display none
+
+    &.stage_helper
+      display block
+      
+  #i_have_button
+    display none
+    
+  #stage_button
+    display block

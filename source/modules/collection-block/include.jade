@@ -1,0 +1,15 @@
+﻿.collection_block
+    h2
+      span Подборка
+    
+    - var blocks = [ 'Популярные рецепты', 'Угощение к чаю', 'Блюда из овощей' ];
+    
+    each block in blocks
+      .block
+        h3= block
+        - var n = 20
+        while n > 0
+          - n--
+          include ../../modules/recipe-thumb/collection-block-item
+            
+        .clear

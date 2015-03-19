@@ -1,0 +1,191 @@
+button
+  
+  & focus
+    outline none
+    
+fieldset
+  border none
+
+legend
+  display none
+
+input.text,
+.b-input-text
+  background-color #fff
+  border 1px solid #c3c3c3
+  font-size $big-size
+  font-family $arial
+  padding 8px 10px 8px 10px
+  height 31px
+  color $middle-grey
+  border-radius( 3px )
+  box-shadow( 2px 2px 7px #cacaca inset )
+  
+  &:focus
+    outline none
+  
+textarea,
+.b-textarea
+  color $middle-grey
+  border 1px solid #b9b9b9
+  background #fff
+  width 578px
+  height 105px
+  padding 7px 10px
+  font-size $big-size
+  font-family $arial
+  border-radius( 3px )
+  box-shadow( 2px 2px 7px #cacaca inset )
+  
+  &:focus
+    outline none
+
+select
+  background $s-light-grey
+  border 1px solid $lighter-grey
+  background $s-light-grey
+  font-size $big-size
+  color $middle-grey
+  font-family $arial
+  
+.b-linking-text
+  color $grey
+  font-size 10pt
+  font-family $georgia
+  font-style italic
+  display block
+  text-shadow 0 1px 0 #fff
+
+.b-form-label
+  color $grey
+  font-size $x-small
+  font-family $georgia
+  font-style italic
+  display block
+  text-shadow 0 1px 0 #fff
+
+  .i-attention &
+    color #ff0000
+
+.b-form-attention
+  visibility hidden
+
+  .i-attention &
+    visibility visible
+
+.form_field
+  margin-bottom 15px
+  
+  h5
+    margin 0 0 4px 0
+      
+      span
+        font-size $small
+        font-style italic
+        visibility hidden
+        margin-left 5px
+    
+.b-form-label
+  margin 0 0 4px 0
+  
+.attention
+
+  h5
+    color $attention-color
+  
+  span
+    visibility visible
+    color $attention-color
+    
+  .form_field &
+    color $attention-color
+  
+    span
+      visibility visible
+      color $attention-color
+  
+.form_field
+
+  h4
+    color $grey
+    font-style italic
+    font-size $big-size
+    font-family $georgia
+    margin-bottom 7px
+    
+    span
+      font-style italic
+      font-size 10pt
+      visibility hidden
+      
+.attention h4
+
+  color $attention-color
+  
+  span
+    visibility visible
+    color $attention-color
+
+.capture
+
+  .form_field
+    float left
+    padding-right 10px
+    
+  .code
+    margin-top 17px
+    float left
+    padding-right 10px
+
+.two_buttons
+  height 49px
+
+  .button
+    float left
+    width 506px
+    
+  .first
+    margin-right 14px
+    width 177px
+
+.form_checkbox
+  float left
+  rel()
+  padding 0 60px 0 0
+  margin-bottom 15px
+  
+  .checkbox
+    abs( -1px, 0 )
+    
+    table td
+      width 20px
+      height 20px
+      vertical-align middle
+      text-align center
+      
+  label
+    white-space nowrap
+    margin-left 20px
+
+  &_pic img
+    margin-right 5px
+
+.imbot
+  display none
+  
+
+.b-form-field__placeholder
+  rel()
+
+  &__text
+    box-sizing( content-box )
+    color #8C8C8C
+    cursor text
+    display none
+    font-size 9pt
+    padding-left 8px
+    padding-top 5px
+    abs( 0, 0 )
+
+    .i-placeholder &
+        display block

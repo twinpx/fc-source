@@ -1,0 +1,44 @@
+﻿block var-page
+
+-var index = true
+
+header#head
+  #logo
+    if index
+      img(
+        src="/template/images/foodclub_logo.gif"
+        width="143"
+        height="102"
+        alt="Кулинарные рецепты с фотографиями"
+        title="Кулинарные рецепты с фотографиями"
+      )
+      h1 Рецепты
+        br
+        |с пошаговыми
+        br
+        |фотографиями
+    else
+      a( href="/" )
+        img(
+          src="/template/images/foodclub_logo.gif"
+          width="143"
+          height="102"
+          alt="Food club"
+        )
+      strong Рецепты
+        br
+        |с пошаговыми
+        br
+        |фотографиями
+  
+  include ../../components/recipe-search/template.jade
+  
+  #iphone_link
+    .pic
+    a( href="/iphone/" )
+      b Foodclub НD
+      br
+      |Кулинарная книга для вашего iPhone и iPad
+        
+    .clear
+  .clear

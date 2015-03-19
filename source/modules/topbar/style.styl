@@ -1,0 +1,182 @@
+@import '../../styl/component-include.styl'
+
+.b-topbar
+  //example
+  background embedurl( 'img/blank.gif' )
+  
+#topbar
+  margin 20px 0 26px 0
+  text-shadow 0 -1px 0 $dark-grey
+  font-family $georgia
+  background embedurl( 'img/bg.gif' ) repeat-x #464646
+  
+  a
+    text-decoration none
+    
+  .menu
+    background embedurl( 'img/bg.gif' ) repeat-x #464646
+    text-shadow 0 -1px 0 $dark-grey
+    height 54px
+    overflow hidden
+    
+  .item
+    float left
+    position relative
+    
+    span
+      color #a4a4a4
+      display inline-block
+      background embedurl( 'img/separator.gif' ) no-repeat right top $middle-grey
+      
+      span
+        color $lighter-grey
+        height 37px
+        padding 0
+        background none
+        padding 17px 22px 0 20px
+        box-sizing content-box
+        -moz-box-sizing content-box
+        -webkit-box-sizing content-box
+        -khtml-box-sizing content-box
+        
+    a
+      color #ffffff
+      display inline-block
+      background embedurl( 'img/item_bg.gif' ) no-repeat right top
+      
+      &:hover
+        color $xs-grey
+        
+        span
+          color $xs-grey
+        
+      span
+        color #ffffff
+        height 37px
+        padding 0
+        background none
+        padding 17px 22px 0 20px
+        box-sizing content-box
+        -moz-box-sizing content-box
+        -webkit-box-sizing content-box
+        -khtml-box-sizing content-box
+        
+    &.new_year
+      font-style italic
+      text-shadow 0 -1px 0 #0a535c
+
+    &.best
+      font-style italic
+      
+    &.new
+    
+      a span,
+      span span
+        background embedurl( '/img/new.gif' ) no-repeat 0 0
+    
+    &.ny
+      background embedurl( '/img/ny-bg.gif' ) repeat-x 0 0
+      padding 12px 0 0 0
+      
+      .pad
+        background embedurl( '/img/ny-sep.gif' ) no-repeat right top
+        padding 12px 35px 0 33px
+        height 33px
+        margin-top -12px
+        
+        
+      
+    &.sauce_contest
+    
+      a,
+      span
+        padding 0
+        
+        span
+          display inline-block
+          width 184px
+          height 55px
+          background url( '/images/contest/sauce.png' ) no-repeat 0 -215px
+          
+    &.new_year
+      
+      span span
+        background none
+      
+      a,
+      span
+        background url( '/images/new_year/bg.jpg' ) no-repeat right 0
+        
+      a:hover,
+      span
+        
+        span
+          color #ffffff !important
+    
+    .pointer
+      position absolute
+      bottom -6px
+      left 50%
+      margin 0 0 0 -5px
+      background embedurl( 'img/pointer.gif' ) no-repeat 0 0
+      width 11px
+      height 6px
+
+/*  .submenu
+    background $middle-grey
+    height 48px
+    padding-left 26px
+    font-size 10pt
+    
+    .item
+      float left
+      padding 16px 35px 0 0
+  
+      a
+        color #ffffff
+        
+      &:hover
+        color $xs-grey
+        
+      span
+        color #a4a4a4
+        
+    .add
+      display inline-block
+      padding-left 24px
+      background embedurl( '/img/add_icon.gif' ) no-repeat 0 0
+      
+    .fc
+      display inline-block
+      padding-left 26px
+      background embedurl( '/img/fc_icon.gif' ) no-repeat 0 0
+
+
+  .no_submenu .ny .pad
+    height 32px
+    float left
+    
+  .firtree
+    position relative
+    width 10px
+    
+    div
+      position absolute
+      width 55px
+      height 63px
+      background url( '/images/new_year/firtree.gif' ) no-repeat 0 0
+      top -63px
+      left 38px
+      z-index 10
+      
+      .act &
+        background-image url( '/images/new_year/firtree_act.gif' )
+
+  .magi_contest em
+    font-weight bold
+    font-style italic
+    background url( '/images/contest/magi.png' ) no-repeat -149px -543px
+    display inline-block
+    padding-left 21px
+    padding-bottom 3px
+    vertical-align top*/
