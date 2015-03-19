@@ -1,0 +1,18 @@
+﻿block var-page
+  - var page = recipes
+
+extends ../layouts/main.jade
+
+block title
+  title Recipes | food
+
+block content
+  
+  #content.all_recipes
+    
+    include ../modules/content-nav/include.jade
+    
+    .i-center
+      h1 Рецепты
+      
+    include ../modules/filter-recipes/include.jade
