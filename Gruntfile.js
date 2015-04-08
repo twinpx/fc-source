@@ -57,6 +57,11 @@ module.exports = function( grunt ) {
           limit: 30000
         }
       },
+      bootstrap: {
+        files: {
+          '<%= dest%>template/bootstrap.css': ['<%= source%>bootstrap/css/index.styl']
+        }
+      },
       template: {
         files: {
           '<%= dest%>template/template_styles.css':
@@ -197,6 +202,32 @@ module.exports = function( grunt ) {
     },
     
     uglify: {
+      devBootstrap: {
+        options: {
+          mangle: false,
+          compress: false,
+          beautify: true,
+          preserveComments: 'some'
+        },
+        files: [
+          {
+            '<%= dest%>template/bootstrap.js': [
+              '<%= source %>bootstrap/js/transition.js',
+              '<%= source %>bootstrap/js/alert.js',
+              '<%= source %>bootstrap/js/button.js',
+              '<%= source %>bootstrap/js/carousel.js',
+              '<%= source %>bootstrap/js/collapse.js',
+              '<%= source %>bootstrap/js/dropdown.js',
+              '<%= source %>bootstrap/js/modal.js',
+              '<%= source %>bootstrap/js/tooltip.js',
+              '<%= source %>bootstrap/js/popover.js',
+              '<%= source %>bootstrap/js/scrollspy.js',
+              '<%= source %>bootstrap/js/tab.js',
+              '<%= source %>bootstrap/js/affix.js'
+            ]
+          }
+        ]
+      },
       devTemplate: {
         options: {
           mangle: false,
@@ -224,6 +255,32 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>components/',
             ext: '.js',
             extDot: 'first'
+          }
+        ]
+      },
+      
+      prodBootstrap: {
+        options: {
+          mangle: true,
+          compress: true,
+          preserveComments: 'some'
+        },
+        files: [
+          {
+            '<%= temp %>template/bootstrap.js': [
+              '<%= source %>bootstrap/js/transition.js',
+              '<%= source %>bootstrap/js/alert.js',
+              '<%= source %>bootstrap/js/button.js',
+              '<%= source %>bootstrap/js/carousel.js',
+              '<%= source %>bootstrap/js/collapse.js',
+              '<%= source %>bootstrap/js/dropdown.js',
+              '<%= source %>bootstrap/js/modal.js',
+              '<%= source %>bootstrap/js/tooltip.js',
+              '<%= source %>bootstrap/js/popover.js',
+              '<%= source %>bootstrap/js/scrollspy.js',
+              '<%= source %>bootstrap/js/tab.js',
+              '<%= source %>bootstrap/js/affix.js'
+            ]
           }
         ]
       },
@@ -387,10 +444,11 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-clean' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
   
+  grunt.registerTask( 'bootstrap', [ 'stylus:bootstrap', 'uglify:devBootstrap' ] );
   grunt.registerTask( 'css', [ 'stylus:template', 'stylus:components', 'concat:pluginsCSS' ] );
   grunt.registerTask( 'js', [ 'concat:js', /*'jshint:dev',*/ 'concat:pluginsJS', 'uglify:devTemplate', 'uglify:devComponents', 'clean:js' ] );
   grunt.registerTask( 'html', [ 'copy:images', 'jade:dev' ] );
-  grunt.registerTask( 'default', [ 'connect', 'css', 'js', 'html', 'watch' ] );
+  grunt.registerTask( 'default', [ 'connect', 'css', 'js', 'bootstrap', 'html', 'watch' ] );
   
   grunt.registerTask( 'prod', [
     'stylus:prod',

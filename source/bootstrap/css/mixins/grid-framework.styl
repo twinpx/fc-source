@@ -1,0 +1,88 @@
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid $classes given
+// any value of `$grid-columns`.
+make-grid-columns()
+  $col
+    position relative
+    // Prevent columns from collapsing when empty
+    min-height 1px
+    // Inner gutter via padding
+    padding-left ($grid-gutter-width / 2)
+    padding-right ($grid-gutter-width / 2)
+
+  // Common styles for all sizes of grid columns, widths 1-12
+  for $index in 1..$grid-columns
+    .col-xs-{$index}, .col-sm-{$index}, .col-md-{$index}, .col-lg-{$index}
+      @extend $col
+      
+  // styles for column 20%
+  .col-xs-15, .col-sm-15, .col-md-15, .col-lg-15
+    @extend $col
+
+float-grid-columns($class)
+  $col-float-{$class}
+    float left
+
+  for $index in 1..$grid-columns
+    .col-{$class}-{$index}
+      @extend $col-float-{$class}
+      
+  //20%
+  .col-{$class}-15
+    @extend $col-float-{$class}
+
+calc-grid-column($index, $class, $type)
+
+  if $type == width
+    if $index == 15
+      .col-{$class}-{$index}
+        width 20%
+    else if $index > 0
+      .col-{$class}-{$index}
+        width percentage(($index / $grid-columns))
+        
+  else if $type == push
+    if $index == 0
+      .col-{$class}-push-0
+        left auto
+    else if $index == 15
+      .col-{$class}-push-{$index}
+        left 20%
+    else
+      .col-{$class}-push-{$index}
+        left percentage(($index / $grid-columns))
+        
+  else if $type == pull
+    if $index == 0
+      .col-{$class}-pull-0
+        right auto
+    else if $index == 15
+      .col-{$class}-pull-{$index}
+        right 20%
+    else
+      .col-{$class}-pull-{$index}
+        right percentage(($index / $grid-columns))
+        
+  else if $type == offset
+    if $index == 15
+      .col-{$class}-offset-{$index}
+        margin-left 20%
+    else
+      .col-{$class}-offset-{$index}
+        margin-left percentage(($index / $grid-columns))
+
+loop-grid-columns($grid-columns, $class, $type)
+  for $index in $grid-columns..0
+    calc-grid-column($index, $class, $type)
+    
+  calc-grid-column(15, $class, $type)
+
+// Create grid for specific $class
+make-grid($class)
+  float-grid-columns($class)
+  loop-grid-columns($grid-columns, $class, width)
+  loop-grid-columns($grid-columns, $class, pull)
+  loop-grid-columns($grid-columns, $class, push)
+  loop-grid-columns($grid-columns, $class, offset)
+
