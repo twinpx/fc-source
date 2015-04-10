@@ -1,45 +1,102 @@
-#head
- margin-top 30px
-
- .enter 
-  margin-top 0px
-  padding-top 66px
+.b-header
+  background embedurl( 'img/header-bg.gif' ) repeat center 0
+  height 60px
   
-#logo 
-  float left
-  padding 0 56px 0 0
-  
-  img 
+  a
+    &,
+    &:hover
+      color #fff
+      
+  &__logo
     float left
-    display inline
-    margin-right 22px
+    padding-top 20px
+    margin-left 20px
+      
+  &__nav
+    margin 0 150px
+    padding-top 22px
+    text-align center
     
-  h1,
-  strong 
-    float left
-    margin 34px 0 0 0
-    font-weight normal
-    font-size 9pt
-    font-style italic
-    font-family $georgia
-    color #666666
-    width 90px
-
-#iphone_link 
-  float left
-  width 200px
-  margin-top -1px
-  
-  .pic 
-    width 93px
-    height 113px
-    background embedurl( 'img/iphone.png' ) no-repeat 0 0
-    float left
+    a
+      ib()
+      height 16px
+      line-height 16px
+      margin 0 17px
+      
+  &-helper
+    ib()
+    background embedurl( 'img/helper.png' ) no-repeat 0 0
+    width 16px
+    height 16px
+      
+  &-search
+    ib()
+    background embedurl( 'img/search.png' ) no-repeat 0 0
+    width 16px
+    height 16px
     
-  a 
-    display block
-    font-size 8pt
-    margin 31px 0 0 7px
-    float left
-    width 100px
-    text-decoration none
+  &__buttons
+    float right
+    width 150px
+    padding-top 13px
+    margin-right 27px
+    
+  &__add-button
+    background #6cc184
+    border-radius( 5px )
+    width 96px
+    height 30px
+    font-size $x-small
+    font-family $sans
+    color #fff
+    float right
+    margin-top 2px
+      
+  &__profile-button
+    padding 0
+    width 30px
+    height 30px
+    rel()
+    float right
+    margin-left 14px
+    
+    &:after
+      content ' '
+      display block
+      position absolute
+      bottom -5px
+      left 50%
+      margin-left -3px
+      width 5px
+      height 3px
+      background embedurl( 'img/profile-pointer.gif' ) no-repeat 0 0
+    
+  &__profile
+    
+    &-list
+      display none
+      abs()
+      background #3c3c3c
+      padding 20px
+      margin 0
+      border-radius( 3px )
+      list-style-type none
+      box-sizing( border-box )
+      width 200px
+      
+      li
+        height 30px
+        
+      a,
+      span
+        line-height 30px
+        font-size 9pt
+        padding-left 40px
+        
+      a:hover,        
+      span
+        color #bdbdbd
+        
+      for icon in 'profile' 'favorite' 'recipes' 'articles' 'subscribe' 'kitchen'
+        .i-{icon}
+          background embedurl( 'img/'+icon+'.png' ) no-repeat 5px center

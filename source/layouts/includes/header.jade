@@ -2,43 +2,37 @@
 
 -var index = true
 
-header#head
-  #logo
-    if index
-      img(
-        src="/template/images/foodclub_logo.gif"
-        width="143"
-        height="102"
-        alt="Кулинарные рецепты с фотографиями"
-        title="Кулинарные рецепты с фотографиями"
-      )
-      h1 Рецепты
-        br
-        |с пошаговыми
-        br
-        |фотографиями
-    else
-      a( href="/" )
-        img(
-          src="/template/images/foodclub_logo.gif"
-          width="143"
-          height="102"
-          alt="Food club"
-        )
-      strong Рецепты
-        br
-        |с пошаговыми
-        br
-        |фотографиями
-  
-  include ../../components/recipe-search/template.jade
-  
-  #iphone_link
-    .pic
-    a( href="/iphone/" )
-      b Foodclub НD
-      br
-      |Кулинарная книга для вашего iPhone и iPad
-        
-    .clear
-  .clear
+header#header.b-header
+  .container
+    
+    a( href="/" ).b-header__logo
+      img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
+      
+    .b-header__buttons
+      
+      .b-header__profile
+        button.b-header__profile-button
+          img( src="/upload/user/small_photo.jpg" )
+        menu.b-header__profile-list
+          li
+            a( href="" ).i-profile Профиль
+          li
+            a( href="" ).i-favorite Избранное
+          li
+            a( href="" ).i-recipes Мои рецепты
+          li
+            a( href="" ).i-articles Статьи
+          li
+            a( href="" ).i-subscribe Подписка
+          li
+            a( href="" ).i-kitchen Кухня
+            
+      button.b-header__add-button Добавить
+      
+    nav.b-header__nav
+      a( href="" ) Рецепты
+      a( href="" ) Журнал
+      a( href="" ) Фудшот
+      a( href="" ) Лавка
+      a( href="" title="Помощник" ).b-header-helper
+      a( href="" title="Поиск" ).b-header-search
