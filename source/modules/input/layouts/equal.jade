@@ -1,0 +1,19 @@
+﻿block type
+block name
+block equal
+
+.form-group.i-float
+  
+  if name == "capcha"
+    img.b-capcha-img( src="/upload/capcha.jpg" alt="" )
+
+  label.b-label
+    block label
+  
+  input.form-control(
+    type="#{ type }",
+    name="#{ name }",
+    value="",
+    required=true
+    data-equal="#{equal}"
+  )

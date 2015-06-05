@@ -1,0 +1,67 @@
+@import '../../styl/component-include.styl'
+
+.b-button
+  ib()
+  border 0
+  padding 0
+  margin 0
+  line-height 25px
+  background-color #fff
+  min-width 102px;
+  border-right 1px solid #ececec
+  border-left 1px solid #ececec
+  text-align center
+  color $text-color
+  
+  &:hover,
+  &:active,
+  &:focus
+    text-decoration none
+    color $text-color
+    background-color $gray-x-light
+    border-color @background-color
+    outline none
+      
+.btn
+  font-size 10.5pt
+  line-height normal
+  min-width 156px
+  background #fff
+  color #000
+  
+  &:hover,
+  &:active,
+  &:focus
+    background #000
+    border-color #000
+    color #fff
+    
+  .b-header &
+    min-width 104px
+    
+  .b-footer &
+    min-width 0
+    
+  &.i-inverse
+    color #fff
+    background #000
+    
+    &:hover,
+    &:active,
+    &:focus
+      background #fff
+      color #000
+  
+.btn-default
+  ib()
+  border 1px solid #000
+  border-radius(0)
+  padding 0 15px
+  line-height 40px
+  
+  &.btn-100
+    width 100%
+    display block
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
+  background #000

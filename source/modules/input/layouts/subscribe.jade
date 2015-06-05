@@ -1,0 +1,17 @@
+﻿block type
+block name
+block placeholder
+
+.form-group
+
+  label.b-label
+    block label
+  
+  input.form-control(
+    type="#{ type }",
+    name="#{ name }",
+    value="",
+    placeholder="#{ placeholder }"
+  )
+
+  include ../../../modules/button/submit
