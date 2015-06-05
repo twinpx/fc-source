@@ -7,6 +7,14 @@
     /*if ( window.BX ) {
       BX.addCustomEvent( "onFrameDataReceived", function () {});
     }*/
+    
+    $( '.b-recipe-search__icon' ).click( function() {
+      var $search = $( this ).closest( '.b-recipe-search' );
+      $search.toggleClass( 'i-open' );
+      if ( $search.hasClass( 'i-open' )) {
+        $search.find( 'input' ).focus();
+      }
+    });
   
     new FcRecipeSearch();
 

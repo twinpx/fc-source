@@ -1,15 +1,16 @@
 @import '../../styl/component-include.styl'
 
 .b-recipe-search
-  float left
-  padding 36px 57px 0 0
+  rel()
+  ib()
+  margin -7px 0 0 38px
 
   &__form-field
-    position relative
-    height 52px
-    width 315px
-    float left
+    ib()
     margin-bottom 0 !important
+    position absolute
+    top 0
+    right 0
 
   .b-form-field__placeholder__text
     font-size $big-size
@@ -34,40 +35,44 @@
   
 
   &__input
-    width 257px !important
-    height 47px !important
-    font-size $big-size
-    padding 2px 46px 1px 10px !important
-    color $dark-grey
+    width 0 !important
+    height 30px !important
+    font-size $base-size
+    padding 0 !important
+    color #fff
     display block
-    line-height 35px
-    box-sizing content-box
-    -moz-box-sizing content-box
-    -webkit-box-sizing content-box
-    -khtml-box-sizing content-box
+    line-height 30px
+    background $darker-grey
+    border none
+    box-shadow none
+    opacity(0)
+    trans( all 0.5s ease )
+    
+    /*.i-preloader &
+      background-image url("/template/images/preloader-thin.gif")
+      background-position right center
+      background-repeat no-repeat*/
+      
+    .i-open &
+      opacity(1)
+      width 527px !important
+      padding 2px 38px 2px 10px !important
+  
+
+  &__icon
+    ib()
+    background embedurl( 'img/search.png' ) no-repeat center center
+    width 22px
+    height 22px
+    padding 0
+    border none
+    cursor pointer
+    position absolute
+    top 4px
+    right 9px
     
     .i-preloader &
       background-image url("/template/images/preloader-thin.gif")
-      background-position 95% center
-      background-repeat no-repeat
-  
-
-  &__button
-    margin 0 0 0 11px
-    padding 0
-    width 65px
-    height 52px
-    float left
-    display inline
-    background url(/template/images/buttons.png) no-repeat -79px -2660px
-    border none
-    cursor pointer
-    
-    &:hover
-      background url(/template/images/buttons.png) no-repeat -79px -2713px
-      
-    &:active
-      background url(/template/images/buttons.png) no-repeat -79px -2766px
       
   &__ul
     list-style-type none

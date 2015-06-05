@@ -10,10 +10,10 @@ header#header.b-header
       
     .b-header__buttons
       
-      .b-header__profile
-        button.b-header__profile-button
+      .b-header__profile.dropdown
+        button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
           img( src="/upload/user/small_photo.jpg" )
-        menu.b-header__profile-list
+        menu.b-header__profile-list.dropdown-menu( role="menu" )
           li
             a( href="" ).i-profile Профиль
           li
@@ -27,12 +27,14 @@ header#header.b-header
           li
             a( href="" ).i-kitchen Кухня
             
-      button.b-header__add-button Добавить
+      button.b-header__add-button( data-toggle="modal" data-target="#addModal" ) Добавить
+      
+      include ../../modules/addModal/include
       
     nav.b-header__nav
       a( href="" ) Рецепты
-      a( href="" ) Журнал
+      a.i-active( href="" ) Журнал
       a( href="" ) Фудшот
       a( href="" ) Лавка
-      a( href="" title="Помощник" ).b-header-helper
-      a( href="" title="Поиск" ).b-header-search
+      include ../../modules/search-helper/include.jade
+      include ../../components/recipe-search/template

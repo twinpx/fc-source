@@ -1,5 +1,5 @@
 .b-header
-  background embedurl( 'img/header-bg.gif' ) repeat center 0
+  background $header-bg
   height 60px
   
   a
@@ -23,6 +23,10 @@
       line-height 16px
       margin 0 17px
       
+      &.i-active
+        color #e2f50b
+        font-weight bold
+      
   &-helper
     ib()
     background embedurl( 'img/helper.png' ) no-repeat 0 0
@@ -38,19 +42,18 @@
   &__buttons
     float right
     width 150px
-    padding-top 13px
+    padding-top 15px
     margin-right 27px
     
   &__add-button
     background #6cc184
-    border-radius( 5px )
+    border-radius( $border-radius-small )
     width 96px
     height 30px
     font-size $x-small
     font-family $sans
     color #fff
     float right
-    margin-top 2px
       
   &__profile-button
     padding 0
@@ -64,25 +67,32 @@
       content ' '
       display block
       position absolute
-      bottom -5px
-      left 50%
-      margin-left -3px
+      bottom 2px
+      right 2px
+      margin-left -2px
       width 5px
-      height 3px
+      height 5px
       background embedurl( 'img/profile-pointer.gif' ) no-repeat 0 0
+      z-index 5
     
   &__profile
+    rel()
     
     &-list
       display none
-      abs()
+      position absolute
+      top 38px
+      right -7px
       background #3c3c3c
-      padding 20px
+      padding 18px 20px
       margin 0
       border-radius( 3px )
       list-style-type none
       box-sizing( border-box )
       width 200px
+      
+      .open &
+        display block
       
       li
         height 30px

@@ -8,12 +8,10 @@ script( src="/components/recipe-search/add-script.js" )
 #recipeSearch.b-recipe-search
   form( action="/search/" method="post" )
     .b-form-field.b-recipe-search__form-field
-      a.b-recipe-search__delete( href="#" title="Очистить поле" )
-      input.b-input-text.b-recipe-search__input( type="text" value="" autocomplete="off" data-placeholder="Я ищу" )
-    button.b-recipe-search__button
+      //a.b-recipe-search__delete( href="#" title="Очистить поле" )
+      input.b-input-text.b-recipe-search__input( type="text" value="" autocomplete="off" )
+    span.b-recipe-search__icon( title="Поиск" )
     .i-clearfix
-  
-  include ../../modules/search-helper/include.jade
   
 script#recipe_search_items( type="text/html" )
   |<li class="b-rs__item">
