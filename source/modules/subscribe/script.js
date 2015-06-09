@@ -24,14 +24,9 @@ $( '.b-subscribe form' ).submit( function(e) {
       try {
       
         if ( data.response === 'success' ) {
-          if ( $form.find( '.form-group' ).hasClass( 'i-float' )) {
-            $form.find( '.form-group' ).removeClass( 'i-focus' );
-            $form.find( '.form-control' ).val( '' );
-            $form.find( '.b-label' ).text( data.text );
-          } else {
-            $form.find( '.form-control' ).val( data.text );
-          }
-          
+          $form.parent().height( $form.parent().height() );
+          $form.before( '<div class="text-success">' + data.text + '</div>' );
+          $form.remove();
         } else {
           $form.prepend( '<p class="text-warning">' + data.text + '</p>' );
         }
