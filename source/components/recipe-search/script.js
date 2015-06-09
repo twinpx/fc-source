@@ -7,14 +7,6 @@
     /*if ( window.BX ) {
       BX.addCustomEvent( "onFrameDataReceived", function () {});
     }*/
-    
-    $( '.b-recipe-search__icon' ).click( function() {
-      var $search = $( this ).closest( '.b-recipe-search' );
-      $search.toggleClass( 'i-open' );
-      if ( $search.hasClass( 'i-open' )) {
-        $search.find( 'input' ).focus();
-      }
-    });
   
     new FcRecipeSearch();
 
@@ -54,6 +46,7 @@
         self.elemValue = $.trim(self.$input.val());
         self.$delete = self.$elem.find(".b-recipe-search__delete");
         self.$button = self.$elem.find(".b-recipe-search__button");
+        self.$icon = self.$elem.find(".b-recipe-search__icon");
       }
       
       function makeHtml() {
@@ -67,13 +60,26 @@
           .keydown(keydownInput)
           .keyup(keyupInput);
         
-        $(document).bind("click", clickDocument);
-        self.$list.click(clickList);
-        self.$delete.click(clickDelete);
-        self.$button.click(clickButton);
+        $(document).bind( "click", clickDocument );
+        self.$list.click( clickList );
+        self.$delete.click( clickDelete );
+        self.$button.click( clickButton );
+        self.$icon.click( clickIcon );
+        
+        self.$elem.click( function(e) {
+          e.stopPropagation();
+        });
+        
+        function clickIcon() {
+          self.$elem.toggleClass( 'i-open' ).removeClass( "i-preloader" );
+          if ( self.$elem.hasClass( 'i-open' )) {
+            self.$input.focus();
+          }
+        }
         
         function clickDocument() {
           self.$list.hide();
+          self.$elem.removeClass( 'i-open' ).removeClass( "i-preloader" );
         }
         
         function clickList(e) {
@@ -81,7 +87,7 @@
         }
         
         function clickButton(e) {
-          if(self.elemValue) {
+          if ( self.elemValue ) {
             if (self.$activeItem.is("." + self.options.itemClass)) {//if item - follow the link
               window.location.href = self.$activeItem.find("." + self.options.linkClass).attr("href");
             } else {//if input or search-all element - use search engine
