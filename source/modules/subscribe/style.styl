@@ -1,21 +1,18 @@
 @import '../../styl/component-include.styl'
 
 .b-subscribe
-  width 332px
-  margin 0 auto
+  width 333px
+  margin 0 auto 55px
+  
+  .form-control
+    width 220px
+    margin-right 5px
+    display inline-block
+    vertical-align middle
   
   .i-preload
-    background url( $imagesPath + 'footer-preloader.gif' ) no-repeat center center
+    background url( $imagesPath + 'preloader-footer.gif' ) no-repeat center center
     
     .form-group
       visibility hidden
-  
-  .form-control
-    border none
-    font-size 13.5pt
-    height 40px
-    font-weight 300
-    background-color $form-control-bg
-    width 100%
-    ib()
-    color #fff
+      

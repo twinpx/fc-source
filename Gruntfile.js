@@ -55,6 +55,9 @@ module.exports = function( grunt ) {
         urlfunc: {
           name: 'embedurl',
           limit: 30000
+        },
+        define: {
+          $imagesPath: '/template/images/'
         }
       },
       bootstrap: {
@@ -384,6 +387,10 @@ module.exports = function( grunt ) {
             cwd: '<%= temp %>',
             src: [ '**/*.*' ],
             dest: '<%= prod %>'
+          },
+          {
+            '<%= prod %>template/bootstrap.css': '<%= dest %>template/bootstrap.css',
+            '<%= prod %>template/bootstrap.js': '<%= dest %>template/bootstrap.js'
           }
         ]
       }
