@@ -101,6 +101,26 @@ hr
   margin-bottom @margin-top - 1
   border 0
   border-top 1px solid $hr-border
+  
+  &.i-size-S
+    margin-top floor( $grid-gutter-width/4 )
+    margin-bottom @margin-top - 1
+  
+  &.i-size-M
+    margin-top floor( $grid-gutter-width/2 )
+    margin-bottom @margin-top - 1
+  
+  &.i-size-L
+    margin-top floor( $grid-gutter-width )
+    margin-bottom @margin-top - 1
+  
+  &.i-size-XL
+    margin-top floor( $grid-gutter-width*2 )
+    margin-bottom @margin-top - 1
+    
+  &.i-decorated
+    border-top-color $light-grey
+    
 
 
 // Only display content to screen readers

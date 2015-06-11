@@ -19,6 +19,7 @@ module.exports = function( grunt ) {
             src: [
               '**/*.jade',
               '!layouts/**/*.jade',
+              '!components/**/include/*.jade',
               '!modules/**/*.jade'
             ],
             dest: '<%= dest%>',
@@ -39,6 +40,7 @@ module.exports = function( grunt ) {
             src: [
               '**/*.jade',
               '!layouts/**/*.jade',
+              '!components/**/include/*.jade',
               '!modules/**/*.jade'
             ],
             dest: '<%= temp%>',
