@@ -1,11 +1,17 @@
 @import '../../styl/component-include.styl'
 
-.b-header.i-fixed
-  width 100%
-  position fixed
-  top 0
-  left 0
-  z-index 994
-  
+.b-header
+    
   .modal-open &
     padding-right 17px
+    margin-right -17px
+
+  &.i-fixed
+    width 100%
+    position fixed
+    top 0
+    left 0
+    z-index 994
+    
+    .modal-open &
+      padding-right 17px

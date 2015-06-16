@@ -1,0 +1,30 @@
+﻿// start /components/aside.rom/
+
+link( rel="stylesheet", href="/components/aside.rom/style.css" )
+script( src="/components/aside.rom/script.js" )
+
+.b-aside-rom
+
+  .b-h2 Рецепт месяца
+  .b-h4 Февраль
+  
+  a( href="" ).b-aside-rom__photo
+    img( src="/upload/recipe-preview/aside-rom.jpg" alt="Рецепт месяца - блинчики с вареньем" )
+  
+  hr.i-size-M
+  
+  include ../../modules/author/include
+  
+  hr.i-size-L.i-decorated
+  
+  .b-h3 Приз победителю
+  img( src="/upload/kitchen/1.jpg" alt="Мультиварка POLARIS" )
+  hr
+  .b-h4 Мультиварка POLARIS
+  .b-aside-rom__note Чтобы получить главный приз: добавьте рецепт, сообщите своим друзьям и следите за результатами.
+  
+  hr.i-size-M
+
+  include ../../modules/button/take-part
+
+// end /components/aside.rom/

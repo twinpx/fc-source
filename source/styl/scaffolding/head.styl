@@ -16,6 +16,7 @@
     margin 0 150px
     padding-top 22px
     text-align center
+    font-weight 300
     
     a
       ib()
@@ -104,3 +105,30 @@
       for icon in 'profile' 'favorite' 'recipes' 'articles' 'subscribe' 'kitchen'
         .i-{icon}
           background embedurl( 'img/'+icon+'.png' ) no-repeat 5px center
+          
+.b-page-heading
+
+  &__ill
+    background-position center center
+    background-repeat no-repeat
+    background-size cover
+    height 150px
+    text-align center
+    rel()
+    
+    //.modal-open &
+      //margin-right -17px
+    
+    h1
+      color #fff
+      font-family $pt
+      font-weight bold
+      font-size 22pt
+      margin 0
+      position absolute
+      top 50%
+      margin-top -28px
+      width 100%
+      
+      //.modal-open &
+        //padding-right 17px

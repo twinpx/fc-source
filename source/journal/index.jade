@@ -1,13 +1,23 @@
 ﻿block var-page
   - var page = journal
 
-extends ../layouts/main.jade
+extends ../layouts/inner.jade
 
 block title
   title Journal | food
 
-block content
+block section
   
-  #content
+  include ../components/journal/template
+
+block aside
+
+  include ../modules/aside-banner/include
   
-    include ../components/journal/template
+  hr.i-size-L
+  
+  include ../components/aside.rom/template
+  
+  hr.i-size-L
+  
+  include ../modules/aside-banner/include

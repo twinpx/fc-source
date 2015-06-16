@@ -4,77 +4,56 @@ link( rel="stylesheet", href="/components/journal/style.css" )
 script( src="/components/journal/script.js" )
 
 .b-journal
+
+  h2 Свежие публикации
   
-  .b-journal__heading( style="background-image: url(/upload/journal/heading.jpg);" )
-    h1 Журнал Foodclub.ru
-    
-  include ../../modules/content-nav/journal
+  .b-journal__feed
   
-  .row
-    section.col-sm-8
-      h2 Свежие публикации
-      
-      .b-journal__feed
-      
-        include ./include/item-large
-        
-        hr.i-size-L
-        
-        .row
-          .col-sm-6
-          
-            include ./include/item
-            
-          .col-sm-6
-          
-            include ./include/item
-            
-        hr.i-size-L
-            
-        include ../../modules/content-banner/include
-        
-        hr.i-size-L
-        
-        .row
-          .col-sm-6
-          
-            include ./include/item
-            
-          .col-sm-6
-          
-            include ./include/item-ext
-      
-        h2 Лавка
-        p Лавка предлагает вам товары связанные с приготовлением пиши и продукты питания представленные интернет-магазинами. У вас есть собственный интернет-магазин и товары, которые могут пригодиться нашим пользователям, разместите их в разделе лавка.
-        
-        hr.i-size-L
-        
-        .row
-          .col-sm-6
-          
-            include ./include/item
-            
-          .col-sm-6
-          
-            include ./include/item-ext
-            
-        hr.i-size-XL.i-decorated
-      
-        .text-center
-          a( href="" ) Все публикации
+    include ./include/item-large
     
-    aside.col-sm-4
-      include ../../modules/aside-banner/include
-      
-      hr.i-size-XL
-      
-      include ../../modules/aside-recipe-of-month/include
-      
-      hr.i-size-XL
-      
-      include ../../modules/aside-banner/include
-      
+    hr.i-size-L
     
-  hr.i-size-L
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      .col-sm-6
+      
+        include ./include/item
+        
+    hr.i-size-L
+        
+    include ../../modules/content-banner/include
+    
+    hr.i-size-L
+    
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      .col-sm-6
+      
+        include ./include/item-ext
+  
+    h2 Лавка
+    p Лавка предлагает вам товары связанные с приготовлением пиши и продукты питания представленные интернет-магазинами. У вас есть собственный интернет-магазин и товары, которые могут пригодиться нашим пользователям, разместите их в разделе лавка.
+    
+    hr.i-size-L
+    
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      .col-sm-6
+      
+        include ./include/item-ext
+        
+    hr.i-size-XL.i-decorated
+  
+    .text-center
+      a( href="" ) Все публикации
 
 // end /components/journal/
