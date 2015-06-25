@@ -1,16 +1,44 @@
 .b-header
   background $header-bg
-  height 60px
+  min-height 60px
+  rel()
   
   a
     &,
     &:hover
       color #fff
       
+  .b-mobile-menu-icon
+    cursor pointer
+    width 32px
+    height 32px
+    background embedurl( 'img/header-menu-icon.gif' ) no-repeat center center
+    position absolute
+    top 15px
+    right 92px
+    z-index 2
+      
+  .b-mobile-search-icon
+    cursor pointer
+    width 32px
+    height 32px
+    background embedurl( 'img/search.png' ) no-repeat center center
+    position absolute
+    top 15px
+    right 32px
+    z-index 2
+    
+  .col-xs-6
+    position static
+      
   &__logo
     float left
-    padding-top 20px
-    margin-left 20px
+    padding-top 17px
+        
+    @media( max-width $screen-xs-max )
+      float none
+      display block
+      width 103px
       
   &__nav
     margin 0 150px
@@ -27,6 +55,30 @@
       &.i-active
         color #e2f50b
         font-weight bold
+        
+      @media( max-width $screen-sm-max )
+        margin 0 11px
+    
+    @media( min-width $screen-tablet )
+    
+      .row
+        margin 0
+    
+      .col-xs-6
+        float none
+        width auto
+        padding 0
+        
+    @media( max-width $screen-xs-max )
+      display none
+      text-align left
+      margin 0 0 0 25px
+      font-size $middle
+      
+      a
+        display block
+        margin 0 0 30px
+        height auto
       
   &-helper
     ib()
@@ -44,7 +96,6 @@
     float right
     width 150px
     padding-top 15px
-    margin-right 27px
     
   &__add-button
     width 96px
@@ -85,6 +136,7 @@
       list-style-type none
       box-sizing( border-box )
       width 200px
+      z-index 10
       
       .open &
         display block
@@ -96,15 +148,15 @@
       span
         line-height 30px
         font-size 9pt
-        padding-left 40px
         
       a:hover,        
       span
         color #bdbdbd
         
-      for icon in 'profile' 'favorite' 'recipes' 'articles' 'subscribe' 'kitchen'
-        .i-{icon}
-          background embedurl( 'img/'+icon+'.png' ) no-repeat 5px center
+  for icon in 'profile' 'favorite' 'recipes' 'articles' 'subscribe' 'kitchen'
+    .i-{icon}
+      background embedurl( 'img/'+icon+'.png' ) no-repeat 5px center
+      padding-left 40px
           
 .b-page-heading
 

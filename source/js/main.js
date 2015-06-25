@@ -1,3 +1,18 @@
+//header mobile menu icon
+$( '.b-header .b-mobile-menu-icon' ).click( function(e) {
+  e.stopPropagation();
+  $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );//toggleClass( 'i-menu-open' );
+});
+
+$( '.b-header__nav' ).click( function(e) {
+  e.stopPropagation();
+});
+
+$( document ).bind( 'click', function() {
+  $( '.b-header__nav' ).slideUp( 500 );//.removeClass( 'i-menu-open' );
+  $( '.b-content-nav .container' ).slideUp( 500 );//.removeClass( 'i-open' );
+});
+
 // vertical align for recipe preview photo
 $( ".recipe_list_item .photo a, .b-recipe-preview__photo__link" ).each( function() {
   var $this = $( this ),

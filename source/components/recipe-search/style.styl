@@ -4,6 +4,10 @@
   rel()
   ib()
   margin -7px 0 0 38px
+  z-index 4
+  
+  &.i-open
+    z-index 6
 
   &__form-field
     ib()
@@ -55,8 +59,11 @@
       
     .i-open &
       opacity(1)
-      width 527px !important
+      width 455px !important
       padding 2px 38px 2px 10px !important
+      
+      @media( max-width $screen-sm-max )
+        width 380px !important
   
 
   &__icon

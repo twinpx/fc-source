@@ -5,10 +5,13 @@
 header#header.b-header
   .container
     
+    .b-mobile-menu-icon.visible-xs-block
+    a( href="/search/" ).b-mobile-search-icon.visible-xs-block
+    
     a( href="/" ).b-header__logo
       img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
       
-    .b-header__buttons
+    .b-header__buttons.hidden-xs
       
       .b-header__profile.dropdown
         button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
@@ -31,13 +34,25 @@ header#header.b-header
       
       include ../../modules/addModal/include
       
-    nav.b-header__nav
-      a( href="" ) Рецепты
-      a.i-active( href="" ) Журнал
-      a( href="" ) Фудшот
-      a( href="" ) Лавка
-      include ../../modules/search-helper/include.jade
-      include ../../components/recipe-search/template
+    .b-header__nav
+      .row
+        .col-xs-6
+          a( href="/recipes/" ) Рецепты
+          a.i-active( href="/journal/" ) Журнал
+          a( href="/foodshot/" ) Фудшот
+          a( href="/lavka/" ) Лавка
+          include ../../modules/search-helper/include.jade
+          include ../../components/recipe-search/template
+        .col-xs-6.visible-xs-block
+          a( href="/forms/auth/" ) Войти
+          a( href="/forms/reg/" ) Зарегистрироваться
+          | или
+          a( href="" ).i-profile Профиль
+          a( href="" ).i-favorite Избранное
+          a( href="" ).i-recipes Мои рецепты
+          a( href="" ).i-articles Статьи
+          a( href="" ).i-subscribe Подписка
+          a( href="" ).i-kitchen Кухня
       
 .b-page-heading
 

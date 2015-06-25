@@ -7,6 +7,11 @@
   text-align center
   margin-bottom floor( $grid-gutter-width )
   
+  .container
+  
+    @media( max-width $screen-tablet - 1 )
+      display none
+  
   nav
     margin 0
     padding 0
@@ -16,3 +21,22 @@
 
     &.i-emphasise
       color #389a0d
+      
+  @media( max-width $screen-tablet - 1 )
+    padding 0
+    
+    a
+      display block
+      text-align center
+      margin-bottom 15px
+
+  .b-mobile-menu-icon
+    height 57px
+    background embedurl( 'img/menu-icon.gif' ) no-repeat center center
+    cursor pointer
+    
+  &.i-open
+    
+    .hidden-xs
+      display block !important
+      
