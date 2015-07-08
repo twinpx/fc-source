@@ -9,8 +9,10 @@ $( '.b-header__nav' ).click( function(e) {
 });
 
 $( document ).bind( 'click', function() {
-  $( '.b-header__nav' ).slideUp( 500 );//.removeClass( 'i-menu-open' );
-  $( '.b-content-nav .container' ).slideUp( 500 );//.removeClass( 'i-open' );
+  if ( window.matchMedia( "(max-width: 767px)" ).matches ) {
+    $( '.b-header__nav' ).slideUp( 500 );//.removeClass( 'i-menu-open' );
+    $( '.b-content-nav .container' ).slideUp( 500 );//.removeClass( 'i-open' );
+  }/* else {}*/
 });
 
 // vertical align for recipe preview photo

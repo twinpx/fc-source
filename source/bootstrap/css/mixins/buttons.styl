@@ -10,16 +10,17 @@ button-variant($color, $background, $border)
   &:hover,
   &:focus,
   &.focus,
-  &:active,
-  &.active,
   .open > .dropdown-toggle&
     color $color
-    background-color darken($background, 20%)
-    border-color darken($border, 20%)
+    background-color lighten($background, 5%)
+    border-color lighten($border, 5%)
+    background-image none
 
   &:active,
-  &.active,
-  .open > .dropdown-toggle&
+  &.active
+    color $color
+    background-color darken($background, 10%)
+    border-color darken($border, 10%)
     background-image none
 
   &.disabled,

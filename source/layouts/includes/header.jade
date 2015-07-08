@@ -12,27 +12,29 @@ header#header.b-header
       img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
       
     .b-header__buttons.hidden-xs
+    
+      block profile-buttons
       
-      .b-header__profile.dropdown
-        button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
-          img( src="/upload/user/small_photo.jpg" )
-        menu.b-header__profile-list.dropdown-menu( role="menu" )
-          li
-            a( href="" ).i-profile Профиль
-          li
-            a( href="" ).i-favorite Избранное
-          li
-            a( href="" ).i-recipes Мои рецепты
-          li
-            a( href="" ).i-articles Статьи
-          li
-            a( href="" ).i-subscribe Подписка
-          li
-            a( href="" ).i-kitchen Кухня
-            
-      button.btn.btn-default.b-header__add-button( data-toggle="modal" data-target="#addModal" ) Добавить
-      
-      include ../../modules/addModal/include
+        .b-header__profile.dropdown
+          button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
+            img( src="/upload/user/small_photo.jpg" )
+          menu.b-header__profile-list.dropdown-menu( role="menu" )
+            li
+              a( href="" ).i-profile Профиль
+            li
+              a( href="" ).i-favorite Избранное
+            li
+              a( href="" ).i-recipes Мои рецепты
+            li
+              a( href="" ).i-articles Статьи
+            li
+              a( href="" ).i-subscribe Подписка
+            li
+              a( href="" ).i-kitchen Кухня
+              
+        button.btn.btn-default.b-header__add-button( data-toggle="modal" data-target="#addModal" ) Добавить
+        
+        include ../../modules/addModal/include
       
     .b-header__nav
       .row

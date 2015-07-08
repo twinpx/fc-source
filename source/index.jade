@@ -1,10 +1,13 @@
-block var-page
-  - var page = index
+﻿block var-page
+  - var page = 'index'
 
 extends ./layouts/main.jade
 
 block title
   title Main page | food
+  
+block profile-buttons
+  a.btn.btn-danger.b-header__auth-button( href="/forms/auth/" ) Войти
 
 block content
   
