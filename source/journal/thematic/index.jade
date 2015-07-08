@@ -1,0 +1,23 @@
+﻿block var-page
+  - var page = journal
+
+extends ../../layouts/inner.jade
+
+block title
+  title Journal | food
+
+block section
+  
+  include ../../components/journal.thematic/template
+
+block aside
+
+  include ../../modules/aside-banner/include
+  
+  hr.i-size-L
+  
+  include ../../components/aside.rom/template
+  
+  hr.i-size-L
+  
+  include ../../modules/aside-banner/float

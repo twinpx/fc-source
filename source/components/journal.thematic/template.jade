@@ -1,0 +1,61 @@
+﻿// start /components/journal.thematic/
+
+link( rel="stylesheet", href="/components/journal.thematic/style.css" )
+script( src="/components/journal.thematic/script.js" )
+
+.b-journal
+
+  h2 Свежие публикации
+  
+  .b-journal__feed
+  
+    include ./include/item-large
+    
+    hr.i-size-L
+    
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      hr.i-size-L.visible-xs-block
+        
+      .col-sm-6
+      
+        include ./include/item
+        
+    hr.i-size-L
+    
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      hr.i-size-L.visible-xs-block
+      
+      .col-sm-6
+      
+        include ./include/item-ext
+    
+    hr.i-size-L
+    
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      hr.i-size-L.visible-xs-block
+        
+      .col-sm-6
+      
+        include ./include/item-ext
+        
+    hr.i-size-XL.i-decorated
+  
+    include ../../modules/pagination/include
+    
+    hr.i-size-L.hidden-xs
+        
+    include ../../modules/content-banner/include
+
+// end /components/journal.thematic/
