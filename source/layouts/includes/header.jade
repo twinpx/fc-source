@@ -11,10 +11,10 @@ header#header.b-header
     a( href="/" ).b-header__logo
       img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
       
-    .b-header__buttons.hidden-xs
+    block profile-buttons
     
-      block profile-buttons
-      
+      .b-header__buttons.hidden-xs
+    
         .b-header__profile.dropdown
           button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
             img( src="/upload/user/small_photo.jpg" )
@@ -36,25 +36,26 @@ header#header.b-header
         
         include ../../modules/addModal/include
       
-    .b-header__nav
-      .row
-        .col-xs-6
-          a( href="/recipes/" ) Рецепты
-          a.i-active( href="/journal/" ) Журнал
-          a( href="/foodshot/" ) Фудшот
-          a( href="/lavka/" ) Лавка
-          include ../../modules/search-helper/include.jade
-          include ../../components/recipe-search/template
-        .col-xs-6.visible-xs-block
-          a( href="/forms/auth/" ) Войти
-          a( href="/forms/reg/" ) Зарегистрироваться
-          | или
-          a( href="" ).i-profile Профиль
-          a( href="" ).i-favorite Избранное
-          a( href="" ).i-recipes Мои рецепты
-          a( href="" ).i-articles Статьи
-          a( href="" ).i-subscribe Подписка
-          a( href="" ).i-kitchen Кухня
+      .b-header__nav
+        .row.visible-xs-block
+          .col-xs-6.col-xs-offset-6
+            include ../../modules/user/new
+        .row
+          .col-xs-6
+            a( href="/recipes/" ) Рецепты
+            a.i-active( href="/journal/" ) Журнал
+            a( href="/foodshot/" ) Фудшот
+            a( href="/lavka/" ) Лавка
+            include ../../modules/search-helper/include.jade
+            include ../../components/recipe-search/template
+          .col-xs-6.visible-xs-block
+            a( href="" ).i-profile Профиль
+            a( href="" ).i-favorite Избранное
+            a( href="" ).i-recipes Мои рецепты
+            a( href="" ).i-articles Статьи
+            a( href="" ).i-subscribe Подписка
+            a( href="" ).i-kitchen Кухня
+            a( href="" ).i-signout Выйти
       
 .b-page-heading
 
