@@ -211,7 +211,7 @@
             
             $.ajax({
               url: "/php/foodclubJSON.php",
-              type: "POST",
+              type: "GET",
               error: ajaxError,
               success: function(data) {
                 window.foodclubJSON = $.parseJSON(data);

@@ -1,0 +1,44 @@
+﻿doctype html
+html
+  head
+    block title
+      title Search | Foodclub
+      
+    include includes/meta.jade
+    include includes/styles.jade
+    include includes/scripts.jade
+    
+  body
+    include ../modules/bitrix-panel/include.jade
+    
+    header#header.b-header
+      .container
+        
+        .b-mobile-menu-icon.visible-xs-block
+        a( href="/search/" ).b-mobile-search-icon.visible-xs-block
+        
+        a( href="/" ).b-header__logo
+          img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
+          
+        block profile-buttons
+        
+          .b-header__nav
+            .row.visible-xs-block
+              .col-xs-6.col-xs-offset-6
+                include ../modules/user/new
+            .row
+              .col-xs-6
+                a( href="/recipes/" ) Рецепты
+                a.i-active( href="/journal/" ) Журнал
+                a( href="/foodshot/" ) Фудшот
+                a( href="/lavka/" ) Лавка
+              .col-xs-6.visible-xs-block
+                a( href="" ).i-profile Профиль
+                a( href="" ).i-favorite Избранное
+                a( href="" ).i-recipes Мои рецепты
+                a( href="" ).i-articles Статьи
+                a( href="" ).i-subscribe Подписка
+                a( href="" ).i-kitchen Кухня
+                a( href="" ).i-signout Выйти
+                
+    include ../components/recipe-search/search-page

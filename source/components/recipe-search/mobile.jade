@@ -1,16 +1,9 @@
 ﻿// start /components/recipe-search/
 
-block wrapper
-  - var wrapper=""
-
-link( rel="stylesheet", href="/components/recipe-search/style.css" )
+link( rel="stylesheet", href="/components/recipe-search/mobile.css" )
 script( src="/components/recipe-search/script.js" )
-script( src="/js/ss_data.js" )
-script( src="/components/recipe-search/add-script.js" )
 
-
-#recipeSearch( class="b-recipe-search #{wrapper}" )
-
+#recipeSearch.b-recipe-search
   form( action="/search/" method="post" )
     .b-form-field.b-recipe-search__form-field
       //a.b-recipe-search__delete( href="#" title="Очистить поле" )
@@ -18,7 +11,7 @@ script( src="/components/recipe-search/add-script.js" )
     span.b-recipe-search__icon.hidden-xs( title="Поиск" )
     .i-clearfix
   
-script#recipe_search_items( type="text/html" )
+script#recipe_search_items( type="text/tmpl" )
   |<li class="b-rs__item">
   |  <a href="<%=url%>" class="b-rs__item__link">
   |    <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
