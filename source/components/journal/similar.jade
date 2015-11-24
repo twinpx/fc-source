@@ -1,0 +1,23 @@
+﻿// start /components/journal/
+
+link( rel="stylesheet", href="/components/journal/style.css" )
+script( src="/components/journal/script.js" )
+
+.b-journal
+
+  h2 Похожие материалы
+  
+  .b-journal__feed
+    
+    .row
+      .col-sm-6
+      
+        include ./include/item
+        
+      hr.i-size-L.visible-xs-block
+        
+      .col-sm-6
+      
+        include ./include/item-ext
+
+// end /components/journal/

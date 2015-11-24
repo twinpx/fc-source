@@ -13,7 +13,7 @@ script( src="/components/recipe-search/add-script.js" )
 
   form( action="/search/" method="post" )
     .b-form-field.b-recipe-search__form-field
-      //a.b-recipe-search__delete( href="#" title="Очистить поле" )
+      a.b-recipe-search__delete( href="#" title="Очистить поле" )
       input.b-input-text.b-recipe-search__input( type="text" value="" autocomplete="off" )
     span.b-recipe-search__icon.hidden-xs( title="Поиск" )
     .i-clearfix

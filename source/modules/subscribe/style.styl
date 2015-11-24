@@ -2,7 +2,11 @@
 
 .b-subscribe
   width 333px
-  margin 0 auto 55px
+  margin 0 auto
+  font-size $small
+  
+  .b-footer &
+    margin-bottom 55px
   
   .form-control
     width 220px
@@ -18,4 +22,9 @@
       
   .text-success
     text-align center
-      
+    
+  @media( max-width $screen-phone )
+    width auto
+    
+    .form-control
+      width 60%

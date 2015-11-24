@@ -1,0 +1,11 @@
+@import '../../styl/component-include.styl'
+
+.fotorama
+  background embedurl( 'img/nav-bg.gif' ) repeat-x 0 bottom $s-light-grey
+  
+  &__wrap
+    margin 0 auto
+    
+  @media( max-width $screen-phone )
+    margin-right -1*$mobile-page-margin !important
+    margin-left -1*$mobile-page-margin !important

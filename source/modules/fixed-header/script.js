@@ -1,9 +1,14 @@
 //fixed header
 ( function() {
-  var $header = $( '.b-header' );
-  $header.data( 'topBorder', $header.offset().top );
+  var $header = $header = $( '.b-header' );
   
-  $( window ).bind( "scroll", scrollWindow ).scroll();
+  if ( $( 'body' ).hasClass( 'i-mobile-search' )) {
+    $header.addClass( "i-fixed" );
+    $header.after( '<div id="b-header-fixed" style="height:' + $header.height() + 'px;"></div>' );
+  } else {
+    $header.data( 'topBorder', $header.offset().top );
+    $( window ).bind( "scroll", scrollWindow ).scroll();
+  }
   
   function scrollWindow(e) {
     var scrolled = window.pageYOffset || document.documentElement.scrollTop;

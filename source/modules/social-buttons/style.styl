@@ -1,0 +1,71 @@
+@import '../../styl/component-include.styl'
+
+.b-social-buttons
+  
+  .i-bottom &
+    padding 10px 0 0 0
+  
+  &__title
+    line-height 24px
+    display inline-block
+    vertical-top top
+  
+  &__i
+    display inline-block
+    vertical-align top
+    height 24px
+    margin-left 5px
+    
+    &__icon
+      display inline-block
+      vertical-align top
+      width 24px
+      height 24px
+      
+      .i-vk &
+        background embedurl("img/vk.png") no-repeat center center
+      
+      .i-fb &
+        background embedurl("img/fb.png") no-repeat center center
+      
+      .i-tw &
+        background embedurl("img/tw.png") no-repeat center center
+      
+      .i-serf &
+        background embedurl("img/serf.png") no-repeat center center
+      
+      .i-pin &
+        background embedurl("img/pin.png") no-repeat center center
+    
+    &__num
+      display inline-block
+      vertical-align top
+      position relative
+      font-size 8pt
+      color #666666
+      text-align center
+      padding 0 4px
+      min-width 35px
+      line-height 21px
+      background #e7e7e7
+      position relative
+      margin 2px
+      
+      &:before
+        content " "
+        display inline-block
+        width 3px
+        height 3px
+        background embedurl("img/pointer.gif") no-repeat center center
+        position absolute
+        top 50%
+        left -3px
+        margin-top -2px
+      
+      .i-preload &
+        background-image url("/components/social-buttons/images/preloader.gif")
+        background-repeat no-repeat
+        background-position center center
+        color #e7e7e7
+        text-indent -200px
+        overflow hidden

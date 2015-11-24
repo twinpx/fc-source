@@ -51,14 +51,19 @@
       
       function makeHtml() {
         self.$list = $('<ul class="b-recipe-search__ul"></ul>');
-        self.$input.parent().append($('<div id="recipe_search_list"></div>').append(self.$list));
+        if ( $( 'body' ).hasClass( 'i-mobile-search' )) {
+          $( 'body' ).append($('<div id="recipe_search_list"></div>').append(self.$list));
+        } else {
+          self.$input.parent().append($('<div id="recipe_search_list"></div>').append(self.$list));
+        }
       }
       
       function handleEvents() {
         self.$input
           .focus(focusInput)
           .keydown(keydownInput)
-          .keyup(keyupInput);
+          .keyup(keyupInput)
+          .tap(keyupInput);
         
         $(document).bind( "click", clickDocument );
         self.$list.click( clickList );
@@ -210,11 +215,16 @@
             }
             
             $.ajax({
-              url: "/php/foodclubJSON.php",
+              url: "/php/foodclubJSON.json",
               type: "GET",
+              dataType: 'json',
               error: ajaxError,
               success: function(data) {
-                window.foodclubJSON = $.parseJSON(data);
+                if ( data instanceof String ) {
+                  window.foodclubJSON = $.parseJSON(data);
+                } else {
+                  window.foodclubJSON = data;
+                }
                 initJSON();
               }
             });
@@ -325,7 +335,7 @@
         }
         
         self.$list
-          .append('<li class="b-rs__search-all"><a href="/search/' + self.$input.val() + '/" class="b-rs__search-all__link">Все результаты</a></li>')
+          .append('<li class="b-rs__search-all"><a href="/search/' + self.$input.val() + '/" class="b-rs__search-all__link">\u0412\u0441\u0435 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u044B</a></li>')
           .show();
 
         function formBlocks() {
@@ -439,7 +449,7 @@
           function makeHeading() {
             var num = "";
             if (array.length > self.options.itemsNum[dataType]) {
-              num = '<span class="' + self.options.headingClass + '__num"><span class="' + self.options.headingClass + '__num__content">' + self.options.itemsNum[dataType] + ' из ' + array.length + '</span></span>';
+              num = '<span class="' + self.options.headingClass + '__num"><span class="' + self.options.headingClass + '__num__content">' + self.options.itemsNum[dataType] + ' \u0438\u0437 ' + array.length + '</span></span>';
             }
             self.$list.append('<li class="' + self.options.headingClass + '">' + num + window.foodclubJSON[dataType].title + '</li>');
           }

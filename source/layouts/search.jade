@@ -7,15 +7,16 @@ html
     include includes/meta.jade
     include includes/styles.jade
     include includes/scripts.jade
+    //-script( src="/template/jquery.js" )
+    //-script( src="/template/bootstrap.js" )
     
-  body
-    include ../modules/bitrix-panel/include.jade
+  body.i-mobile-search
     
     header#header.b-header
       .container
         
         .b-mobile-menu-icon.visible-xs-block
-        a( href="/search/" ).b-mobile-search-icon.visible-xs-block
+        span.b-mobile-search-icon.visible-xs-block
         
         a( href="/" ).b-header__logo
           img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
@@ -41,4 +42,4 @@ html
                 a( href="" ).i-kitchen Кухня
                 a( href="" ).i-signout Выйти
                 
-    include ../components/recipe-search/search-page
+      include ../components/recipe-search/search-page

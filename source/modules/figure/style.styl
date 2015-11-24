@@ -1,0 +1,23 @@
+@import '../../styl/component-include.styl'
+
+figure
+  
+  img
+    max-width 100%
+    
+  figcaption
+    font-size 7pt
+    font-style italic
+    color $middle-grey
+    margin 9px 20px 0
+    
+  @media( max-width $screen-phone )
+    margin-right -1*$mobile-page-margin !important
+    margin-left -1*$mobile-page-margin !important
+    
+    figcaption
+      margin 9px $mobile-page-margin 0
+    
+.b-figure__img
+  background-color $s-light-grey
+  text-align center

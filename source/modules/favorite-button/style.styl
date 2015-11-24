@@ -1,0 +1,26 @@
+﻿@import '../../styl/component-include.styl'
+
+.b-favorite-button
+  ib()
+  width: 35px
+  height: 21px
+  background: url(/template/images/fav.png) no-repeat right 0
+  padding: 0
+  text-align: left !important
+
+  &.i-hover
+    background-position: right -50px
+
+  &.i-remove-favorite
+    background-position: right -25px
+
+    &.i-hover
+      background-position: right -75px
+
+  &__text
+    font-size: 7pt
+    color: #fff
+    display: none
+    padding: 0 0 0 8px
+    line-height: 21px
+    vertical-align: top

@@ -1,0 +1,153 @@
+﻿// start /components/articles.article/
+
+link( rel="stylesheet", href="/components/articles.article/style.css" )
+script( src="/components/articles.article/script.js" )
+
+.b-article
+
+  h2 Дайджест свежих публикаций из кулинарных ЖЖ
+  
+  .b-article-head
+  
+    .row
+      .col-sm-4
+      
+        include ../../modules/favorite-button/include
+        
+      hr.i-size-S.visible-xs-block
+        
+      .col-sm-4.text-center
+      
+        a.b-article-head__author( href="/profile/" )
+          img( src="/upload/user/ca-ira.jpg" width="50" height="50" alt="" ).img-circle
+          span Виктория Фильберт
+        
+      .col-sm-4.b-article__info
+        include ../../modules/views/include
+        include ../../modules/rating/include
+  
+  hr.i-size-L
+  
+  p Пропало кулинарное вдохновение? Не знаете, что нового и вкусного можно приготовить на семейный обед? В подборке вы найдете 10 идей для новых вкусных блюд и рецепты от кулинарных блоггеров! 
+  p В журнале Alely- интересный тарт с заварным кремом, белым шоколадом и малиной. Хрустящее галетное тесто, нежный крем и сочные ягоды…Настоящее праздничное летнее лакомство.
+  
+  hr.i-size-L
+  
+  include ../../modules/fotorama/include
+  
+  hr.i-size-L
+  
+  h3 Новогодние десерты! Дайджест по рецептам кулинарной блогосферы
+  
+  p Побаловать себя несладкой выпечкой предлагает блоггер Zveruska. Галета с молодым горошком, зеленым луком, брынзой и пряными травами выглядит очень необычно и сочно. Отлично подходит в качестве летней закуски. 
+  
+  hr.i-size-L
+  
+  include ../../modules/figure/include
+  
+  hr.i-size-L
+    
+  h3 Стиль списка
+  
+  p Стиль нумерованного списка должен быть таким:
+  ol
+    li Стиль списка в одну строчку и нумерованого.
+    li Стиль списка в нумерованного, но в несколько строчек и с очень длинным текстом, который часто мы используем на фудклубе.
+    
+  p Стиль списка с булитами должен быть таким:
+  ul
+    li Стиль списка в одну строчку и нумерованого.
+    li Стиль списка в нумерованного, но в несколько строчек и с очень длинным текстом, который часто мы используем на фудклубе.
+  
+  hr.i-size-L
+  
+  h3 Ингредиенты рецепта можно использовать в тексте
+  
+  hr
+  
+  table.table
+    tr
+      td Миндаль
+      td 200 г
+      td.text-right
+        include ../../modules/button/buy
+    tr
+      td Кусок свинины жирный
+      td 2 кг
+      td.text-right
+      
+  hr.i-size-L
+      
+  include ../../modules/citation/include
+      
+  hr.i-size-L
+  
+  table.table
+    thead
+      tr
+        th Название 1 столбец
+        th 2 столбец
+        th 3 столбец
+        th 4 столбец
+    tbody
+      tr
+        th Название графы
+        td 4 ст.л
+        td 5 ст.л
+        td 6 ст.л
+      tr
+        th Значение
+        td 4 ст.л
+        td 5 ст.л
+        td 6 ст.л
+        
+  hr.i-size-L
+  
+  include ../../modules/recipe-idea/include.jade
+  
+  hr.i-size-L
+  
+  include ../../modules/content-banner/include.jade
+    
+  hr.i-size-L
+  
+  .text-center.i-text-small Материал подготовлен
+    | 
+    a( href="") Викторией Фильберт
+    | 
+    | 3 марта 2015 16:21:04
+    
+  hr
+  
+  include ../../modules/tags/include.jade
+  
+  hr.i-size-L
+    
+  .b-panel.text-center
+    .i-text-small Поделитесь
+    hr.i-size-S
+    include ../../modules/social-buttons/include.jade
+    
+    hr
+    
+    include ../../modules/subscribe/article.jade
+  
+  .b-panel.b-article__nav
+    .row
+      .col-sm-6.text-center
+        .i-text-small Предыдущая статья
+        hr.i-size-S
+        a( href="" ) Летние салаты! Дайджест свежих публикаций блоггеров ЖЖ
+        
+      hr.visible-xs-block
+        
+      .col-sm-6.text-center
+        .i-text-small Следующая статья
+        hr.i-size-S
+        a( href="" ) Завтрак выходного дня! Дайджест по ЖЖ-рецептам
+   
+hr.i-size-L
+
+include ../../components/journal/similar.jade
+
+// end /components/articles.article/

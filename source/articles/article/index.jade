@@ -1,0 +1,23 @@
+﻿block var-page
+  - var page = article
+
+extends ../../layouts/inner.jade
+
+block title
+  title Article | food
+
+block section
+  
+  include ../../components/articles.article/template
+
+block aside
+
+  include ../../modules/aside-banner/include
+  
+  hr.i-size-L
+  
+  include ../../components/aside.rom/template
+  
+  hr.i-size-L
+  
+  include ../../modules/aside-banner/float

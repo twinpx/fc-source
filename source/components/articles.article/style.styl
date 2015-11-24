@@ -1,0 +1,71 @@
+@import '../../styl/component-include.styl'
+
+.b-article
+  
+  @media( min-width $screen-phone+1 )
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+      margin-right 20px
+      margin-left 20px
+      
+    ol,
+    ul,
+    dl
+      margin-left 70px
+      
+  @media( max-width $screen-phone )
+      
+    ol,
+    ul,
+    dl
+      margin-left 20px
+      
+  h2
+    font-family $pt
+    font-size 22pt
+    font-weight bold
+    color $dark-grey
+    text-align center
+    margin 0 0 20px
+      
+  //&__feed
+  
+  &-head
+    margin 0 20px
+    
+    .b-favorite-button
+      margin-top 25px
+    
+    .b-views-info,
+    .b-rating-info
+      width 86px
+      margin-top 25px
+      
+    .b-views-info
+      margin-right 20px
+    
+    &__author
+      font-weight bold
+      font-size $x-small
+    
+      span
+        display block
+        margin-top 5px
+        
+  &__nav
+    margin-top 1px
+      
+    a
+      font-size $small
+      line-height 1.2
+  
+  &__info
+    
+    @media( max-width $screen-phone )
+      text-align center
+      

@@ -1,5 +1,68 @@
 @import '../../styl/component-include.styl'
 
+.i-mobile-search
+  
+  #recipe_search_list
+    width auto
+    
+  .b-recipe-search__ul
+    box-shadow( none )
+    padding 0
+    width 100%
+    border none
+    background-color $light-grey
+    padding 1px
+    box-sizing( border-box )
+    top 0
+    
+  .b-rs__item
+    background-color #fff
+    
+  .b-rs__item__hr
+    margin 0 -20px
+    //padding-bottom 20px
+    
+  .b-rs__heading
+    background-color #fff
+    margin 0 0 1px
+    padding 18px 0
+    font-size $large-size
+    
+  .b-rs__item__image-wrapper
+    display none
+    
+  .b-rs__item__text
+    width 70%
+    padding-top 16px
+    padding-bottom 16px
+    
+  .b-rs__item__info
+    width 30%
+    
+  .b-rs__item__time
+    margin-top 5px
+    margin-bottom -5px
+    
+  .b-rs__item__time,
+  .b-rs__item__nutrition
+    color #333
+    margin-right 0
+    font-size $base-size
+    
+  .b-rs__item__link
+    font-size $base-size
+    padding 5px 20px
+    
+  .b-recipe-search__delete
+    position absolute
+    width 16px
+    height 16px
+    font-size 0
+    background embedurl("img/delete.gif") no-repeat transparent
+    cursor pointer
+    top 27px
+    left 278px
+
 .b-recipe-search
   rel()
   ib()
@@ -19,6 +82,7 @@
     .b-recipe-search__input
       width 100% !important
       opacity(1)
+      padding-left 12px !important
   
   &.i-open
     z-index 6
@@ -103,7 +167,7 @@
     z-index 60
     margin 0
     border 1px solid #e0e0de
-    border-top none
+    border-top-width 0
     box-shadow 0 0 8px rgba(0,0,0,0.15)
     -webkit-box-shadow 0 0 8px rgba(0,0,0,0.15)
     -moz-box-shadow 0 0 8px rgba(0,0,0,0.15)
@@ -226,7 +290,7 @@
       height 0
       padding 0
       margin 0 0 0 50px
-      border-bottom 1px solid #eae1e1
+      border-bottom 1px solid $light-grey
 
   &__search-all
     background-color $light-grey

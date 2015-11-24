@@ -11,7 +11,7 @@ body
   height 100%
   background #ffffff
   color #000
-  line-height 1.64
+  line-height 1.74
   
 img
   border 0
@@ -26,7 +26,7 @@ table
   td
     vertical-align top
 p
-  margin-top 10px
+  margin-top 20px
 a
   color $link
   text-decoration none
@@ -96,6 +96,13 @@ h2
       
   .delete img
     display none
+    
+ol,
+ul
+  margin-top 20px !important //bootstrap
+  
+  li
+    margin-bottom 8px
       
 .pages_recipes
 
@@ -171,7 +178,7 @@ h2,
 h2 *,
 .b-h2
   font-size 22pt
-  font-family $pt
+  font-family $sans
   font-weight bold
   line-height normal
     
@@ -186,8 +193,8 @@ h2 *,
 h3,
 h3 *,
 .b-h3
-  font-size 14pt
-  font-family $pt
+  font-size $large-size
+  font-family $sans
   font-weight bold
   line-height normal
   
@@ -215,7 +222,7 @@ div.twtr-widget
 h5
   color $grey
   font-size 10pt
-  font-family $georgia
+  font-family $sans
   font-style italic
   text-shadow 0 1px 0 #fff
 
@@ -241,3 +248,42 @@ h5
 .b-date
   color $middle-grey
   font-size $x-small
+  
+.table
+  border-bottom 1px solid #ededed
+  
+.table
+
+  .btn-default
+    margin -4px 0 -3px
+
+  > thead,
+  > tbody,
+  > tfoot
+    
+    > tr
+    
+      > td,
+      > th
+        
+        border-color #ededed !important
+        padding-right 20px !important
+        padding-left 20px !important
+        
+.b-panel
+  background-color $s-light-grey
+  padding 30px
+  
+.i-text-small
+  font-size $x-small
+  
+.center-block
+  float none !important
+  
+hr
+  
+  &.i-size-L
+    margin 20px 0 19px
+  
+  &.i-size-S
+    margin 5px 0 4px
