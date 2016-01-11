@@ -62,8 +62,8 @@
         self.$input
           .focus(focusInput)
           .keydown(keydownInput)
-          .keyup(keyupInput)
-          .tap(keyupInput);
+          .keyup(keyupInput);
+          //.tap(keyupInput);
         
         $(document).bind( "click", clickDocument );
         self.$list.click( clickList );
