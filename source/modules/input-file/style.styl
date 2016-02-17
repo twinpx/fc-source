@@ -1,0 +1,99 @@
+@import '../../styl/component-include.styl'
+
+.input_file
+  width 65px
+  height 50px
+  position relative
+
+  input.text
+    position absolute
+    width 248px
+    cursor default
+    height 50px !important
+    z-index 2
+    cursor pointer
+    padding 0
+    border 0
+    margin 0 0 0 -183px
+    opacity 0
+    
+  .blocker
+    position absolute
+    z-index 3
+    width 153px
+    height 50px
+    background url("data:image/gifbase64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==")
+    margin-left -155px
+    
+  .blocker2
+    position absolute
+    z-index 3
+    width 220px
+    height 21px
+    background url("data:image/gifbase64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==")
+    margin-left 79px
+    
+  .browse_button
+    position absolute
+    z-index 1
+    width 65px
+    height 50px
+    float left
+    cursor default
+    background embedurl( 'img/button.png' ) no-repeat 0 0
+    cursor pointer
+
+  .browse_button:hover
+    background-position 0 -51px
+
+  .browse_button:active
+    background-position 0 -102px
+
+  .browse_button input
+    width 79px
+    height 21px
+    cursor default
+    display none
+
+  .new_file_name
+    padding 15px 0 10px 0
+    position  absolute
+    height  15px
+    margin-left  90px
+    font-family  Verdana
+    font-size  8pt
+    color  Gray
+    margin-top  2px
+  
+div.file_name
+  position relative
+  padding 15px 0 10px 0
+  font-size 8pt
+  
+  *
+    font-size 10pt
+
+  span
+    margin 0 8px 0 0
+    font-size 8pt
+    
+  img.delete_icon
+    background embedurl( 'img/file_delete.gif' ) no-repeat 0 0
+    cursor pointer
+    
+  img.attention
+    background-position left -7px
+    margin 0 0 0 8px
+  
+input.customFile
+  cursor default
+
+.i-progress .browse_button
+  background url(/images/button-preloader-static.png) no-repeat center center
+  cursor default
+  -webkit-animation rotate-preloader 1s linear infinite normal
+  -moz-animation rotate-preloader 1s linear infinite normal
+  -ms-animation rotate-preloader 1s linear infinite normal
+  -o-animation rotate-preloader 1s linear infinite normal
+  animation rotate-preloader 1s linear infinite normal
+

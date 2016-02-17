@@ -6,52 +6,24 @@
     width auto
     
   .b-recipe-search__ul
-    box-shadow( none )
-    padding 0
     width 100%
-    border none
-    background-color $light-grey
-    padding 1px
-    box-sizing( border-box )
-    top 0
-    
-  .b-rs__item
-    background-color #fff
-    
-  .b-rs__item__hr
-    margin 0 -20px
-    //padding-bottom 20px
-    
-  .b-rs__heading
-    background-color #fff
-    margin 0 0 1px
-    padding 18px 0
-    font-size $large-size
     
   .b-rs__item__image-wrapper
     display none
     
+  .b-rs__item__link
+    padding 13px 20px 14px
+    
   .b-rs__item__text
     width 70%
-    padding-top 16px
-    padding-bottom 16px
+    padding-top 14px
+    padding-bottom 14px
     
   .b-rs__item__info
     width 30%
     
   .b-rs__item__time
-    margin-top 5px
-    margin-bottom -5px
-    
-  .b-rs__item__time,
-  .b-rs__item__nutrition
-    color #333
-    margin-right 0
-    font-size $base-size
-    
-  .b-rs__item__link
-    font-size $base-size
-    padding 5px 20px
+    margin-top 0
     
   .b-recipe-search__delete
     position absolute
@@ -61,7 +33,8 @@
     background embedurl("img/delete.gif") no-repeat transparent
     cursor pointer
     top 27px
-    left 278px
+    right 27px
+    //left 278px
 
 .b-recipe-search
   rel()
@@ -110,7 +83,8 @@
     background url("data image/gifbase64,R0lGODlhFQAVAJECAP///bm5uf///wAAACH5BAEAAAIALAAAAAAVABUAAAIvVI6paesfAFwy1RndfVt1i30ZNiIiZ5JeqaYteEJXTK2kSLO2FvL3/ns5GsKAoAAAOw==") no-repeat
     cursor pointer
     top 16px
-    left 279px
+    right 27px
+    //left 279px
     
     .i-preloader &
       display none !important
@@ -160,27 +134,21 @@
       background-image url("/template/images/preloader-thin.gif")
       
   &__ul
+    padding 1px
     list-style-type none
     position absolute
-    top 9px
+    top 0
     left 0
     z-index 60
-    margin 0
-    border 1px solid #e0e0de
-    border-top-width 0
-    box-shadow 0 0 8px rgba(0,0,0,0.15)
-    -webkit-box-shadow 0 0 8px rgba(0,0,0,0.15)
-    -moz-box-shadow 0 0 8px rgba(0,0,0,0.15)
+    margin 0 !important
     display none
-    background-color #ffffff
+    background-color $light-grey
     font-size $middle
-    width 412px
-    padding 10px 9px
-    box-sizing content-box
-    -moz-box-sizing content-box
-    -webkit-box-sizing content-box
-    -khtml-box-sizing content-box
+    width 455px
     z-index 100
+    
+    @media( max-width $screen-sm-max )
+      width 380px
 
 /*
 #recipe_search button:hover,
@@ -209,14 +177,15 @@
 .b-rs
 
   &__heading
-    background-color $light-grey
+    margin 0 0 1px
+    padding 18px 0
+    font-size $large-size
     border-top 1px solid #ffffff
     border-bottom 1px solid #ffffff
-    padding 5px 10px 6px 10px
-    margin-top -1px
     text-align center
     color $dark-grey
     font-weight bold
+    background-color #fff
     
     &__num
       position relative
@@ -235,12 +204,13 @@
 
   &__item
     padding 0
+    margin-bottom 0
+    background-color #fff
     
     &__link
-      font-size $middle
+      font-size $base-size
+      padding 10px 20px 8px
       text-decoration none
-      display block
-      padding 1px 0 1px 0
       display block
       overflow hidden
       
@@ -259,43 +229,46 @@
           
     &__text
       float left
-      width 240px
-      padding 18px 0 0
+      width 235px
+      padding 17px 0 0
       display table-cell
       vertical-align middle
       line-height 1
       
+      @media( max-width $screen-sm-max )
+        width 170px !important
+      
     &__info
       float right
-      width 90px
+      width 100px
       
     &__time
-      font-size $xx-small
-      color $grey
+      font-size $base-size
+      color $dark-grey
       display block
       text-align right
-      margin 10px 12px 2px 0
+      margin 4px 0 -7px 0
       white-space nowrap
       
     &__nutrition
-      font-size $xx-small
-      color $grey
+      font-size $base-size
+      color $dark-grey
       display block
       text-align right
-      margin 0 12px 0 0
+      margin 0
       
     &__hr
       display block
       font-size 0
       height 0
       padding 0
-      margin 0 0 0 50px
+      margin 0
       border-bottom 1px solid $light-grey
 
   &__search-all
     background-color $light-grey
     border-top 1px solid #ffffff
-    margin-top -1px
+    margin -1px 0 0
     padding 0
 
     &__link
@@ -312,4 +285,22 @@ a.b-rs__search-all__link:hover,
 a.b-rs__item__link:hover,
 .b-rs__item.i-hover .b-rs__item__link
   background-color $link-bg
+  color $link
+  
+.b-header__nav a.b-rs__item__link
+  display block
+  vertical-align inherit
+  height auto
+  line-height inherit
+  margin 0
+  color $link
+  text-align left
+  font-weight 400
+  
+.b-header__nav a.b-rs__search-all__link
+  display block
+  vertical-align inherit
+  height auto
+  line-height inherit
+  margin 0
   color $link

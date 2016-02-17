@@ -1,0 +1,33 @@
+﻿block var-page
+  - var page = recipes-add
+
+extends ../../layouts/main.jade
+
+block title
+  title Add recipe | food
+
+block content
+  
+  #content
+        
+    include ../../modules/content-nav/include.jade
+  
+  section.container
+    
+    .row
+      .col-sm-6
+        include ../../modules/system-message/include.jade
+    
+    .row
+      .col-sm-5
+        h1 Добавление рецепта
+      .col-sm-7
+        include ../../modules/hint/include.jade
+        
+    hr.visible-xs-block
+      
+    include ../../components/recipe.add/template.jade
+    
+    
+    
+    

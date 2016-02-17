@@ -343,6 +343,14 @@
             result[i] = getSortedItems(foodclubJSON[self.options.blockTitles[i]]);
             addListBlock(result[i], self.options.blockTitles[i]);
           }
+          self.loadImageTimeoutId = setTimeout(appendImages, 200);
+        }
+
+        function appendImages() {
+          self.$list.find("[data-image]").each(function() {
+            var $this = $(this);
+            $this.append('<img src="' + $this.attr("data-image") + '" width="50" height="50" alt="" class="b-rs__item__image" onload="onloadRecipeSearchImage(this);">');
+          });
         }
 
         function checkKeyboardLayout() {
@@ -470,8 +478,7 @@
                 nutrition: array[i].nutrition
               });
               
-              self.$list.append($item);
-              self.loadImageTimeoutId = setTimeout(appendImages, 200);					
+              self.$list.append($item);					
             }
           }
           
@@ -488,13 +495,6 @@
             var compiled = tmpl(template);
             
             return $(compiled(obj));
-          }
-
-          function appendImages() {
-            self.$list.find("[data-image]").each(function() {
-              var $this = $(this);
-              $this.append('<img src="' + $this.attr("data-image") + '" width="50" height="50" alt="" class="b-rs__item__image" onload="onloadRecipeSearchImage(this);">');
-            });
           }
         }
 
@@ -582,53 +582,53 @@
       ];
     }
 
-
-    function onloadRecipeSearchImage(elem) {
-      setImageSize();
-      showImage();
-
-      function showImage() {
-        elem.style.display = "inline-block";
-      }
-
-      function setImageSize() {
-        var needed = {
-          width: 50,
-          height: 50
-        };
-
-        var img = new Image();
-        img.src = elem.getAttribute("src");
-        var width = img.width;
-        var height = img.height;
-
-        if(width > height) {
-          width = width * needed.height / height;
-          height = needed.height;
-          var marginLeft = -1 * Math.round((width - needed.width) / 2);
-          elem.style.marginLeft = marginLeft + "px";
-
-        } else if(height > width) {
-          height = height * needed.width / width;
-          width = needed.width;
-          var marginTop = -1 * Math.round((height - needed.height) / 2);
-          elem.style.marginTop = marginTop + "px";
-
-        } else {
-          width = needed.width;
-          height = needed.height;
-
-        }
-
-        elem.setAttribute("width", Math.round(width));
-        elem.setAttribute("height", Math.round(height));
-      }
-      
-    }
-
   });
 
 }( jQuery ));
+
+//This function must be in the global scope
+function onloadRecipeSearchImage(elem) {
+  setImageSize();
+  showImage();
+
+  function showImage() {
+    elem.style.display = "inline-block";
+  }
+
+  function setImageSize() {
+    var needed = {
+      width: 50,
+      height: 50
+    };
+
+    var img = new Image();
+    img.src = elem.getAttribute("src");
+    var width = img.width;
+    var height = img.height;
+
+    if(width > height) {
+      width = width * needed.height / height;
+      height = needed.height;
+      var marginLeft = -1 * Math.round((width - needed.width) / 2);
+      elem.style.marginLeft = marginLeft + "px";
+
+    } else if(height > width) {
+      height = height * needed.width / width;
+      width = needed.width;
+      var marginTop = -1 * Math.round((height - needed.height) / 2);
+      elem.style.marginTop = marginTop + "px";
+
+    } else {
+      width = needed.width;
+      height = needed.height;
+
+    }
+
+    elem.setAttribute("width", Math.round(width));
+    elem.setAttribute("height", Math.round(height));
+  }
+  
+}
 
 //--placeholder--//
 (function($) {

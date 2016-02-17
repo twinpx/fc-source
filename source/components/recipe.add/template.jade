@@ -1,0 +1,148 @@
+﻿// start /components/recipe.add/
+
+link( rel="stylesheet", href="/components/recipe.add/style.css" )
+script( src="/components/recipe.add/script.js" )
+
+form#add_recipe_form( action="" method="post" )
+  .body
+    #dish_description
+      h2 Общее описание
+      .row
+        .col-sm-8.dish_properties
+          .form-group
+            h5 Название блюда*
+              span.no_text ?
+            input.form-control( type="text" name="name" value="" )
+          .form-group
+            h5 Описание блюда*
+              span.no_text 
+            textarea.form-control( name="dish_description" cols="10" rows="10" )
+          .form-group
+            h5 Главное фото (600х400 px)*
+              span.no_text ?
+            .input_file
+              input.text( type="file" name="general_photo" )
+          
+        .col-sm-4.dish_parents
+          .form-group
+            h5 Кухня
+              span.no_text ?
+            select.form-control( name="cooking" )
+              option( value="id0" selected="selected" ) Русская
+              option( value="id1" ) Французская
+              option( value="id2" ) Итальянская
+          .form-group
+            h5 Тип блюда
+              span.no_text ?
+            select.form-control( name="dish_type" )
+              option( value="id0" selected="selected" ) Алкоголь
+              option( value="id1" ) Овощи
+              option( value="id2" ) Молочные продукты
+              option( value="id3" ) Мясо
+              option( value="id4" ) Орехи
+          .form-group
+            h5 Основной ингредиент
+              span.no_text ?
+            select.form-control( name="main_ingredient" )
+              option( value="meat" ) Мясо
+              option( value="milk" ) Молоко
+              option( value="honey" ) Мёд
+          .form-group
+            h5 Количество килокалорий на порцию
+            input.form-control( type="text" name="kkal" value="" )
+          .form-group.yield
+            h5 Количество порций
+            input.form-control( type="text" name="yield" value="" )
+          div.form-group.dish_time
+            h5 Время приготовления
+            //input( type="range"  )
+            .row
+              .col-xs-6
+                select.form-control( name="hours" )
+                  option( value="0" ) 0 часов
+                  option( value="1" ) 1 час
+                  option( value="2" ) 2 часа
+                  option( value="3" ) 3 часа
+                  option( value="4" ) 4 часа
+              .col-xs-6
+                select.form-control( name="minutes" )
+                  option( value="0" ) 0 минут
+                  option( value="5" ) 5 минут
+                  option( value="10" ) 10 минут
+                  option( value="15" ) 15 минут>
+                  option( value="20" ) 20 минут
+        .clear
+    
+  #dish_stages
+    .body
+      .stage
+        .delete_icon
+          a( href="#" title="Удалить этап" )
+        h2 Первый этап
+        .row
+          .col-sm-6.description
+            .form-group
+              h5 Описание первого этапа
+                span.no_text ?
+              textarea.form-control( name="stage_description[]" cols="10" rows="10" )
+            .form-group
+              h5 Фото этапа (600х400 px)
+              .input_file
+                .blocker
+                input#inputFile.text( type="file" name="photo[]" )
+                .browse_button( title="Выбрать файл" )
+                  input( type="button" value="Обзор" )
+                .new_file_name
+          
+          .col-sm-6.ingredient
+            h5 Ингредиенты первого этапа
+              span.scales
+                span.hint
+                  span Таблица мер
+            
+            .stage_ing_list
+              .item
+                .search_list
+                  ul.search_list
+                //В одну строку
+                | <input type="text" value="" class="text smartsearch"><span class="search_list_icon"><span title="Весь список ингредиентов"></span></span><input type="hidden" value="" class="click_field"><input type="hidden" name="ingredients_0_id[]" value=""><input type="text" name="ingredients_0_number[]" value="" class="text unit"><span class="unit"></span><span class="no_text">?</span><a href="#" class="delete_icon" title="Удалить ингредиент"></a>
+                
+              .item
+                .search_list
+                  .search_list
+                  
+                //В одну строку
+                | <input type="text" value="" class="text smartsearch"><span class="search_list_icon"><span title="Весь список ингредиентов"></span></span><input type="hidden" value="" class="click_field"><input type="hidden" name="ingredients_0_id[]" value=""><input type="text" name="ingredients_0_number[]" value="" class="text unit"><span class="unit"></span><span class="no_text">?</span><a href="#" class="delete_icon" title="Удалить ингредиент"></a>
+                
+              .item
+                .search_list
+                  .search_list
+                  
+                //В одну строку
+                | <input type="text" value="" class="text smartsearch"><span class="search_list_icon"><span title="Весь список ингредиентов"></span></span><input type="hidden" value="" class="click_field"><input type="hidden" name="ingredients_0_id[]" value=""><input type="text" name="ingredients_0_number[]" value="" class="text unit"><span class="unit"></span><span class="no_text">?</span><a href="#" class="delete_icon" title="Удалить ингредиент"></a>
+                
+            .add_ingredient
+              span.icon
+              a( href="#" ) Добавить ингредиент
+            
+        .clear
+      
+      .button.text-center  
+        hr
+        input.btn.btn-default( type="button" value="Добавить этап" onClick="addStage();" )
+        
+      hr
+        
+      .conditions
+        label.checkbox
+          input( type="checkbox" name="iphone" )
+          span &mdash; Я хочу, чтобы этот рецепт был добавлен в программу 
+            a( href="/iphone/" ) Foodclub HD для iPhone 
+            | и других мобильных устройств.
+            
+  .save_recipe
+    input#save_recipe.btn.btn-default.btn-lg( type="submit" value="Добавить рецепт" )
+    
+  hr
+
+// end /components/recipe.add/
