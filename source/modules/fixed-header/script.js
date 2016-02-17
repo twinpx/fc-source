@@ -2,6 +2,10 @@
 ( function() {
   var $header = $header = $( '.b-header' );
   
+  if ( !$header.length ) {
+    return;
+  }
+  
   if ( $( 'body' ).hasClass( 'i-mobile-search' )) {
     $header.addClass( "i-fixed" );
     $header.after( '<div id="b-header-fixed" style="height:' + $header.height() + 'px;"></div>' );

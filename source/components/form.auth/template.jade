@@ -1,0 +1,98 @@
+﻿// start /components/form.auth/
+
+link( rel="stylesheet", href="/components/form.auth/style.css" )
+script( src="/components/form.auth/script.js" )
+
+#authorization
+  noindex
+    .top
+      a.logo( href="/" )
+    .body
+      h2 Авторизоваться
+      
+      .row
+        .col-sm-6.left_column
+        
+          form( action="" method="get" )
+            .form-group
+              label Логин
+                span.no_text ?
+              input.form-control( type="text" name="login" value="" )
+              
+            .form-group
+              label Пароль
+                span.no_text ?
+              input.form-control( type="password" name="password" value="" )
+              
+            .form-group.captcha
+              img( src="/images/capture.jpg" width="180" height="40" alt="" )
+              label Код на картинке
+                span.no_text ?
+              input.form-control( type="text" name="captcha" value="" )
+              
+            .checkbox
+              label
+                input( type="checkbox" name="remember" value="" )
+                | Запомнить меня
+                
+            .error_message &mdash; универсальное сообщение об ошибке, универсальное сообщение об ошибке!
+            
+            hr
+            
+            .submit
+              button.btn.btn-default( type="submit" ) Авторизоваться
+              
+            .b-form-forgotten
+              a( href="" ) Забыли пароль?
+              
+        .col-sm-6.right_column
+        
+          .networks
+            .bx-auth
+              form( method="post" name="bx_auth_services" target="_top" action="/auth/index.php?login=yes&amp;amp;backurl=%2Findex.php" )
+                h3 Войдите на сайт, используя один из аккаунтов в социальных сетях
+                .bx-auth-services
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('GoogleOAuth', '')" id="bx_auth_href_GoogleOAuth" )
+                      i.bx-ss-icon google
+                      b Google
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('VKontakte', '')" id="bx_auth_href_VKontakte" )
+                      i.bx-ss-icon vkontakte
+                      b ВКонтакте
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('Twitter', '')" id="bx_auth_href_Twitter" )
+                      i.bx-ss-icon twitter
+                      b Twitter
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('Facebook', '')" id="bx_auth_href_Facebook"  )
+                      i.bx-ss-icon facebook
+                      b Facebook
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('Livejournal', '')" id="bx_auth_href_Livejournal" )
+                      i.bx-ss-icon livejournal
+                      b Livejournal
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('YandexOpenID', '')" id="bx_auth_href_YandexOpenID" )
+                      i.bx-ss-icon yandex
+                      b Яндекс
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('MailRuOpenID', '')" id="bx_auth_href_MailRuOpenID" )
+                      i.bx-ss-icon openid-mail-ru
+                      b Mail.Ru
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('Liveinternet', '')" id="bx_auth_href_Liveinternet" )
+                      i.bx-ss-icon liveinternet
+                      b Liveinternet
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('Blogger', '')" id="bx_auth_href_Blogger" )
+                      i.bx-ss-icon blogger
+                      b Blogger
+                  div
+                    a( href="javascript:void(0)" onclick="BxShowAuthService('OpenID', '')" id="bx_auth_href_OpenID" )
+                      i.bx-ss-icon openid
+                      b OpenID
+    .links
+      a( href="" target="_blank" ) Пользовательское соглашение
+
+// end /components/form.auth/

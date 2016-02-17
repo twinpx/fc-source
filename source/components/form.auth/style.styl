@@ -1,0 +1,211 @@
+@import '../../styl/component-include.styl'
+
+#authorization
+  z-index 61
+  color #333333
+  margin-top 50px
+  
+  .top
+    position relative
+    width 192px
+    height 37px
+    margin 0 auto
+    background embedurl( 'img/bg.png' ) no-repeat 0 0
+    
+  .logo
+    display block
+    position absolute
+    top 29px
+    left 21px
+    width 144px
+    height 102px
+    background embedurl( 'img/logo.png' ) no-repeat 0 0
+    
+  .body
+    background #e9e9e9
+    padding 0 22px 65px 22px
+    
+  h2
+    font-size 20pt
+    font-weight normal
+    font-family Georgia, "Times New Roman", Times, serif
+    text-shadow 1px 0 0 #ffffff
+    text-align center
+    padding 100px 0 35px 0
+  
+  .left_column
+    background embedurl( 'img/border.gif' ) repeat-y right 0
+    //padding 0 0 0 88px
+  
+  .left_column form
+    width 244px
+    margin 0 auto
+  
+  label
+    font-family Georgia, "Times New Roman", Times, serif
+    font-style italic
+    text-shadow 0 1px 0 #ffffff
+    text-align center
+    display block
+    font-size 8pt
+    margin 0 0 6px 0
+  
+    .no_text
+      visibility hidden
+      
+  .checkbox input
+    margin-top 3px
+  
+#authorization .bx-auth-service-form input
+  font-family Tahoma, Arial, Helvetica, sans-serif
+  color #666666
+  height 18pt
+  border 1px solid #b9b9b9
+  border-radius 3px
+  box-shadow 1px 2px 8px #b9b9b9 inset
+  background #ffffff
+  padding 12px 10px 15px 10px
+  width 244px
+  font-size 15pt
+  line-height normal
+  
+#authorization .attention .form-control
+  border-color #cc9999
+  color #cc0000
+  
+#authorization .attention label
+  color #990000
+  
+#authorization .captcha
+  padding-top 7px
+  
+#authorization .captcha img
+  margin 0 auto 6px auto
+  display block
+  
+#authorization .submit
+  text-align center
+  margin-top -10px
+  
+#authorization .submit input
+  cursor default
+
+#authorization .button, #authorization .bx-auth-service-form input.button
+  padding 0 20px
+  border 1px solid #fff
+  border-style solid none none none
+  width auto
+  height 41px
+  box-shadow none
+  -webkit-box-shadow none
+  -moz-box-shadow none
+  font-style normal
+  font-family Arial, Helvetica, sans-serif
+  
+#authorization .bx-auth-service-form input.button
+  width 110px
+  display block
+  margin-left 103px
+
+#authorization .networks
+  padding 0 0 0 37px
+  margin-bottom 60px
+  
+#authorization .networks h3
+  font-family Georgia, "Times New Roman", Times, serif
+  font-style italic
+  text-shadow 1px 0 0 #ffffff
+  display block
+  font-size 8pt
+  margin 0 0 20px 0
+  text-align left
+  
+#authorization .right_column form
+  text-align left
+  padding-right 50px
+  
+  h3
+    font-weight normal
+  
+#authorization .right_column form .bx-auth-services
+  text-align left
+  
+#authorization .links
+  font-family Georgia, "Times New Roman", Times, serif
+  color #990000
+  text-align center
+  margin-top 15px
+  
+#authorization .links a
+  text-decoration none
+  
+#authorization .error_message
+  font-size 9pt
+  padding 0
+  margin 0 0 17px 12px
+  text-shadow 1px 0 0 #ffffff
+  text-indent -12px
+  width 254px
+  
+.b-form-forgotten
+  text-align center
+  margin 20px 0 0 0
+  font-family Georgia, "Times New Roman", Times, serif
+  text-shadow 1px 0 0 #ffffff
+
+div.bx-auth-service-form
+  color #666666
+  font-family Georgia, "Times New Roman", Times, serif
+  font-style italic
+  text-shadow 1px 0 0 #ffffff
+  font-size 8pt
+  border none
+  padding 0
+  margin 40px 0 0 0
+  background transparent
+
+#authorization #bx_auth_serv_Liveinternet span
+  display inline-block
+  width 120px
+
+#authorization #bx_auth_serv_Liveinternet span.bx-ss-icon
+  width 16px
+
+#authorization #bx_auth_serv_Liveinternet input
+  width 110px
+  
+#authorization #bx_auth_serv_Liveinternet input.button
+  width 110px
+  display inline-block
+  margin 5px 0 0 2px
+
+#authorization #bx_auth_serv_OpenID span
+  display inline-block
+  width 45px
+
+#authorization #bx_auth_serv_OpenID span.bx-ss-icon
+  width 16px
+
+#authorization #bx_auth_serv_OpenID input
+  width 173px
+
+#authorization #bx_auth_serv_OpenID input.button
+  display inline-block
+  margin 5px 0 0 10px
+  width 110px
+
+.facebook-button, .twitter-button, .google-button, .vkontakte-button
+  display block
+  margin-bottom 5px
+
+#bx_auth_serv_VKontakte
+  text-align left
+
+#bx_auth_serv_VKontakte .bx-spacer
+  display none
+
+#bx_auth_serv_Facebook .bx-spacer, #bx_auth_serv_Twitter .bx-spacer, #bx_auth_serv_GoogleOAuth .bx-spacer
+  width 0
+  
+#bx_auth_serv_Facebook, #bx_auth_serv_Twitter, #bx_auth_serv_GoogleOAuth
+  text-align left
