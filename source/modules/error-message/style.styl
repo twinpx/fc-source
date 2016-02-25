@@ -1,0 +1,24 @@
+@import '../../styl/component-include.styl'
+
+.b-error-message
+  background embedurl( 'img/form-error-icon.png' ) no-repeat 20px center #990000
+  color #fff
+  border-radius 2px
+  box-shadow 0 3px 2px #d4c9c9
+  padding 20px 20px 20px 80px
+  font-size 10pt
+  position relative
+  margin-bottom 10px
+
+  &__pointer
+    position absolute
+    top 50%
+    left 0
+
+    &__div
+      position absolute
+      top -9px
+      left -9px
+      width 9px
+      height 19px
+      background embedurl( 'img/pointer.png' ) no-repeat 0 0

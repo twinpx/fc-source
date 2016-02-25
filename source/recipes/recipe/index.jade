@@ -1,0 +1,17 @@
+﻿block var-page
+  - var page = recipe
+
+extends ../../layouts/main.jade
+
+block title
+  title Recipe | food
+
+block content
+    
+  .container
+    .row
+      .col-sm-8
+        include ../../components/recipe/template.jade
+      
+      .col-sm-4
+        include ../../modules/banner-space/index.jade
