@@ -1,0 +1,33 @@
+// start /components/recipe/
+
+link( rel="stylesheet", href="/components/recipe.menu/style.css" )
+script( src="/components/recipe.menu/script.js" )
+
+.b-recipe-menu
+  a.b-recipe-menu__i.b-favorite-button( href="" )
+    span.b-favorite-button__text В избранное
+  a.b-recipe-menu__i.b-favorite-button.i-remove-favorite( href="" title="Удалить из избранного" )
+    span.b-favorite-button__text Удалить
+  span.b-recipe-menu__i
+    a.b-print-button.b-recipe-menu__button__type-print( href="#" title="Распечатать рецепт" )
+  span.b-recipe-menu__i
+    a.b-like-button( href="#" title="Нравится" )
+    | 
+    span.b-like-button__num 32
+  span.b-recipe-menu__i
+    a.b-cooked-button( href="#" title="Приготовили" )
+    | 
+    span.b-cooked-button__num 32
+  span.b-recipe-menu__i
+    a.b-views-button( href="#" title="Просмотров" )
+    | 
+    span.b-views-button__num 32
+  span.b-recipe-menu__i
+    a.b-rating-button( href="#" title="Рейтинг" )
+    | 
+    span.b-rating-button__num 12 056
+    
+  .b-recipe-menu__social
+    include ../../modules/social-buttons/small.jade
+
+// end /components/recipe/
