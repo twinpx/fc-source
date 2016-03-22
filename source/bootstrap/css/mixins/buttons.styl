@@ -40,8 +40,15 @@ button-variant($color, $background, $border)
     background-color $color
 
 // Button sizes
-button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius)
+button-size-fc($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius)
   font-size $font-size
   height $line-height
   line-height $line-height
   border-radius( $border-radius )
+  
+button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius)
+  font-size $font-size
+  padding $padding-vertical $padding-horizontal
+  line-height $line-height
+  border-radius( $border-radius )
+  height auto

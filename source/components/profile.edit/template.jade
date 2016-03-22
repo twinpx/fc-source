@@ -1,0 +1,282 @@
+﻿// start /components/profile.edit/
+
+link( rel="stylesheet", href="/components/profile.edit/style.css" )
+script( src="/components/profile.edit/script.js" )
+
+h1 Редактирование анкеты
+.b-personal-edit-form
+  //.b-form__type_wide
+  form( action="" method="POST" enctype="multipart/form-data" )
+    .row
+      .col-sm-7
+        .b-error-message
+          .b-error-message__pointer
+            .b-error-message__pointer__div
+          | Универсальное сообщение об ошибке.<br>
+          | Универсальное сообщение об ошибке. Неверный email<br>
+          | Универсальное сообщение об ошибке. Заполните поле имя<br>
+          | Универсальное сообщение об ошибке.<br>
+          | Может быть в несколько строчек.
+        
+    hr
+        
+    link( rel="stylesheet" type="text/css" href="/css/form.css" )
+    script( src="/js/form.js" type="text/javascript" )
+    
+    fieldset.b-fieldset.b-personal-edit-form__about
+      legend О себе
+      h3.b-hr-bg.b-personal-page__heading
+        span.b-hr-bg__content О себе
+        
+      .b-form-field.form-groupset
+        .row
+          .col-sm-9
+            .row
+              .col-sm-6
+                .b-form-field.form-group.b-form-field.form-group__avatar
+                  .b-form-label Фото 
+                    span.b-form-label__error
+                  .b-file-upload.b-file-upload__type_avatar
+                    .b-file-upload__files-container
+                      .b-file-upload__type_avatar__avatar
+                        img( src="/upload/user/ca-ira.jpg" width="100" height="100" alt="" )
+                        input( type="hidden" name="avatar" value="/upload/user/ca-ira.jpg" )
+                        
+                    span.b-file-upload__button
+                      input#fileupload.b-file-upload__file( type="file" )
+                    .i-clearfix
+                  .fileupload-loading
+                script#template-upload( type="text/x-tmpl" )
+                  |<% for (var i=0, file; file=files[i]; i++) { %>
+                  |  <tr class="template-upload fade">
+                  |  </tr>
+                  |<% } %>
+                // The template to display files available for download
+                script#template-download( type="text/x-tmpl" )
+                  |<% for (var i=0, file; file=files[i]; i++) { %>
+                  |<div class="b-file-upload__type_avatar__avatar">
+                  |  <img src="<%=file.thumbnail_url%>" width="100" height="100" alt="" />
+                  |  <input type="hidden" name="avatar" value="<%=file.url%>">
+                  |</div>
+                  |<% } %>
+                script( src="/js/file-upload/js/vendor/jquery.ui.widget.js" )
+                script( src="/js/file-upload/js/jquery.iframe-transport.js" )
+                script( src="/js/file-upload/js/jquery.fileupload.js" )
+                script( src="/js/file-upload/js/jquery.fileupload-fp.js" )
+                script( src="/components/personal.edit/jquery.fileupload-ui.js" )
+                script( src="/components/personal.edit/script.js" )
+                // The XDomainRequest Transport is included for cross-domain file deletion for IE8+
+                //[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]
+            
+              .col-sm-6
+                .b-form-field.form-group.b-form-field.form-group__date
+                  .b-form-label Дата рождения
+                  .row
+                    .col-xs-3
+                      select.form-control.b-select__day( name="age_day" )
+                        option( value="1" ) 1
+                        option( value="2" ) 2
+                        option( value="3" ) 3
+                        option( value="4" ) 4
+                        option( value="5" ) 5
+                        option( value="6" ) 6
+                        option( value="7" ) 7
+                        option( value="8" ) 8
+                        option( value="9" ) 9
+                        option( value="10" ) 10
+                        option( value="11" ) 11
+                        option( value="12" ) 12
+                        option( value="31" selected="selected" ) 31
+                    
+                    .col-xs-5
+                      select.form-control.b-select__month( name="age_month" )
+                        option( value="jan" selected="selected" ) Январь
+                        option( value="feb" ) Февраль
+                        option( value="mar" ) Март
+                        option( value="apr" ) Апрель
+                        option( value="may" ) Май
+                        option( value="jun" ) Июнь
+                        option( value="jul" ) Июль
+                        option( value="aug" ) Август
+                        option( value="sep" ) Сентябрь
+                        option( value="oct" ) Октябрь
+                        option( value="nov" ) Ноябрь
+                        option( value="dec" ) Декабрь
+                      
+                    .col-xs-4
+                      select.form-control.b-select__year( name="age_year" )
+                        option( value="1999" ) 1999
+                        option( value="1998" ) 1998
+                        option( value="1997" ) 1997
+                        option( value="1996" ) 1996
+                        option( value="1995" ) 1995
+                        option( value="1994" ) 1994
+                        option( value="1993" ) 1993
+                        option( value="1992" ) 1992
+                        option( value="1991" ) 1991
+                        option( value="1990" ) 1990
+                        option( value="1989" ) 1989
+                        option( value="1988" selected="selected" ) 1988
+                  
+                .checkbox
+                  label
+                    input( type="checkbox" value="" )
+                    | Не показывать на сайте
+                    
+                .b-form-field.form-group
+                  label.b-form-label Пол
+                  select.form-control.b-select__gender( name="gender" )
+                    option( value="male" ) Мужской
+                    option( value="female" ) Женский
+                  
+        .b-form-field.form-groupset
+          .row
+            .col-sm-3.col-sm-push-9.hidden-xs
+              .b-form-note &mdash; Заполните поля они будут отображаться у каждого рецепта вместо Логина.
+            .col-sm-9.col-sm-pull-3
+              .row
+                .col-sm-6
+                  .b-form-field.form-group
+                    label.b-form-label Имя
+                    input.form-control.b-personal-edit-form__about__name( type="text" value="" name="name" )
+                  
+                .col-sm-6
+                  .b-form-field.form-group
+                    label.b-form-label Фамилия
+                    input.form-control.b-personal-edit-form__about__lastname( type="text" value="" name="lastname" )
+              
+        .b-form-field.form-groupset
+          .row
+            .col-sm-9
+              .row
+                .col-sm-6
+                  .b-form-field.form-group
+                    label.b-form-label Email
+                    input.form-control.b-personal-edit-form__about__email( type="email" value="" name="email" )
+            
+        .b-form-field.form-groupset
+          .row
+            .col-sm-3.col-sm-push-9.hidden-xs
+              .b-form-note &mdash; Напишите о том, кем вы себя ощущаете. Например Король кулинаров!
+            .col-sm-9.col-sm-pull-3
+              .b-form-field.form-group
+                label.b-form-label Статус
+                input.form-control.b-personal-edit-form__about__status( type="text" value="" name="status" )
+            
+        .b-form-field.form-groupset
+          .row
+            .col-sm-3.col-sm-push-9.hidden-xs
+              .b-form-note &mdash; Вы сможете найти людей с похожими интересами.
+            .col-sm-9.col-sm-pull-3
+              .b-form-field.form-group
+                label.b-form-label Интересы
+                textarea.form-control.b-personal-edit-form__about__interests( cols="" rows="" name="interests" )
+            
+        .b-form-field.form-groupset
+          .row
+            .col-sm-3.col-sm-push-9.hidden-xs
+              .b-form-note &mdash; Посетители вашей страницы смогут больше узнать о вашей работе или хобби.
+            .col-sm-9.col-sm-pull-3
+              .b-form-field.form-group
+                label.b-form-label Расскажите о себе подробнее
+                textarea.form-control.b-personal-edit-form__about__about( cols="" rows="" name="about" )
+            
+        .b-form-field.form-groupset
+          .row
+            .col-sm-3.col-sm-push-9.hidden-xs
+              .b-form-note &mdash; Текст будет виден на странице Кухня.
+            .col-sm-9.col-sm-pull-3
+              .b-form-field.form-group
+                label.b-form-label Расскажите о вашей кухне
+                textarea.form-control.b-personal-edit-form__about__about( cols="" rows="" name="about" )
+    
+    hr
+    
+    fieldset.b-fieldset.b-personal-edit-form__links
+      legend Ссылки на ваши страницы
+      h3.b-hr-bg.b-personal-page__heading
+        span.b-hr-bg__content Ссылки на ваши страницы
+        
+      .b-form-field.form-groupset
+        .row
+          .col-sm-3.col-sm-push-9.hidden-xs
+            .b-form-note &mdash; Вставляйте полный адрес ссылки. Например: http://www.facebook.com/foodclubru
+          .col-sm-9.col-sm-pull-3
+            .b-form-field.form-group
+              label.b-form-label Ваш сайт
+              input.form-control.b-personal-edit-form__links__site( type="text" value="" name="status" )
+          
+      .b-form-field.form-groupset
+        .row
+          .col-sm-9
+            .row
+              .col-sm-6
+          
+                .b-form-field.form-group
+                  label.b-form-label Facebook
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__fb( type="text" value="" name="facebook" )
+                  
+                .b-form-field.form-group
+                  label.b-form-label Вконтакте
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__vk( type="text" value="" name="vkontakte" )
+                  
+                .b-form-field.form-group
+                  label.b-form-label Twitter
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__twitter( type="text" value="" name="twitter" )
+                  
+                .b-form-field.form-group
+                  label.b-form-label Яндекс
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__yandex( type="text" value="" name="yandex" )
+                  
+              .col-sm-6
+                  
+                .b-form-field.form-group
+                  label.b-form-label Livejournal
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__lj( type="text" value="" name="livejournal" )
+                  
+                .b-form-field.form-group
+                  label.b-form-label Одноклассники
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__classmates( type="text" value="" name="classmates" )
+              
+                .b-form-field.form-group
+                  label.b-form-label Youtube
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__youtube( type="text" value="" name="youtube" )
+                  
+                .b-form-field.form-group
+                  label.b-form-label Vimeo
+                  input.form-control.b-form-field.b-form-field__network.b-form-field.b-form-field__vimeo( type="text" value="" name="vimeo" )
+        
+    hr
+        
+    fieldset.b-fieldset.b-personal-edit-form__change-password
+      legend Смена пароля
+      h3.b-hr-bg.b-personal-page__heading
+        span.b-hr-bg__content Смена пароля
+        
+      .b-form-field.form-groupset
+      
+        .row
+          .col-sm-3.col-sm-push-9.hidden-xs
+            .b-form-note &mdash; Вы можете поменять пароль и логин. Если вы не хотите менять — оставьте поля не заполнеными.
+          .col-sm-9.col-sm-pull-3
+            .row
+              .col-sm-6
+                .b-form-field.form-group
+                  label.b-form-label Новый пароль
+                  input.form-control.b-personal-edit-form__change-password__password( type="password" value="" name="password" data-equal="password" )
+                  
+              .col-sm-6
+                .b-form-field.form-group
+                  label.b-form-label Подтверждение пароля
+                  input.form-control.b-personal-edit-form__change-password__new-password( type="password" value="" name="new_password" data-equal="password" )
+    
+    hr
+    
+    .b-form__submit
+      input.btn.btn-default.b-button__type_submit( type="submit" value="Сохранить" )
+      
+    hr
+    
+  .clear
+
+// end /components/profile.edit/

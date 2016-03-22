@@ -7,7 +7,7 @@ fieldset
   border none
 
 legend
-  display none
+  display none !important
 
 input.text,
 .b-input-text
@@ -43,6 +43,8 @@ input.text,
 textarea
   resize none
     
+textarea.form-control
+  height 70px !important
     
 select
   background $s-light-grey
@@ -191,3 +193,67 @@ select
 
     .i-placeholder &
         display block
+
+.b-form-note
+  font-size 8pt
+  font-style italic
+  color #999
+  margin 28px 0 0 20px
+  text-indent -15px
+  line-height 1.4
+  
+//file upload
+.b-file-upload__type_avatar
+  width 100px
+  height 100px
+  position relative
+
+.b-file-upload__type_avatar__avatar
+  width 100px
+  height 100px
+
+.b-file-upload__button
+  overflow hidden
+  background url(/images/buttons.png) no-repeat 0 -2660px
+  width 65px
+  height 50px
+  display inline-block
+  position relative
+
+.b-file-upload__button:i-hover
+  background-position 0 -2711px
+
+.b-file-upload__button:i-active
+  background-position 0 -2762px
+
+.b-file-upload__file
+  cursor pointer
+  direction ltr
+  font-size 23px
+  margin 0
+  opacity 0
+  position absolute
+  right 0
+  top 0
+  transform translate(-300px, 0px) scale(4)
+  height 50px
+
+
+.b-file-upload__type_avatar .b-file-upload__button
+  position absolute
+  top 25px
+  left 19px
+  visibility hidden
+
+.b-file-upload__type_avatar.i-hover .b-file-upload__button
+  visibility visible
+
+.b-file-upload__type_avatar.i-progress .b-file-upload__button,
+.b-file-upload__type_avatar.i-progress .b-file-upload__type_avatar__avatar
+  visibility hidden
+
+.b-file-upload__type_avatar.i-progress .b-file-upload__files-container
+  background url(/images/circular-preloader.gif) no-repeat center center
+  width 98px
+  height 98px
+  border 1px solid #d1d1d1
