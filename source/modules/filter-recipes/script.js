@@ -70,10 +70,10 @@ function FilterRecipes() {
 			
 			function makeHtml() {
 				
-				if($this.hasClass("open")) {
-					$("#filter_list").slideUp("middle").empty();
-					$this.removeClass("open");
-					document.getElementById("filter_list").className = "";
+				if ( $this.hasClass("open")) {
+					$( "#filter_list" ).slideUp( "middle" ).empty();
+					$this.removeClass( "open" );
+					document.getElementById( "filter_list" ).className = "";
 					return;
 				}
 				
@@ -226,7 +226,7 @@ function FilterList() {
 			}
 			
 			if(!params.num) {//loaded page with no params at all
-				params.num = $("#recipe_feed_block .recipe_list_item").size();
+				params.num = $("#recipe_feed_block .b-recipe-thumb").length;
 			}
 			
 			params.allRecipesNum = parseInt($("#fc_statistics span.num").text(), 10);
@@ -373,12 +373,30 @@ function FilterList() {
 				$("#get_more_recipes").removeClass("preload");
 				var div = $('<div class="block" style="display:none;"></div>');
 				
-				var html = '';
-				for(var i=0; i < data.recipes.length; i++) {
-					html += '<div class="item recipe_list_item"><div class="photo"><a href="'+data.recipes[i].href+'" title="'+data.recipes[i].name+'"><img src="'+data.recipes[i].src+'" width="170" alt="'+data.recipes[i].name+'" /></a></div><h5><a href="'+data.recipes[i].href+'">'+data.recipes[i].name+'</a></h5><p class="author">От: '+data.recipes[i].author+'</p><p class="info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="'+data.recipes[i].href+'#comments">'+data.recipes[i].comments+'</a></noindex></span></p></div>';
-				}
+				var i,html = '';
+        
+        for ( var j = 0; j < Math.ceil( data.recipes.length / 3 ); j++ ) {
+        
+          html += '<div class="row">';
+          
+          for( var k = 0; k < 3; k++ ) {
+            i = j*3 + k;
+            if ( i >= data.recipes.length ) {
+              break;
+            }
+            html += '<div class="col-sm-4 b-recipe-thumb"><a href="' + data.recipes[i].href + '" style="background-image: url(' + data.recipes[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + data.recipes[i].href + '" class="col-sm-10 center-block"><b>' + data.recipes[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + data.recipes[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + data.recipes[i].href + '#comments">' + data.recipes[i].comments + '</a></noindex></span></div></div>';
+        
+            if ( k !== 2 && i < data.recipes.length - 1 ) {
+              html += '<hr class="visible-xs-block">';
+            }
+          }
+          
+          html += '</div><hr class="i-size-L hidden-xs"><hr class="visible-xs-block">';
+          
+        }
+        
 				div.html(html);
-				$("#recipe_feed_block").find("div.clear").before(div).end().find("div.block:last div.recipe_list_item div.photo a").each(function() {
+				$("#recipe_feed_block").append(div).find(".block:last .photo a").each(function() {
 					var $this = $(this),
 						$img = $this.children("img"),
 						img = new Image();
@@ -397,7 +415,7 @@ function FilterList() {
 				}).end()
 				.find("div.block:last").css({opacity:0}).show().animate({opacity:1}, 500);
 				
-				$.scrollTo($("#recipe_feed_block div.block:last div.item:first"), 1000);
+				$.scrollTo($("#recipe_feed_block .block:last .b-recipe-thumb:first"), 1000);
 				
 				updateHistory(data);
 				
@@ -415,7 +433,7 @@ function FilterList() {
 			
 			self.makeRequest = false;
 			var State = History.getState();
-			State.data.num = $("#recipe_feed_block .recipe_list_item").size();
+			State.data.num = $("#recipe_feed_block .b-recipe-thumb").length;
 			
 			if(State.data.recipes && moreData.recipes) {
 				State.data.recipes = State.data.recipes.concat(moreData.recipes);
@@ -543,17 +561,31 @@ function FilterList() {
 	}
 	
 	function renderRecipes(recipesArray) {
-		var html = "";
-		
-		for(var i = 0; i < recipesArray.length; i++) {
-			html += '<div class="item recipe_list_item"><div class="photo"><a href="'+recipesArray[i].href+'" title="'+recipesArray[i].name+'"><img src="'+recipesArray[i].src+'" width="170" alt="'+recipesArray[i].name+'" /></a></div><h5><a href="'+recipesArray[i].href+'">'+recipesArray[i].name+'</a></h5><p class="author">От: '+recipesArray[i].author+'</p><p class="info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="'+recipesArray[i].href+'#comments">'+recipesArray[i].comments+'</a></noindex></span></p></div>';
-		}
-		
-		html += '<div class="clear"></div>';
+		var i,html = "";
+        
+    for ( var j = 0; j < Math.ceil( recipesArray.length / 3 ); j++ ) {
+      html += '<div class="row">';
+  
+      for( var k = 0; k < 3; k++ ) {
+        i = j*3 + k;
+        
+        if ( i >= recipesArray.length ) {
+          break;
+        }
+        
+        html += '<div class="col-sm-4 b-recipe-thumb"><a href="' + recipesArray[i].href + '" style="background-image: url(' + recipesArray[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + recipesArray[i].href + '" class="col-sm-10 center-block"><b>' + recipesArray[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + recipesArray[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + recipesArray[i].href + '#comments">' + recipesArray[i].comments + '</a></noindex></span></div></div>';
+        
+        if ( k !== 2 && i < recipesArray.length - 1 ) {
+          html += '<hr class="visible-xs-block">';
+        }
+      }
+      
+      html += '</div><hr class="i-size-L hidden-xs"><hr class="visible-xs-block">';
+    }
 		
 		$("#recipe_feed_block")
 			.html(html)
-			.find("div.recipe_list_item div.photo a").each(function() {
+			.find(".b-recipe-thumb .photo a").each(function() {
 				var $this = $(this),
 					$img = $this.children("img"),
 					img = new Image();
@@ -578,14 +610,14 @@ function FilterList() {
 	}
 	
 	function highlightButton($link, text) {
-		$("#filter_recipes a.active").removeClass("active").find("span.bg span").text("—");
+		$("#filter_recipes a.active").removeClass("active").find("span.bg span").text("Выберите");
 		$link.removeClass("open").addClass("active").find("span.bg span").text(text);
 	}
 	
 	function getRecipesObjectFromHtml() {
 		var result = [];
 		
-		$("#recipe_feed_block div.item").each(function() {
+		$("#recipe_feed_block div.b-recipe-thumb").each(function() {
 			var $item = $(this);
 			
 			result.push({
@@ -658,12 +690,29 @@ function SearchRecipeFeed() {
 				$("#get_more_recipes").removeClass("preload");
 				var div = $('<div class="block" style="display:none;"></div>');
 				
-				var html = '';
-				for(var i=0; i < data.recipes.length; i++) {
-					html += '<div class="item recipe_list_item"><div class="photo"><a href="'+data.recipes[i].href+'" title="'+data.recipes[i].name+'"><img src="'+data.recipes[i].src+'" width="170" alt="'+data.recipes[i].name+'" /></a></div><h5><a href="'+data.recipes[i].href+'">'+data.recipes[i].name+'</a></h5><p class="author">От: '+data.recipes[i].author+'</p><p class="info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="'+data.recipes[i].href+'#comments">'+data.recipes[i].comments+'</a></noindex></span></p></div>';
-				}
-				div.html(html);
-				$("#recipe_feed_block").find("div.clear").before(div).end().find("div.block:last div.recipe_list_item div.photo a").each(function() {
+				var i,html = '';
+        
+        for ( var j = 0; j < Math.ceil( data.recipes.length / 3 ); j++ ) {
+        
+          html += '<div class="row">';
+          
+          for( var k = 0; k < 3; k++ ) {
+            i = j*3 + k;
+            if ( i >= data.recipes.length ) {
+              break;
+            }
+            html += '<div class="col-sm-4 b-recipe-thumb"><a href="' + data.recipes[i].href + '" style="background-image: url(' + data.recipes[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + data.recipes[i].href + '" class="col-sm-10 center-block"><b>' + data.recipes[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + data.recipes[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + data.recipes[i].href + '#comments">' + data.recipes[i].comments + '</a></noindex></span></div></div>';
+        
+            if ( k !== 2 && i < data.recipes.length - 1 ) {
+              html += '<hr class="visible-xs-block">';
+            }
+          }
+          
+          html += '</div><hr class="i-size-L hidden-xs"><hr class="visible-xs-block">';
+        }
+				
+				div.html( html );
+				$("#recipe_feed_block").append( div ).find(".block:last .b-recipe-thumb .photo a").each(function() {
 					var $this = $(this),
 						$img = $this.children("img"),
 						img = new Image();
@@ -682,7 +731,7 @@ function SearchRecipeFeed() {
 				}).end()
 				.find("div.block:last").css({opacity:0}).show().animate({opacity:1}, 500);
 				
-				$.scrollTo($("#recipe_feed_block div.block:last div.item:first"), 1000);
+				$.scrollTo($("#recipe_feed_block div.block:last div.b-recipe-thumb:first"), 1000);
 				
 				showHideGetMoreButton();
 				

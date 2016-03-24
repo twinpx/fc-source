@@ -1,23 +1,32 @@
+@import '../../../styl/component-include.styl'
+
 .b-recipe-thumb
+  line-height 1.3
+  text-align center
   
   &__photo
-    margin-bottom 24px
-  
-    a
-      background-repeat no-repeat
-      background-position center center
-      background-size cover
-      display block
-      height 200px
-      
-  h4
-    font-size 13.5pt
-    font-weight bold
-    color #333
-    margin 0 0 10px
-    line-height 1.4
-    height 50px
+    display block
+    background-repeat no-repeat
+    background-size cover
+    background-position center center
     
-  p
-    margin 0
-    height 20px
+    img
+      width 100%
+      height auto
+      
+  &__author,
+  &__info
+    display inline-block
+    font-size $x-small
+    
+  &__author
+    margin-right 10px
+    
+  
+  @media( max-width $screen-phone )
+    margin-right -1 * $mobile-page-margin
+    margin-left -1 * $mobile-page-margin
+    
+    h3
+      text-align center
+      padding 0 $mobile-page-margin

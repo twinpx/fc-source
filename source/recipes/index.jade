@@ -33,12 +33,12 @@ block content
             //В массиве перечислены id последних рецептов. Первые 27 из них должны быть уже выведены на странице при загрузке, остальные n перечислены здесь для дальнейшей подгрузки через ajax
             | var allRecipesResult = [5271,5256,5238,5226,5207,5317,5146,5128,5111,5087,5075,5063,5042,5034,5023,5000,4989,4976,4956,4940,4926,4918,4910,4898,4883,4860,4853];
             
-          #recipe_feed_block.row
-            include ../modules/recipe-thumb/col-sm-6.jade
-            include ../modules/recipe-thumb/col-sm-6.jade
-            include ../modules/recipe-thumb/col-sm-6.jade
-            include ../modules/recipe-thumb/col-sm-6.jade
-            include ../modules/recipe-thumb/col-sm-6.jade
+          #recipe_feed_block
+            include ../modules/recipe-thumb/recipe-thumb.jade
+            include ../modules/recipe-thumb/recipe-thumb.jade
+            include ../modules/recipe-thumb/recipe-thumb.jade
+            include ../modules/recipe-thumb/recipe-thumb.jade
+            include ../modules/recipe-thumb/recipe-thumb.jade
             
           #get_more_recipes( data-more-url="/json/get_more_recipes.json" )
             a.btn.btn-default( href="#" ) Ещё
