@@ -13,6 +13,12 @@
   
   &:nth-child(4)
     margin-right 0
+    
+  @media( max-width $screen-phone )
+    float none
+    width auto
+    display block
+    margin-right 0
 
 #filter_recipes .item h5,
 .b-filter__item__heading
@@ -55,6 +61,12 @@
       
   span.left
     background none
+    
+  @media( max-width $screen-phone )
+    &,
+    & .left,
+    & .right
+      display block
 
 #filter_recipes .frame_bg:active,
 a.b-filter__item__button:active
@@ -122,6 +134,27 @@ a.b-filter__item__button:active
   
   a:hover
     color #d75050
+    
+  @media( max-width $screen-phone )
+    width 100%
+    left 0
+    
+    .pad
+      margin 15px
+    
+    table
+      margin 0
+    
+    td
+      display block
+      width auto
+      background none
+      
+    a,
+    span
+      padding 0
+      background none
+      margin 0
     
     
 #get_more_recipes

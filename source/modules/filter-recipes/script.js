@@ -384,7 +384,7 @@ function FilterList() {
             if ( i >= data.recipes.length ) {
               break;
             }
-            html += '<div class="col-sm-4 b-recipe-thumb"><a href="' + data.recipes[i].href + '" style="background-image: url(' + data.recipes[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + data.recipes[i].href + '" class="col-sm-10 center-block"><b>' + data.recipes[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + data.recipes[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + data.recipes[i].href + '#comments">' + data.recipes[i].comments + '</a></noindex></span></div></div>';
+            html += '<div class="col-sm-4"><div class="b-recipe-thumb"><a href="' + data.recipes[i].href + '" style="background-image: url(' + data.recipes[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + data.recipes[i].href + '" class="col-sm-10 center-block"><b>' + data.recipes[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + data.recipes[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + data.recipes[i].href + '#comments">' + data.recipes[i].comments + '</a></noindex></span></div></div></div>';
         
             if ( k !== 2 && i < data.recipes.length - 1 ) {
               html += '<hr class="visible-xs-block">';
@@ -415,7 +415,7 @@ function FilterList() {
 				}).end()
 				.find("div.block:last").css({opacity:0}).show().animate({opacity:1}, 500);
 				
-				$.scrollTo($("#recipe_feed_block .block:last .b-recipe-thumb:first"), 1000);
+				$.scrollTo($("#recipe_feed_block .block:last .col-sm-4:first"), 1000);
 				
 				updateHistory(data);
 				
@@ -573,7 +573,7 @@ function FilterList() {
           break;
         }
         
-        html += '<div class="col-sm-4 b-recipe-thumb"><a href="' + recipesArray[i].href + '" style="background-image: url(' + recipesArray[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + recipesArray[i].href + '" class="col-sm-10 center-block"><b>' + recipesArray[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + recipesArray[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + recipesArray[i].href + '#comments">' + recipesArray[i].comments + '</a></noindex></span></div></div>';
+        html += '<div class="col-sm-4"><div class="b-recipe-thumb"><a href="' + recipesArray[i].href + '" style="background-image: url(' + recipesArray[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + recipesArray[i].href + '" class="col-sm-10 center-block"><b>' + recipesArray[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + recipesArray[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + recipesArray[i].href + '#comments">' + recipesArray[i].comments + '</a></noindex></span></div></div></div>';
         
         if ( k !== 2 && i < recipesArray.length - 1 ) {
           html += '<hr class="visible-xs-block">';
@@ -582,31 +582,8 @@ function FilterList() {
       
       html += '</div><hr class="i-size-L hidden-xs"><hr class="visible-xs-block">';
     }
-		
-		$("#recipe_feed_block")
-			.html(html)
-			.find(".b-recipe-thumb .photo a").each(function() {
-				var $this = $(this),
-					$img = $this.children("img"),
-					img = new Image();
-					
-				img.src = $img.attr("src");
-				var hei = Math.floor(img.height * $img.attr("width") / img.width);
-				if(hei > 0) {
-					$img.css({
-						marginTop:(parseInt($this.css("height"))/2 - hei/2) + "px"
-					});
-				} else {
-					$img.load(function() {
-						var hei = Math.floor(img.height * $img.attr("width") / img.width);
-						if(hei > 0) {
-							$img.css({
-								marginTop:(parseInt($this.css("height"))/2 - hei/2) + "px"
-							});
-						}
-					});
-				}
-			});
+    
+    $("#recipe_feed_block").html(html);
 	}
 	
 	function highlightButton($link, text) {
@@ -617,13 +594,13 @@ function FilterList() {
 	function getRecipesObjectFromHtml() {
 		var result = [];
 		
-		$("#recipe_feed_block div.b-recipe-thumb").each(function() {
+		$("#recipe_feed_block .b-recipe-thumb").each(function() {
 			var $item = $(this);
 			
 			result.push({
-				name: $item.find("h5 a").text(),
-				href: $item.find("h5 a").attr("href"),
-				src: $item.find("img").attr("src"),
+				name: $item.find("b").text(),
+				href: $item.find("a:first").attr("href"),
+				src: /url\(['"]?([^'"]*)['"]?\)/.exec( $item.find("a:first").css("backgroundImage"))[1],
 				author: $item.find(".author").text().substring(4),
 				comments: $item.find(".comments_icon a").text()
 			});
@@ -701,7 +678,7 @@ function SearchRecipeFeed() {
             if ( i >= data.recipes.length ) {
               break;
             }
-            html += '<div class="col-sm-4 b-recipe-thumb"><a href="' + data.recipes[i].href + '" style="background-image: url(' + data.recipes[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + data.recipes[i].href + '" class="col-sm-10 center-block"><b>' + data.recipes[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + data.recipes[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + data.recipes[i].href + '#comments">' + data.recipes[i].comments + '</a></noindex></span></div></div>';
+            html += '<div class="col-sm-4"><div class="b-recipe-thumb"><a href="' + data.recipes[i].href + '" style="background-image: url(' + data.recipes[i].src + ');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a><hr class="i-size-S"><a href="' + data.recipes[i].href + '" class="col-sm-10 center-block"><b>' + data.recipes[i].name + '</b></a><hr class="i-size-S"><div class="b-recipe-thumb__author author">От: ' + data.recipes[i].author + '</div><div class="b-recipe-thumb__info"><span class="comments_icon" title="Оставить отзыв"><noindex><a href="' + data.recipes[i].href + '#comments">' + data.recipes[i].comments + '</a></noindex></span></div></div></div>';
         
             if ( k !== 2 && i < data.recipes.length - 1 ) {
               html += '<hr class="visible-xs-block">';
@@ -712,24 +689,12 @@ function SearchRecipeFeed() {
         }
 				
 				div.html( html );
-				$("#recipe_feed_block").append( div ).find(".block:last .b-recipe-thumb .photo a").each(function() {
-					var $this = $(this),
-						$img = $this.children("img"),
-						img = new Image();
-						
-					img.src = $img.attr("src");
-					var hei = Math.floor(img.height*$img.attr("width")/img.width);
-					if(hei > 0) {
-						$img.css({marginTop:(parseInt($this.css("height"))/2-hei/2)+"px"});
-					}
-					else {
-						$img.load(function() {
-							var hei = Math.floor(img.height*$img.attr("width")/img.width);
-							if(hei>0) {$img.css({marginTop:(parseInt($this.css("height"))/2-hei/2)+"px"});}
-						});
-					}
-				}).end()
-				.find("div.block:last").css({opacity:0}).show().animate({opacity:1}, 500);
+        
+				$("#recipe_feed_block")
+          .append( div )
+          .find("div.block:last")
+          .css({opacity:0})
+          .show().animate({opacity:1}, 500);
 				
 				$.scrollTo($("#recipe_feed_block div.block:last div.b-recipe-thumb:first"), 1000);
 				
