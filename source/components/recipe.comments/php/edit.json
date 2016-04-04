@@ -1,0 +1,21 @@
+{
+	"cId": "51939",
+	"rId": "51801",
+	"date": "Отредактировано в 13.10.2014 в 05:15",
+	"image": {
+		"id": "1616",
+		"src": "http://www.foodclub.ru/upload/iblock/958/1381234489_Мандарины.jpg",
+		"width": "170",
+		"height": "122"
+	},
+	"text": {
+		"text": "Some text",
+		"html": "<p>Some</p>text."
+	},
+	"author": {
+		"href": "http://www.foodclub.ru/profile/2539/",
+		"src": "http://www.foodclub.ru/upload/main/0bb/avatar.jpg",
+		"name": "miss_nem"
+	},
+	"likeNum": "4"
+}

@@ -1,0 +1,22 @@
+{
+	"reply": {
+		"cId": "42",
+		"rId": "4789",
+		"image": {
+			"id": "1717",
+			"src": "http://iamafoodblog.com/iamablog/wp-content/uploads/2013/02/heartpizza-2l.jpg",
+			"width": "170",
+			"height": "122"
+		},
+		"text": {
+			"text": "Ответ на отзыв.",
+			"html": "Ответ на<br>отзыв."
+		},
+		"author": {
+			"href": "http://www.foodclub.ru/profile/2539/",
+			"src": "http://www.foodclub.ru/upload/main/0bb/avatar.jpg",
+			"name": "madler"
+		},
+		"likeNum": "0"
+	}
+}

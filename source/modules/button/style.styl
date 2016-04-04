@@ -1,1 +1,110 @@
 @import '../../styl/component-include.styl'
+
+div.button, button.button, input.button, .b-button, #authorization .bx-auth-service-form input.button
+  height 41px
+  background url("data:image/gif;base64,R0lGODlhAQApAMQAANra2tbW1uLi4uDg4NPT09jY2OXl5d3d3dDQ0N7e3tvb2+Tk5NTU1OHh4ejo6NXV1dLS0t/f39zc3NnZ2ebm5uPj49fX19HR0efn5wAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAABACkAAAUgoONgJEUZy1JVQtMMUZQckqQA01RYVvA8DAYBArkYESEAOw==") repeat-x 0 0
+  font-size 11pt
+  color #7d7c7c
+  text-shadow 0 1px 0 #ffffff
+  cursor pointer
+  text-align center
+  margin-top 15px
+  padding 0 27px
+  -moz-border-radius 5px
+  -webkit-border-radius 5px
+  -khtml-border-radius 5px
+  border-radius 5px
+  box-sizing content-box
+  -moz-box-sizing content-box
+  -webkit-box-sizing content-box
+  -khtml-box-sizing content-box
+  border none
+  border-bottom 1px solid #c1c1c1
+  vertical-align top
+  line-height 41px
+
+#authorization
+  .bx-auth-service-form
+    input
+      &.button
+        padding-top 0
+
+input.button,
+input.b-button
+  padding-top 0
+  height 41px
+
+div.button_hover, button.button_hover, input.button_hover, .b-button__action-hover, .b-button:hover, #authorization .bx-auth-service-form input.button_hover
+  background-image url("data:image/gif;base64,R0lGODlhAQApANUAAPPy8vDw8OHe3ubl5eTi4unn5+vq6ujm5u7t7fDv7/Ly8t7b2+/u7uXj4+no6OHf3+bk5O3s7OPh4erp6fHx8eDe3ufm5u7u7t3b2+Tj4/Hw8PX19d7c3Ozr6/Pz8+Lg4N/d3fT09AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAABACkAAAYmwM0mFPJ4AAqKJpBgXBCRTscwcRQOlgGkkSFIPp+HoAICcTgLTBAAOw==")
+  color #666666
+  border-color #a3a3a3
+
+div.button_active, button.button_active, input.button_active, .b-button__action-active, .b-button:active, #authorization .bx-auth-service-form input.button_active
+  background-image url("data:image/gif;base64,R0lGODlhAQApANUAAOHf3+bk5NnX1+He3u3s7Ojm5szKyuXj4+/u7vPy8tTR0ebl5eno6Onn5/Dw8Nza2sTBwfDv7+np6ePh4erp6fHx8eDe3ufm5uTj4/Hw8O7t7eTi4uvq6u7u7vLy8uzr6/Pz8+Lg4N/d3QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAABACkAAAYmQIhBIXiIRJYBIBSabDCHwOJSaDAonM+HoOkgIo5MxZMAgTwdSRAAOw==")
+  color #666666
+  border-bottom none
+  border-top 1px solid #a3a3a3
+
+div.button.i-processing, button.button.i-processing, input.button.i-processing, .b-button.i-processing,
+div.button_hover.i-processing, button.button_hover.i-processing, input.button_hover.i-processing, .b-button:hover.i-processing,
+div.button_active.i-processing, button.button_active.i-processing, input.button_active.i-processing, .b-button:active.i-processing
+  color #999
+  opacity 0.75
+  -moz-opacity 0.75
+
+.b-button__type_2
+  font-family Georgia, "Times New Roman", Times, serif
+  font-style italic
+  font-size 7.5pt
+  display inline-block
+  vertical-align top
+  padding 3px 7px
+  -moz-border-radius 2px
+  -webkit-border-radius 2px
+  -khtml-border-radius 2px
+  border-radius 2px
+  margin-left 1px
+  background url(/images/buttons.png) no-repeat 0 -1662px
+  color #ffffff
+
+a
+  &.b-button__type_2
+    &:hover
+      background url(/images/buttons.png) no-repeat 0 -1682px
+      color #ffffff
+      
+.b-button__width_100
+  width 100%
+  padding-right 0 !important
+  /*important for the old styles, can be removed then*/
+  padding-left 0 !important
+  
+.b-button__size_S
+  font-size 8pt
+  font-weight normal
+  color #6a6a6a
+  text-shadow 0 1px 0 #fff
+  height 26px
+  text-align center
+  display inline-block
+  vertical-align top
+  padding 0 11px
+  box-sizing content-box
+  background url("data:image/gif;base64,R0lGODlhAQAaAMQAANfX1+Pj493d3ebm5tbW1tra2uTk5NTU1OHh4d7e3tvb2+jo6NXV1eLi4tLS0t/f39zc3NnZ2dHR0eXl5dPT0+fn5wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAABABoAAAUV4FJVwzQZQYM8iQApRQQQzEFRjiSFADs=") repeat-x
+  border-radius 5px
+  border-bottom 1px solid #c1c1c1
+  cursor pointer
+  line-height 26px
+
+.b-button__size_S:hover
+  background-image url("data:image/gif;base64,R0lGODlhAQAaAMQAAOfn5/Dw8OPj4+Dg4Obm5vPz8+3t7erq6uTk5PHx8eHh4e7u7t7e3uvr6+jo6PX19eXl5fLy8uLi4u/v79/f3+zs7N3d3fT09AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAABABoAAAUV4HNdRZQE02JUzeEABIQIkjJQjGWFADs=")
+  text-decoration none
+  color #6a6a6a
+
+.b-button__size_S:active
+  background-image url("data:image/gif;base64,R0lGODlhAQAaAMQAAOfn5/Dw8OPj4+Dg4Obm5vPz8+3t7erq6uTk5PHx8eHh4e7u7t7e3uvr6+jo6OXl5fLy8uLi4u/v79/f3+zs7Nzc3N3d3fT09AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAABABoAAAUVYGVZzDQokYA8BOAcDWUsUpBAxXWFADs=")
+  border-top 1px solid #c1c1c1
+  border-bottom none
+  box-shadow 0 1px 2px rgba(0,0,0,0.19) inset
+  text-decoration none
+  color #6a6a6a

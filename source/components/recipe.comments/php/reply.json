@@ -1,0 +1,21 @@
+﻿{
+  "id": "56",
+  "cId": "51939",
+  "rId": "4789",
+  "image": {
+    "id": "1515",
+    "src": "http://www.foodclub.ru/upload/iblock/958/1381234489_Мандарины.jpg"
+  },
+  "text": {
+    "text": "Some text",
+		"html": "<p>Some</p>text."
+  },
+  "author": {
+    "href": "http://www.foodclub.ru/profile/2539/",
+    "src": "http://www.foodclub.ru/upload/main/0bb/avatar.jpg",
+    "name": "madler"
+  },
+  "mine": false,
+  "date": "5.06.14",
+  "likeNum": "0"
+}
