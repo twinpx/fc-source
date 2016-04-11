@@ -1,1 +1,34 @@
 @import '../../styl/component-include.styl'
+
+.b-author-avatar
+  height 30px
+  min-width 30px
+  position relative
+
+  &__link
+    width 30px
+    height 30px
+    display block
+    position absolute
+    top 0
+    left 0
+    trans( transform 0.1s linear )
+    
+    &:hover
+      transform (scale(2))
+
+  &__img
+    width 100%
+    height auto !important
+    
+  &__nickname
+    font-size $x-small
+    display inline-block
+    vertical-align middle
+    padding-left 46px
+    width 100%
+    box-sizing border-box
+    text-overflow ellipsis
+    
+    span
+      white-space nowrap

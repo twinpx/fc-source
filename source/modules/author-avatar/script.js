@@ -1,4 +1,4 @@
-( function() {
+/*( function() {
 	$(document)
 		.delegate(".b-author-avatar", "mouseenter", mouseenterAvatar)
 		.delegate(".b-author-avatar", "mouseleave", mouseleaveAvatar);
@@ -12,4 +12,4 @@
 		var $avatar = $(this);
 		$avatar.find(".b-author-avatar__link").stop().animate({width: "30px", height: "30px", top: "0", left: "0"}, 100);
 	}
-}());
+}());*/

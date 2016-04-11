@@ -1,0 +1,41 @@
+﻿block var-page
+  - var page = cooks
+
+extends ../layouts/inner.jade
+
+block title
+  title Кулинары | food
+
+block section
+
+  h1 Кулинары
+  
+  #new_cooks.user_list
+    h5 Встречайте новичков
+    
+    - var i = 0
+      while i < 7
+        - i++
+        hr
+        .row
+          .col-xs-4
+            include ../modules/author-avatar/nickname
+          .col-xs-4
+            include ../modules/author-avatar/nickname
+          .col-xs-4
+            include ../modules/author-avatar/nickname
+        
+        
+  #top5_cooks.user_list
+    h5 Топ-5 поваров
+    
+    - var j = 0
+      while j < 10
+        - j++
+        
+        .row
+          .col-sm-10.col-xs-8
+            include ../modules/author-avatar/nickname
+            .b-cook-intro Автор блога Mariha-kitchen.livejournal.com. Люблю традиционные блюда, найденные в пожелтевших от времени кулинарных книгах...
+          .col-sm-2.col-xs-4
+            include ../modules/rating/icon
