@@ -3,38 +3,7 @@
 link( rel="stylesheet", href="/components/lavka/style.css" )
 script( src="/components/lavka/script.js" )
 
-.b-lavka(data-ajax-url='/php/get-lavka.txt', data-ajax-type='GET')
-  .b-lavka__filter.b-filter(data-floating='true', data-col='3')
-    .b-filter__item(data-array='filterStoresArray')
-      script.
-        var filterStoresArray = [
-        {
-        id: 1,
-        name: "Все"
-        },
-        {
-        id: 2,
-        name: "Meat&amp;Wine"
-        },
-        {
-        id: 3,
-        name: "Мода мёда"
-        },
-        {
-        id: 4,
-        name: "Лавка-лавка Железо и огонь"
-        }
-        ];
-      h5.b-filter__item__heading Фильтр по магазинам
-      a.frame_bg.b-filter__item__button(href='#')
-        span.left
-          span.right
-            span.bg
-              span Все
-    .i-clearfix
-    
-    .b-filter__lists
-      .b-filter__list
+.b-lavka
       
   .b-lavka__blocks
   
