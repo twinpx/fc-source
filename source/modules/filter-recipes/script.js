@@ -148,7 +148,7 @@ function Filter($elem) {
 					html += '<tr>';
 									
 					for(var j = 0; j < col; j++) {
-						x = num * j + i;
+						var x = num * j + i;
 						
 						if(array[x]) {
 							html += '<td><a href="#" rel="' + array[x].id + '">' + array[x].name + '</a></td>';

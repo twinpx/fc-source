@@ -1,0 +1,23 @@
+﻿block var-page
+  - var page = lavka
+
+extends ../layouts/inner.jade
+
+block title
+  title Лавка | food
+
+block section
+  
+  include ../components/lavka/template
+
+block aside
+
+  include ../modules/aside-banner/include
+  
+  hr.i-size-L
+  
+  include ../components/aside.rom/template
+  
+  hr.i-size-L
+  
+  include ../modules/aside-banner/float

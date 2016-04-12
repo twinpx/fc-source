@@ -1,0 +1,224 @@
+﻿// start /components/lavka/
+
+link( rel="stylesheet", href="/components/lavka/style.css" )
+script( src="/components/lavka/script.js" )
+
+.b-lavka(data-ajax-url='/php/get-lavka.txt', data-ajax-type='GET')
+  .b-lavka__filter.b-filter(data-floating='true', data-col='3')
+    .b-filter__item(data-array='filterStoresArray')
+      script.
+        var filterStoresArray = [
+        {
+        id: 1,
+        name: "Все"
+        },
+        {
+        id: 2,
+        name: "Meat&amp;Wine"
+        },
+        {
+        id: 3,
+        name: "Мода мёда"
+        },
+        {
+        id: 4,
+        name: "Лавка-лавка Железо и огонь"
+        }
+        ];
+      h5.b-filter__item__heading Фильтр по магазинам
+      a.frame_bg.b-filter__item__button(href='#')
+        span.left
+          span.right
+            span.bg
+              span Все
+    .i-clearfix
+    
+    .b-filter__lists
+      .b-filter__list
+      
+  .b-lavka__blocks
+  
+    .b-collection-block.b-store-block
+      .b-collection-block__heading
+        span.b-collection-block__heading__content Железо и огонь
+      
+      .row
+        - var i = 0
+        while i < 3
+          - i++
+          
+          if i!=1
+            .b-store-block__hr.visible-xs
+          
+          .col-sm-4
+            .b-store-block__item__logo
+              a(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/logo.gif', height='30', alt='')
+                
+            .b-store-block__item__photo
+              a.b-store-block__item__photo__link(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/photo.jpg', width='90', height='130', alt='Гриль Bar-B-Kettle')
+                
+            .b-store-block__item__title
+              a(href='', target='_blank', rel='nofollow') Гриль Bar-B-Kettle
+              
+            .b-store-block__item__price.b-price
+              span.b-price__num
+                span.b-price__num__int 5 346
+                span.b-price__num__fract .60
+              span.b-price__unit руб.
+              
+            .b-store-block__item__button
+              a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
+              
+      .b-store-block__hr
+      
+      .row
+        - var i = 0
+        while i < 2
+          - i++
+          
+          if i!=1
+            .b-store-block__hr.visible-xs
+            
+          .col-sm-4
+            .b-store-block__item__logo
+              a(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/logo.gif', height='30', alt='')
+            .b-store-block__item__photo
+              a.b-store-block__item__photo__link(href='', target='_blank', rel='nofollow')
+                img(src='http://zhelezoiogon.ru/components/com_virtuemart/show_image_in_imgtag.php?filename=resized%2F_________________4eebaf5590b16_185x214.jpg&newxsize=185&newysize=214&fileout=', width='180', alt='Голова льва, ёмкости для соуса, 2 шт., 7 мл, фарфор')
+            .b-store-block__item__title
+              a(href='', target='_blank', rel='nofollow') "Голова льва", ёмкости для соуса, 2 шт., 7 мл, фарфор
+            .b-store-block__item__price.b-price
+              span.b-price__num
+                span.b-price__num__int 300
+              span.b-price__unit руб.
+              
+            .b-store-block__item__button
+              a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
+      
+        
+    .b-collection-block.b-store-block
+    
+      .b-collection-block__heading
+        span.b-collection-block__heading__content Мода Мёда
+        
+      .row
+        - var i = 0
+        while i < 3
+          - i++
+          
+          if i!=1
+            .b-store-block__hr.visible-xs
+          
+          .col-sm-4
+            .b-store-block__item__logo
+              a(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/logo.gif', height='30', alt='')
+                
+            .b-store-block__item__photo
+              a.b-store-block__item__photo__link(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/photo.jpg', width='90', height='130', alt='Гриль Bar-B-Kettle')
+                
+            .b-store-block__item__title
+              a(href='', target='_blank', rel='nofollow') Гриль Bar-B-Kettle
+              
+            .b-store-block__item__price.b-price
+              span.b-price__num
+                span.b-price__num__int 5 346
+                span.b-price__num__fract .60
+              span.b-price__unit руб.
+              
+            .b-store-block__item__button
+              a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
+              
+      .b-store-block__hr
+      
+      .row
+        - var i = 0
+        while i < 2
+          - i++
+          
+          if i!=1
+            .b-store-block__hr.visible-xs
+            
+          .col-sm-4
+            .b-store-block__item__logo
+              a(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/logo.gif', height='30', alt='')
+            .b-store-block__item__photo
+              a.b-store-block__item__photo__link(href='', target='_blank', rel='nofollow')
+                img(src='http://zhelezoiogon.ru/components/com_virtuemart/show_image_in_imgtag.php?filename=resized%2F_________________4eebaf5590b16_185x214.jpg&newxsize=185&newysize=214&fileout=', width='180', alt='Голова льва, ёмкости для соуса, 2 шт., 7 мл, фарфор')
+            .b-store-block__item__title
+              a(href='', target='_blank', rel='nofollow') "Голова льва", ёмкости для соуса, 2 шт., 7 мл, фарфор
+            .b-store-block__item__price.b-price
+              span.b-price__num
+                span.b-price__num__int 300
+              span.b-price__unit руб.
+              
+            .b-store-block__item__button
+              a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
+      
+    .b-collection-block.b-store-block
+    
+      .b-collection-block__heading
+        span.b-collection-block__heading__content Meat&Wine
+        
+      .row
+        - var i = 0
+        while i < 3
+          - i++
+          
+          if i!=1
+            .b-store-block__hr.visible-xs
+          
+          .col-sm-4
+            .b-store-block__item__logo
+              a(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/logo.gif', height='30', alt='')
+                
+            .b-store-block__item__photo
+              a.b-store-block__item__photo__link(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/photo.jpg', width='90', height='130', alt='Гриль Bar-B-Kettle')
+                
+            .b-store-block__item__title
+              a(href='', target='_blank', rel='nofollow') Гриль Bar-B-Kettle
+              
+            .b-store-block__item__price.b-price
+              span.b-price__num
+                span.b-price__num__int 5 346
+                span.b-price__num__fract .60
+              span.b-price__unit руб.
+              
+            .b-store-block__item__button
+              a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
+              
+      .b-store-block__hr
+      
+      .row
+        - var i = 0
+        while i < 2
+          - i++
+          
+          if i!=1
+            .b-store-block__hr.visible-xs
+            
+          .col-sm-4
+            .b-store-block__item__logo
+              a(href='', target='_blank', rel='nofollow')
+                img(src='/upload/store-block/logo.gif', height='30', alt='')
+            .b-store-block__item__photo
+              a.b-store-block__item__photo__link(href='', target='_blank', rel='nofollow')
+                img(src='http://zhelezoiogon.ru/components/com_virtuemart/show_image_in_imgtag.php?filename=resized%2F_________________4eebaf5590b16_185x214.jpg&newxsize=185&newysize=214&fileout=', width='180', alt='Голова льва, ёмкости для соуса, 2 шт., 7 мл, фарфор')
+            .b-store-block__item__title
+              a(href='', target='_blank', rel='nofollow') "Голова льва", ёмкости для соуса, 2 шт., 7 мл, фарфор
+            .b-store-block__item__price.b-price
+              span.b-price__num
+                span.b-price__num__int 300
+              span.b-price__unit руб.
+              
+            .b-store-block__item__button
+              a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
+
+// end /components/lavka/
