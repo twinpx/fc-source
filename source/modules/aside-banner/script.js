@@ -3,11 +3,11 @@ $( '.b-aside-banner.i-float' ).each( function() {
   
   setTimeout( checkAviasales, 1000 );
   
-  var topBorder, bottomBorder, topElemBorder, leftElemBorder, elemHeight, $spacer, $spacer, scroll, $aside;
+  var topBorder, $bottomElement, bottomBorder, topElemBorder, leftElemBorder, elemHeight, $spacer, $spacer, scroll, $aside;
     
   function init() {
     topBorder = getTopBorder() + 10 || undefined;
-    bottomBorder = getBottomBorder() - 10 || undefined;
+    $bottomElement = getBottomElement();
     topElemBorder = $banner.offset().top;
     leftElemBorder = $banner.offset().left;
     elemHeight = $banner.height();
@@ -41,18 +41,42 @@ $( '.b-aside-banner.i-float' ).each( function() {
   function getTopBorder() {
 		return $( '#header' ).height();
 	}
+  
+  function getBottomElement() {
+    var footerTopBorders = [];
 
-	function getBottomBorder() {
-		var footerTopBorders = [];
+    $( '.b-store-block:not(.b-store-block__type_aside), #bottom, .collection_block, #ng-app:not(#banner_space #ng-app)' ).each( function() {
+      footerTopBorders.push({
+        "elem": this,
+        "topBorder": $( this ).offset().top
+      });
+    });
 
-		$( '.b-store-block:not(.b-store-block__type_aside), #bottom, .collection_block, #ng-app:not(#banner_space #ng-app)' ).each( function() {
-			footerTopBorders.push({
-				"elem": this,
-				"topBorder": $( this ).offset().top
-			});
-		});
+    footerTopBorders.sort( sortTopBorders );
+    
+    return $( footerTopBorders[0].elem );
+    
+    function sortTopBorders(a, b) {
+			if ( a.topBorder < b.topBorder ) {
+        return -1;
+      } if ( a.topBorder > b.topBorder ) {
+        return 1;
+      }
+			return 0;
+		}
+  }
 
-		footerTopBorders.sort( sortTopBorders );
+	function getBottomBorder( action ) {
+    var footerTopBorders = [];
+
+    $( '.b-store-block:not(.b-store-block__type_aside), #bottom, .collection_block, #ng-app:not(#banner_space #ng-app)' ).each( function() {
+      footerTopBorders.push({
+        "elem": this,
+        "topBorder": $( this ).offset().top
+      });
+    });
+
+    footerTopBorders.sort( sortTopBorders );
 
 		return footerTopBorders[0].topBorder;
 
@@ -68,6 +92,7 @@ $( '.b-aside-banner.i-float' ).each( function() {
   
   function scrollWindow() {
 		scroll = getScroll();
+    bottomBorder = $bottomElement.offset().top - 10;
 		
 		if ( !$banner.hasClass( 'i-top-fixed' ) &&
 				 ( scroll >= topElemBorder - topBorder &&
