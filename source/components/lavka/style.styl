@@ -106,8 +106,9 @@
 .b-button__size_M
   display inline-block
   width 97px
-  padding 6px 0 0 0
-  height 19px
+  padding 0
+  height 25px
+  line-height 25px
   background url(/images/buttons.png) no-repeat 0 -298px
   font-size 8pt
   text-align center
@@ -117,6 +118,7 @@
   -moz-box-sizing content-box
   -webkit-box-sizing content-box
   -khtml-box-sizing content-box
+  
   &:hover
     background url(/images/buttons.png) no-repeat 0 -326px
   &:active
@@ -130,3 +132,21 @@
 
 .b-lavka
   margin-top 13px
+  
+.b-store-block__type_aside
+
+  .b-store-block__item
+    float none
+    width auto
+    border-left none
+    border-bottom 1px solid #e6e6e6
+    padding-top 40px
+    
+    &:last-child
+      border-bottom none
+    
+  .b-store-block__content
+    padding 0 12px
+    margin -15px 0 -1px 0
+  .b-store-block__item__logo
+    padding-top 0

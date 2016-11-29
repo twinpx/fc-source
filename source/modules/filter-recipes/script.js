@@ -4,7 +4,7 @@
   });		
 });
 
-var allRecipesResult = [];
+var allRecipesResult = window.allRecipesResult || [];
 
 $( function() {
   new FilterRecipes();
@@ -421,7 +421,7 @@ function FilterList() {
 				
 				showHideGetMoreButton();
 				
-				window.upButton.styleElements();
+				//window.upButton.styleElements();
 			}
 		});
 		
@@ -700,7 +700,7 @@ function SearchRecipeFeed() {
 				
 				showHideGetMoreButton();
 				
-				window.upButton.styleElements();
+				//window.upButton.styleElements();
 				
 				function showHideGetMoreButton() {
 					var difference = allRecipesResult.length;

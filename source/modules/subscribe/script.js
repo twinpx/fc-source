@@ -1,3 +1,7 @@
+﻿if( Cookies.get('SUBSCRIBED') === 'Y' ) {
+  $( '.b-subscribe' ).height( '58px' ).html( '<div class="text-success">Спасибо за подписку!</div>' );
+}
+
 $( '.b-subscribe form' ).submit( function(e) {
   e.preventDefault();
   
@@ -27,6 +31,7 @@ $( '.b-subscribe form' ).submit( function(e) {
           $form.parent().height( $form.parent().height() );
           $form.before( '<div class="text-success">' + data.text + '</div>' );
           $form.remove();
+          Cookies.set('SUBSCRIBED', 'Y', { expires: 7, path: window.location.hostname });
         } else {
           $form.prepend( '<p class="text-warning">' + data.text + '</p>' );
         }

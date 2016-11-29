@@ -1,0 +1,132 @@
+﻿// start /components/profile.kitchen/
+
+link( rel="stylesheet", href="/components/profile.kitchen/style.css" )
+script( src="/components/profile.kitchen/script.js" )
+
+.b-personal-page__kitchen
+  h3.b-hr-bg.b-personal-page__heading
+    span.b-hr-bg__content Кухня
+  .b-personal-page__text
+    | У меня не очень большая кухня поэтому мне прходится пользоваться только самыми необходимыми в быту предматами, желательно максимально унивресальными.
+    
+  .b-kitchen__list(data-url='http://markup.foodclub.2px/personal/kitchen/', data-delete-ajax-url='/php/delete-kitchen-equipment.php')
+  
+    script#kitchen-equipment-template(type='text/html')
+      | <div class="b-kitchen__item" data-balloon='{"title": "<%=title%>", "brand": "<%=brand%>", "text": "<%=text%>", "rating": "<%=rating%>", "price": "<%=price%>"}' data-id="<%=id%>">
+      | <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+      | <div class="b-admin-buttons__block">
+      | <div class="b-delete-icon" title="Удалить технику"></div>
+      | <div class="b-edit-icon" title="Редактировать"></div>
+      | </div>
+      | </div>
+      | <a href="#" class="b-kitchen__item__link">
+      | <span class="b-kitchen__item__image">
+      | <img src="<%=image.src%>" width="<%=image.width%>" height="<%=image.height%>" alt="<%=image.alt%>">
+      | </span>
+      | <span class="b-kitchen__item__title" data-id="<%=title.id%>"><%=title.name%></span>
+      | <span class="b-kitchen__item__brand" data-id="<%=brand.id%>"><%=brand.name%></span>
+      | <span class="b-kitchen__item__model" data-id="<%=model.id%>"><%=model.name%></span>
+      | </a>
+      | </div>
+      
+    .b-kitchen__block.i-tech
+      h5.b-kitchen__block__heading Использую технику:
+      .b-kitchen__item(data-balloon='{"title": "Мультиварка", "brand": "Philips", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "4", "price": "7 000"}', data-id='itemId0', data-ajax='{"param1": "data1", "param2": "data2", "param3": "data3"}')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Мультиварка Philips')
+          span.b-kitchen__item__title(data-id='2') Мультиварка
+          span.b-kitchen__item__brand(data-id='trade2') Philips
+          span.b-kitchen__item__model(data-id='model4') HD3039/00
+      .b-kitchen__item(data-balloon='{"title": "Соковыжималка", "brand": "Braun", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "5", "price": ""}', data-id='itemId1')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Соковыжималка Braun')
+          span.b-kitchen__item__title(data-id='1') Соковыжималка
+          span.b-kitchen__item__brand(data-id='trade3') Braun
+          span.b-kitchen__item__model(data-id='model1') J700 Multiquick 7
+      .b-kitchen__item(data-balloon='{"title": "Фритюрница", "brand": "Moulinex", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "5", "price": "2 100"}', data-id='itemId2')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Фритюрница Moulinex')
+          span.b-kitchen__item__title(data-id='3') Фритюрница
+          span.b-kitchen__item__brand(data-id='trade0') Moulinex
+          span.b-kitchen__item__model(data-id='model1') AM 1014
+      .b-kitchen__item(data-balloon='{"title": "Микроволновая печь", "brand": "Panasonic", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "3", "price": "5 600"}', data-id='itemId3')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Микроволновая печь Panasonic')
+          span.b-kitchen__item__title(data-id='2') Микроволновая печь
+          span.b-kitchen__item__brand(data-id='2') Panasonic
+          span.b-kitchen__item__model(data-id='2') NN-GT261MZPE
+      .b-kitchen__item.b-kitchen__item__type_empty
+        a.btn.btn-sm.btn-default(href='#', data-popup-id='kitchen-equipment-add-form') Добавить технику
+      .i-clearfix
+    .b-kitchen__block.i-dish
+      h5.b-kitchen__block__heading Кухонная утварь:
+      .b-kitchen__item(data-balloon='{"title": "Мультиварка", "brand": "Philips", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "4", "price": "7 000"}', data-id='itemId10', data-ajax='{"param1": "data1", "param2": "data2", "param3": "data3"}')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Мультиварка Philips')
+          span.b-kitchen__item__title(data-id='2') Мультиварка
+          span.b-kitchen__item__brand(data-id='2') Philips
+          span.b-kitchen__item__model(data-id='2') HD3039/00
+      .b-kitchen__item(data-balloon='{"title": "Соковыжималка", "brand": "Braun", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "5", "price": "1 000"}', data-id='itemId11')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Соковыжималка Braun')
+          span.b-kitchen__item__title(data-id='2') Соковыжималка
+          span.b-kitchen__item__brand(data-id='2') Braun
+          span.b-kitchen__item__model(data-id='2') J700 Multiquick 7
+      .b-kitchen__item(data-balloon='{"title": "Фритюрница", "brand": "Moulinex", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "5", "price": "2 100"}', data-id='itemId12')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Фритюрница Moulinex')
+          span.b-kitchen__item__title(data-id='2') Фритюрница
+          span.b-kitchen__item__brand(data-id='2') Moulinex
+          span.b-kitchen__item__model(data-id='2') AM 1014
+      .b-kitchen__item(data-balloon='{"title": "Микроволновая печь", "brand": "Panasonic", "text": "Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.", "rating": "3", "price": "5 600"}', data-id='itemId13')
+        .b-kitchen__item__admin-butoons.b-admin-buttons
+          .b-admin-buttons__block
+            .b-delete-icon(title='Удалить технику')
+            .b-edit-icon(title='Редактировать')
+        a.b-kitchen__item__link(href='#')
+          span.b-kitchen__item__image
+            img(src='/upload/kitchen/1.jpg', width='155', height='155', alt='Микроволновая печь Panasonic')
+          span.b-kitchen__item__title(data-id='2') Микроволновая печь
+          span.b-kitchen__item__brand(data-id='2') Panasonic
+          span.b-kitchen__item__model(data-id='2') NN-GT261MZPE
+      .b-kitchen__item.b-kitchen__item__type_empty
+        a.btn.btn-sm.btn-default(href='#', data-popup-id='kitchen-equipment-add-form') Добавить технику
+      .i-clearfix
+
+
+// end /components/profile.kitchen/

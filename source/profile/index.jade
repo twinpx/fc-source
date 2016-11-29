@@ -1,0 +1,78 @@
+﻿block var-page
+  - var page = profile
+
+extends ../layouts/inner.jade
+
+block title
+  title Личный кабинет | food
+
+block content
+
+  .container
+  
+    .b-personal-page
+    
+      include profile-intro
+      include profile-menu
+      
+      #text_space
+        .b-personal-page__about
+          h3.b-hr-bg.b-personal-page__heading
+            span.b-hr-bg__content О себе
+          .b-personal-page__about__text
+            | Приготовление пищи для меня совсем не рутинное повседневное занятие, а настоящий творческий и познавательный процесс. С гордостью признаюсь, что идея этого сайта принадлежит мне и за все время его существования я ни разу не пожалела об этой идее. А отзывы и комментарии пользователей очень помогают понять направление движения и придают силы двигаться дальше и развиваться.
+        .b-personal-page__web
+          h3.b-hr-bg.b-personal-page__heading
+            span.b-hr-bg__content Сайт и аккаунты в соцсетях
+          .b-personal-page__web__site
+            a(href='', target='_blank') www.foodclub.ru
+          .b-personal-page__web__networks.b-networks-detailed
+            a.b-networks-detailed__item.i-facebook(href='', target='_blank') Facebook
+            a.b-networks-detailed__item.i-vkontakte(href='', target='_blank') вКонтакте
+            a.b-networks-detailed__item.i-twitter(href='', target='_blank') Twitter
+            a.b-networks-detailed__item.i-yandex(href='', target='_blank') Яндекс
+            a.b-networks-detailed__item.i-livejournal(href='', target='_blank') Livejournal
+            a.b-networks-detailed__item.i-classmates(href='', target='_blank') Одноклассники
+            a.b-networks-detailed__item.i-youtube(href='', target='_blank') YouTube
+            a.b-networks-detailed__item.i-vimeo(href='', target='_blank') Vimeo
+        .b-personal-page__recipes
+          h3.b-hr-bg.b-personal-page__heading
+            span.b-hr-bg__content Последние рецепты
+          
+          include ../modules/recipe-thumb/recipe-thumb.jade
+          
+        .b-personal-page__entries
+          h3.b-hr-bg.b-personal-page__heading
+            span.b-hr-bg__content Последние записи
+          .b-entries-list
+            .b-entries-list__item
+              .b-entries-list__item__marker
+              .b-entries-list__item__blog Food Styling
+              .b-entries-list__item__title
+                a(href='') Яблочные чашки
+            .b-entries-list__item
+              .b-entries-list__item__marker
+              .b-entries-list__item__blog My fit fridge — Вкусно о здоровой пище
+              .b-entries-list__item__title
+                a(href='') Интересная альтернатива мороженому
+            .b-entries-list__item
+              .b-entries-list__item__marker
+              .b-entries-list__item__blog Foodclub
+              .b-entries-list__item__title
+                a(href='') Розыгрыш двух билетов на Ярмарку ПИР. Вопрос №3
+        .b-personal-page__recipes
+          h3.b-hr-bg.b-personal-page__heading
+            span.b-hr-bg__content Готовила
+            
+          include ../modules/recipe-thumb/recipe-thumb.jade
+          hr
+          include ../modules/recipe-thumb/recipe-thumb.jade
+          hr
+          
+      #banner_space
+      
+        include ../modules/aside-badges/include.jade
+        
+        include ../modules/aside-banner/include.jade
+        
+      .clear

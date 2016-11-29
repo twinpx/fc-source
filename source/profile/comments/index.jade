@@ -1,0 +1,79 @@
+﻿block var-page
+  - var page = badges
+
+extends ../../layouts/inner.jade
+
+block title
+  title Комментарии | Личный кабинет | food
+
+block content
+
+  .container
+  
+    .b-personal-page
+      .b-personal-page__intro
+        .b-personal-page__intro__card.b-personal-card
+          .b-personal-card__pic
+            a.b-personal-card__pic__link(href='')
+              img.b-personal-card__pic__image(src='http://www.foodclub.ru/upload/main/fb3/avatar.jpg', width='100', height='100', alt='Савельева Мария')
+          .b-personal-card__info
+            h1.b-personal-card__name
+              .b-personal-card__name__first Савельева Мария
+              .b-personal-card__name__patronymic Евгеньевна
+            .b-personal-card__position Главный редактор Foodclub.ru
+            .b-personal-card__town Москва
+            .b-personal-card__date С нами с 10 января 2003
+            .b-personal-card__age 34 года
+        .b-personal-page__intro__achievements.b-achievements
+          .b-achievements__items
+            span.b-achievements__item
+              span.b-achievements__item__num 58
+              span.b-achievements__item__br
+              span.b-achievements__item__title Рецептов
+            span.b-achievements__item
+              span.b-achievements__item__num 34
+              span.b-achievements__item__br
+              span.b-achievements__item__title Записи
+            span.b-achievements__item
+              span.b-achievements__item__num 894
+              span.b-achievements__item__br
+              span.b-achievements__item__title Отзывов
+            span.b-achievements__item
+              span.b-achievements__item__num 34
+              span.b-achievements__item__br
+              span.b-achievements__item__title
+                | Рецепта
+                br
+                | готовила
+          .b-achievements__summ
+            span.b-achievements__item
+              span.b-achievements__item__num 14839
+              span.b-achievements__item__br
+              span.b-achievements__item__title Баллов
+        .i-clearfix
+      menu.b-personal-page__menu
+        li.b-personal-page__menu__item
+          span.b-personal-page__menu__item__link Анкета
+        li.b-personal-page__menu__item
+          a.b-personal-page__menu__item__link(href='') Рецепты
+        li.b-personal-page__menu__item
+          a.b-personal-page__menu__item__link(href='') Записи
+        li.b-personal-page__menu__item
+          a.b-personal-page__menu__item__link(href='') Активность
+        li.b-personal-page__menu__item
+          a.b-personal-page__menu__item__link(href='') Избранное
+        li.b-personal-page__menu__item.i-disable
+          span.b-personal-page__menu__item__link Места
+        li.b-personal-page__menu__item.i-disable
+          span.b-personal-page__menu__item__link Магазин
+          
+      #text_space
+        include ../../components/profile.comments.all/template
+        
+      #banner_space
+      
+        include ../../modules/aside-badges/include.jade
+        
+        include ../../modules/facts/include.jade
+        
+      .clear
