@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authorization form | food</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-itunes-app" content="app-id=445878711">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <link rel="stylesheet" href="/template/bootstrap.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 400italic&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <script src="/template/jquery.js"></script>
+    <script src="/template/bootstrap.js"></script>
+    <script src="/template/jscript.js"></script>
+    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+  </head>
+  <body>
+    <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
+    <section class="container">
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <!-- start /components/form.auth/-->
+          <link rel="stylesheet" href="/components/form.auth/style.css">
+          <script src="/components/form.auth/script.js"></script>
+          <div id="authorization">
+            <noindex>
+              <div class="top"><a href="/" class="logo"></a></div>
+              <div class="body">
+                <h2>Авторизоваться</h2>
+                <div class="row">
+                  <div class="col-sm-6 left_column">
+                    <form action="" method="get">
+                      <div class="form-group">
+                        <label>Логин<span class="no_text">?</span></label>
+                        <input type="text" name="login" value="" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label>Пароль<span class="no_text">?</span></label>
+                        <input type="password" name="password" value="" class="form-control">
+                      </div>
+                      <div class="form-group captcha"><img src="/images/capture.jpg" width="180" height="40" alt="">
+                        <label>Код на картинке<span class="no_text">?</span></label>
+                        <input type="text" name="captcha" value="" class="form-control">
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="remember" value="">Запомнить меня
+                        </label>
+                      </div>
+                      <div class="error_message">&mdash; универсальное сообщение об ошибке, универсальное сообщение об ошибке!</div>
+                      <hr>
+                      <div class="submit">
+                        <button type="submit" class="btn btn-default">Авторизоваться</button>
+                      </div>
+                      <div class="b-form-forgotten"><a href="">Забыли пароль?</a></div>
+                    </form>
+                  </div>
+                  <hr class="i-size-L visible-xs-block">
+                  <div class="col-sm-6 right_column">
+                    <div class="networks">
+                      <div class="bx-auth">
+                        <form method="post" name="bx_auth_services" target="_top" action="/auth/index.php?login=yes&amp;amp;amp;backurl=%2Findex.php">
+                          <h3>Войдите на сайт, используя один из аккаунтов в социальных сетях</h3>
+                          <div class="bx-auth-services">
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('GoogleOAuth', '')" id="bx_auth_href_GoogleOAuth"><i class="bx-ss-icon">google</i><b>Google</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('VKontakte', '')" id="bx_auth_href_VKontakte"><i class="bx-ss-icon">vkontakte</i><b>ВКонтакте</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('Twitter', '')" id="bx_auth_href_Twitter"><i class="bx-ss-icon">twitter</i><b>Twitter</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('Facebook', '')" id="bx_auth_href_Facebook"><i class="bx-ss-icon">facebook</i><b>Facebook</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('Livejournal', '')" id="bx_auth_href_Livejournal"><i class="bx-ss-icon">livejournal</i><b>Livejournal</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('YandexOpenID', '')" id="bx_auth_href_YandexOpenID"><i class="bx-ss-icon">yandex</i><b>Яндекс</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('MailRuOpenID', '')" id="bx_auth_href_MailRuOpenID"><i class="bx-ss-icon">openid-mail-ru</i><b>Mail.Ru</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('Liveinternet', '')" id="bx_auth_href_Liveinternet"><i class="bx-ss-icon">liveinternet</i><b>Liveinternet</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('Blogger', '')" id="bx_auth_href_Blogger"><i class="bx-ss-icon">blogger</i><b>Blogger</b></a></div>
+                            <div><a href="javascript:void(0)" onclick="BxShowAuthService('OpenID', '')" id="bx_auth_href_OpenID"><i class="bx-ss-icon">openid</i><b>OpenID</b></a></div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="links"><a href="" target="_blank">Пользовательское соглашение</a></div>
+            </noindex>
+          </div>
+          <!-- end /components/form.auth/-->
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit profile | food</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-itunes-app" content="app-id=445878711">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <link rel="stylesheet" href="/template/bootstrap.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 400italic&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <script src="/template/jquery.js"></script>
+    <script src="/template/bootstrap.js"></script>
+    <script src="/template/jscript.js"></script>
+    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+  </head>
+  <body>
+    <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
+    <header id="header" class="b-header">
+      <div class="container">
+        <div class="b-mobile-menu-icon visible-xs-block"></div><a href="/search/" class="b-mobile-search-icon visible-xs-block"></a><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
+        <div class="b-header__buttons hidden-xs">
+          <div class="b-header__profile dropdown">
+            <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="b-header__profile-button"><img src="/upload/user/small_photo.jpg"></button>
+            <menu role="menu" class="b-header__profile-list dropdown-menu">
+              <li><a href="" class="i-profile">Профиль</a></li>
+              <li><a href="" class="i-favorite">Избранное</a></li>
+              <li><a href="" class="i-recipes">Мои рецепты</a></li>
+              <li><a href="" class="i-articles">Статьи</a></li>
+              <li><a href="" class="i-subscribe">Подписка</a></li>
+              <li><a href="" class="i-kitchen">Кухня</a></li>
+              <li><a href="" class="i-signout">Выйти</a></li>
+            </menu>
+          </div>
+          <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
+          <div id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+                  <div id="myModalLabel" class="modal-title">Добавить</div>
+                </div>
+                <div class="modal-body"><a href="" class="i-recipe">Рецепт</a><a href="" class="i-foodshot">Фудшот</a><a href="" class="i-article">Статью</a></div>
+                <div class="modal-footer">
+                  <button type="button" data-dismiss="modal">Вернуться</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-header__nav">
+          <div class="row visible-xs-block">
+            <div class="col-xs-6 col-xs-offset-6"><a href="/personal/" class="b-userpic"><img src="/upload/user/small_photo.jpg" width="30" height="30" alt=""><span class="b-userpic__name">Максим Савельев Максим Савельев</span></a></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <!-- start /components/recipe-search/-->
+              <link rel="stylesheet" href="/components/recipe-search/style.css">
+              <script src="/components/recipe-search/script.js"></script>
+              <script src="/js/ss_data.js"></script>
+              <script src="/components/recipe-search/add-script.js"></script>
+              <div id="recipeSearch" class="b-recipe-search ">
+                <form action="/search/" method="post">
+                  <div class="b-form-field b-recipe-search__form-field"><a href="#" title="Очистить поле" class="b-recipe-search__delete"></a>
+                    <input type="text" value="" autocomplete="off" class="b-input-text b-recipe-search__input">
+                  </div><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
+                  <div class="i-clearfix"></div>
+                </form>
+              </div>
+              <script id="recipe_search_items" type="text/html">
+                <li class="b-rs__item">
+                 <a href="<%=url%>" class="b-rs__item__link">
+                   <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
+                   <% if(imageRegExp.test(image)) { %>
+                   <span class="b-rs__item__image-wrapper" data-image="<%=image%>"></span>
+                   <% } else { %>
+                   <span class="b-rs__item__image-wrapper b-rs__item__image-wrapper__type_empty"></span>
+                   <% } %>
+                   <span class="b-rs__item__text b-rs-str"><%=title%></span>
+                   <span class="b-rs__item__info">
+                     <span class="b-rs__item__time"><% if(time.hours && time.hours > 0) {%>
+                     <% function recipeWord(num) {
+                       if (/(10|11|12|13|14|15|16|17|18|19)$/.test(num)) {return 'часов';}
+                       else if (/.*1$/.test(num)) {return 'час';}
+                       else if (/[2-4]$/.test(num)) {return 'часа';}
+                       else {return 'часов';}
+                     } %>
+                     <%=time.hours%> <%=recipeWord(time.hours)%><% } %><% if(time.minutes && time.minutes > 0) {%> <%=time.minutes%> мин<% } %></span>
+                     <span class="b-rs__item__nutrition"><%=nutrition%></span>
+                   </span>
+                   <span class="clear"></span>
+                 </a>
+                 <span class="b-rs__item__hr"></span>
+                </li>
+              </script>
+              <!-- end /components/recipe-search/-->
+              <noindex class="b-recipe-search__helper hidden-xs"><a id="search_helper_link" href="#" title="Помощник" class="b-recipe-search__helper__link"></a></noindex>
+              <div id="search_helper" style="display:none;">
+                <div class="body">
+                  <div class="menu">
+                    <noindex>
+                      <div class="item act"><a href="#" rel="h_helper">Помощник поиска</a><span>Помощник поиска</span></div>
+                      <div class="item"><a href="#" rel="h_ingredients">Ингредиенты</a><span>Ингредиенты</span></div>
+                      <!--<div class="item"><a href="#" rel="h_dishes">Типы блюд</a><span>Типы блюд</span></div>-->
+                      <div class="item right"><a href="#" rel="h_cuisines">Национальные кухни</a><span>Национальные кухни</span></div>
+                      <div class="clear"></div>
+                    </noindex>
+                  </div>
+                  <div id="h_helper" class="search_blocks">
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/diet.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Низкокалорийные</a></li>
+                          <li><a href="/search/">Диетические</a></li>
+                          <li><a href="/search/">Постные</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/dinner.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Позавтракать</a></li>
+                          <li><a href="/search/">Пообедать</a></li>
+                          <li><a href="/search/">Поужинать</a></li>
+                          <li><a href="/search/">Поздний ужин</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/quick.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Холостяку</a></li>
+                          <li><a href="/search/">Быстренько</a></li>
+                          <li><a href="/search/">Хочется экзотики</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column right">
+                      <div class="item"><img src="/upload/search/guests.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">День рождения</a></li>
+                          <li><a href="/search/">Удивить гостей</a></li>
+                          <li><a href="/search/">Романтический ужин</a></li>
+                          <li><a href="/search/">Вечеринка с друзьями</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="random_dish"><a href="/recipe/">Случайное блюдо?</a></div>
+                  </div>
+                  <div id="h_ingredients" class="search_blocks">
+                    <noindex>
+                      <div id="i_have_list">
+                        <div class="bg">
+                          <h2>У меня есть:</h2>
+                          <h2 class="stage_helper">Ингредиенты:</h2>
+                          <div id="i_have_dash">—</div>
+                          <table></table>
+                        </div>
+                        <div id="i_have_button">Найти</div>
+                        <div id="stage_button">Найти</div>
+                      </div>
+                      <div id="i_have_ingredients">
+                        <div class="search_field">
+                          <div class="search_input b-form-field">
+                            <input id="helper_smartsearch" type="text" value="" data-placeholder="Введите название" class="text">
+                            <div class="search_list">
+                              <ul class="search_list"></ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="i_have_ingredients_group">
+                          <ul></ul>
+                        </div>
+                        <div id="i_have_ingredients_list">
+                          <h2></h2>
+                          <div class="column">
+                            <ul></ul>
+                          </div>
+                          <div class="column">
+                            <ul></ul>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                      <div class="clear"></div>
+                    </noindex>
+                  </div>
+                  <div id="h_dishes" class="search_blocks">
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/diet.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Низкокалорийные</a></li>
+                          <li><a href="/search/">Диетические</a></li>
+                          <li><a href="/search/">Постные</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/dinner.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Позавтракать</a></li>
+                          <li><a href="/search/">Пообедать</a></li>
+                          <li><a href="/search/">Поужинать</a></li>
+                          <li><a href="/search/">Поздний ужин</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/quick.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Холостяку</a></li>
+                          <li><a href="/search/">Быстренько</a></li>
+                          <li><a href="/search/">Хочется экзотики</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column right">
+                      <div class="item"><img src="/upload/search/guests.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">День рождения</a></li>
+                          <li><a href="/search/">Удивить гостей</a></li>
+                          <li><a href="/search/">Романтический ужин</a></li>
+                          <li><a href="/search/">Вечеринка с друзьями</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div id="h_cuisines" class="search_blocks">
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/europe.jpg" width="200" height="150" alt="">
+                        <h3>Европа</h3>
+                        <ul>
+                          <li><a href="/search/">Австрийская кухня</a></li>
+                          <li><a href="/search/">Английская кухня</a></li>
+                          <li><a href="/search/">Болгарская кухня</a></li>
+                          <li><a href="/search/">Венгерская кухня</a></li>
+                          <li><a href="/search/">Немецкая кухня</a></li>
+                          <li><a href="/search/">Польская кухня</a></li>
+                          <li><a href="/search/">Португальская кухня</a></li>
+                          <li><a href="/search/">Чешская кухня</a></li>
+                          <li><a href="/search/">Шотландская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/mediterranean.jpg" width="200" height="150" alt="">
+                        <h3>Средиземноморье</h3>
+                        <ul>
+                          <li><a href="/search/">Греческая кухня</a></li>
+                          <li><a href="/search/">Испанская кухня</a></li>
+                          <li><a href="/search/">Итальянская кухня</a></li>
+                          <li><a href="/search/">Французская кухня</a></li>
+                        </ul>
+                      </div>
+                      <div class="item"><img src="/upload/search/asia.jpg" width="200" height="150" alt="">
+                        <h3>Азия</h3>
+                        <ul>
+                          <li><a href="/search/">Индонезийская кухня</a></li>
+                          <li><a href="/search/">Китайская кухня</a></li>
+                          <li><a href="/search/">Тайская кухня</a></li>
+                          <li><a href="/search/">Японская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/ussr.jpg" width="200" height="150" alt="">
+                        <h3>Бывший СССР</h3>
+                        <ul>
+                          <li><a href="/search/">Армянская кухня</a></li>
+                          <li><a href="/search/">Белорусская кухня</a></li>
+                          <li><a href="/search/">Грузинская кухня</a></li>
+                          <li><a href="/search/">Русская кухня</a></li>
+                          <li><a href="/search/">Узбекская кухня</a></li>
+                          <li><a href="/search/">Украинская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column right">
+                      <div class="item"><img src="/upload/search/america.jpg" width="200" height="150" alt="">
+                        <h3>Америка</h3>
+                        <ul>
+                          <li><a href="/search/">Американская кухня</a></li>
+                          <li><a href="/search/">Бразильская кухня</a></li>
+                          <li><a href="/search/">Кубинская кухня</a></li>
+                          <li><a href="/search/">Мексиканская кухня</a></li>
+                          <li><a href="/search/">Ямайская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="slide_up_button">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+              <div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a></div>
+            </div>
+            <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="b-page-heading">
+      <div style="background-image: url(/upload/journal/heading.jpg);" class="b-page-heading__ill">
+        <h1>Журнал Foodclub.ru</h1>
+      </div>
+      <div class="b-content-nav">
+        <div class="visible-xs-block b-mobile-menu-icon"></div>
+        <div class="container">
+          <nav><a href="">Все публикации</a> <span>Дайджесты</span> <a href="">Подборки</a> <a href="">Меню</a> <a href="">Обзоры</a> <a href="">Самое интересное</a> <a href="">Foodclub</a> <a href="">Знаете ли вы, что</a></nav>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <nav class="b-content-nav"><a href="/recipes/"><b>Все рецепты</b></a><a href="/rating/">Рейтинги рецептов</a><a href="/personal/recipes/">Мои рецепты</a><a href="/personal/favourite/">Избранное</a><a href="/recipes/add/" class="i-emphasise">Добавить рецепт</a>
+      </nav>
+    </div>
+    <section class="container">
+      <!-- start /components/profile.edit/-->
+      <link rel="stylesheet" href="/components/profile.edit/style.css">
+      <script src="/components/profile.edit/script.js"></script>
+      <h1>Редактирование анкеты</h1>
+      <div class="b-personal-edit-form">
+        <!--.b-form__type_wide-->
+        <form action="" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="b-error-message">
+                <div class="b-error-message__pointer">
+                  <div class="b-error-message__pointer__div"></div>
+                </div>Универсальное сообщение об ошибке.<br>
+                Универсальное сообщение об ошибке. Неверный email<br>
+                Универсальное сообщение об ошибке. Заполните поле имя<br>
+                Универсальное сообщение об ошибке.<br>
+                Может быть в несколько строчек.
+              </div>
+            </div>
+          </div>
+          <hr>
+          <link rel="stylesheet" type="text/css" href="/css/form.css">
+          <script src="/js/form.js" type="text/javascript"></script>
+          <fieldset class="b-fieldset b-personal-edit-form__about">
+            <legend>О себе</legend>
+            <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">О себе</span></h3>
+            <div class="b-form-field form-groupset">
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="b-form-field form-group b-form-field form-group__avatar">
+                        <div class="b-form-label">Фото <span class="b-form-label__error"></span></div>
+                        <div class="b-file-upload b-file-upload__type_avatar">
+                          <div class="b-file-upload__files-container">
+                            <div class="b-file-upload__type_avatar__avatar"><img src="/upload/user/ca-ira.jpg" width="100" height="100" alt="">
+                              <input type="hidden" name="avatar" value="/upload/user/ca-ira.jpg">
+                            </div>
+                          </div><span class="b-file-upload__button">
+                            <input id="fileupload" type="file" class="b-file-upload__file"></span>
+                          <div class="i-clearfix"></div>
+                        </div>
+                        <div class="fileupload-loading"></div>
+                      </div>
+                      <script id="template-upload" type="text/x-tmpl">
+                        <% for (var i=0, file; file=files[i]; i++) { %>
+                         <tr class="template-upload fade">
+                         </tr>
+                        <% } %>
+                      </script>
+                      <!-- The template to display files available for download-->
+                      <script id="template-download" type="text/x-tmpl">
+                        <% for (var i=0, file; file=files[i]; i++) { %>
+                        <div class="b-file-upload__type_avatar__avatar">
+                         <img src="<%=file.thumbnail_url%>" width="100" height="100" alt="" />
+                         <input type="hidden" name="avatar" value="<%=file.url%>">
+                        </div>
+                        <% } %>
+                      </script>
+                      <script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
+                      <script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
+                      <script src="/js/file-upload/js/jquery.fileupload.js"></script>
+                      <script src="/js/file-upload/js/jquery.fileupload-fp.js"></script>
+                      <script src="/components/personal.edit/jquery.fileupload-ui.js"></script>
+                      <script src="/components/personal.edit/script.js"></script>
+                      <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+-->
+                      <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="b-form-field form-group b-form-field form-group__date">
+                        <div class="b-form-label">Дата рождения</div>
+                        <div class="row">
+                          <div class="col-xs-3">
+                            <select name="age_day" class="form-control b-select__day">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="31" selected="selected">31</option>
+                            </select>
+                          </div>
+                          <div class="col-xs-5">
+                            <select name="age_month" class="form-control b-select__month">
+                              <option value="jan" selected="selected">Январь</option>
+                              <option value="feb">Февраль</option>
+                              <option value="mar">Март</option>
+                              <option value="apr">Апрель</option>
+                              <option value="may">Май</option>
+                              <option value="jun">Июнь</option>
+                              <option value="jul">Июль</option>
+                              <option value="aug">Август</option>
+                              <option value="sep">Сентябрь</option>
+                              <option value="oct">Октябрь</option>
+                              <option value="nov">Ноябрь</option>
+                              <option value="dec">Декабрь</option>
+                            </select>
+                          </div>
+                          <div class="col-xs-4">
+                            <select name="age_year" class="form-control b-select__year">
+                              <option value="1999">1999</option>
+                              <option value="1998">1998</option>
+                              <option value="1997">1997</option>
+                              <option value="1996">1996</option>
+                              <option value="1995">1995</option>
+                              <option value="1994">1994</option>
+                              <option value="1993">1993</option>
+                              <option value="1992">1992</option>
+                              <option value="1991">1991</option>
+                              <option value="1990">1990</option>
+                              <option value="1989">1989</option>
+                              <option value="1988" selected="selected">1988</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="">Не показывать на сайте
+                        </label>
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Пол</label>
+                        <select name="gender" class="form-control b-select__gender">
+                          <option value="male">Мужской</option>
+                          <option value="female">Женский</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-form-field form-groupset">
+                <div class="row">
+                  <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                    <div class="b-form-note">&mdash; Заполните поля они будут отображаться у каждого рецепта вместо Логина.</div>
+                  </div>
+                  <div class="col-sm-9 col-sm-pull-3">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="b-form-field form-group">
+                          <label class="b-form-label">Имя</label>
+                          <input type="text" value="" name="name" class="form-control b-personal-edit-form__about__name">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="b-form-field form-group">
+                          <label class="b-form-label">Фамилия</label>
+                          <input type="text" value="" name="lastname" class="form-control b-personal-edit-form__about__lastname">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-form-field form-groupset">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="b-form-field form-group">
+                          <label class="b-form-label">Email</label>
+                          <input type="email" value="" name="email" class="form-control b-personal-edit-form__about__email">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-form-field form-groupset">
+                <div class="row">
+                  <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                    <div class="b-form-note">&mdash; Напишите о том, кем вы себя ощущаете. Например Король кулинаров!</div>
+                  </div>
+                  <div class="col-sm-9 col-sm-pull-3">
+                    <div class="b-form-field form-group">
+                      <label class="b-form-label">Статус</label>
+                      <input type="text" value="" name="status" class="form-control b-personal-edit-form__about__status">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-form-field form-groupset">
+                <div class="row">
+                  <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                    <div class="b-form-note">&mdash; Вы сможете найти людей с похожими интересами.</div>
+                  </div>
+                  <div class="col-sm-9 col-sm-pull-3">
+                    <div class="b-form-field form-group">
+                      <label class="b-form-label">Интересы</label>
+                      <textarea cols="" rows="" name="interests" class="form-control b-personal-edit-form__about__interests"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-form-field form-groupset">
+                <div class="row">
+                  <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                    <div class="b-form-note">&mdash; Посетители вашей страницы смогут больше узнать о вашей работе или хобби.</div>
+                  </div>
+                  <div class="col-sm-9 col-sm-pull-3">
+                    <div class="b-form-field form-group">
+                      <label class="b-form-label">Расскажите о себе подробнее</label>
+                      <textarea cols="" rows="" name="about" class="form-control b-personal-edit-form__about__about"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-form-field form-groupset">
+                <div class="row">
+                  <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                    <div class="b-form-note">&mdash; Текст будет виден на странице Кухня.</div>
+                  </div>
+                  <div class="col-sm-9 col-sm-pull-3">
+                    <div class="b-form-field form-group">
+                      <label class="b-form-label">Расскажите о вашей кухне</label>
+                      <textarea cols="" rows="" name="about" class="form-control b-personal-edit-form__about__about"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <hr>
+          <fieldset class="b-fieldset b-personal-edit-form__links">
+            <legend>Ссылки на ваши страницы</legend>
+            <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">Ссылки на ваши страницы</span></h3>
+            <div class="b-form-field form-groupset">
+              <div class="row">
+                <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                  <div class="b-form-note">&mdash; Вставляйте полный адрес ссылки. Например: http://www.facebook.com/foodclubru</div>
+                </div>
+                <div class="col-sm-9 col-sm-pull-3">
+                  <div class="b-form-field form-group">
+                    <label class="b-form-label">Ваш сайт</label>
+                    <input type="text" value="" name="status" class="form-control b-personal-edit-form__links__site">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="b-form-field form-groupset">
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Facebook</label>
+                        <input type="text" value="" name="facebook" class="form-control b-form-field b-form-field__network b-form-field b-form-field__fb">
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Вконтакте</label>
+                        <input type="text" value="" name="vkontakte" class="form-control b-form-field b-form-field__network b-form-field b-form-field__vk">
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Twitter</label>
+                        <input type="text" value="" name="twitter" class="form-control b-form-field b-form-field__network b-form-field b-form-field__twitter">
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Яндекс</label>
+                        <input type="text" value="" name="yandex" class="form-control b-form-field b-form-field__network b-form-field b-form-field__yandex">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Livejournal</label>
+                        <input type="text" value="" name="livejournal" class="form-control b-form-field b-form-field__network b-form-field b-form-field__lj">
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Одноклассники</label>
+                        <input type="text" value="" name="classmates" class="form-control b-form-field b-form-field__network b-form-field b-form-field__classmates">
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Youtube</label>
+                        <input type="text" value="" name="youtube" class="form-control b-form-field b-form-field__network b-form-field b-form-field__youtube">
+                      </div>
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Vimeo</label>
+                        <input type="text" value="" name="vimeo" class="form-control b-form-field b-form-field__network b-form-field b-form-field__vimeo">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <hr>
+          <fieldset class="b-fieldset b-personal-edit-form__change-password">
+            <legend>Смена пароля</legend>
+            <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">Смена пароля</span></h3>
+            <div class="b-form-field form-groupset">
+              <div class="row">
+                <div class="col-sm-3 col-sm-push-9 hidden-xs">
+                  <div class="b-form-note">&mdash; Вы можете поменять пароль и логин. Если вы не хотите менять — оставьте поля не заполнеными.</div>
+                </div>
+                <div class="col-sm-9 col-sm-pull-3">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Новый пароль</label>
+                        <input type="password" value="" name="password" data-equal="password" class="form-control b-personal-edit-form__change-password__password">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="b-form-field form-group">
+                        <label class="b-form-label">Подтверждение пароля</label>
+                        <input type="password" value="" name="new_password" data-equal="password" class="form-control b-personal-edit-form__change-password__new-password">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <hr>
+          <div class="b-form__submit">
+            <input type="submit" value="Сохранить" class="btn btn-default b-button__type_submit">
+          </div>
+          <hr>
+        </form>
+        <div class="clear"></div>
+      </div>
+      <!-- end /components/profile.edit/-->
+    </section>
+    <footer id="bottom" class="b-footer">
+      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
+        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
+      </div>
+      <div class="container hidden-xs">
+        <div class="b-subscribe">
+          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
+            <div class="form-group">
+              <label class="b-label text-center">Подписаться на рассылку</label>
+              <hr class="i-size-S">
+              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
+              <button type="submit" class="btn btn-default">Подписаться</button>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h4>Читайте нас</h4>
+            <menu>
+              <li><a href="" target="_blank">Facebook</a></li>
+              <li><a href="" target="_blank">Instagram</a></li>
+              <li><a href="" target="_blank">Twitter</a></li>
+              <li><a href="" target="_blank">LiveJournal</a></li>
+              <li><a href="" target="_blank">Одноклассники</a></li>
+              <li><a href="" target="_blank">ВКонтакте</a></li>
+              <li><a href="" target="_blank">Google+</a></li>
+              <li><a href="" target="_blank">Pinterest</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Моя Кухня</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Избранные рецепты</a></li>
+              <li><a href="">Моя лента</a></li>
+              <li><a href="">Подписка</a></li>
+              <li><a href="">Бейджи</a></li>
+              <li><a href="">Редактировать анкету</a></li>
+              <li><a href="">Добавить рецепт</a></li>
+              <li><a href="">Добавить рецепт (простой)</a></li>
+              <li><a href="">Добавить запись в клуб</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Темы</h4>
+            <menu>
+              <li><a href="">Рецепты с фото</a></li>
+              <li><a href="">Кулинарные клубы</a></li>
+              <li><a href="">Кулинары</a></li>
+              <li><a href="">Рецепт месяца</a></li>
+              <li><a href="">Самое интересное</a></li>
+              <li><a href="">Лавка</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Сервисы</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Поиск рецепта</a></li>
+              <li><a href="">Виджет Яндекса</a></li>
+              <li><a href="">Приложение Facebook</a></li>
+              <li><a href="">Приложение ВКонтакте</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Реклама</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Медиа-кит</a></li>
+              <li><a href="">Магазинам</a></li>
+              <li><a href="">Конкурсы</a></li>
+              <li><a href="">Брендирование</a></li>
+              <li><a href="">Статистика</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Пользователям</h4>
+            <menu>
+              <li><a href="">Новый профиль</a></li>
+              <li><a href="">Помощь</a></li>
+              <li><a href="">Ваши предложения</a></li>
+              <li><a href="">Сообщить об ошибке</a></li>
+              <li><a href="">Соглашение</a></li>
+              <li><a href="">Правила</a></li>
+            </menu>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="top_layer" style="display:none;">
+      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
+    </div>
+  </body>
+</html>

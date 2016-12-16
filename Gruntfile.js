@@ -5,7 +5,7 @@ module.exports = function( grunt ) {
     source: 'source/',
     dest: 'dest/',
     temp: 'temp/',
-    prod: 'Z:/food/markup/',
+    prod: /*'Z:/food/*/'markup/',
     
     jade: {
       dev: {
@@ -267,7 +267,7 @@ module.exports = function( grunt ) {
       prodBootstrap: {
         options: {
           mangle: true,
-          compress: true,
+          compress: {},
           preserveComments: 'some'
         },
         files: [
@@ -292,7 +292,7 @@ module.exports = function( grunt ) {
       prodTemplate: {
         options: {
           mangle: true,
-          compress: true,
+          compress: {},
           preserveComments: 'some'
         },
         files: [
@@ -304,7 +304,7 @@ module.exports = function( grunt ) {
       prodComponents: {
         options: {
           mangle: true,
-          compress: true
+          compress: {}
         },
         files: [
           {

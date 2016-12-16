@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe | food</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-itunes-app" content="app-id=445878711">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <link rel="stylesheet" href="/template/bootstrap.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 400italic&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <script src="/template/jquery.js"></script>
+    <script src="/template/bootstrap.js"></script>
+    <script src="/template/jscript.js"></script>
+    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+  </head>
+  <body>
+    <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
+    <header id="header" class="b-header">
+      <div class="container">
+        <div class="b-mobile-menu-icon visible-xs-block"></div><a href="/search/" class="b-mobile-search-icon visible-xs-block"></a><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
+        <div class="b-header__buttons hidden-xs">
+          <div class="b-header__profile dropdown">
+            <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="b-header__profile-button"><img src="/upload/user/small_photo.jpg"></button>
+            <menu role="menu" class="b-header__profile-list dropdown-menu">
+              <li><a href="" class="i-profile">Профиль</a></li>
+              <li><a href="" class="i-favorite">Избранное</a></li>
+              <li><a href="" class="i-recipes">Мои рецепты</a></li>
+              <li><a href="" class="i-articles">Статьи</a></li>
+              <li><a href="" class="i-subscribe">Подписка</a></li>
+              <li><a href="" class="i-kitchen">Кухня</a></li>
+              <li><a href="" class="i-signout">Выйти</a></li>
+            </menu>
+          </div>
+          <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
+          <div id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+                  <div id="myModalLabel" class="modal-title">Добавить</div>
+                </div>
+                <div class="modal-body"><a href="" class="i-recipe">Рецепт</a><a href="" class="i-foodshot">Фудшот</a><a href="" class="i-article">Статью</a></div>
+                <div class="modal-footer">
+                  <button type="button" data-dismiss="modal">Вернуться</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-header__nav">
+          <div class="row visible-xs-block">
+            <div class="col-xs-6 col-xs-offset-6"><a href="/personal/" class="b-userpic"><img src="/upload/user/small_photo.jpg" width="30" height="30" alt=""><span class="b-userpic__name">Максим Савельев Максим Савельев</span></a></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <!-- start /components/recipe-search/-->
+              <link rel="stylesheet" href="/components/recipe-search/style.css">
+              <script src="/components/recipe-search/script.js"></script>
+              <script src="/js/ss_data.js"></script>
+              <script src="/components/recipe-search/add-script.js"></script>
+              <div id="recipeSearch" class="b-recipe-search ">
+                <form action="/search/" method="post">
+                  <div class="b-form-field b-recipe-search__form-field"><a href="#" title="Очистить поле" class="b-recipe-search__delete"></a>
+                    <input type="text" value="" autocomplete="off" class="b-input-text b-recipe-search__input">
+                  </div><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
+                  <div class="i-clearfix"></div>
+                </form>
+              </div>
+              <script id="recipe_search_items" type="text/html">
+                <li class="b-rs__item">
+                 <a href="<%=url%>" class="b-rs__item__link">
+                   <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
+                   <% if(imageRegExp.test(image)) { %>
+                   <span class="b-rs__item__image-wrapper" data-image="<%=image%>"></span>
+                   <% } else { %>
+                   <span class="b-rs__item__image-wrapper b-rs__item__image-wrapper__type_empty"></span>
+                   <% } %>
+                   <span class="b-rs__item__text b-rs-str"><%=title%></span>
+                   <span class="b-rs__item__info">
+                     <span class="b-rs__item__time"><% if(time.hours && time.hours > 0) {%>
+                     <% function recipeWord(num) {
+                       if (/(10|11|12|13|14|15|16|17|18|19)$/.test(num)) {return 'часов';}
+                       else if (/.*1$/.test(num)) {return 'час';}
+                       else if (/[2-4]$/.test(num)) {return 'часа';}
+                       else {return 'часов';}
+                     } %>
+                     <%=time.hours%> <%=recipeWord(time.hours)%><% } %><% if(time.minutes && time.minutes > 0) {%> <%=time.minutes%> мин<% } %></span>
+                     <span class="b-rs__item__nutrition"><%=nutrition%></span>
+                   </span>
+                   <span class="clear"></span>
+                 </a>
+                 <span class="b-rs__item__hr"></span>
+                </li>
+              </script>
+              <!-- end /components/recipe-search/-->
+              <noindex class="b-recipe-search__helper hidden-xs"><a id="search_helper_link" href="#" title="Помощник" class="b-recipe-search__helper__link"></a></noindex>
+              <div id="search_helper" style="display:none;">
+                <div class="body">
+                  <div class="menu">
+                    <noindex>
+                      <div class="item act"><a href="#" rel="h_helper">Помощник поиска</a><span>Помощник поиска</span></div>
+                      <div class="item"><a href="#" rel="h_ingredients">Ингредиенты</a><span>Ингредиенты</span></div>
+                      <!--<div class="item"><a href="#" rel="h_dishes">Типы блюд</a><span>Типы блюд</span></div>-->
+                      <div class="item right"><a href="#" rel="h_cuisines">Национальные кухни</a><span>Национальные кухни</span></div>
+                      <div class="clear"></div>
+                    </noindex>
+                  </div>
+                  <div id="h_helper" class="search_blocks">
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/diet.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Низкокалорийные</a></li>
+                          <li><a href="/search/">Диетические</a></li>
+                          <li><a href="/search/">Постные</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/dinner.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Позавтракать</a></li>
+                          <li><a href="/search/">Пообедать</a></li>
+                          <li><a href="/search/">Поужинать</a></li>
+                          <li><a href="/search/">Поздний ужин</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/quick.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Холостяку</a></li>
+                          <li><a href="/search/">Быстренько</a></li>
+                          <li><a href="/search/">Хочется экзотики</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column right">
+                      <div class="item"><img src="/upload/search/guests.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">День рождения</a></li>
+                          <li><a href="/search/">Удивить гостей</a></li>
+                          <li><a href="/search/">Романтический ужин</a></li>
+                          <li><a href="/search/">Вечеринка с друзьями</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="random_dish"><a href="/recipe/">Случайное блюдо?</a></div>
+                  </div>
+                  <div id="h_ingredients" class="search_blocks">
+                    <noindex>
+                      <div id="i_have_list">
+                        <div class="bg">
+                          <h2>У меня есть:</h2>
+                          <h2 class="stage_helper">Ингредиенты:</h2>
+                          <div id="i_have_dash">—</div>
+                          <table></table>
+                        </div>
+                        <div id="i_have_button">Найти</div>
+                        <div id="stage_button">Найти</div>
+                      </div>
+                      <div id="i_have_ingredients">
+                        <div class="search_field">
+                          <div class="search_input b-form-field">
+                            <input id="helper_smartsearch" type="text" value="" data-placeholder="Введите название" class="text">
+                            <div class="search_list">
+                              <ul class="search_list"></ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="i_have_ingredients_group">
+                          <ul></ul>
+                        </div>
+                        <div id="i_have_ingredients_list">
+                          <h2></h2>
+                          <div class="column">
+                            <ul></ul>
+                          </div>
+                          <div class="column">
+                            <ul></ul>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                      <div class="clear"></div>
+                    </noindex>
+                  </div>
+                  <div id="h_dishes" class="search_blocks">
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/diet.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Низкокалорийные</a></li>
+                          <li><a href="/search/">Диетические</a></li>
+                          <li><a href="/search/">Постные</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/dinner.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Позавтракать</a></li>
+                          <li><a href="/search/">Пообедать</a></li>
+                          <li><a href="/search/">Поужинать</a></li>
+                          <li><a href="/search/">Поздний ужин</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/quick.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">Холостяку</a></li>
+                          <li><a href="/search/">Быстренько</a></li>
+                          <li><a href="/search/">Хочется экзотики</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column right">
+                      <div class="item"><img src="/upload/search/guests.jpg" width="200" height="150" alt="">
+                        <ul>
+                          <li><a href="/search/">День рождения</a></li>
+                          <li><a href="/search/">Удивить гостей</a></li>
+                          <li><a href="/search/">Романтический ужин</a></li>
+                          <li><a href="/search/">Вечеринка с друзьями</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div id="h_cuisines" class="search_blocks">
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/europe.jpg" width="200" height="150" alt="">
+                        <h3>Европа</h3>
+                        <ul>
+                          <li><a href="/search/">Австрийская кухня</a></li>
+                          <li><a href="/search/">Английская кухня</a></li>
+                          <li><a href="/search/">Болгарская кухня</a></li>
+                          <li><a href="/search/">Венгерская кухня</a></li>
+                          <li><a href="/search/">Немецкая кухня</a></li>
+                          <li><a href="/search/">Польская кухня</a></li>
+                          <li><a href="/search/">Португальская кухня</a></li>
+                          <li><a href="/search/">Чешская кухня</a></li>
+                          <li><a href="/search/">Шотландская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/mediterranean.jpg" width="200" height="150" alt="">
+                        <h3>Средиземноморье</h3>
+                        <ul>
+                          <li><a href="/search/">Греческая кухня</a></li>
+                          <li><a href="/search/">Испанская кухня</a></li>
+                          <li><a href="/search/">Итальянская кухня</a></li>
+                          <li><a href="/search/">Французская кухня</a></li>
+                        </ul>
+                      </div>
+                      <div class="item"><img src="/upload/search/asia.jpg" width="200" height="150" alt="">
+                        <h3>Азия</h3>
+                        <ul>
+                          <li><a href="/search/">Индонезийская кухня</a></li>
+                          <li><a href="/search/">Китайская кухня</a></li>
+                          <li><a href="/search/">Тайская кухня</a></li>
+                          <li><a href="/search/">Японская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <div class="item"><img src="/upload/search/ussr.jpg" width="200" height="150" alt="">
+                        <h3>Бывший СССР</h3>
+                        <ul>
+                          <li><a href="/search/">Армянская кухня</a></li>
+                          <li><a href="/search/">Белорусская кухня</a></li>
+                          <li><a href="/search/">Грузинская кухня</a></li>
+                          <li><a href="/search/">Русская кухня</a></li>
+                          <li><a href="/search/">Узбекская кухня</a></li>
+                          <li><a href="/search/">Украинская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="column right">
+                      <div class="item"><img src="/upload/search/america.jpg" width="200" height="150" alt="">
+                        <h3>Америка</h3>
+                        <ul>
+                          <li><a href="/search/">Американская кухня</a></li>
+                          <li><a href="/search/">Бразильская кухня</a></li>
+                          <li><a href="/search/">Кубинская кухня</a></li>
+                          <li><a href="/search/">Мексиканская кухня</a></li>
+                          <li><a href="/search/">Ямайская кухня</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="slide_up_button">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+              <div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a></div>
+            </div>
+            <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="b-page-heading">
+      <div style="background-image: url(/upload/journal/heading.jpg);" class="b-page-heading__ill">
+        <h1>Журнал Foodclub.ru</h1>
+      </div>
+      <div class="b-content-nav">
+        <div class="visible-xs-block b-mobile-menu-icon"></div>
+        <div class="container">
+          <nav><a href="">Все публикации</a> <span>Дайджесты</span> <a href="">Подборки</a> <a href="">Меню</a> <a href="">Обзоры</a> <a href="">Самое интересное</a> <a href="">Foodclub</a> <a href="">Знаете ли вы, что</a></nav>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <!-- start /components/recipe/-->
+          <link rel="stylesheet" href="/components/recipe.menu/style.css">
+          <script src="/components/recipe.menu/script.js"></script>
+          <div class="b-recipe-menu"><a href="" class="b-recipe-menu__i b-favorite-button"><span class="b-favorite-button__text">В избранное</span></a><a href="" title="Удалить из избранного" class="b-recipe-menu__i b-favorite-button i-remove-favorite"><span class="b-favorite-button__text">Удалить</span></a><span class="b-recipe-menu__i"><a href="#" title="Распечатать рецепт" class="b-print-button b-recipe-menu__button__type-print"></a></span><span class="b-recipe-menu__i"><a href="#" title="Нравится" class="b-like-button"></a> <span class="b-like-button__num">32</span></span><span class="b-recipe-menu__i"><a href="#" title="Приготовили" class="b-cooked-button"></a> <span class="b-cooked-button__num">32</span></span><span class="b-recipe-menu__i"><a href="#" title="Просмотров" class="b-views-button"></a> <span class="b-views-button__num">32</span></span><span class="b-recipe-menu__i"><a href="#" title="Рейтинг" class="b-rating-button"></a> <span class="b-rating-button__num">12 056</span></span>
+            <div class="b-recipe-menu__social">
+              <div class="b-social-buttons"><span class="b-social-buttons__i i-vk"><a data-url="/php/social.php?url=http://www.foodclub.ru/detail/78391/&amp;desc=Если вы желаете красиво и необычно преподать картофель как гарнир, то можно сделать его так.&amp;img=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg&amp;tit=Картофель веером&amp;ajax=1&amp;who=VK&amp;clear_cache=Y" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://vk.com/share.php?url=http://www.foodclub.ru/detail/78391/&amp;image=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">+1</span></span><span class="b-social-buttons__i i-fb"><a data-url="/php/social.php?url=http://www.foodclub.ru/detail/78391/&amp;desc=Если вы желаете красиво и необычно преподать картофель как гарнир, то можно сделать его так.&amp;img=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg&amp;tit=Картофель веером&amp;ajax=1&amp;who=FB&amp;clear_cache=Y" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://www.facebook.com/sharer.php?t=Картофель веером&amp;src=sp&amp;u=http://www.foodclub.ru/detail/78391/" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">5504</span></span></div>
+            </div>
+          </div>
+          <!-- end /components/recipe/-->
+          <!-- start /components/recipe/-->
+          <link rel="stylesheet" href="/components/recipe/style.css">
+          <script src="/components/recipe/script.js"></script>
+          <div id="recipe_id" itemscope itemtype="http://data-vocabulary.org/Recipe" class="recipe hrecipe">
+            <div class="title">
+              <div class="body">
+                <div class="chain_path">
+                  <div class="author">
+                    <div class="author_photo">
+                      <div class="big_photo">
+                        <div><img src="/upload/user/small_photo.jpg" width="100" height="100" alt="max_s"></div>
+                      </div><img src="/upload/user/small_photo.jpg" width="30" height="30" alt="max_s">
+                    </div><a href="/author/" itemprop="author" class="nickname">max_s</a>
+                  </div>предлагает приготовить:<span class="tags"><a href="/search/" rel="tag" class="cuisine-type">Китайская кухня</a>/<a href="/search/" rel="tag" class="category">Супы</a>/<a href="/search/" rel="tag">Курица</a></span>
+                </div>
+                <div class="admin_panel">
+                  <noindex><a id="html_code" href="#">HTML-код</a><a href="" title="Редактировать" class="edit">Редактировать</a><a href="" title="Удалить" class="delete">Удалить</a></noindex>
+                </div>
+                <h1 itemprop="name" class="fn">Бисквитный рулет со сливочным сыром и фруктами</h1>
+                <div class="recipe_info">
+                  <table>
+                    <tr>
+                      <td class="time"><span>Время приготовления: </span><span datetime="PT1H30M" itemprop="totalTime" class="time-value duration">1 час 30 мин</span></td>
+                      <td itemprop="nutrition" itemscope itemtype="http://data-vocabulary.org/Nutrition" class="yield"><span>Порций: </span><span itemprop="yield" class="yield-value">4</span></td>
+                      <td class="nutrition"><span>Калорийность: </span><span itemprop="calories" class="nutrition-value calories">4 кКал на порцию</span></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="image">
+                  <div class="screen">
+                    <div style="width:600px; height:400px;"></div>
+                  </div><img src="http://www.foodclub.ru/upload/iblock/58f/_end.jpg" width="600" height="400" alt="" itemprop="photo" class="result-photo">
+                </div>
+                <div class="needed">
+                  <h2>Вам понадобится:</h2>
+                  <div class="tools"><span class="item"><img src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips"> <span class="p">Блендер Viva Collection от <a href="http://" target="_blank">Philips</a></span></span><span class="item"><img src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips"> <span class="p">Блендер  от <a href="http://" target="_blank">Philips</a></span></span><span class="item"><img src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips"> <span class="p">Collection от <a href="http://" target="_blank">Philips</a></span></span><span class="item"><img src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips"> <span class="p">Блендер Viva Collection от <a href="http://" target="_blank">Philips</a></span></span></div>
+                  <div class="scales"><a href="#" title="Таблица мер"></a></div>
+                  <table itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient">
+                    <tr>
+                      <td itemprop="name" class="ing_name"><span class="ingredient">Куриное филе</span></td>
+                      <td itemprop="amount" class="ing_amount">4 шт</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                      <td itemprop="name" class="ing_name border"><span class="ingredient">Куриное филе</span></td>
+                      <td itemprop="amount" class="ing_amount">4 шт</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                    </tr>
+                    <tr>
+                      <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                      <td itemprop="amount" class="ing_amount">100 г</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                      <td itemprop="name" class="ing_name border"><span class="ingredient">Сливочное масло из молока коров с Альпийских лугов</span></td>
+                      <td itemprop="amount" class="ing_amount">100 г</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                    </tr>
+                    <tr>
+                      <td itemprop="name" class="ing_name"><span class="ingredient">Зелень</span></td>
+                      <td itemprop="amount" class="ing_amount">2 пучка</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                      <td itemprop="name" class="ing_name border"><span class="ingredient">Зелень</span></td>
+                      <td itemprop="amount" class="ing_amount">2 пучка</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                    </tr>
+                    <tr>
+                      <td itemprop="name" class="ing_name"><span class="ingredient">Лимонный сок</span></td>
+                      <td itemprop="amount" class="ing_amount">1 стакан</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                      <td itemprop="name" class="ing_name border"><span class="ingredient">Лимонный сок</span></td>
+                      <td itemprop="amount" class="ing_amount">1 стакан</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                    </tr>
+                    <tr>
+                      <td itemprop="name" class="ing_name"><span class="ingredient">Вегета</span></td>
+                      <td itemprop="amount" class="ing_amount">200 г</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                      <td itemprop="name" class="ing_name border"><span class="ingredient">Вегета</span></td>
+                      <td itemprop="amount" class="ing_amount">200 г</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                    </tr>
+                    <tr>
+                      <td itemprop="name" class="ing_name"><span class="ingredient">Мука</span></td>
+                      <td itemprop="amount" class="ing_amount">300 г</td>
+                      <td class="ing_buy"><a href="">Купить</a></td>
+                      <td itemprop="name" class="ing_name border"><span class="ingredient"></span></td>
+                      <td itemprop="amount" class="ing_amount"></td>
+                      <td class="ing_buy"></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="instructions">
+              <div itemprop="summary" class="description">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="needed">
+                    <h2>Ингредиенты 1-го этапа:</h2>
+                    <table>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Сливочное масло из молока коров с Альпийских лугов</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="image">
+                    <div class="screen">
+                      <div style="width:500px; height:350px;"></div>
+                    </div><img src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" class="photo">
+                  </div>
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="image">
+                    <div class="screen">
+                      <div style="width:500px; height:350px;"></div>
+                    </div><img src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" class="photo">
+                  </div>
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="needed">
+                    <h2>Ингредиенты 3-го этапа:</h2>
+                    <table>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Сливочное масло из молока коров с Альпийских лугов</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient"></span></td>
+                        <td itemprop="amount" class="ing_amount"></td>
+                        <td class="ing_buy"></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="needed">
+                    <h2>Ингредиенты 5-го этапа:</h2>
+                    <table>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Сливочное масло из молока коров с Альпийских лугов</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient"></span></td>
+                        <td itemprop="amount" class="ing_amount"></td>
+                        <td class="ing_buy"></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="image">
+                    <div class="screen">
+                      <div style="width:500px; height:350px;"></div>
+                    </div><img src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" class="photo">
+                  </div>
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="needed">
+                    <h2>Ингредиенты 6-го этапа:</h2>
+                    <table>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Сливочное масло из молока коров с Альпийских лугов</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient"></span></td>
+                        <td itemprop="amount" class="ing_amount"></td>
+                        <td class="ing_buy"></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="image">
+                    <div class="screen">
+                      <div style="width:500px; height:350px;"></div>
+                    </div><img src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" class="photo">
+                  </div>
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+              <div class="border"></div>
+              <div class="stage">
+                <div class="body">
+                  <div class="needed">
+                    <h2>Ингредиенты 5-го этапа:</h2>
+                    <table>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Куриное филе</span></td>
+                        <td itemprop="amount" class="ing_amount">4 шт</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient">Сливочное масло из молока коров с Альпийских лугов</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                      </tr>
+                      <tr>
+                        <td itemprop="name" class="ing_name"><span class="ingredient">Сливочное масло</span></td>
+                        <td itemprop="amount" class="ing_amount">100 г</td>
+                        <td class="ing_buy"><a href="">Купить</a></td>
+                        <td itemprop="name" class="ing_name border"><span class="ingredient"></span></td>
+                        <td itemprop="amount" class="ing_amount"></td>
+                        <td class="ing_buy"></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="image">
+                    <div class="screen">
+                      <div style="width:500px; height:350px;"></div>
+                    </div><img src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" class="photo">
+                  </div>
+                  <div class="instruction">Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))</div>
+                </div>
+              </div>
+            </div>
+            <div class="date"><span datetime="2006-01-18" itemprop="published" class="published">18 января 2006 </span><span class="time">18:25</span></div>
+            <div class="bar">
+              <div class="padding">
+                <div class="author">
+                  <div class="author_photo">
+                    <div class="big_photo">
+                      <div><img src="/upload/user/small_photo.jpg" width="100" height="100" alt="max_s"></div>
+                    </div><img src="/upload/user/small_photo.jpg" width="30" height="30" alt="max_s">
+                  </div><a href="/author/" itemprop="author" class="nickname">max_s</a>
+                </div>
+                <div class="comments"><a href="/recipe/#add_opinion" class="add">Комментировать</a><span class="number">(<a href="/recipe/#comments">2</a>)</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- end /components/recipe/-->
+          <!-- start /components/recipe/-->
+          <link rel="stylesheet" href="/components/recipe.menu/style.css">
+          <script src="/components/recipe.menu/script.js"></script>
+          <div class="b-recipe-menu i-bottom">
+            <div class="b-recipe-menu__info">
+              <div class="b-info-block i-cooked"><a href="#" title="Я готовил" data-href="/components/recipe.menu/new.json?action=uncooked&amp;amp;id=13004&amp;amp;code=test" class="b-info-block__icon i-cooked i-active"></a>
+                <div class="b-info-block__text"><b>Приготовили</b>
+                  <div class="b-info-block__users"><a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a> <a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a> <a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a> <a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a></div>
+                  <div class="b-info-block__others">и еще 318 кулинаров</div>
+                </div>
+              </div>
+              <div class="b-info-block i-like"><a href="#" title="Нравится" data-href="/components/recipe.menu/empty.json?action=dislike&amp;amp;id=13004&amp;amp;code=test" class="b-info-block__icon i-like i-active"></a>
+                <div class="b-info-block__text"><b>Нравится</b>
+                  <div class="b-info-block__users"><a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a> <a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a> <a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a> <a href="/personal/" title="Ирина" class="b-info-block__user"><img src="/upload/user/small_photo.jpg" width="20" height="20" alt=""></a></div>
+                  <b-info-block__others></b-info-block__others>
+                </div>
+              </div>
+            </div>
+            <div class="b-recipe-menu__info">
+              <div class="b-info-block i-cooked"><a href="#" title="Я готовил" data-href="/components/recipe.menu/one.json?action=cooked&amp;amp;id=13004&amp;amp;code=test" class="b-info-block__icon i-cooked"></a>
+                <div class="b-info-block__title"><b>Приготовил</b></div>
+              </div>
+              <div class="b-info-block i-like"><a href="/forms/authorization/" title="Нравится" class="b-info-block__icon i-like"></a>
+                <div class="b-info-block__title"><b>Нравится</b></div>
+              </div>
+            </div><a href="" title="Удалить из избранного" class="b-recipe-menu__i b-favorite-button i-remove-favorite"><span class="b-favorite-button__text">Удалить</span></a><span class="b-recipe-menu__title">Мои рецепты для дня рождения, Все рецепты</span>
+            <hr><span class="b-recipe-menu__i"><a href="#" title="Распечатать рецепт" class="b-print-button"></a></span><span class="b-recipe-menu__i"><a href="#" title="Нравится" class="b-like-button"></a> <span class="b-like-button__num">32</span></span><span class="b-recipe-menu__i"><a href="#" title="Приготовили" class="b-cooked-button"></a> <span class="b-cooked-button__num">32</span></span><span class="b-recipe-menu__i"><a href="#" title="Просмотров" class="b-views-button"></a><span class="b-views-button__num">32</span></span><span class="b-recipe-menu__i"><a href="#" title="Рейтинг" class="b-rating-button"></a> <span class="b-rating-button__num">12 056</span></span>
+            <div class="b-recipe-menu__social">
+              <div class="b-social-buttons"><span class="b-social-buttons__title">Поделись —</span><span class="b-social-buttons__i i-vk"><a data-url="/php/social.php?url=http://www.foodclub.ru/detail/78391/&amp;desc=Если вы желаете красиво и необычно преподать картофель как гарнир, то можно сделать его так.&amp;img=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg&amp;tit=Картофель веером&amp;ajax=1&amp;who=VK&amp;clear_cache=Y" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://vk.com/share.php?url=http://www.foodclub.ru/detail/78391/&amp;image=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">+1</span></span><span class="b-social-buttons__i i-fb"><a data-url="/php/social.php?url=http://www.foodclub.ru/detail/78391/&amp;desc=Если вы желаете красиво и необычно преподать картофель как гарнир, то можно сделать его так.&amp;img=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg&amp;tit=Картофель веером&amp;ajax=1&amp;who=FB&amp;clear_cache=Y" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://www.facebook.com/sharer.php?t=Картофель веером&amp;src=sp&amp;u=http://www.foodclub.ru/detail/78391/" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">5504</span></span><span class="b-social-buttons__i i-tw"><a data-url="/php/social.php?url=http://www.foodclub.ru/detail/78391/&amp;desc=Если вы желаете красиво и необычно преподать картофель как гарнир, то можно сделать его так.&amp;img=http://www.foodclub.ru/upload/iblock/d96/d96ce3c9d73e6573e711809f740b67b8.jpg&amp;tit=Картофель веером&amp;ajax=1&amp;who=FB&amp;clear_cache=Y" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://www.facebook.com/sharer.php?t=Картофель веером&amp;src=sp&amp;u=http://www.foodclub.ru/detail/78391/" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">32355</span></span><span class="b-social-buttons__i i-serf"><a data-url="/php/social.json?param4=value4" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://vkontakte.ru/share.php?url=http://www.foodclub.ru/new-year/&amp;amp;image=http://www.foodclub.ru/new-year/upload/ill.jpg" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">33457</span></span><span class="b-social-buttons__i i-pin"><a data-url="/php/social.json?param5=value5" onclick="window.open(this.href, '', 'width=540,height=450');return false;" target="_blank" href="http://vkontakte.ru/share.php?url=http://www.foodclub.ru/new-year/&amp;amp;image=http://www.foodclub.ru/new-year/upload/ill.jpg" class="b-social-buttons__i__icon"></a><span class="b-social-buttons__i__num">33457</span></span></div>
+            </div>
+          </div>
+          <!-- end /components/recipe/-->
+          <!-- start /components/recipe.comments/-->
+          <link rel="stylesheet" href="/components/recipe.comments/style.css">
+          <script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
+          <script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
+          <script src="/js/file-upload/js/jquery.fileupload.js"></script>
+          <script src="/components/recipe.comments/script.js"></script>
+          <script type="text/template" id="comment-template">
+            <div class="b-rc__block">
+             <div class="b-rc__item<%if(mine) {%> i-mine<%}%>" data-id="<%=id%>">
+               <div class="i-relative">
+                 <a href="#" class="b-rc__item__close b-close-icon b-close-icon__color_3" title="Закрыть"></a>
+                 <div class="b-rc__item__pointer"></div>
+                 <div class="b-rc__item__author b-author-avatar">
+                   <a href="<%=author.href%>" class="b-author-avatar__link">
+                     <img src="<%=author.src%>" width="100%" height="100%" alt="<%=author.name%>" class="b-author-avatar__img">
+                   </a>
+                 </div>
+                 <div class="b-rc__admin-buttons b-admin-buttons">
+                   <div class="b-admin-buttons__block">
+                     <div class="b-delete-icon" title="Удалить отзыв"></div>
+                     <div class="b-edit-icon" title="Редактировать"></div>
+                   </div>
+                 </div>
+               </div>
+               <div class="b-rc__item__content">
+                 <div class="b-rc__item__content__author"><a href="<%=author.href%>"><%=author.name%></a></div>
+                 <% if(image.src && image.id) { %>
+                 <div class="b-rc__item__content__text">
+                   <div class="b-rc__item__content__text__img">
+                     <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+                   </div>
+                   <div class="b-rc__item__content__text__content"><%=text.html%></div>
+                   <div class="i-clearfix"></div>
+                 </div>
+                 <% } else { %>
+                 <div class="b-rc__item__content__text">
+                   <%=text.html%>
+                 </div>
+                 <% } %>
+                 <div class="b-rc-edit-form">
+                   <form action="" method="get">
+                     <div class="b-form-field b-form__photo-block">
+                       <% if(image.src && image.id) { %>
+                       <div class="b-admin-buttons">
+                         <div class="b-admin-buttons__block">
+                           <div class="b-delete-icon" title="Удалить фото"></div>
+                           <div class="b-image-icon" title="Загрузить новое фото">
+                             <div class="b-image-icon__input-file input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                             <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url" />
+                           </div>
+                         </div>
+                       </div>
+                       <div class="b-form__photo-block__img">
+                         <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+                       </div>
+                       <% } else { %>
+                       <div class="input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                       <div class="b-form__photo-block__img"></div>
+                       <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
+                       <% } %>
+                     </div>
+                     
+                     <div class="b-form-field b-form__text-block">
+                       <input type="hidden" value="<%=id%>" name="cId">
+                       <input type="hidden" value="<%=rId%>" name="rId">
+                       <input type="hidden" value="e" name="a">
+                       <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
+                       <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                       <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
+                       <button class="b-button b-button__width_100" type="submit">Написать отзыв</button>
+                     </div>
+                     <div class="i-clearfix"></div>
+                   </form>
+                 </div>
+                 <div class="b-rc__props">
+                   <div class="b-rc__props__reply">
+                     <a class="b-button__size_S" href="#">Ответить</a>
+                   </div>
+                   <div class="b-rc__props__like">
+                     <span class="b-like">
+                       <a title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="#" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
+                       <span class="b-like-num"><%=likeNum%></span>
+                     </span>
+                   </div>
+                   <div class="b-rc__props__date"><%=date%></div>
+                   <div class="i-clearfix"></div>
+                 </div>
+               </div>
+             </div>
+            </div>
+          </script>
+          <script type="text/template" id="reply-template">
+            <div class="b-rc__item" data-id="<%=id%>">
+             
+             <div class="i-relative">
+               <a href="#" class="b-rc__item__close b-close-icon b-close-icon__color_3" title="Закрыть"></a>
+               <div class="b-rc__item__pointer"></div>
+               <div class="b-rc__item__author b-author-avatar">
+                 <a href="<%=author.href%>" class="b-author-avatar__link">
+                   <img src="<%=author.src%>" width="100%" height="100%" alt="<%=author.name%>" class="b-author-avatar__img">
+                 </a>
+               </div>
+               <div class="b-rc__admin-buttons b-admin-buttons">
+                 <div class="b-admin-buttons__block">
+                   <div class="b-delete-icon" title="Удалить отзыв"></div>
+                   <div class="b-edit-icon" title="Редактировать"></div>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="b-rc__item__content">
+               <div class="b-rc__item__content__author"><a href="<%=author.href%>"><%=author.name%></a></div>
+               
+               <% if(image.src && image.id) { %>
+               <div class="b-rc__item__content__text">
+                 <div class="b-rc__item__content__text__img">
+                   <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+                 </div>
+                 <div class="b-rc__item__content__text__content"><%=text.html%></div>
+                 <div class="i-clearfix"></div>
+               </div>
+               <% } else { %>
+               <div class="b-rc__item__content__text">
+                 <%=text.html%>
+               </div>
+               <% } %>
+               
+               <div class="b-rc-edit-form">
+                 <form action="" method="get">
+                   <div class="b-form-field b-form__photo-block">
+                   
+                     <% if(image.src && image.id) { %>
+                     <div class="b-admin-buttons">
+                       <div class="b-admin-buttons__block">
+                         <div class="b-delete-icon" title="Удалить фото"></div>
+                         <div class="b-image-icon" title="Загрузить новое фото">
+                           <div class="b-image-icon__input-file input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                           <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url" />
+                         </div>
+                       </div>
+                     </div>
+                     <div class="b-form__photo-block__img">
+                       <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+                     </div>
+                     <% } else { %>
+                     <div class="input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                     <div class="b-form__photo-block__img"></div>
+                     <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
+                     <% } %>
+                   </div>
+                   
+                   <div class="b-form-field b-form__text-block">
+                     <input type="hidden" value="<%=cId%>" name="cId">
+                     <input type="hidden" value="<%=rId%>" name="rId">
+                     <input type="hidden" value="e" name="a">
+                     <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
+                     <input type="hidden" value="<%=root%>" name="root">
+                     <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                     <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
+                     <button class="b-button b-button__width_100" type="submit">Написать отзыв</button>
+                   </div>
+                   <div class="i-clearfix"></div>
+                 </form>
+               </div>
+               <div class="b-rc__props">
+                 <div class="b-rc__props__like">
+                   <span class="b-like">
+                     <a title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="#" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
+                     <span class="b-like-num"><%=likeNum%></span>
+                   </span>
+                 </div>
+                 <div class="b-rc__props__date"><%=date%></div>
+                 <div class="i-clearfix"></div>
+               </div>
+             </div>
+            </div>
+          </script>
+          <script type="text/template" id="photo-template">
+            <div class="b-admin-buttons">
+             <div class="b-admin-buttons__block">
+               <div class="b-delete-icon" title="Удалить фото"></div>
+               <div class="b-image-icon" title="Загрузить новое фото">
+                 <%
+                   id = id || "";
+                   if(type == "edit") id = "fileupload" + id;
+                   if(type == "reply") id = "fileuploadReply";
+                   if(type == "comment") id = "fileuploadComment";
+                 %>
+                 <div class="b-image-icon__input-file b-rc-<%=type%>-form__input-file input_file"><input type="file" class="text" id="<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                 <input type="hidden" name="comment-photo" value="<%=url%>" class="b-image-icon__photo-url" />
+               </div>
+             </div>
+            </div>
+            <div class="b-form__photo-block__img">
+             <img src="<%=url%>" height="65" alt="" class="i-align-img" data-id="<%=id%>" />
+            </div>
+          </script>
+          <script type="text/template" id="file-input-template">
+            <%
+             id = id || "";
+             if(type == "edit") id = "fileupload" + id;
+             if(type == "reply") id = "fileuploadReply";
+             if(type == "comment") id = "fileuploadComment";
+            %>
+            <div class="input_file"><input type="file" class="text" id="<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+            <div class="b-form__photo-block__img"></div>
+            <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
+          </script>
+          <div id="b-comments">
+            <h2 class="b-rc__heading">Отзывы пользователей</h2>
+            <div id="comment"></div>
+            <div id="b-comment-form">
+              <div class="b-rc__item i-foodclub">
+                <div class="i-relative">
+                  <div class="b-rc__item__pointer"></div>
+                </div>
+                <div class="b-rc__item__content">
+                  <div class="b-rc__item__content__text">Если Вы хотите оставить комментарий, Вам необходимо <a href="/forms/authorization/">авторизоваться</a> 
+                    или <a href="/forms/registration/">зарегистрироваться</a> 
+                    на сайте.
+                  </div>
+                </div>
+              </div>
+              <form action="/components/recipe.comments/php/comment.json" method="get">
+                <div class="b-form-field b-form__photo-block">
+                  <div class="input_file">
+                    <input id="fileupload-comment" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                  </div>
+                  <div class="b-form__photo-block__img"></div>
+                  <input type="hidden" name="comment-photo" value="" class="b-comment-form__photo__url">
+                </div>
+                <div class="b-form-field b-comment-form__text">
+                  <label class="b-form-label">Ваш отзыв</label> <span class="b-form-attention">?</span>
+                  <div class="b-textarea-wrapper">
+                    <textarea name="comment" cols="10" rows="10" required class="b-textarea"></textarea>
+                  </div>
+                  <input type="hidden" name="recipe" value="12813">
+                  <div class="error_message">&mdash; универсальное сообщение об ошибке!</div>
+                  <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                </div>
+                <div class="i-clearfix"></div>
+              </form>
+            </div>
+            <div data-sessId="fdc4e58491fab80d2aea909fc98b690b" data-edit-form-action="/components/recipe.comments/php/edit.json" data-edit-form-method="GET" data-delete-action="/components/recipe.comments/php/delete-recipe-comment.json" data-delete-method="GET" data-delete-photo-action="/components/recipe.comments/php/delete-photo-comment.json" data-delete-photo-method="GET" class="b-recipe-comments">
+              <div class="b-rc__block">
+                <div data-id="78" class="b-rc__item">
+                  <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                    <div class="b-rc__item__pointer"></div>
+                    <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/upload/main/e6a/420594_299060910152835_1077967806_n d2q.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                    <div class="b-rc__admin-buttons b-admin-buttons">
+                      <div class="b-admin-buttons__block">
+                        <div title="Удалить отзыв" class="b-delete-icon"></div>
+                        <div title="Редактировать" class="b-edit-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-rc__item__content">
+                    <div class="b-rc__item__content__author"><a href="/personal/">falabella</a></div>
+                    <div class="b-rc__item__content__text">Здорово! нужно попробовать.<br>А можно добавить оливки? и на каком этапе лучше это сделать?</div>
+                    <div class="b-rc-edit-form">
+                      <form action="" method="get">
+                        <div class="b-form-field b-form__photo-block">
+                          <div class="input_file">
+                            <input id="fileupload78" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                          </div>
+                          <div class="b-form__photo-block__img"></div>
+                          <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                        </div>
+                        <div class="b-form-field b-form__text-block">
+                          <input type="hidden" value="51939" name="cId">
+                          <input type="hidden" value="51801" name="rId">
+                          <input type="hidden" value="e" name="a">
+                          <label class="b-form-label"><span class="b-form-attention">?</span></label>
+                          <div class="b-textarea-wrapper">
+                            <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Здорово! нужно попробовать.</textarea>
+                          </div>
+                          <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                        </div>
+                        <div class="i-clearfix"></div>
+                      </form>
+                    </div>
+                    <div class="b-rc__props">
+                      <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+                      <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                      <div class="b-rc__props__date">13.10.2008 &vcy; 05:15</div>
+                      <div class="i-clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-rc__block">
+                <div data-id="68" class="b-rc__item">
+                  <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                    <div class="b-rc__item__pointer"></div>
+                    <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                    <div class="b-rc__admin-buttons b-admin-buttons">
+                      <div class="b-admin-buttons__block">
+                        <div title="Удалить отзыв" class="b-delete-icon"></div>
+                        <div title="Редактировать" class="b-edit-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-rc__item__content">
+                    <div class="b-rc__item__content__author"><a href="/personal/">falabella</a></div>
+                    <div class="b-rc__item__content__text">Здорово! нужно попробовать.<br>А можно добавить оливки? и на каком этапе лучше это сделать?</div>
+                    <div class="b-rc-edit-form">
+                      <form action="" method="get">
+                        <div class="b-form-field b-form__photo-block">
+                          <div class="input_file">
+                            <input id="fileupload68" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                          </div>
+                          <div class="b-form__photo-block__img"></div>
+                          <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                        </div>
+                        <div class="b-form-field b-form__text-block">
+                          <input type="hidden" value="51939" name="cId">
+                          <input type="hidden" value="51801" name="rId">
+                          <input type="hidden" value="e" name="a">
+                          <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                          <div class="b-textarea-wrapper">
+                            <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Здорово! нужно попробовать. А можно добавить оливки? и на каком этапе лучше это сделать?</textarea>
+                          </div>
+                          <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                        </div>
+                        <div class="i-clearfix"></div>
+                      </form>
+                    </div>
+                    <div class="b-rc__props">
+                      <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+                      <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                      <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                      <div class="i-clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="b-rc__reply-block">
+                  <div data-id="58" class="b-rc__item">
+                    <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                      <div class="b-rc__item__pointer"></div>
+                      <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                      <div class="b-rc__admin-buttons b-admin-buttons">
+                        <div class="b-admin-buttons__block">
+                          <div title="Удалить отзыв" class="b-delete-icon"></div>
+                          <div title="Редактировать" class="b-edit-icon"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="b-rc__item__content">
+                      <div class="b-rc__item__content__author"><a href="/personal/">Мария Савельева</a></div>
+                      <div class="b-rc__item__content__text">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</div>
+                      <div class="b-rc-edit-form">
+                        <form action="" method="get">
+                          <div class="b-form-field b-form__photo-block">
+                            <div class="input_file">
+                              <input id="fileupload58" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                            </div>
+                            <div class="b-form__photo-block__img"></div>
+                            <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                          </div>
+                          <div class="b-form-field b-form__text-block">
+                            <input type="hidden" value="51939" name="cId">
+                            <input type="hidden" value="51801" name="rId">
+                            <input type="hidden" value="e" name="a">
+                            <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                            <div class="b-textarea-wrapper">
+                              <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</textarea>
+                            </div>
+                            <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                          </div>
+                          <div class="i-clearfix"></div>
+                        </form>
+                      </div>
+                      <div class="b-rc__props">
+                        <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                        <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                        <div class="i-clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-rc__block">
+                <div data-id="79" class="b-rc__item i-mine">
+                  <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                    <div class="b-rc__item__pointer"></div>
+                    <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                    <div class="b-rc__admin-buttons b-admin-buttons">
+                      <div class="b-admin-buttons__block">
+                        <div title="Удалить отзыв" class="b-delete-icon"></div>
+                        <div title="Редактировать" class="b-edit-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-rc__item__content">
+                    <div class="b-rc__item__content__author"><a href="/personal/">madler</a></div>
+                    <div class="b-rc__item__content__text">Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!</div>
+                    <div class="b-rc-edit-form">
+                      <form action="" method="get">
+                        <div class="b-form-field b-form__photo-block">
+                          <div class="input_file">
+                            <input id="fileupload79" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                          </div>
+                          <div class="b-form__photo-block__img"></div>
+                          <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                        </div>
+                        <div class="b-form-field b-form__text-block">
+                          <input type="hidden" value="51939" name="cId">
+                          <input type="hidden" value="51801" name="rId">
+                          <input type="hidden" value="e" name="a">
+                          <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                          <div class="b-textarea-wrapper">
+                            <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!</textarea>
+                          </div>
+                          <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                        </div>
+                        <div class="i-clearfix"></div>
+                      </form>
+                    </div>
+                    <div class="b-rc__props">
+                      <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+                      <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                      <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                      <div class="i-clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="b-rc__reply-block">
+                  <div data-id="80" class="b-rc__item">
+                    <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                      <div class="b-rc__item__pointer"></div>
+                      <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                      <div class="b-rc__admin-buttons b-admin-buttons">
+                        <div class="b-admin-buttons__block">
+                          <div title="Удалить отзыв" class="b-delete-icon"></div>
+                          <div title="Редактировать" class="b-edit-icon"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="b-rc__item__content">
+                      <div class="b-rc__item__content__author"><a href="/personal/">madler</a></div>
+                      <div class="b-rc__item__content__text">katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!</div>
+                      <div class="b-rc-edit-form">
+                        <form action="" method="get">
+                          <div class="b-form-field b-form__photo-block">
+                            <div class="input_file">
+                              <input id="fileupload80" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                            </div>
+                            <div class="b-form__photo-block__img"></div>
+                            <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                          </div>
+                          <div class="b-form-field b-form__text-block">
+                            <input type="hidden" value="51939" name="cId">
+                            <input type="hidden" value="51801" name="rId">
+                            <input type="hidden" value="e" name="a">
+                            <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                            <div class="b-textarea-wrapper">
+                              <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!</textarea>
+                            </div>
+                            <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                          </div>
+                          <div class="i-clearfix"></div>
+                        </form>
+                      </div>
+                      <div class="b-rc__props">
+                        <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                        <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                        <div class="i-clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-rc__block">
+                <div data-id="59" class="b-rc__item i-mine">
+                  <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                    <div class="b-rc__item__pointer"></div>
+                    <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                    <div class="b-rc__admin-buttons b-admin-buttons">
+                      <div class="b-admin-buttons__block">
+                        <div title="Удалить отзыв" class="b-delete-icon"></div>
+                        <div title="Редактировать" class="b-edit-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-rc__item__content">
+                    <div class="b-rc__item__content__author"><a href="/personal/">madler</a></div>
+                    <div class="b-rc__item__content__text">
+                      <div class="b-rc__item__content__text__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1212" class="i-align-img"></div>
+                      <div class="b-rc__item__content__text__content">Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</div>
+                      <div class="i-clearfix"></div>
+                    </div>
+                    <div class="b-rc-edit-form">
+                      <form action="" method="get">
+                        <div class="b-form-field b-form__photo-block">
+                          <div class="b-admin-buttons">
+                            <div class="b-admin-buttons__block">
+                              <div title="Удалить фото" class="b-delete-icon"></div>
+                              <div title="Загрузить новое фото" class="b-image-icon">
+                                <div class="b-image-icon__input-file input_file">
+                                  <input id="fileupload59" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                                </div>
+                                <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="b-form__photo-block__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1212" class="i-align-img"></div>
+                        </div>
+                        <div class="b-form-field b-form__text-block">
+                          <input type="hidden" value="51939" name="cId">
+                          <input type="hidden" value="51801" name="rId">
+                          <input type="hidden" value="e" name="a">
+                          <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                          <div class="b-textarea-wrapper">
+                            <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</textarea>
+                          </div>
+                          <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                        </div>
+                        <div class="i-clearfix"></div>
+                      </form>
+                    </div>
+                    <div class="b-rc__props">
+                      <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+                      <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                      <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                      <div class="i-clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="b-rc__block">
+                <div data-id="48" class="b-rc__item">
+                  <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                    <div class="b-rc__item__pointer"></div>
+                    <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                    <div class="b-rc__admin-buttons b-admin-buttons">
+                      <div class="b-admin-buttons__block">
+                        <div title="Удалить отзыв" class="b-delete-icon"></div>
+                        <div title="Редактировать" class="b-edit-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-rc__item__content">
+                    <div class="b-rc__item__content__author"><a href="/personal/">falabella</a></div>
+                    <div class="b-rc__item__content__text">Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</div>
+                    <div class="b-rc-edit-form">
+                      <form action="" method="get">
+                        <div class="b-form-field b-form__photo-block">
+                          <div class="input_file">
+                            <input id="fileupload48" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                          </div>
+                          <div class="b-form__photo-block__img"></div>
+                          <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                        </div>
+                        <div class="b-form-field b-form__text-block">
+                          <input type="hidden" value="51939" name="cId">
+                          <input type="hidden" value="51801" name="rId">
+                          <input type="hidden" value="e" name="a">
+                          <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                          <div class="b-textarea-wrapper">
+                            <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</textarea>
+                          </div>
+                          <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                        </div>
+                        <div class="i-clearfix"></div>
+                      </form>
+                    </div>
+                    <div class="b-rc__props">
+                      <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+                      <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                      <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                      <div class="i-clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="b-rc__reply-block">
+                  <div data-id="38" class="b-rc__item">
+                    <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                      <div class="b-rc__item__pointer"></div>
+                      <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                      <div class="b-rc__admin-buttons b-admin-buttons">
+                        <div class="b-admin-buttons__block">
+                          <div title="Удалить отзыв" class="b-delete-icon"></div>
+                          <div title="Редактировать" class="b-edit-icon"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="b-rc__item__content">
+                      <div class="b-rc__item__content__author"><a href="/personal/">Мария Савельева</a></div>
+                      <div class="b-rc__item__content__text">
+                        <div class="b-rc__item__content__text__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1313" class="i-align-img"></div>
+                        <div class="b-rc__item__content__text__content">Спасибо! Я тоже в этом уверена!</div>
+                        <div class="i-clearfix"></div>
+                      </div>
+                      <div class="b-rc-edit-form">
+                        <form action="" method="get">
+                          <div class="b-form-field b-form__photo-block">
+                            <div class="b-admin-buttons">
+                              <div class="b-admin-buttons__block">
+                                <div title="Удалить фото" class="b-delete-icon"></div>
+                                <div title="Загрузить новое фото" class="b-image-icon">
+                                  <div class="b-image-icon__input-file input_file">
+                                    <input id="fileupload59" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                                  </div>
+                                  <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="b-form__photo-block__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1313" class="i-align-img"></div>
+                          </div>
+                          <div class="b-form-field b-form__text-block">
+                            <input type="hidden" value="51939" name="cId">
+                            <input type="hidden" value="51801" name="rId">
+                            <input type="hidden" value="e" name="a">
+                            <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                            <div class="b-textarea-wrapper">
+                              <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</textarea>
+                            </div>
+                            <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                          </div>
+                          <div class="i-clearfix"></div>
+                        </form>
+                      </div>
+                      <div class="b-rc__props">
+                        <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                        <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                        <div class="i-clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-id="28" class="b-rc__item">
+                    <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+                      <div class="b-rc__item__pointer"></div>
+                      <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"></a></div>
+                      <div class="b-rc__admin-buttons b-admin-buttons">
+                        <div class="b-admin-buttons__block">
+                          <div title="Удалить отзыв" class="b-delete-icon"></div>
+                          <div title="Редактировать" class="b-edit-icon"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="b-rc__item__content">
+                      <div class="b-rc__item__content__author"><a href="/personal/">Мария Савельева</a></div>
+                      <div class="b-rc__item__content__text">
+                        <div class="b-rc__item__content__text__img"><img src="/images/infoblock/pancake.jpg" height="65" alt="" data-id="1414" class="i-align-img"></div>
+                        <div class="b-rc__item__content__text__content">Спасибо! Я тоже в этом уверена!</div>
+                        <div class="i-clearfix"></div>
+                      </div>
+                      <div class="b-rc-edit-form">
+                        <form action="" method="get">
+                          <div class="b-form-field b-form__photo-block">
+                            <div class="b-admin-buttons">
+                              <div class="b-admin-buttons__block">
+                                <div title="Удалить фото" class="b-delete-icon"></div>
+                                <div title="Загрузить новое фото" class="b-image-icon">
+                                  <div class="b-image-icon__input-file input_file">
+                                    <input id="fileupload59" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                                  </div>
+                                  <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="b-form__photo-block__img"><img src="/images/infoblock/pancake.jpg" height="65" alt="" data-id="1414" class="i-align-img"></div>
+                          </div>
+                          <div class="b-form-field b-form__text-block">
+                            <input type="hidden" value="51939" name="cId">
+                            <input type="hidden" value="51801" name="rId">
+                            <input type="hidden" value="e" name="a">
+                            <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                            <div class="b-textarea-wrapper">
+                              <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</textarea>
+                            </div>
+                            <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                          </div>
+                          <div class="i-clearfix"></div>
+                        </form>
+                      </div>
+                      <div class="b-rc__props">
+                        <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+                        <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+                        <div class="i-clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="b-rc__reply-form">
+                <div class="i-relative"><a href="#" class="b-close-icon b-rc__reply-form__close b-close-icon__color_3"></a></div>
+                <form action="/components/recipe.comments/php/reply.json" method="get">
+                  <div class="b-form-field b-form__photo-block">
+                    <div class="input_file">
+                      <input id="fileuploadReply" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text">
+                    </div>
+                    <div class="b-form__photo-block__img"></div>
+                    <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url">
+                  </div>
+                  <div class="b-form-field b-form__text-block">
+                    <input type="hidden" name="rId" value="">
+                    <input type="hidden" name="authorId" value="456">
+                    <label class="b-form-label">Ответ на отзыв <span class="b-form-attention">?</span></label>
+                    <div class="b-textarea-wrapper">
+                      <textarea name="comment" cols="10" rows="10" required="" class="b-textarea"></textarea>
+                    </div>
+                    <button type="submit" class="b-button b-button__width_100">Ответить</button>
+                  </div>
+                  <div class="i-clearfix"></div>
+                </form>
+                <div class="b-rc__item i-foodclub">
+                  <div class="i-relative">
+                    <div class="b-rc__item__pointer"></div>
+                  </div>
+                  <div class="b-rc__item__content">
+                    <div class="b-rc__item__content__text">Если Вы хотите оставить комментарий, Вам необходимо <a href="/forms/authorization/">авторизоваться</a> или <a href="/forms/registration/">зарегистрироваться</a> на сайте.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end /components/recipe.comments/-->
+        </div>
+        <div class="col-sm-4 hidden-xs">
+          <div id="banner_space" class="index">
+            <div id="do-you-know-that" class="b-facts">
+              <div class="b-facts__heading">Знаете ли вы что:</div>
+              <div class="b-facts__content">
+                <div data-id="3" class="b-facts__item">Устрицы лучше всего есть в месяцы, в названии которых есть буква «р».</div>
+              </div>
+              <div class="b-facts__more"><a href="#" class="b-facts__more__link">Еще</a></div>
+            </div><img src="/template/images/preloader.gif" width="100%" alt="">
+            <div class="comments_feed">
+              <h5 title="Последние комментарии">Последние комментарии</h5>
+              <ul>
+                <li><a href="/recipe/#comments" class="comment">рецепт супер, прочитала и сразу приготовила) всё отлично сочетается, только готовилось не 40 минут, ...</a>
+                  <div class="info"><a href="/person/" class="author">Шоколадница</a> <span class="date">19.09.2011 в 15:59</span></div>
+                </li>
+                <li><a href="/recipe/#comments" class="comment">рецепт супер, прочитала и сразу приготовила) всё отлично сочетается, только готовилось не 40 минут, ...</a>
+                  <div class="info"><a href="/person/" class="author">Шоколадница</a> <span class="date">19.09.2011 в 15:59</span></div>
+                </li>
+                <li><a href="/recipe/#comments" class="comment">рецепт супер, прочитала и сразу приготовила) всё отлично сочетается, только готовилось не 40 минут, ...</a>
+                  <div class="info"><a href="/person/" class="author">Шоколадница</a> <span class="date">19.09.2011 в 15:59</span></div>
+                </li>
+                <li><a href="/recipe/#comments" class="comment">рецепт супер, прочитала и сразу приготовила) всё отлично сочетается, только готовилось не 40 минут, ...</a>
+                  <div class="info"><a href="/person/" class="author">Шоколадница</a> <span class="date">19.09.2011 в 15:59</span></div>
+                </li>
+                <li><a href="/recipe/#comments" class="comment">рецепт супер, прочитала и сразу приготовила) всё отлично сочетается, только готовилось не 40 минут, ...</a>
+                  <div class="info"><a href="/person/" class="author">Шоколадница</a> <span class="date">19.09.2011 в 15:59</span></div>
+                </li>
+              </ul>
+            </div>
+            <!-- start /components/lavka/-->
+            <link rel="stylesheet" href="/components/lavka/style.css">
+            <script src="/components/lavka/script.js"></script>
+            <div class="b-collection-block b-store-block b-store-block__type_aside">
+              <div class="b-collection-block__heading"><span class="b-collection-block__heading__content">Лавка</span></div>
+              <noindex>
+                <div class="b-store-block__content">
+                  <div class="b-store-block__item">
+                    <div class="b-store-block__item__logo"><a href="" target="_blank"><img src="/upload/store-block/logo.gif" height="30" alt=""></a></div>
+                    <div class="b-store-block__item__photo"><a href="" target="_blank" class="b-store-block__item__photo__link"><img src="/upload/store-block/photo.jpg" width="90" height="130" alt="Гриль Bar-B-Kettle"></a></div>
+                    <div class="b-store-block__item__title"><a href="" target="_blank">Гриль Bar-B-Kettle</a></div>
+                    <div class="b-store-block__item__price b-price"><span class="b-price__num"><span class="b-price__num__int">5 346</span><span class="b-price__num__fract">.60</span></span><span class="b-price__unit">руб.</span></div>
+                    <div class="b-store-block__item__button"><a href="" target="_blank" class="b-button b-button__size_M">Купить</a></div>
+                  </div>
+                  <div class="b-store-block__item">
+                    <div class="b-store-block__item__logo"><a href="" target="_blank"><img src="/upload/store-block/logo.gif" height="30" alt=""></a></div>
+                    <div class="b-store-block__item__photo"><a href="" target="_blank" class="b-store-block__item__photo__link"><img 2="" 7="" src="http://zhelezoiogon.ru/components/com_virtuemart/show_image_in_imgtag.php?filename=resized%2F_________________4eebaf5590b16_185x214.jpg&amp;newxsize=185&amp;newysize=214&amp;fileout=" width="180" alt="ёмкости для соуса шт. мл"></a></div>
+                    <div class="b-store-block__item__title"><a href="" target="_blank">"Голова льва", ёмкости для соуса, 2 шт., 7 мл, фарфор</a></div>
+                    <div class="b-store-block__item__price b-price"><span class="b-price__num"><span class="b-price__num__int">300</span></span><span class="b-price__unit">руб.</span></div>
+                    <div class="b-store-block__item__button"><a href="" target="_blank" class="b-button b-button__size_M">Купить</a></div>
+                  </div>
+                </div>
+              </noindex>
+            </div>
+            <!-- end /components/lavka/-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id="bottom" class="b-footer">
+      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
+        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
+      </div>
+      <div class="container hidden-xs">
+        <div class="b-subscribe">
+          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
+            <div class="form-group">
+              <label class="b-label text-center">Подписаться на рассылку</label>
+              <hr class="i-size-S">
+              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
+              <button type="submit" class="btn btn-default">Подписаться</button>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h4>Читайте нас</h4>
+            <menu>
+              <li><a href="" target="_blank">Facebook</a></li>
+              <li><a href="" target="_blank">Instagram</a></li>
+              <li><a href="" target="_blank">Twitter</a></li>
+              <li><a href="" target="_blank">LiveJournal</a></li>
+              <li><a href="" target="_blank">Одноклассники</a></li>
+              <li><a href="" target="_blank">ВКонтакте</a></li>
+              <li><a href="" target="_blank">Google+</a></li>
+              <li><a href="" target="_blank">Pinterest</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Моя Кухня</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Избранные рецепты</a></li>
+              <li><a href="">Моя лента</a></li>
+              <li><a href="">Подписка</a></li>
+              <li><a href="">Бейджи</a></li>
+              <li><a href="">Редактировать анкету</a></li>
+              <li><a href="">Добавить рецепт</a></li>
+              <li><a href="">Добавить рецепт (простой)</a></li>
+              <li><a href="">Добавить запись в клуб</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Темы</h4>
+            <menu>
+              <li><a href="">Рецепты с фото</a></li>
+              <li><a href="">Кулинарные клубы</a></li>
+              <li><a href="">Кулинары</a></li>
+              <li><a href="">Рецепт месяца</a></li>
+              <li><a href="">Самое интересное</a></li>
+              <li><a href="">Лавка</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Сервисы</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Поиск рецепта</a></li>
+              <li><a href="">Виджет Яндекса</a></li>
+              <li><a href="">Приложение Facebook</a></li>
+              <li><a href="">Приложение ВКонтакте</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Реклама</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Медиа-кит</a></li>
+              <li><a href="">Магазинам</a></li>
+              <li><a href="">Конкурсы</a></li>
+              <li><a href="">Брендирование</a></li>
+              <li><a href="">Статистика</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Пользователям</h4>
+            <menu>
+              <li><a href="">Новый профиль</a></li>
+              <li><a href="">Помощь</a></li>
+              <li><a href="">Ваши предложения</a></li>
+              <li><a href="">Сообщить об ошибке</a></li>
+              <li><a href="">Соглашение</a></li>
+              <li><a href="">Правила</a></li>
+            </menu>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="top_layer" style="display:none;">
+      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
+    </div>
+  </body>
+</html>

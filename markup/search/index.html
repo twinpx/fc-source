@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search | food</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-itunes-app" content="app-id=445878711">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <link rel="stylesheet" href="/template/bootstrap.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 400italic&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <script src="/template/jquery.js"></script>
+    <script src="/template/bootstrap.js"></script>
+    <script src="/template/jscript.js"></script>
+    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+  </head>
+  <body class="i-mobile-search">
+    <header id="header" class="b-header">
+      <div class="container">
+        <div class="b-mobile-menu-icon visible-xs-block"></div><span class="b-mobile-search-icon visible-xs-block"></span><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
+        <div class="b-header__nav">
+          <div class="row visible-xs-block">
+            <div class="col-xs-6 col-xs-offset-6"><a href="/personal/" class="b-userpic"><img src="/upload/user/small_photo.jpg" width="30" height="30" alt=""><span class="b-userpic__name">Максим Савельев Максим Савельев</span></a></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6"><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a></div>
+            <div class="col-xs-6 visible-xs-block"><a href="">Войти</a><a href="">Зарегистрироваться</a><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
+          </div>
+        </div>
+      </div>
+      <!-- start /components/recipe-search/-->
+      <link rel="stylesheet" href="/components/recipe-search/style.css">
+      <script src="/components/recipe-search/script.js"></script>
+      <script src="/js/ss_data.js"></script>
+      <script src="/components/recipe-search/add-script.js"></script>
+      <div id="recipeSearch" class="b-recipe-search i-search-page">
+        <form action="/search/" method="post">
+          <div class="b-form-field b-recipe-search__form-field"><a href="#" title="Очистить поле" class="b-recipe-search__delete"></a>
+            <input type="text" value="" autocomplete="off" class="b-input-text b-recipe-search__input">
+          </div><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
+          <div class="i-clearfix"></div>
+        </form>
+      </div>
+      <script id="recipe_search_items" type="text/html">
+        <li class="b-rs__item">
+         <a href="<%=url%>" class="b-rs__item__link">
+           <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
+           <% if(imageRegExp.test(image)) { %>
+           <span class="b-rs__item__image-wrapper" data-image="<%=image%>"></span>
+           <% } else { %>
+           <span class="b-rs__item__image-wrapper b-rs__item__image-wrapper__type_empty"></span>
+           <% } %>
+           <span class="b-rs__item__text b-rs-str"><%=title%></span>
+           <span class="b-rs__item__info">
+             <span class="b-rs__item__time"><% if(time.hours && time.hours > 0) {%>
+             <% function recipeWord(num) {
+               if (/(10|11|12|13|14|15|16|17|18|19)$/.test(num)) {return 'часов';}
+               else if (/.*1$/.test(num)) {return 'час';}
+               else if (/[2-4]$/.test(num)) {return 'часа';}
+               else {return 'часов';}
+             } %>
+             <%=time.hours%> <%=recipeWord(time.hours)%><% } %><% if(time.minutes && time.minutes > 0) {%> <%=time.minutes%> мин<% } %></span>
+             <span class="b-rs__item__nutrition"><%=nutrition%></span>
+           </span>
+           <span class="clear"></span>
+         </a>
+         <span class="b-rs__item__hr"></span>
+        </li>
+      </script>
+      <!-- end /components/recipe-search/-->
+    </header>
+  </body>
+</html>

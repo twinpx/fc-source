@@ -1,0 +1,156 @@
+
+<!-- start /components/recipe.add/-->
+<link rel="stylesheet" href="/components/recipe.add/style.css"/>
+<script src="/components/recipe.add/script.js"></script>
+<form id="add_recipe_form" action="" method="post">
+  <div class="body">
+    <div id="dish_description">
+      <h2>Общее описание</h2>
+      <div class="row">
+        <div class="col-sm-8 dish_properties">
+          <div class="form-group">
+            <h5>Название блюда*<span class="no_text">?</span></h5>
+            <input type="text" name="name" value="" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <h5>Описание блюда*<span class="no_text"> </span></h5>
+            <textarea name="dish_description" cols="10" rows="10" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <h5>Главное фото (600х400 px)*<span class="no_text">?</span></h5>
+            <div class="input_file">
+              <input type="file" name="general_photo" class="text"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 dish_parents">
+          <div class="form-group">
+            <h5>Кухня<span class="no_text">?</span></h5>
+            <select name="cooking" class="form-control">
+              <option value="id0" selected="selected">Русская</option>
+              <option value="id1">Французская</option>
+              <option value="id2">Итальянская</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <h5>Тип блюда<span class="no_text">?</span></h5>
+            <select name="dish_type" class="form-control">
+              <option value="id0" selected="selected">Алкоголь</option>
+              <option value="id1">Овощи</option>
+              <option value="id2">Молочные продукты</option>
+              <option value="id3">Мясо</option>
+              <option value="id4">Орехи</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <h5>Основной ингредиент<span class="no_text">?</span></h5>
+            <select name="main_ingredient" class="form-control">
+              <option value="meat">Мясо</option>
+              <option value="milk">Молоко</option>
+              <option value="honey">Мёд</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <h5>Количество килокалорий на порцию</h5>
+            <input type="text" name="kkal" value="" class="form-control"/>
+          </div>
+          <div class="form-group yield">
+            <h5>Количество порций</h5>
+            <input type="text" name="yield" value="" class="form-control"/>
+          </div>
+          <div class="form-group dish_time">
+            <h5>Время приготовления</h5>
+            <!--input( type="range"  )-->
+            <div class="row">
+              <div class="col-xs-6">
+                <select name="hours" class="form-control">
+                  <option value="0">0 часов</option>
+                  <option value="1">1 час</option>
+                  <option value="2">2 часа</option>
+                  <option value="3">3 часа</option>
+                  <option value="4">4 часа</option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <select name="minutes" class="form-control">
+                  <option value="0">0 минут</option>
+                  <option value="5">5 минут</option>
+                  <option value="10">10 минут</option>
+                  <option value="15">15 минут></option>
+                  <option value="20">20 минут</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div id="dish_stages">
+    <div class="body">
+      <div class="stage">
+        <div class="delete_icon"><a href="#" title="Удалить этап"></a></div>
+        <h2>Первый этап</h2>
+        <div class="row">
+          <div class="col-sm-6 description">
+            <div class="form-group">
+              <h5>Описание первого этапа<span class="no_text">?</span></h5>
+              <textarea name="stage_description[]" cols="10" rows="10" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <h5>Фото этапа (600х400 px)</h5>
+              <div class="input_file">
+                <div class="blocker"></div>
+                <input id="inputFile" type="file" name="photo[]" class="text"/>
+                <div title="Выбрать файл" class="browse_button">
+                  <input type="button" value="Обзор"/>
+                </div>
+                <div class="new_file_name"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 ingredient">
+            <h5>Ингредиенты первого этапа<span class="scales"><span class="hint"><span>Таблица мер</span></span></span></h5>
+            <div class="stage_ing_list">
+              <div class="item">
+                <div class="search_list">
+                  <ul class="search_list"></ul>
+                </div>
+                <!--В одну строку--><input type="text" value="" class="text smartsearch"><span class="search_list_icon"><span title="Весь список ингредиентов"></span></span><input type="hidden" value="" class="click_field"><input type="hidden" name="ingredients_0_id[]" value=""><input type="text" name="ingredients_0_number[]" value="" class="text unit"><span class="unit"></span><span class="no_text">?</span><a href="#" class="delete_icon" title="Удалить ингредиент"></a>
+              </div>
+              <div class="item">
+                <div class="search_list">
+                  <div class="search_list"></div>
+                </div>
+                <!--В одну строку--><input type="text" value="" class="text smartsearch"><span class="search_list_icon"><span title="Весь список ингредиентов"></span></span><input type="hidden" value="" class="click_field"><input type="hidden" name="ingredients_0_id[]" value=""><input type="text" name="ingredients_0_number[]" value="" class="text unit"><span class="unit"></span><span class="no_text">?</span><a href="#" class="delete_icon" title="Удалить ингредиент"></a>
+              </div>
+              <div class="item">
+                <div class="search_list">
+                  <div class="search_list"></div>
+                </div>
+                <!--В одну строку--><input type="text" value="" class="text smartsearch"><span class="search_list_icon"><span title="Весь список ингредиентов"></span></span><input type="hidden" value="" class="click_field"><input type="hidden" name="ingredients_0_id[]" value=""><input type="text" name="ingredients_0_number[]" value="" class="text unit"><span class="unit"></span><span class="no_text">?</span><a href="#" class="delete_icon" title="Удалить ингредиент"></a>
+              </div>
+            </div>
+            <div class="add_ingredient"><span class="icon"></span><a href="#">Добавить ингредиент</a></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="button text-center">
+        <input type="button" value="Добавить этап" onClick="addStage();" class="btn btn-default"/>
+      </div>
+      <hr/>
+      <div class="conditions">
+        <label class="checkbox">
+          <input type="checkbox" name="iphone"/><span>&mdash; Я хочу, чтобы этот рецепт был добавлен в программу <a href="/iphone/">Foodclub HD для iPhone </a>и других мобильных устройств.</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="save_recipe">
+    <input id="save_recipe" type="submit" value="Добавить рецепт" class="btn btn-default btn-lg"/>
+  </div>
+  <hr/>
+</form>
+<!-- end /components/recipe.add/-->

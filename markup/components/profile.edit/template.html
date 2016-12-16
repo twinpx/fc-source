@@ -1,0 +1,330 @@
+
+<!-- start /components/profile.edit/-->
+<link rel="stylesheet" href="/components/profile.edit/style.css"/>
+<script src="/components/profile.edit/script.js"></script>
+<h1>Редактирование анкеты</h1>
+<div class="b-personal-edit-form">
+  <!--.b-form__type_wide-->
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="b-error-message">
+          <div class="b-error-message__pointer">
+            <div class="b-error-message__pointer__div"></div>
+          </div>Универсальное сообщение об ошибке.<br>
+          Универсальное сообщение об ошибке. Неверный email<br>
+          Универсальное сообщение об ошибке. Заполните поле имя<br>
+          Универсальное сообщение об ошибке.<br>
+          Может быть в несколько строчек.
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <link rel="stylesheet" type="text/css" href="/css/form.css"/>
+    <script src="/js/form.js" type="text/javascript"></script>
+    <fieldset class="b-fieldset b-personal-edit-form__about">
+      <legend>О себе</legend>
+      <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">О себе</span></h3>
+      <div class="b-form-field form-groupset">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="b-form-field form-group b-form-field form-group__avatar">
+                  <div class="b-form-label">Фото <span class="b-form-label__error"></span></div>
+                  <div class="b-file-upload b-file-upload__type_avatar">
+                    <div class="b-file-upload__files-container">
+                      <div class="b-file-upload__type_avatar__avatar"><img src="/upload/user/ca-ira.jpg" width="100" height="100" alt=""/>
+                        <input type="hidden" name="avatar" value="/upload/user/ca-ira.jpg"/>
+                      </div>
+                    </div><span class="b-file-upload__button">
+                      <input id="fileupload" type="file" class="b-file-upload__file"/></span>
+                    <div class="i-clearfix"></div>
+                  </div>
+                  <div class="fileupload-loading"></div>
+                </div>
+                <script id="template-upload" type="text/x-tmpl">
+                  <% for (var i=0, file; file=files[i]; i++) { %>
+                   <tr class="template-upload fade">
+                   </tr>
+                  <% } %>
+                </script>
+                <!-- The template to display files available for download-->
+                <script id="template-download" type="text/x-tmpl">
+                  <% for (var i=0, file; file=files[i]; i++) { %>
+                  <div class="b-file-upload__type_avatar__avatar">
+                   <img src="<%=file.thumbnail_url%>" width="100" height="100" alt="" />
+                   <input type="hidden" name="avatar" value="<%=file.url%>">
+                  </div>
+                  <% } %>
+                </script>
+                <script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
+                <script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
+                <script src="/js/file-upload/js/jquery.fileupload.js"></script>
+                <script src="/js/file-upload/js/jquery.fileupload-fp.js"></script>
+                <script src="/components/personal.edit/jquery.fileupload-ui.js"></script>
+                <script src="/components/personal.edit/script.js"></script>
+                <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+-->
+                <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
+              </div>
+              <div class="col-sm-6">
+                <div class="b-form-field form-group b-form-field form-group__date">
+                  <div class="b-form-label">Дата рождения</div>
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <select name="age_day" class="form-control b-select__day">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="31" selected="selected">31</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-5">
+                      <select name="age_month" class="form-control b-select__month">
+                        <option value="jan" selected="selected">Январь</option>
+                        <option value="feb">Февраль</option>
+                        <option value="mar">Март</option>
+                        <option value="apr">Апрель</option>
+                        <option value="may">Май</option>
+                        <option value="jun">Июнь</option>
+                        <option value="jul">Июль</option>
+                        <option value="aug">Август</option>
+                        <option value="sep">Сентябрь</option>
+                        <option value="oct">Октябрь</option>
+                        <option value="nov">Ноябрь</option>
+                        <option value="dec">Декабрь</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-4">
+                      <select name="age_year" class="form-control b-select__year">
+                        <option value="1999">1999</option>
+                        <option value="1998">1998</option>
+                        <option value="1997">1997</option>
+                        <option value="1996">1996</option>
+                        <option value="1995">1995</option>
+                        <option value="1994">1994</option>
+                        <option value="1993">1993</option>
+                        <option value="1992">1992</option>
+                        <option value="1991">1991</option>
+                        <option value="1990">1990</option>
+                        <option value="1989">1989</option>
+                        <option value="1988" selected="selected">1988</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value=""/>Не показывать на сайте
+                  </label>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Пол</label>
+                  <select name="gender" class="form-control b-select__gender">
+                    <option value="male">Мужской</option>
+                    <option value="female">Женский</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-form-field form-groupset">
+          <div class="row">
+            <div class="col-sm-3 col-sm-push-9 hidden-xs">
+              <div class="b-form-note">&mdash; Заполните поля они будут отображаться у каждого рецепта вместо Логина.</div>
+            </div>
+            <div class="col-sm-9 col-sm-pull-3">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="b-form-field form-group">
+                    <label class="b-form-label">Имя</label>
+                    <input type="text" value="" name="name" class="form-control b-personal-edit-form__about__name"/>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="b-form-field form-group">
+                    <label class="b-form-label">Фамилия</label>
+                    <input type="text" value="" name="lastname" class="form-control b-personal-edit-form__about__lastname"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-form-field form-groupset">
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="b-form-field form-group">
+                    <label class="b-form-label">Email</label>
+                    <input type="email" value="" name="email" class="form-control b-personal-edit-form__about__email"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-form-field form-groupset">
+          <div class="row">
+            <div class="col-sm-3 col-sm-push-9 hidden-xs">
+              <div class="b-form-note">&mdash; Напишите о том, кем вы себя ощущаете. Например Король кулинаров!</div>
+            </div>
+            <div class="col-sm-9 col-sm-pull-3">
+              <div class="b-form-field form-group">
+                <label class="b-form-label">Статус</label>
+                <input type="text" value="" name="status" class="form-control b-personal-edit-form__about__status"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-form-field form-groupset">
+          <div class="row">
+            <div class="col-sm-3 col-sm-push-9 hidden-xs">
+              <div class="b-form-note">&mdash; Вы сможете найти людей с похожими интересами.</div>
+            </div>
+            <div class="col-sm-9 col-sm-pull-3">
+              <div class="b-form-field form-group">
+                <label class="b-form-label">Интересы</label>
+                <textarea cols="" rows="" name="interests" class="form-control b-personal-edit-form__about__interests"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-form-field form-groupset">
+          <div class="row">
+            <div class="col-sm-3 col-sm-push-9 hidden-xs">
+              <div class="b-form-note">&mdash; Посетители вашей страницы смогут больше узнать о вашей работе или хобби.</div>
+            </div>
+            <div class="col-sm-9 col-sm-pull-3">
+              <div class="b-form-field form-group">
+                <label class="b-form-label">Расскажите о себе подробнее</label>
+                <textarea cols="" rows="" name="about" class="form-control b-personal-edit-form__about__about"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-form-field form-groupset">
+          <div class="row">
+            <div class="col-sm-3 col-sm-push-9 hidden-xs">
+              <div class="b-form-note">&mdash; Текст будет виден на странице Кухня.</div>
+            </div>
+            <div class="col-sm-9 col-sm-pull-3">
+              <div class="b-form-field form-group">
+                <label class="b-form-label">Расскажите о вашей кухне</label>
+                <textarea cols="" rows="" name="about" class="form-control b-personal-edit-form__about__about"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <hr/>
+    <fieldset class="b-fieldset b-personal-edit-form__links">
+      <legend>Ссылки на ваши страницы</legend>
+      <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">Ссылки на ваши страницы</span></h3>
+      <div class="b-form-field form-groupset">
+        <div class="row">
+          <div class="col-sm-3 col-sm-push-9 hidden-xs">
+            <div class="b-form-note">&mdash; Вставляйте полный адрес ссылки. Например: http://www.facebook.com/foodclubru</div>
+          </div>
+          <div class="col-sm-9 col-sm-pull-3">
+            <div class="b-form-field form-group">
+              <label class="b-form-label">Ваш сайт</label>
+              <input type="text" value="" name="status" class="form-control b-personal-edit-form__links__site"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b-form-field form-groupset">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Facebook</label>
+                  <input type="text" value="" name="facebook" class="form-control b-form-field b-form-field__network b-form-field b-form-field__fb"/>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Вконтакте</label>
+                  <input type="text" value="" name="vkontakte" class="form-control b-form-field b-form-field__network b-form-field b-form-field__vk"/>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Twitter</label>
+                  <input type="text" value="" name="twitter" class="form-control b-form-field b-form-field__network b-form-field b-form-field__twitter"/>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Яндекс</label>
+                  <input type="text" value="" name="yandex" class="form-control b-form-field b-form-field__network b-form-field b-form-field__yandex"/>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Livejournal</label>
+                  <input type="text" value="" name="livejournal" class="form-control b-form-field b-form-field__network b-form-field b-form-field__lj"/>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Одноклассники</label>
+                  <input type="text" value="" name="classmates" class="form-control b-form-field b-form-field__network b-form-field b-form-field__classmates"/>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Youtube</label>
+                  <input type="text" value="" name="youtube" class="form-control b-form-field b-form-field__network b-form-field b-form-field__youtube"/>
+                </div>
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Vimeo</label>
+                  <input type="text" value="" name="vimeo" class="form-control b-form-field b-form-field__network b-form-field b-form-field__vimeo"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <hr/>
+    <fieldset class="b-fieldset b-personal-edit-form__change-password">
+      <legend>Смена пароля</legend>
+      <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">Смена пароля</span></h3>
+      <div class="b-form-field form-groupset">
+        <div class="row">
+          <div class="col-sm-3 col-sm-push-9 hidden-xs">
+            <div class="b-form-note">&mdash; Вы можете поменять пароль и логин. Если вы не хотите менять — оставьте поля не заполнеными.</div>
+          </div>
+          <div class="col-sm-9 col-sm-pull-3">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Новый пароль</label>
+                  <input type="password" value="" name="password" data-equal="password" class="form-control b-personal-edit-form__change-password__password"/>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="b-form-field form-group">
+                  <label class="b-form-label">Подтверждение пароля</label>
+                  <input type="password" value="" name="new_password" data-equal="password" class="form-control b-personal-edit-form__change-password__new-password"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <hr/>
+    <div class="b-form__submit">
+      <input type="submit" value="Сохранить" class="btn btn-default b-button__type_submit"/>
+    </div>
+    <hr/>
+  </form>
+  <div class="clear"></div>
+</div>
+<!-- end /components/profile.edit/-->

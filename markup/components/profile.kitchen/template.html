@@ -1,0 +1,103 @@
+
+<!-- start /components/profile.kitchen/-->
+<link rel="stylesheet" href="/components/profile.kitchen/style.css"/>
+<script src="/components/profile.kitchen/script.js"></script>
+<div class="b-personal-page__kitchen">
+  <h3 class="b-hr-bg b-personal-page__heading"><span class="b-hr-bg__content">Кухня</span></h3>
+  <div class="b-personal-page__text">У меня не очень большая кухня поэтому мне прходится пользоваться только самыми необходимыми в быту предматами, желательно максимально унивресальными.</div>
+  <div data-url="http://markup.foodclub.2px/personal/kitchen/" data-delete-ajax-url="/php/delete-kitchen-equipment.php" class="b-kitchen__list">
+    <script id="kitchen-equipment-template" type="text/html">
+      <div class="b-kitchen__item" data-balloon='{"title": "<%=title%>", "brand": "<%=brand%>", "text": "<%=text%>", "rating": "<%=rating%>", "price": "<%=price%>"}' data-id="<%=id%>">
+      <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+      <div class="b-admin-buttons__block">
+      <div class="b-delete-icon" title="Удалить технику"></div>
+      <div class="b-edit-icon" title="Редактировать"></div>
+      </div>
+      </div>
+      <a href="#" class="b-kitchen__item__link">
+      <span class="b-kitchen__item__image">
+      <img src="<%=image.src%>" width="<%=image.width%>" height="<%=image.height%>" alt="<%=image.alt%>">
+      </span>
+      <span class="b-kitchen__item__title" data-id="<%=title.id%>"><%=title.name%></span>
+      <span class="b-kitchen__item__brand" data-id="<%=brand.id%>"><%=brand.name%></span>
+      <span class="b-kitchen__item__model" data-id="<%=model.id%>"><%=model.name%></span>
+      </a>
+      </div>
+    </script>
+    <div class="b-kitchen__block i-tech">
+      <h5 class="b-kitchen__block__heading">Использую технику:</h5>
+      <div data-balloon="{&quot;title&quot;: &quot;Мультиварка&quot;, &quot;brand&quot;: &quot;Philips&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;4&quot;, &quot;price&quot;: &quot;7 000&quot;}" data-id="itemId0" data-ajax="{&quot;param1&quot;: &quot;data1&quot;, &quot;param2&quot;: &quot;data2&quot;, &quot;param3&quot;: &quot;data3&quot;}" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Мультиварка Philips"/></span><span data-id="2" class="b-kitchen__item__title">Мультиварка</span><span data-id="trade2" class="b-kitchen__item__brand">Philips</span><span data-id="model4" class="b-kitchen__item__model">HD3039/00</span></a>
+      </div>
+      <div data-balloon="{&quot;title&quot;: &quot;Соковыжималка&quot;, &quot;brand&quot;: &quot;Braun&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;5&quot;, &quot;price&quot;: &quot;&quot;}" data-id="itemId1" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Соковыжималка Braun"/></span><span data-id="1" class="b-kitchen__item__title">Соковыжималка</span><span data-id="trade3" class="b-kitchen__item__brand">Braun</span><span data-id="model1" class="b-kitchen__item__model">J700 Multiquick 7</span></a>
+      </div>
+      <div data-balloon="{&quot;title&quot;: &quot;Фритюрница&quot;, &quot;brand&quot;: &quot;Moulinex&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;5&quot;, &quot;price&quot;: &quot;2 100&quot;}" data-id="itemId2" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Фритюрница Moulinex"/></span><span data-id="3" class="b-kitchen__item__title">Фритюрница</span><span data-id="trade0" class="b-kitchen__item__brand">Moulinex</span><span data-id="model1" class="b-kitchen__item__model">AM 1014</span></a>
+      </div>
+      <div data-balloon="{&quot;title&quot;: &quot;Микроволновая печь&quot;, &quot;brand&quot;: &quot;Panasonic&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;3&quot;, &quot;price&quot;: &quot;5 600&quot;}" data-id="itemId3" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Микроволновая печь Panasonic"/></span><span data-id="2" class="b-kitchen__item__title">Микроволновая печь</span><span data-id="2" class="b-kitchen__item__brand">Panasonic</span><span data-id="2" class="b-kitchen__item__model">NN-GT261MZPE</span></a>
+      </div>
+      <div class="b-kitchen__item b-kitchen__item__type_empty"><a href="#" data-popup-id="kitchen-equipment-add-form" class="btn btn-sm btn-default">Добавить технику</a></div>
+      <div class="i-clearfix"></div>
+    </div>
+    <div class="b-kitchen__block i-dish">
+      <h5 class="b-kitchen__block__heading">Кухонная утварь:</h5>
+      <div data-balloon="{&quot;title&quot;: &quot;Мультиварка&quot;, &quot;brand&quot;: &quot;Philips&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;4&quot;, &quot;price&quot;: &quot;7 000&quot;}" data-id="itemId10" data-ajax="{&quot;param1&quot;: &quot;data1&quot;, &quot;param2&quot;: &quot;data2&quot;, &quot;param3&quot;: &quot;data3&quot;}" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Мультиварка Philips"/></span><span data-id="2" class="b-kitchen__item__title">Мультиварка</span><span data-id="2" class="b-kitchen__item__brand">Philips</span><span data-id="2" class="b-kitchen__item__model">HD3039/00</span></a>
+      </div>
+      <div data-balloon="{&quot;title&quot;: &quot;Соковыжималка&quot;, &quot;brand&quot;: &quot;Braun&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;5&quot;, &quot;price&quot;: &quot;1 000&quot;}" data-id="itemId11" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Соковыжималка Braun"/></span><span data-id="2" class="b-kitchen__item__title">Соковыжималка</span><span data-id="2" class="b-kitchen__item__brand">Braun</span><span data-id="2" class="b-kitchen__item__model">J700 Multiquick 7</span></a>
+      </div>
+      <div data-balloon="{&quot;title&quot;: &quot;Фритюрница&quot;, &quot;brand&quot;: &quot;Moulinex&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;5&quot;, &quot;price&quot;: &quot;2 100&quot;}" data-id="itemId12" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Фритюрница Moulinex"/></span><span data-id="2" class="b-kitchen__item__title">Фритюрница</span><span data-id="2" class="b-kitchen__item__brand">Moulinex</span><span data-id="2" class="b-kitchen__item__model">AM 1014</span></a>
+      </div>
+      <div data-balloon="{&quot;title&quot;: &quot;Микроволновая печь&quot;, &quot;brand&quot;: &quot;Panasonic&quot;, &quot;text&quot;: &quot;Отличная соковыжималка, рекомендую всем. Особенно нравится ее компактность.&quot;, &quot;rating&quot;: &quot;3&quot;, &quot;price&quot;: &quot;5 600&quot;}" data-id="itemId13" class="b-kitchen__item">
+        <div class="b-kitchen__item__admin-butoons b-admin-buttons">
+          <div class="b-admin-buttons__block">
+            <div title="Удалить технику" class="b-delete-icon"></div>
+            <div title="Редактировать" class="b-edit-icon"></div>
+          </div>
+        </div><a href="#" class="b-kitchen__item__link"><span class="b-kitchen__item__image"><img src="/upload/kitchen/1.jpg" width="155" height="155" alt="Микроволновая печь Panasonic"/></span><span data-id="2" class="b-kitchen__item__title">Микроволновая печь</span><span data-id="2" class="b-kitchen__item__brand">Panasonic</span><span data-id="2" class="b-kitchen__item__model">NN-GT261MZPE</span></a>
+      </div>
+      <div class="b-kitchen__item b-kitchen__item__type_empty"><a href="#" data-popup-id="kitchen-equipment-add-form" class="btn btn-sm btn-default">Добавить технику</a></div>
+      <div class="i-clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- end /components/profile.kitchen/-->

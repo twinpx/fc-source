@@ -1,0 +1,41 @@
+
+<!-- start /components/recipe-search/-->
+<link rel="stylesheet" href="/components/recipe-search/style.css"/>
+<script src="/components/recipe-search/script.js"></script>
+<script src="/js/ss_data.js"></script>
+<script src="/components/recipe-search/add-script.js"></script>
+<div id="recipeSearch" class="b-recipe-search i-search-page">
+  <form action="/search/" method="post">
+    <div class="b-form-field b-recipe-search__form-field"><a href="#" title="Очистить поле" class="b-recipe-search__delete"></a>
+      <input type="text" value="" autocomplete="off" class="b-input-text b-recipe-search__input"/>
+    </div><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
+    <div class="i-clearfix"></div>
+  </form>
+</div>
+<script id="recipe_search_items" type="text/html">
+  <li class="b-rs__item">
+   <a href="<%=url%>" class="b-rs__item__link">
+     <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
+     <% if(imageRegExp.test(image)) { %>
+     <span class="b-rs__item__image-wrapper" data-image="<%=image%>"></span>
+     <% } else { %>
+     <span class="b-rs__item__image-wrapper b-rs__item__image-wrapper__type_empty"></span>
+     <% } %>
+     <span class="b-rs__item__text b-rs-str"><%=title%></span>
+     <span class="b-rs__item__info">
+       <span class="b-rs__item__time"><% if(time.hours && time.hours > 0) {%>
+       <% function recipeWord(num) {
+         if (/(10|11|12|13|14|15|16|17|18|19)$/.test(num)) {return 'часов';}
+         else if (/.*1$/.test(num)) {return 'час';}
+         else if (/[2-4]$/.test(num)) {return 'часа';}
+         else {return 'часов';}
+       } %>
+       <%=time.hours%> <%=recipeWord(time.hours)%><% } %><% if(time.minutes && time.minutes > 0) {%> <%=time.minutes%> мин<% } %></span>
+       <span class="b-rs__item__nutrition"><%=nutrition%></span>
+     </span>
+     <span class="clear"></span>
+   </a>
+   <span class="b-rs__item__hr"></span>
+  </li>
+</script>
+<!-- end /components/recipe-search/-->

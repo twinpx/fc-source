@@ -1,0 +1,719 @@
+
+<!-- start /components/recipe.comments/-->
+<link rel="stylesheet" href="/components/recipe.comments/style.css"/>
+<script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/js/file-upload/js/jquery.fileupload.js"></script>
+<script src="/components/recipe.comments/script.js"></script>
+<script type="text/template" id="comment-template">
+  <div class="b-rc__block">
+   <div class="b-rc__item<%if(mine) {%> i-mine<%}%>" data-id="<%=id%>">
+     <div class="i-relative">
+       <a href="#" class="b-rc__item__close b-close-icon b-close-icon__color_3" title="Закрыть"></a>
+       <div class="b-rc__item__pointer"></div>
+       <div class="b-rc__item__author b-author-avatar">
+         <a href="<%=author.href%>" class="b-author-avatar__link">
+           <img src="<%=author.src%>" width="100%" height="100%" alt="<%=author.name%>" class="b-author-avatar__img">
+         </a>
+       </div>
+       <div class="b-rc__admin-buttons b-admin-buttons">
+         <div class="b-admin-buttons__block">
+           <div class="b-delete-icon" title="Удалить отзыв"></div>
+           <div class="b-edit-icon" title="Редактировать"></div>
+         </div>
+       </div>
+     </div>
+     <div class="b-rc__item__content">
+       <div class="b-rc__item__content__author"><a href="<%=author.href%>"><%=author.name%></a></div>
+       <% if(image.src && image.id) { %>
+       <div class="b-rc__item__content__text">
+         <div class="b-rc__item__content__text__img">
+           <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+         </div>
+         <div class="b-rc__item__content__text__content"><%=text.html%></div>
+         <div class="i-clearfix"></div>
+       </div>
+       <% } else { %>
+       <div class="b-rc__item__content__text">
+         <%=text.html%>
+       </div>
+       <% } %>
+       <div class="b-rc-edit-form">
+         <form action="" method="get">
+           <div class="b-form-field b-form__photo-block">
+             <% if(image.src && image.id) { %>
+             <div class="b-admin-buttons">
+               <div class="b-admin-buttons__block">
+                 <div class="b-delete-icon" title="Удалить фото"></div>
+                 <div class="b-image-icon" title="Загрузить новое фото">
+                   <div class="b-image-icon__input-file input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                   <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url" />
+                 </div>
+               </div>
+             </div>
+             <div class="b-form__photo-block__img">
+               <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+             </div>
+             <% } else { %>
+             <div class="input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+             <div class="b-form__photo-block__img"></div>
+             <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
+             <% } %>
+           </div>
+           
+           <div class="b-form-field b-form__text-block">
+             <input type="hidden" value="<%=id%>" name="cId">
+             <input type="hidden" value="<%=rId%>" name="rId">
+             <input type="hidden" value="e" name="a">
+             <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
+             <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+             <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
+             <button class="b-button b-button__width_100" type="submit">Написать отзыв</button>
+           </div>
+           <div class="i-clearfix"></div>
+         </form>
+       </div>
+       <div class="b-rc__props">
+         <div class="b-rc__props__reply">
+           <a class="b-button__size_S" href="#">Ответить</a>
+         </div>
+         <div class="b-rc__props__like">
+           <span class="b-like">
+             <a title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="#" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
+             <span class="b-like-num"><%=likeNum%></span>
+           </span>
+         </div>
+         <div class="b-rc__props__date"><%=date%></div>
+         <div class="i-clearfix"></div>
+       </div>
+     </div>
+   </div>
+  </div>
+</script>
+<script type="text/template" id="reply-template">
+  <div class="b-rc__item" data-id="<%=id%>">
+   
+   <div class="i-relative">
+     <a href="#" class="b-rc__item__close b-close-icon b-close-icon__color_3" title="Закрыть"></a>
+     <div class="b-rc__item__pointer"></div>
+     <div class="b-rc__item__author b-author-avatar">
+       <a href="<%=author.href%>" class="b-author-avatar__link">
+         <img src="<%=author.src%>" width="100%" height="100%" alt="<%=author.name%>" class="b-author-avatar__img">
+       </a>
+     </div>
+     <div class="b-rc__admin-buttons b-admin-buttons">
+       <div class="b-admin-buttons__block">
+         <div class="b-delete-icon" title="Удалить отзыв"></div>
+         <div class="b-edit-icon" title="Редактировать"></div>
+       </div>
+     </div>
+   </div>
+   
+   <div class="b-rc__item__content">
+     <div class="b-rc__item__content__author"><a href="<%=author.href%>"><%=author.name%></a></div>
+     
+     <% if(image.src && image.id) { %>
+     <div class="b-rc__item__content__text">
+       <div class="b-rc__item__content__text__img">
+         <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+       </div>
+       <div class="b-rc__item__content__text__content"><%=text.html%></div>
+       <div class="i-clearfix"></div>
+     </div>
+     <% } else { %>
+     <div class="b-rc__item__content__text">
+       <%=text.html%>
+     </div>
+     <% } %>
+     
+     <div class="b-rc-edit-form">
+       <form action="" method="get">
+         <div class="b-form-field b-form__photo-block">
+         
+           <% if(image.src && image.id) { %>
+           <div class="b-admin-buttons">
+             <div class="b-admin-buttons__block">
+               <div class="b-delete-icon" title="Удалить фото"></div>
+               <div class="b-image-icon" title="Загрузить новое фото">
+                 <div class="b-image-icon__input-file input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+                 <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url" />
+               </div>
+             </div>
+           </div>
+           <div class="b-form__photo-block__img">
+             <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+           </div>
+           <% } else { %>
+           <div class="input_file"><input type="file" class="text" id="fileupload<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+           <div class="b-form__photo-block__img"></div>
+           <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
+           <% } %>
+         </div>
+         
+         <div class="b-form-field b-form__text-block">
+           <input type="hidden" value="<%=cId%>" name="cId">
+           <input type="hidden" value="<%=rId%>" name="rId">
+           <input type="hidden" value="e" name="a">
+           <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
+           <input type="hidden" value="<%=root%>" name="root">
+           <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+           <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
+           <button class="b-button b-button__width_100" type="submit">Написать отзыв</button>
+         </div>
+         <div class="i-clearfix"></div>
+       </form>
+     </div>
+     <div class="b-rc__props">
+       <div class="b-rc__props__like">
+         <span class="b-like">
+           <a title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="#" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
+           <span class="b-like-num"><%=likeNum%></span>
+         </span>
+       </div>
+       <div class="b-rc__props__date"><%=date%></div>
+       <div class="i-clearfix"></div>
+     </div>
+   </div>
+  </div>
+</script>
+<script type="text/template" id="photo-template">
+  <div class="b-admin-buttons">
+   <div class="b-admin-buttons__block">
+     <div class="b-delete-icon" title="Удалить фото"></div>
+     <div class="b-image-icon" title="Загрузить новое фото">
+       <%
+         id = id || "";
+         if(type == "edit") id = "fileupload" + id;
+         if(type == "reply") id = "fileuploadReply";
+         if(type == "comment") id = "fileuploadComment";
+       %>
+       <div class="b-image-icon__input-file b-rc-<%=type%>-form__input-file input_file"><input type="file" class="text" id="<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+       <input type="hidden" name="comment-photo" value="<%=url%>" class="b-image-icon__photo-url" />
+     </div>
+   </div>
+  </div>
+  <div class="b-form__photo-block__img">
+   <img src="<%=url%>" height="65" alt="" class="i-align-img" data-id="<%=id%>" />
+  </div>
+</script>
+<script type="text/template" id="file-input-template">
+  <%
+   id = id || "";
+   if(type == "edit") id = "fileupload" + id;
+   if(type == "reply") id = "fileuploadReply";
+   if(type == "comment") id = "fileuploadComment";
+  %>
+  <div class="input_file"><input type="file" class="text" id="<%=id%>" data-ajax-url="/js/file-upload/server/php/index.php"></div>
+  <div class="b-form__photo-block__img"></div>
+  <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
+</script>
+<div id="b-comments">
+  <h2 class="b-rc__heading">Отзывы пользователей</h2>
+  <div id="comment"></div>
+  <div id="b-comment-form">
+    <div class="b-rc__item i-foodclub">
+      <div class="i-relative">
+        <div class="b-rc__item__pointer"></div>
+      </div>
+      <div class="b-rc__item__content">
+        <div class="b-rc__item__content__text">Если Вы хотите оставить комментарий, Вам необходимо <a href="/forms/authorization/">авторизоваться</a> 
+          или <a href="/forms/registration/">зарегистрироваться</a> 
+          на сайте.
+        </div>
+      </div>
+    </div>
+    <form action="/components/recipe.comments/php/comment.json" method="get">
+      <div class="b-form-field b-form__photo-block">
+        <div class="input_file">
+          <input id="fileupload-comment" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+        </div>
+        <div class="b-form__photo-block__img"></div>
+        <input type="hidden" name="comment-photo" value="" class="b-comment-form__photo__url"/>
+      </div>
+      <div class="b-form-field b-comment-form__text">
+        <label class="b-form-label">Ваш отзыв</label> <span class="b-form-attention">?</span>
+        <div class="b-textarea-wrapper">
+          <textarea name="comment" cols="10" rows="10" required="required" class="b-textarea"></textarea>
+        </div>
+        <input type="hidden" name="recipe" value="12813"/>
+        <div class="error_message">&mdash; универсальное сообщение об ошибке!</div>
+        <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+      </div>
+      <div class="i-clearfix"></div>
+    </form>
+  </div>
+  <div data-sessId="fdc4e58491fab80d2aea909fc98b690b" data-edit-form-action="/components/recipe.comments/php/edit.json" data-edit-form-method="GET" data-delete-action="/components/recipe.comments/php/delete-recipe-comment.json" data-delete-method="GET" data-delete-photo-action="/components/recipe.comments/php/delete-photo-comment.json" data-delete-photo-method="GET" class="b-recipe-comments">
+    <div class="b-rc__block">
+      <div data-id="78" class="b-rc__item">
+        <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+          <div class="b-rc__item__pointer"></div>
+          <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/upload/main/e6a/420594_299060910152835_1077967806_n d2q.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+          <div class="b-rc__admin-buttons b-admin-buttons">
+            <div class="b-admin-buttons__block">
+              <div title="Удалить отзыв" class="b-delete-icon"></div>
+              <div title="Редактировать" class="b-edit-icon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="b-rc__item__content">
+          <div class="b-rc__item__content__author"><a href="/personal/">falabella</a></div>
+          <div class="b-rc__item__content__text">Здорово! нужно попробовать.<br/>А можно добавить оливки? и на каком этапе лучше это сделать?</div>
+          <div class="b-rc-edit-form">
+            <form action="" method="get">
+              <div class="b-form-field b-form__photo-block">
+                <div class="input_file">
+                  <input id="fileupload78" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                </div>
+                <div class="b-form__photo-block__img"></div>
+                <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+              </div>
+              <div class="b-form-field b-form__text-block">
+                <input type="hidden" value="51939" name="cId"/>
+                <input type="hidden" value="51801" name="rId"/>
+                <input type="hidden" value="e" name="a"/>
+                <label class="b-form-label"><span class="b-form-attention">?</span></label>
+                <div class="b-textarea-wrapper">
+                  <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Здорово! нужно попробовать.</textarea>
+                </div>
+                <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+              </div>
+              <div class="i-clearfix"></div>
+            </form>
+          </div>
+          <div class="b-rc__props">
+            <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+            <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+            <div class="b-rc__props__date">13.10.2008 &vcy; 05:15</div>
+            <div class="i-clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-rc__block">
+      <div data-id="68" class="b-rc__item">
+        <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+          <div class="b-rc__item__pointer"></div>
+          <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+          <div class="b-rc__admin-buttons b-admin-buttons">
+            <div class="b-admin-buttons__block">
+              <div title="Удалить отзыв" class="b-delete-icon"></div>
+              <div title="Редактировать" class="b-edit-icon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="b-rc__item__content">
+          <div class="b-rc__item__content__author"><a href="/personal/">falabella</a></div>
+          <div class="b-rc__item__content__text">Здорово! нужно попробовать.<br/>А можно добавить оливки? и на каком этапе лучше это сделать?</div>
+          <div class="b-rc-edit-form">
+            <form action="" method="get">
+              <div class="b-form-field b-form__photo-block">
+                <div class="input_file">
+                  <input id="fileupload68" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                </div>
+                <div class="b-form__photo-block__img"></div>
+                <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+              </div>
+              <div class="b-form-field b-form__text-block">
+                <input type="hidden" value="51939" name="cId"/>
+                <input type="hidden" value="51801" name="rId"/>
+                <input type="hidden" value="e" name="a"/>
+                <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                <div class="b-textarea-wrapper">
+                  <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Здорово! нужно попробовать. А можно добавить оливки? и на каком этапе лучше это сделать?</textarea>
+                </div>
+                <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+              </div>
+              <div class="i-clearfix"></div>
+            </form>
+          </div>
+          <div class="b-rc__props">
+            <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+            <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+            <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+            <div class="i-clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="b-rc__reply-block">
+        <div data-id="58" class="b-rc__item">
+          <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+            <div class="b-rc__item__pointer"></div>
+            <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+            <div class="b-rc__admin-buttons b-admin-buttons">
+              <div class="b-admin-buttons__block">
+                <div title="Удалить отзыв" class="b-delete-icon"></div>
+                <div title="Редактировать" class="b-edit-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-rc__item__content">
+            <div class="b-rc__item__content__author"><a href="/personal/">Мария Савельева</a></div>
+            <div class="b-rc__item__content__text">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</div>
+            <div class="b-rc-edit-form">
+              <form action="" method="get">
+                <div class="b-form-field b-form__photo-block">
+                  <div class="input_file">
+                    <input id="fileupload58" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                  </div>
+                  <div class="b-form__photo-block__img"></div>
+                  <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+                </div>
+                <div class="b-form-field b-form__text-block">
+                  <input type="hidden" value="51939" name="cId"/>
+                  <input type="hidden" value="51801" name="rId"/>
+                  <input type="hidden" value="e" name="a"/>
+                  <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                  <div class="b-textarea-wrapper">
+                    <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</textarea>
+                  </div>
+                  <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                </div>
+                <div class="i-clearfix"></div>
+              </form>
+            </div>
+            <div class="b-rc__props">
+              <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+              <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+              <div class="i-clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-rc__block">
+      <div data-id="79" class="b-rc__item i-mine">
+        <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+          <div class="b-rc__item__pointer"></div>
+          <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+          <div class="b-rc__admin-buttons b-admin-buttons">
+            <div class="b-admin-buttons__block">
+              <div title="Удалить отзыв" class="b-delete-icon"></div>
+              <div title="Редактировать" class="b-edit-icon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="b-rc__item__content">
+          <div class="b-rc__item__content__author"><a href="/personal/">madler</a></div>
+          <div class="b-rc__item__content__text">Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!</div>
+          <div class="b-rc-edit-form">
+            <form action="" method="get">
+              <div class="b-form-field b-form__photo-block">
+                <div class="input_file">
+                  <input id="fileupload79" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                </div>
+                <div class="b-form__photo-block__img"></div>
+                <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+              </div>
+              <div class="b-form-field b-form__text-block">
+                <input type="hidden" value="51939" name="cId"/>
+                <input type="hidden" value="51801" name="rId"/>
+                <input type="hidden" value="e" name="a"/>
+                <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                <div class="b-textarea-wrapper">
+                  <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!</textarea>
+                </div>
+                <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+              </div>
+              <div class="i-clearfix"></div>
+            </form>
+          </div>
+          <div class="b-rc__props">
+            <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+            <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+            <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+            <div class="i-clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="b-rc__reply-block">
+        <div data-id="80" class="b-rc__item">
+          <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+            <div class="b-rc__item__pointer"></div>
+            <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+            <div class="b-rc__admin-buttons b-admin-buttons">
+              <div class="b-admin-buttons__block">
+                <div title="Удалить отзыв" class="b-delete-icon"></div>
+                <div title="Редактировать" class="b-edit-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-rc__item__content">
+            <div class="b-rc__item__content__author"><a href="/personal/">madler</a></div>
+            <div class="b-rc__item__content__text">katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!</div>
+            <div class="b-rc-edit-form">
+              <form action="" method="get">
+                <div class="b-form-field b-form__photo-block">
+                  <div class="input_file">
+                    <input id="fileupload80" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                  </div>
+                  <div class="b-form__photo-block__img"></div>
+                  <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+                </div>
+                <div class="b-form-field b-form__text-block">
+                  <input type="hidden" value="51939" name="cId"/>
+                  <input type="hidden" value="51801" name="rId"/>
+                  <input type="hidden" value="e" name="a"/>
+                  <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                  <div class="b-textarea-wrapper">
+                    <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!</textarea>
+                  </div>
+                  <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                </div>
+                <div class="i-clearfix"></div>
+              </form>
+            </div>
+            <div class="b-rc__props">
+              <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+              <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+              <div class="i-clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-rc__block">
+      <div data-id="59" class="b-rc__item i-mine">
+        <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+          <div class="b-rc__item__pointer"></div>
+          <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+          <div class="b-rc__admin-buttons b-admin-buttons">
+            <div class="b-admin-buttons__block">
+              <div title="Удалить отзыв" class="b-delete-icon"></div>
+              <div title="Редактировать" class="b-edit-icon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="b-rc__item__content">
+          <div class="b-rc__item__content__author"><a href="/personal/">madler</a></div>
+          <div class="b-rc__item__content__text">
+            <div class="b-rc__item__content__text__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1212" class="i-align-img"/></div>
+            <div class="b-rc__item__content__text__content">Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</div>
+            <div class="i-clearfix"></div>
+          </div>
+          <div class="b-rc-edit-form">
+            <form action="" method="get">
+              <div class="b-form-field b-form__photo-block">
+                <div class="b-admin-buttons">
+                  <div class="b-admin-buttons__block">
+                    <div title="Удалить фото" class="b-delete-icon"></div>
+                    <div title="Загрузить новое фото" class="b-image-icon">
+                      <div class="b-image-icon__input-file input_file">
+                        <input id="fileupload59" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                      </div>
+                      <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="b-form__photo-block__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1212" class="i-align-img"/></div>
+              </div>
+              <div class="b-form-field b-form__text-block">
+                <input type="hidden" value="51939" name="cId"/>
+                <input type="hidden" value="51801" name="rId"/>
+                <input type="hidden" value="e" name="a"/>
+                <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                <div class="b-textarea-wrapper">
+                  <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</textarea>
+                </div>
+                <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+              </div>
+              <div class="i-clearfix"></div>
+            </form>
+          </div>
+          <div class="b-rc__props">
+            <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+            <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+            <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+            <div class="i-clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-rc__block">
+      <div data-id="48" class="b-rc__item">
+        <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+          <div class="b-rc__item__pointer"></div>
+          <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+          <div class="b-rc__admin-buttons b-admin-buttons">
+            <div class="b-admin-buttons__block">
+              <div title="Удалить отзыв" class="b-delete-icon"></div>
+              <div title="Редактировать" class="b-edit-icon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="b-rc__item__content">
+          <div class="b-rc__item__content__author"><a href="/personal/">falabella</a></div>
+          <div class="b-rc__item__content__text">Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</div>
+          <div class="b-rc-edit-form">
+            <form action="" method="get">
+              <div class="b-form-field b-form__photo-block">
+                <div class="input_file">
+                  <input id="fileupload48" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                </div>
+                <div class="b-form__photo-block__img"></div>
+                <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+              </div>
+              <div class="b-form-field b-form__text-block">
+                <input type="hidden" value="51939" name="cId"/>
+                <input type="hidden" value="51801" name="rId"/>
+                <input type="hidden" value="e" name="a"/>
+                <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                <div class="b-textarea-wrapper">
+                  <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!</textarea>
+                </div>
+                <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+              </div>
+              <div class="i-clearfix"></div>
+            </form>
+          </div>
+          <div class="b-rc__props">
+            <div class="b-rc__props__reply"><a href="#" class="b-button__size_S">Ответить</a></div>
+            <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+            <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+            <div class="i-clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="b-rc__reply-block">
+        <div data-id="38" class="b-rc__item">
+          <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+            <div class="b-rc__item__pointer"></div>
+            <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+            <div class="b-rc__admin-buttons b-admin-buttons">
+              <div class="b-admin-buttons__block">
+                <div title="Удалить отзыв" class="b-delete-icon"></div>
+                <div title="Редактировать" class="b-edit-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-rc__item__content">
+            <div class="b-rc__item__content__author"><a href="/personal/">Мария Савельева</a></div>
+            <div class="b-rc__item__content__text">
+              <div class="b-rc__item__content__text__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1313" class="i-align-img"/></div>
+              <div class="b-rc__item__content__text__content">Спасибо! Я тоже в этом уверена!</div>
+              <div class="i-clearfix"></div>
+            </div>
+            <div class="b-rc-edit-form">
+              <form action="" method="get">
+                <div class="b-form-field b-form__photo-block">
+                  <div class="b-admin-buttons">
+                    <div class="b-admin-buttons__block">
+                      <div title="Удалить фото" class="b-delete-icon"></div>
+                      <div title="Загрузить новое фото" class="b-image-icon">
+                        <div class="b-image-icon__input-file input_file">
+                          <input id="fileupload59" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                        </div>
+                        <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-form__photo-block__img"><img src="/upload/comments/hot-chocolate.jpg" height="65" alt="" data-id="1313" class="i-align-img"/></div>
+                </div>
+                <div class="b-form-field b-form__text-block">
+                  <input type="hidden" value="51939" name="cId"/>
+                  <input type="hidden" value="51801" name="rId"/>
+                  <input type="hidden" value="e" name="a"/>
+                  <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                  <div class="b-textarea-wrapper">
+                    <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</textarea>
+                  </div>
+                  <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                </div>
+                <div class="i-clearfix"></div>
+              </form>
+            </div>
+            <div class="b-rc__props">
+              <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+              <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+              <div class="i-clearfix"></div>
+            </div>
+          </div>
+        </div>
+        <div data-id="28" class="b-rc__item">
+          <div class="i-relative"><a href="#" title="Закрыть" class="b-rc__item__close b-close-icon b-close-icon__color_3"></a>
+            <div class="b-rc__item__pointer"></div>
+            <div class="b-rc__item__author b-author-avatar"><a href="/personal/" class="b-author-avatar__link"><img src="http://www.foodclub.ru/images/avatar/avatar.jpg" width="100%" height="100%" alt="max_s" class="b-author-avatar__img"/></a></div>
+            <div class="b-rc__admin-buttons b-admin-buttons">
+              <div class="b-admin-buttons__block">
+                <div title="Удалить отзыв" class="b-delete-icon"></div>
+                <div title="Редактировать" class="b-edit-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-rc__item__content">
+            <div class="b-rc__item__content__author"><a href="/personal/">Мария Савельева</a></div>
+            <div class="b-rc__item__content__text">
+              <div class="b-rc__item__content__text__img"><img src="/images/infoblock/pancake.jpg" height="65" alt="" data-id="1414" class="i-align-img"/></div>
+              <div class="b-rc__item__content__text__content">Спасибо! Я тоже в этом уверена!</div>
+              <div class="i-clearfix"></div>
+            </div>
+            <div class="b-rc-edit-form">
+              <form action="" method="get">
+                <div class="b-form-field b-form__photo-block">
+                  <div class="b-admin-buttons">
+                    <div class="b-admin-buttons__block">
+                      <div title="Удалить фото" class="b-delete-icon"></div>
+                      <div title="Загрузить новое фото" class="b-image-icon">
+                        <div class="b-image-icon__input-file input_file">
+                          <input id="fileupload59" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+                        </div>
+                        <input type="hidden" name="comment-photo" value="" class="b-image-icon__photo-url"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-form__photo-block__img"><img src="/images/infoblock/pancake.jpg" height="65" alt="" data-id="1414" class="i-align-img"/></div>
+                </div>
+                <div class="b-form-field b-form__text-block">
+                  <input type="hidden" value="51939" name="cId"/>
+                  <input type="hidden" value="51801" name="rId"/>
+                  <input type="hidden" value="e" name="a"/>
+                  <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+                  <div class="b-textarea-wrapper">
+                    <textarea name="comment" cols="10" rows="5" required="" class="b-textarea">falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.</textarea>
+                  </div>
+                  <button type="submit" class="b-button b-button__width_100">Написать отзыв</button>
+                </div>
+                <div class="i-clearfix"></div>
+              </form>
+            </div>
+            <div class="b-rc__props">
+              <div class="b-rc__props__like"><span class="b-like"><a title="Мне нравится" href="#" data-ajax-url="/components/recipe.comments/php/like.txt" class="b-like-icon b-like-icon__type-button"></a><span class="b-like-num">4</span></span></div>
+              <div class="b-rc__props__date">13.10.2008 в 05:15</div>
+              <div class="i-clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="b-rc__reply-form">
+      <div class="i-relative"><a href="#" class="b-close-icon b-rc__reply-form__close b-close-icon__color_3"></a></div>
+      <form action="/components/recipe.comments/php/reply.json" method="get">
+        <div class="b-form-field b-form__photo-block">
+          <div class="input_file">
+            <input id="fileuploadReply" type="file" data-ajax-url="/js/file-upload/server/php/index.php" class="text"/>
+          </div>
+          <div class="b-form__photo-block__img"></div>
+          <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url"/>
+        </div>
+        <div class="b-form-field b-form__text-block">
+          <input type="hidden" name="rId" value=""/>
+          <input type="hidden" name="authorId" value="456"/>
+          <label class="b-form-label">Ответ на отзыв <span class="b-form-attention">?</span></label>
+          <div class="b-textarea-wrapper">
+            <textarea name="comment" cols="10" rows="10" required="" class="b-textarea"></textarea>
+          </div>
+          <button type="submit" class="b-button b-button__width_100">Ответить</button>
+        </div>
+        <div class="i-clearfix"></div>
+      </form>
+      <div class="b-rc__item i-foodclub">
+        <div class="i-relative">
+          <div class="b-rc__item__pointer"></div>
+        </div>
+        <div class="b-rc__item__content">
+          <div class="b-rc__item__content__text">Если Вы хотите оставить комментарий, Вам необходимо <a href="/forms/authorization/">авторизоваться</a> или <a href="/forms/registration/">зарегистрироваться</a> на сайте.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end /components/recipe.comments/-->
