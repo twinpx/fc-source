@@ -1,11 +1,11 @@
-﻿#recipe_line_block
+﻿.b-recipe-line
 
-  h2
+  h2.text-center
     a( href="/recipes/" ) Рецепты с пошаговыми фотографиями
   
-  -var n = 0
-    while n < 5
-      -n++
-      
-      include ../../modules/recipe-thumb/recipe-list-item.jade
-  .clear
+  .row
+    -var n = 0
+      while n < 4
+        -n++
+        .col-sm-3
+          include ../../modules/recipe-thumb/include.jade

@@ -27,24 +27,31 @@ block profile-buttons
 
 block content
   
-  #body
-    .padding
+  .container
   
-      include modules/recipe-line/include.jade
+    hr.i-size-L
+    
+    h1.text-center Авторские кулинарные рецепты
+  
+    include modules/main-h1/include.jade
+  
+    hr.i-size-L
+    
+    include modules/recipe-line/include.jade
+    
+    include modules/statistics/include.jade
+    
+    include modules/content-banner/hor.jade
+    
+    #content
       
-      include modules/statistics/include.jade
+      include modules/feed-space/include.jade
+      include modules/cooks-space/include.jade
+      include modules/banner-space/index.jade
       
-      include modules/content-banner/hor.jade
+      .clear
       
-      #content
-        
-        include modules/feed-space/include.jade
-        include modules/cooks-space/include.jade
-        include modules/banner-space/index.jade
-        
-        .clear
-        
-        //div( style="margin: 45px 0;" )
-          script( charset="UTF-8" src="//www.travelpayouts.com/widgets/2e904aed9b11dc04a26ae5f66e4a9820.js?v=176" )
-        
-        include modules/collection-block/include.jade
+      //div( style="margin: 45px 0;" )
+        script( charset="UTF-8" src="//www.travelpayouts.com/widgets/2e904aed9b11dc04a26ae5f66e4a9820.js?v=176" )
+      
+      include modules/collection-block/include.jade

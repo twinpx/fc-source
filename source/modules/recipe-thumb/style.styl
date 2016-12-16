@@ -3,3 +3,43 @@
 @import 'styl/recipe-list-item.styl'
 @import 'styl/recipe-thumb.styl'
 @import 'styl/recipe-preview.styl'
+
+//include
+
+.b-recipe-thumb
+  rel()
+  font-family $pt-sans
+
+  &__author
+    position absolute
+    top -16px
+    right -16px
+    border-radius 51%
+    overflow hidden
+    display block
+    width 32px
+    height 32px
+    z-index 2
+    
+    img
+      width 100%
+      height 100%
+      
+  &__photo
+    margin-bottom 18px
+    
+  &__name
+    font-size 13.5pt
+    font-weight bold
+    margin-bottom 6px
+    
+  &__time,
+  &__nutrition
+    font-size 10pt
+    font-weight bold
+    margin-bottom 1px
+    
+  &__servings
+    font-size 10pt
+    margin-bottom 1px
+  

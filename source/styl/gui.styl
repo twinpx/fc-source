@@ -41,6 +41,8 @@ a:focus
 a img
   cursor pointer
   
+//headings
+
 h1,
 h2,
 h3,
@@ -51,8 +53,8 @@ h6
   
 h1
   color $dark-grey
-  margin 0 0 20px 0
-  font-family "PT Sans Narrow",Georgia,"Times New Roman",Times,serif
+  margin 0 0 29px 0
+  font-family $pt
   font-weight bold
   font-size 22pt
   
@@ -83,10 +85,12 @@ h1
   .delete img
     display none
     
-h2
-  font-family "PT Sans Narrow",Georgia,"Times New Roman",Times,serif
+h2,
+.b-h2
+  font-family $pt-serif
+  font-size 14pt
   font-weight bold
-  font-size 22pt
+  color $dark-grey
   
   &.club
     margin-bottom 20px
@@ -102,29 +106,6 @@ h2
   .delete img
     display none
     
-ol,
-ul
-  margin-top 20px !important //bootstrap
-  
-  li
-    margin-bottom 8px
-      
-.pages_recipes
-
-  .delete,
-  .edit
-  
-    img
-      display none
-      
-button
-  border 0
-  cursor pointer
-    
-  &:active,
-  &:focus
-    outline none
-
 h1 a.edit,
 h2 a.edit,
 .pages_recipes a.edit,
@@ -178,14 +159,6 @@ h2 .delete:active,
 .pages_recipes .delete:active,
 a.b-delete-button:active
   background embedurl( 'img/delete-active.png' ) no-repeat 0 0
-  
-h2,
-h2 *,
-.b-h2
-  font-size 22pt
-  font-family "PT Sans Narrow",Georgia,"Times New Roman",Times,serif
-  font-weight bold
-  line-height normal
     
 .h1
   font-size 22pt
@@ -204,6 +177,29 @@ h3 *,
   font-family $sans
   font-weight bold
   line-height normal
+  
+ol,
+ul
+  margin-top 20px !important //bootstrap
+  
+  li
+    margin-bottom 8px
+      
+.pages_recipes
+
+  .delete,
+  .edit
+  
+    img
+      display none
+      
+button
+  border 0
+  cursor pointer
+    
+  &:active,
+  &:focus
+    outline none
   
 div.twtr-widget
   margin-top 20px
@@ -288,12 +284,16 @@ h5
   float none !important
   
 hr
+  border-color transparent
   
   &.i-size-L
     margin 20px 0 19px
   
   &.i-size-S
     margin 5px 0 4px
+    
+  &.i-line
+    border-color $lighter-grey
     
 #opaco
   background-color #000
