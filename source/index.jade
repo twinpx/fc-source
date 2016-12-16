@@ -15,12 +15,12 @@ block profile-buttons
   .b-header__nav
     .row
       .col-xs-6
+        include ./components/recipe-search/template
+        include ./modules/search-helper/include.jade
         a( href="/recipes/" ) Рецепты
         a.i-active( href="/journal/" ) Журнал
         a( href="/foodshot/" ) Фудшот
         a( href="/lavka/" ) Лавка
-        include ./modules/search-helper/include.jade
-        include ./components/recipe-search/template
       .col-xs-6.visible-xs-block
         a( href="/forms/auth/" ) Войти
         a( href="/forms/reg/" ) Зарегистрироваться

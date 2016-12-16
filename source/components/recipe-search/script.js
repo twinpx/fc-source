@@ -10,7 +10,7 @@
   
     new FcRecipeSearch();
 
-    $("[data-placeholder]").placeholder();
+    //$("[data-placeholder]").placeholder();
     
     function FcRecipeSearch(params) {
       var self = this;
@@ -18,15 +18,15 @@
       init();
       
       function init() {
-        initOptions();
+        //initOptions();
         initVariables();
-        makeHtml();
+        //makeHtml();
         handleEvents();
 
-        showHideDeleteButton();
+        //showHideDeleteButton();
       }
       
-      function initOptions() {
+      /*function initOptions() {
         self.options = params || {};
         self.options.itemsNum = self.options.itemsNum || {"recipes": 5, "dishes": 3, "ingredients": 3, "cuisines": 3};//number of items in each list
         self.options.blockTitles = self.options.blockTitles || ["recipes", "dishes", "ingredients", "cuisines"];
@@ -37,29 +37,29 @@
         self.options.searchAllClass = self.options.searchAllClass || "b-rs__search-all";
         self.options.itemTag = self.options.itemTag || "li";
         self.options.searchDelay = 300;
-      }
+      }*/
       
       function initVariables() {
         self.$elem = $("#recipeSearch");
         self.$input = self.$elem.find(".b-recipe-search__input");
-        self.$activeItem = self.$input;//active list item (highlighted by keyboard arrows)
+        /*self.$activeItem = self.$input;//active list item (highlighted by keyboard arrows)
         self.elemValue = $.trim(self.$input.val());
         self.$delete = self.$elem.find(".b-recipe-search__delete");
-        self.$button = self.$elem.find(".b-recipe-search__button");
+        self.$button = self.$elem.find(".b-recipe-search__button");*/
         self.$icon = self.$elem.find(".b-recipe-search__icon");
       }
       
-      function makeHtml() {
+      /*function makeHtml() {
         self.$list = $('<ul class="b-recipe-search__ul"></ul>');
         if ( $( 'body' ).hasClass( 'i-mobile-search' )) {
           $( 'body' ).append($('<div id="recipe_search_list"></div>').append(self.$list));
         } else {
           self.$input.parent().append($('<div id="recipe_search_list"></div>').append(self.$list));
         }
-      }
+      }*/
       
       function handleEvents() {
-        self.$input
+        /*self.$input
           .focus(focusInput)
           .keydown(keydownInput)
           .keyup(keyupInput);
@@ -68,12 +68,12 @@
         $(document).bind( "click", clickDocument );
         self.$list.click( clickList );
         self.$delete.click( clickDelete );
-        self.$button.click( clickButton );
+        self.$button.click( clickButton );*/
         self.$icon.click( clickIcon );
         
-        self.$elem.click( function(e) {
+        /*self.$elem.click( function(e) {
           e.stopPropagation();
-        });
+        });*/
         
         function clickIcon() {
           self.$elem.toggleClass( 'i-open' ).removeClass( "i-preloader" );
@@ -82,7 +82,7 @@
           }
         }
         
-        function clickDocument() {
+        /*function clickDocument() {
           self.$list.hide();
           self.$elem.removeClass( 'i-open' ).removeClass( "i-preloader" );
         }
@@ -254,10 +254,10 @@
               obj.lowerTitle = obj.title.toLowerCase().replace("\u0451", "\u0435").replace("\u0439", "\u0438");
             }
           }
-        }
+        }*/
       }
       
-      function allowedSymbols() {
+      /*function allowedSymbols() {
         var value = self.$input.val();
         var regExp = /^[-a-zA-Z\u0400-\u04ff0-9\.,\s]*$/;
         
@@ -267,7 +267,7 @@
         
         self.$input.val( value.slice( 0, -1 ));
         allowedSymbols();
-      }
+      }*/
       
       /*function cyrillic() {
         if ( /^[\u0400-\u04ff\s]*$/.test( self.$input.val() )) {
@@ -278,7 +278,7 @@
         cyrillic(self.$input);
       }*/
       
-      function hideList() {
+      /*function hideList() {
         self.$list
           .empty()
           .hide();
@@ -579,7 +579,7 @@
           "\u044E": ".",
           "\u044F": "z"
         }
-      ];
+      ];*/
     }
 
   });
@@ -588,7 +588,7 @@
 
 //This function must be in the global scope
 function onloadRecipeSearchImage(elem) {
-  setImageSize();
+  /*setImageSize();
   showImage();
 
   function showImage() {
@@ -626,10 +626,10 @@ function onloadRecipeSearchImage(elem) {
 
     elem.setAttribute("width", Math.round(width));
     elem.setAttribute("height", Math.round(height));
-  }
+  }*/
   
 }
-
+/*
 //--placeholder--//
 (function($) {
   var defaults = {
@@ -726,4 +726,4 @@ function onloadRecipeSearchImage(elem) {
     });
     return this;
   };
-})(jQuery);
+})(jQuery);*/

@@ -45,13 +45,13 @@ header#header.b-header
         .row
           .col-xs-6
             //- bitrix composite
+            include ../../components/recipe-search/template
+            include ../../modules/search-helper/include.jade
             div
               a( href="/recipes/" ) Рецепты
               a.i-active( href="/journal/" ) Журнал
               a( href="/foodshot/" ) Фудшот
               a( href="/lavka/" ) Лавка
-            include ../../modules/search-helper/include.jade
-            include ../../components/recipe-search/template
           .col-xs-6.visible-xs-block
             a( href="" ).i-profile Профиль
             a( href="" ).i-favorite Избранное
