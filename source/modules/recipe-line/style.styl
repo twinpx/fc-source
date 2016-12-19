@@ -2,15 +2,12 @@
 
 .b-recipe-line
   margin-bottom 40px
-  
-  h2
-    margin 0 0 17px 0
-
-    a
-      color $dark-grey
       
-  .item
-    float left
-    display inline
-    width 188px
-    margin 0 2px 0 2px
+  .col-sm-3
+    
+    @media( max-width 767px )
+      display none
+      
+      &:first-child
+        display block
+        float none

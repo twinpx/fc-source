@@ -1,7 +1,9 @@
 ﻿.b-recipe-line
 
-  h2.text-center
-    a( href="/recipes/" ) Рецепты с пошаговыми фотографиями
+  -var heading = "Рецепты с пошаговыми фотографиями"
+  include ../../modules/heading-linethrough/link
+  
+  hr.i-size-L
   
   .row
     -var n = 0
@@ -9,3 +11,5 @@
         -n++
         .col-sm-3
           include ../../modules/recipe-thumb/include.jade
+          
+        hr.i-size-M.visible-xs-block

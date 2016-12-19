@@ -1,0 +1,77 @@
+﻿#feed_space
+  .choice
+    noindex
+      span Все клубы
+      a( href="" ) Моя лента
+      
+  h2 Темы, обсуждаемые в клубах
+  
+  - var n = 2
+  while n > 0
+    - n--
+    .topic_item
+    
+      include ../../modules/chain-path/include.jade
+        
+      h3
+        a.heading( href="/clubs/club/topic/" ) Бифштекс по-мексикански
+        | 
+        span.admin_panel
+          noindex
+            a.edit( href="" title="Редактировать запись" ) Редактировать запись
+            a.delete( href="" title="Удалить запись" ) Удалить запись
+            
+      .text
+        |Рецепт этого блюда был найден в книжке с разными национальными рецептами. Но, как это часто бывает, что-то по-мексикански еще не означает, что в Мексике именно так и делают. НО! Блюдо на самом деле очень вкусное, сочетание сочного бифштекса и таких же сочных овощей очень ласкает вкусовые рецепторы.
+        br
+        br
+        
+        ul
+          li Ну и еще обратите внимание на минимальное количество жиров и углеводов в блюде.
+        
+        ol
+          li Если не заедать все это жареной картошкой и хлебом с маслом, то вполне диетическая еда получается.
+        
+        br
+        
+        //Max width for image 466
+        a( href="/recipe/" )
+          img( src="/upload/article/1.jpg" width="466" height="300" alt="" )
+        br
+        br
+        |В общем, рекомендую!
+        
+      .tags
+        h6 Метки
+        a( href="" ) кукуруза
+        |, 
+        a( href="" ) папайя
+        
+      .bar
+        span.comments_icon( title="Комментировать" )
+          noindex
+            a( href="/recipe/#comments" ) 12
+        span.author
+          noindex
+            span.photo
+              |&nbsp;
+              a( href="/author/" )
+                img( src="/upload/user/small_photo.jpg" width="30" height="30" alt="max_s" )
+            a( href="/author/" ) maximsav
+          
+        span.date 8 сентября 2011 12:02
+        //<div class="rating"><noindex><a href="" title="Добавить голос" class="up">Добавить голос</a></noindex><span>36</span><noindex><a href="" title="Снять голос" class="down">Снять голос</a></noindex></div>
+      .clear
+  
+  - var i = 5
+  while i > 0
+    - i--
+    
+    .topic_item_brief
+      .bar
+        span.comments_icon( title="Комментировать" )
+          noindex
+            a( href="/recipe/#comments" ) 1
+      h3
+        a.heading( href="/clubs/club/topic/" ) Морковный торт Розендаля
+      .clear
