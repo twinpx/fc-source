@@ -2,8 +2,19 @@
 
 .b-statistics
   border 1px solid $m-light-grey
-  padding 30px
+  padding 26px 23px 24px
   color $dark-grey
+      
+  @media ( max-width 1199px )
+    text-align center
+  
+  @media ( max-width 767px )
+    padding 15px
+    
+  &:after
+    content ''
+    display table
+    clear both
     
   &__item
     font-family $pt-serif
@@ -14,6 +25,24 @@
     
     &:last-child
       float right
+      
+      @media ( max-width 1199px )
+        float none
+        display block
+      
+    a&
+      color $dark-grey
+  
+  @media ( max-width 767px )
+
+    &__item
+      display none
+      
+      &:first-child
+        display inline-block
+      
+      &:last-child
+        display none
     
   b
     font-size 18pt
@@ -29,3 +58,6 @@
     font-size 10pt
     white-space nowrap
     margin-top 5px
+    
+  .btn
+    margin 6px 0 0 16px

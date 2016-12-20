@@ -1,43 +1,60 @@
 ﻿-var heading = "Свежий дайджест"
 include ../../modules/heading-linethrough/include
 
+hr
+
 .row
   .col-sm-6
     a( href="/journal/article/" )
-      img.img-responsive( src="/upload/journal/feed.jpg" alt="Салаты и закуски Новогоднего стола" )
+      img.img-responsive.center-block( src="/upload/journal/feed.jpg" alt="Салаты и закуски Новогоднего стола" )
+  hr.i-size-S.visible-xs-block
   .col-sm-4.col-sm-offset-1.text-center
-    a( href="" ) Виктория Фильберт
-    a.b-feed-heading( href="" ) foodclub
+    include ../../modules/author/include
+    a.b-feed-heading( href="" )
+      b foodclub
     h2
       a( href="" ) Салаты и закуски для новогоднего стола! Дайжест свежих публикаций из ЖЖ
     p Продолжаем подготовку к праздничному ужину! В подборке вы найдете 10 идей для вдохновения, которые помогут разнообразить привычное меню, и подготовиться к торжественной трапезе. 
     p Хотите пор...
     
+hr
+    
 -var heading = "Актуально"
 include ../../modules/heading-linethrough/include
+
+hr
 
 .row
   .col-sm-4.text-center
     a( href="/journal/article/" )
-      img.img-responsive( src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" )
-    a.b-feed-heading( href="/journal/thematic/" ) foodclub
-    h2
-      a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
-    p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
+      img.img-responsive.center-block( src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" )
+    hr.i-size-S
+    .row
+      .col-sm-10.col-sm-1-offset
+        a.b-feed-heading( href="/journal/thematic/" ) foodclub
+        h2
+          a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
+        p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
     
-  .col-sm-4.text-center
+  .col-sm-4.text-center.hidden-xs
     a( href="/journal/article/" )
-      img.img-responsive( src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" )
-    a.b-feed-heading( href="/journal/thematic/" ) foodclub
-    h2
-      a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
-    p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
+      img.img-responsive.center-block( src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" )
+    hr.i-size-S
+    .row
+      .col-sm-10.col-sm-1-offset
+        a.b-feed-heading( href="/journal/thematic/" ) foodclub
+        h2
+          a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
+        p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
     
-  .col-sm-4.text-center
+  .col-sm-4.text-center.hidden-xs
     a( href="/journal/article/" )
-      img.img-responsive( src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" )
-    a.b-feed-heading( href="/journal/thematic/" ) foodclub
-    h2
-      a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
-    p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
-    
+      img.img-responsive.center-block( src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" )
+    hr.i-size-S
+    .row
+      .col-sm-10.col-sm-1-offset
+        a.b-feed-heading( href="/journal/thematic/" ) foodclub
+        h2
+          a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
+        p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
+        
