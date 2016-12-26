@@ -57,4 +57,72 @@ hr
         h2
           a( href="/journal/article/" ) Что приготовить на 8 марта? Дайджест публикаций из блогов
         p Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола... 
+      
+hr
+      
+.row
+  .col-sm-4.text-center
+  
+    -var heading = "Рецепт месяца"
+    include ../../modules/heading-linethrough/include
+    
+    hr
+    
+    include ../../modules/recipe-thumb/recipe-of-month.jade
+    
+  hr.visible-xs-block
+  
+  .col-sm-4.text-center
+  
+    -var heading = "Ингредиент"
+    include ../../modules/heading-linethrough/include
+    
+    hr
+    
+    .b-recipe-thumb
+    
+      a.b-recipe-thumb__photo( href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" )
+        img( src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7" )
+      
+      hr
         
+      .text-center
+        .b-recipe-thumb__name
+          a( href="" ) Мука пшеничная
+        p Переоценить значение пшеничной муки в питании человека, наверное, невозможно.
+    
+  hr.visible-xs-block
+    
+  .col-sm-4.text-center
+  
+    -var heading = "Спец. проект"
+    include ../../modules/heading-linethrough/include
+    
+    hr
+    
+    .b-recipe-thumb
+    
+      a.b-recipe-thumb__photo( href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" )
+        img( src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7" )
+      
+      hr
+        
+      .text-center
+        .b-recipe-thumb__name
+          a( href="" ) Новогодние рецепты
+        p Как ни крути, для новогоднего стола в России очень характерны сытные многокомпонентные салаты, мясные закуски и соленья.
+        
+hr
+
+include ../../components/lavka/template
+    
+hr.i-size-XL
+
+-var heading = "Наши авторы"
+include ../../modules/heading-linethrough/include
+
+hr
+
+include ../../modules/author-card/include
+    
+      
