@@ -29,10 +29,13 @@ block content
   
   .container
   
-    hr.i-size-L
+    hr.i-size-XL
     
-    h1.text-center Авторские кулинарные рецепты
-  
+    -var heading = "Авторские кулинарные рецепты"
+    include ./modules/heading-linethrough/h1
+    
+    hr
+    
     include modules/main-h1/include.jade
   
     hr.i-size-XL

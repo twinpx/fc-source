@@ -16,6 +16,7 @@ header#header.b-header
       .b-header__buttons.hidden-xs
     
         .b-header__profile.dropdown
+          
           button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
             img( src="/upload/user/small_photo.jpg" )
           menu.b-header__profile-list.dropdown-menu( role="menu" )
@@ -47,11 +48,10 @@ header#header.b-header
             //- bitrix composite
             include ../../components/recipe-search/template
             include ../../modules/search-helper/include.jade
-            div
-              a( href="/recipes/" ) Рецепты
-              a.i-active( href="/journal/" ) Журнал
-              a( href="/foodshot/" ) Фудшот
-              a( href="/lavka/" ) Лавка
+            a( href="/recipes/" ) Рецепты
+            a.i-active( href="/journal/" ) Журнал
+            a( href="/foodshot/" ) Фудшот
+            a( href="/lavka/" ) Лавка
           .col-xs-6.visible-xs-block
             a( href="" ).i-profile Профиль
             a( href="" ).i-favorite Избранное

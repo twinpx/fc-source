@@ -25,8 +25,7 @@ script( src="/components/lavka/script.js" )
             img(src='/upload/store-block/photo.jpg', width='90', height='130', alt='Гриль Bar-B-Kettle')
         hr
         .b-lavka__title
-          b
-            a(href='', target='_blank', rel='nofollow') Гриль Bar-B-Kettle
+          a(href='', target='_blank', rel='nofollow') Гриль Bar-B-Kettle
           
         .b-lavka__price.b-price
           span.b-price__num ~5 346
@@ -35,7 +34,8 @@ script( src="/components/lavka/script.js" )
         .b-lavka__button
           a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
     
-      hr.visible-xs-block
+      .col-sm-12.visible-xs-block
+        hr.i-line.i-size-XL
       
       .col-sm-3.text-center
         .b-lavka__logo
@@ -47,8 +47,7 @@ script( src="/components/lavka/script.js" )
             img(src='/upload/store-block/photo2.jpg', width='130', height='130', alt='Кленовый сироп')
         hr
         .b-lavka__title
-          b
-            a(href='', target='_blank', rel='nofollow') Кленовый сироп
+          a(href='', target='_blank', rel='nofollow') Кленовый сироп
           
         .b-lavka__price.b-price
           span.b-price__num
@@ -59,6 +58,8 @@ script( src="/components/lavka/script.js" )
         .b-lavka__button
           a.btn.btn-default(href='', target='_blank', rel='nofollow') Купить
     
-      hr.visible-xs-block
+      - if( i == 1 )
+        .col-sm-12.visible-xs-block
+          hr.i-line.i-size-XL
 
 // end /components/lavka/

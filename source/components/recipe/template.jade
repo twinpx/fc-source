@@ -3,397 +3,120 @@
 link( rel="stylesheet", href="/components/recipe/style.css" )
 script( src="/components/recipe/script.js" )
 
-#recipe_id.recipe.hrecipe( itemscope itemtype="http://data-vocabulary.org/Recipe" )
-  .title
-    .body
-      .chain_path
-        include ../../modules/autor/include.jade
-        | предлагает приготовить:
-        span.tags
-          a.cuisine-type( href="/search/" rel="tag" ) Китайская кухня
-          |/
-          a.category( href="/search/" rel="tag" ) Супы
-          |/
-          a( href="/search/" rel="tag" ) Курица
-          
-      .admin_panel
-        noindex
-          a#html_code( href="#" ) HTML-код
-          include ../../modules/edit/include.jade
-          include ../../modules/delete/include.jade
-          
-      h1.fn( itemprop="name" ) Бисквитный рулет со сливочным сыром и фруктами
-      
-      .recipe_info
-        table
-          tr
-            td.time
-              span Время приготовления: 
-              span.time-value.duration( datetime="PT1H30M" itemprop="totalTime" ) 1 час 30 мин
-            td.yield( itemprop="nutrition" itemscope itemtype="http://data-vocabulary.org/Nutrition" )
-              span Порций: 
-              span.yield-value( itemprop="yield" ) 4
-            td.nutrition
-              span Калорийность: 
-              span.nutrition-value.calories( itemprop="calories" ) 4 кКал на порцию
-              
-      .image
-        .screen
-          div( style="width:600px; height:400px;" )
-        img.result-photo( src="http://www.foodclub.ru/upload/iblock/58f/_end.jpg" width="600" height="400" alt="" itemprop="photo" )
-        
-      .needed
-        h2 Вам понадобится:
-        .tools
-          span.item
-            img( src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips" )
-            | 
-            span.p Блендер Viva Collection от 
-              a( href="http://" target="_blank" ) Philips
-          span.item
-            img( src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips" )
-            | 
-            span.p Блендер  от 
-              a( href="http://" target="_blank" ) Philips
-          span.item
-            img( src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips" )
-            | 
-            span.p Collection от 
-              a( href="http://" target="_blank" ) Philips
-          span.item
-            img( src="/upload/tools/1.jpg" width="100" height="100" alt="Блендер Viva Collection от Philips" )
-            | 
-            span.p Блендер Viva Collection от 
-              a( href="http://" target="_blank" ) Philips
-              
-        .scales
-          a( href="#" title="Таблица мер" )
-          
-        table( itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient" )
-          tr
-            td.ing_name( itemprop="name" )
-              span.ingredient Куриное филе
-            td.ing_amount( itemprop="amount" ) 4 шт
-            td.ing_buy
-              a( href="" ) Купить
-            td.ing_name.border( itemprop="name" )
-              span.ingredient Куриное филе
-            td.ing_amount( itemprop="amount" ) 4 шт
-            td.ing_buy
-              a( href="" ) Купить
-          tr
-            td.ing_name( itemprop="name" )
-              span.ingredient Сливочное масло
-            td.ing_amount( itemprop="amount" ) 100 г
-            td.ing_buy
-              a( href="" ) Купить
-            td.ing_name.border( itemprop="name" )
-              span.ingredient Сливочное масло из молока коров с Альпийских лугов
-            td.ing_amount( itemprop="amount" ) 100 г
-            td.ing_buy
-              a( href="" ) Купить
-          tr
-            td.ing_name( itemprop="name" )
-              span.ingredient Зелень
-            td.ing_amount( itemprop="amount" ) 2 пучка
-            td.ing_buy
-              a( href="" ) Купить
-            td.ing_name.border( itemprop="name" )
-              span.ingredient Зелень
-            td.ing_amount( itemprop="amount" ) 2 пучка
-            td.ing_buy
-              a( href="" ) Купить
-          tr
-            td.ing_name( itemprop="name" )
-              span.ingredient Лимонный сок
-            td.ing_amount( itemprop="amount" ) 1 стакан
-            td.ing_buy
-              a( href="" ) Купить
-            td.ing_name.border( itemprop="name" )
-              span.ingredient Лимонный сок
-            td.ing_amount( itemprop="amount" ) 1 стакан
-            td.ing_buy
-              a( href="" ) Купить
-          tr
-            td.ing_name( itemprop="name" )
-              span.ingredient Вегета
-            td.ing_amount( itemprop="amount" ) 200 г
-            td.ing_buy
-              a( href="" ) Купить
-            td.ing_name.border( itemprop="name" )
-              span.ingredient Вегета
-            td.ing_amount( itemprop="amount" ) 200 г
-            td.ing_buy
-              a( href="" ) Купить
-          tr
-            td.ing_name( itemprop="name" )
-              span.ingredient Мука
-            td.ing_amount( itemprop="amount" ) 300 г
-            td.ing_buy
-              a( href="" ) Купить
-            td.ing_name.border( itemprop="name" )
-              span.ingredient
-            td.ing_amount( itemprop="amount" )
-            td.ing_buy
-            
-  .instructions
-    .description( itemprop="summary" )
-      | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-      
-    .border
-    .stage
-      .body
-        .needed
-          h2 Ингредиенты 1-го этапа:
-          table
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Сливочное масло из молока коров с Альпийских лугов
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              
-        .image
-          .screen
-            div( style="width:500px; height:350px;" )
-          img.photo( src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" )
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-    .border
-    .stage
-      .body
-              
-        .image
-          .screen
-            div( style="width:500px; height:350px;" )
-          img.photo( src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" )
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-    .border
-    .stage
-      .body
-        .needed
-          h2 Ингредиенты 3-го этапа:
-          table
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Сливочное масло из молока коров с Альпийских лугов
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient
-              td.ing_amount( itemprop="amount" )
-              td.ing_buy
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-    .border
-    .stage
-      .body
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-    .border
-    .stage
-      .body
-        .needed
-          h2 Ингредиенты 5-го этапа:
-          table
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Сливочное масло из молока коров с Альпийских лугов
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient
-              td.ing_amount( itemprop="amount" )
-              td.ing_buy
-              
-        .image
-          .screen
-            div( style="width:500px; height:350px;" )
-          img.photo( src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" )
-
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-    .border
-    .stage
-      .body
-        .needed
-          h2 Ингредиенты 6-го этапа:
-          table
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Сливочное масло из молока коров с Альпийских лугов
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient
-              td.ing_amount( itemprop="amount" )
-              td.ing_buy
-              
-        .image
-          .screen
-            div( style="width:500px; height:350px;" )
-          img.photo( src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" )
-
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-    .border
-    .stage
-      .body
-        .needed
-          h2 Ингредиенты 5-го этапа:
-          table
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Куриное филе
-              td.ing_amount( itemprop="amount" ) 4 шт
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient Сливочное масло из молока коров с Альпийских лугов
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-            tr
-              td.ing_name( itemprop="name" )
-                span.ingredient Сливочное масло
-              td.ing_amount( itemprop="amount" ) 100 г
-              td.ing_buy
-                a( href="" ) Купить
-              td.ing_name.border( itemprop="name" )
-                span.ingredient
-              td.ing_amount( itemprop="amount" )
-              td.ing_buy
-              
-        .image
-          .screen
-            div( style="width:500px; height:350px;" )
-          img.photo( src="/upload/recipe/choco-min.jpg" width="440" height="400" alt="" data-src="/upload/recipe/choco.jpg" )
-
-          
-        .instruction
-          | Этот суп, хотя и супербыстрый, но все-таки не какой-нибудь Доширак, так что не побрезгуйте приготовить силий и продуктов потребуется минимум, а накормить таким количеством супа можно человек шесть. Фотографировать супы мне почему-то очень сложно, так что попрошу не особо придираться )))))
-          
-  .date
-    span.published( datetime="2006-01-18" itemprop="published" ) 18 января 2006 
-    span.time 18:25
+.b-recipe( itemscope itemtype="http://schema.org/Recipe" )
+  
+  .b-recipe__chain-path
+    a( href="/search/" )
+      span( itemprop="recipeCuisine" ) Американская кухня
+    | /
+    a( href="/search/" ) Кексы
+    | /
+    a( href="/search/" ) Ягоды
     
-  .bar
-    .padding
-      include ../../modules/autor/include.jade
+  -var heading = "Картофельная запеканка с лисичками"
+  include ../../modules/heading-linethrough/h1-name
+  
+  .b-recipe__info
+    
+    .b-recipe__info-item
+      .b-recipe__info-icon
+        svg
+      .b-recipe__info-text( itemprop="recipeYield" ) 2 порции
+      
+    .b-recipe__info-item
+      .b-recipe__info-icon
+        svg
+      .b-recipe__info-text( itemprop="cookTime" content="PT1H20M" ) 1 час 20 мин
+      
+    .b-recipe__info-item
+      .b-recipe__info-icon
+        svg
+      .b-recipe__info-text( itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" )
+        span( itemprop="calories" ) 192 кКал на порцию
+      
+  hr.i-size-M
+
+  .row
+    .col-sm-9
+    
+      .b-recipe__ill
+        img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+        
+      hr.i-size-M
+        
+      .row
+        .col-sm-8
           
-      .comments
-        a.add( href="/recipe/#add_opinion" ) Комментировать
-        span.number (
-          a( href="/recipe/#comments" ) 2
-          | )
+          include ../../modules/recipe-icons/include
+          
+        hr.visible-xs-block.i-size-M
+          
+        .col-sm-4
+          .b-recipe-menu__social
+            include ../../modules/social-buttons/small.jade
+      
+    .col-sm-3.hidden-xs
+    
+      include ../../modules/aside-banner/simple
+      
+  hr.i-size-M
+  
+  .row
+    .col-sm-8.col-sm-offset-2( itemprop="description" )
+      | Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)
+      
+  hr.i-size-M
+  
+  -var heading = "Вам понадобится"
+  include ../../modules/heading-linethrough/include
+  
+  .row.b-recipe__ingredients
+    .col-sm-4
+      table
+        tr
+          td( itemprop="recipeIngredient" ) Нерка копченая (филе)
+          td 150 г
+        tr
+          td( itemprop="recipeIngredient" ) Лаймы
+          td 1 шт.
+        tr
+          td( itemprop="recipeIngredient" ) Соль морская
+          td ¼ шт.
+        tr
+          td( itemprop="recipeIngredient" ) Горчица
+          td 1.5 ч.л.
+          
+    .col-sm-4
+      table
+        tr
+          td
+            a( href="" itemprop="recipeIngredient" ) Нерка копченая (филе)
+          td 150 г
+        tr
+          td( itemprop="recipeIngredient" ) Лаймы
+          td 1 шт.
+        tr
+          td( itemprop="recipeIngredient" ) Соль морская
+          td ¼ шт.
+        tr
+          td( itemprop="recipeIngredient" ) Горчица
+          td 1.5 ч.л.
+          
+    .col-sm-4
+      table
+        tr
+          td( itemprop="recipeIngredient" ) Нерка копченая (филе)
+          td 150 г
+        tr
+          td( itemprop="recipeIngredient" ) Лаймы
+          td 1 шт.
+        tr
+          td( itemprop="recipeIngredient" ) Соль морская
+          td ¼ шт.
+        tr
+          td( itemprop="recipeIngredient" ) Горчица
+          td 1.5 ч.л.
+          
+  hr
 
 // end /components/recipe/
