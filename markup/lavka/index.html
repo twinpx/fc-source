@@ -13,6 +13,10 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/template/template_styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/template/jscript.js"></script>
+    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
   </head>
   <body>
     <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
@@ -296,8 +300,7 @@
                     <div></div>
                   </div>
                 </div>
-              </div>
-              <div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a></div>
+              </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a>
             </div>
             <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
           </div>
@@ -320,7 +323,7 @@
           <div class="b-lavka">
             <hr>
             <div class="b-heading-linethrough">
-              <h2><span>Лавка</span></h2>
+              <h2>Лавка</h2>
             </div>
             <div class="row">
               <div class="col-sm-3 text-center">
@@ -328,41 +331,46 @@
                 <hr>
                 <div class="b-lavka__photo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/photo.jpg" width="90" height="130" alt="Гриль Bar-B-Kettle"></a></div>
                 <hr>
-                <div class="b-lavka__title"><b><a href="" target="_blank" rel="nofollow">Гриль Bar-B-Kettle</a></b></div>
+                <div class="b-lavka__title"><a href="" target="_blank" rel="nofollow">Гриль Bar-B-Kettle</a></div>
                 <div class="b-lavka__price b-price"><span class="b-price__num">~5 346</span><span class="b-price__unit">руб.</span></div>
                 <div class="b-lavka__button"><a href="" target="_blank" rel="nofollow" class="btn btn-default">Купить</a></div>
               </div>
-              <hr class="visible-xs-block">
+              <div class="col-sm-12 visible-xs-block">
+                <hr class="i-line i-size-XL">
+              </div>
               <div class="col-sm-3 text-center">
                 <div class="b-lavka__logo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/logo2.jpg" alt=""></a></div>
                 <hr>
                 <div class="b-lavka__photo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/photo2.jpg" width="130" height="130" alt="Кленовый сироп"></a></div>
                 <hr>
-                <div class="b-lavka__title"><b><a href="" target="_blank" rel="nofollow">Кленовый сироп</a></b></div>
+                <div class="b-lavka__title"><a href="" target="_blank" rel="nofollow">Кленовый сироп</a></div>
                 <div class="b-lavka__price b-price"><span class="b-price__num"><span class="b-price__num__int">5 346</span><span class="b-price__num__fract">.60</span></span><span class="b-price__unit">руб.</span></div>
                 <div class="b-lavka__button"><a href="" target="_blank" rel="nofollow" class="btn btn-default">Купить</a></div>
               </div>
-              <hr class="visible-xs-block">
+              <div class="col-sm-12 visible-xs-block">
+                <hr class="i-line i-size-XL">
+              </div>
               <div class="col-sm-3 text-center">
                 <div class="b-lavka__logo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/logo.gif" alt=""></a></div>
                 <hr>
                 <div class="b-lavka__photo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/photo.jpg" width="90" height="130" alt="Гриль Bar-B-Kettle"></a></div>
                 <hr>
-                <div class="b-lavka__title"><b><a href="" target="_blank" rel="nofollow">Гриль Bar-B-Kettle</a></b></div>
+                <div class="b-lavka__title"><a href="" target="_blank" rel="nofollow">Гриль Bar-B-Kettle</a></div>
                 <div class="b-lavka__price b-price"><span class="b-price__num">~5 346</span><span class="b-price__unit">руб.</span></div>
                 <div class="b-lavka__button"><a href="" target="_blank" rel="nofollow" class="btn btn-default">Купить</a></div>
               </div>
-              <hr class="visible-xs-block">
+              <div class="col-sm-12 visible-xs-block">
+                <hr class="i-line i-size-XL">
+              </div>
               <div class="col-sm-3 text-center">
                 <div class="b-lavka__logo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/logo2.jpg" alt=""></a></div>
                 <hr>
                 <div class="b-lavka__photo"><a href="" target="_blank" rel="nofollow"><img src="/upload/store-block/photo2.jpg" width="130" height="130" alt="Кленовый сироп"></a></div>
                 <hr>
-                <div class="b-lavka__title"><b><a href="" target="_blank" rel="nofollow">Кленовый сироп</a></b></div>
+                <div class="b-lavka__title"><a href="" target="_blank" rel="nofollow">Кленовый сироп</a></div>
                 <div class="b-lavka__price b-price"><span class="b-price__num"><span class="b-price__num__int">5 346</span><span class="b-price__num__fract">.60</span></span><span class="b-price__unit">руб.</span></div>
                 <div class="b-lavka__button"><a href="" target="_blank" rel="nofollow" class="btn btn-default">Купить</a></div>
               </div>
-              <hr class="visible-xs-block">
             </div>
           </div>
           <!-- end /components/lavka/-->
@@ -488,9 +496,5 @@
     <div id="top_layer" style="display:none;">
       <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="/template/jscript.js"></script>
-    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
   </body>
 </html>

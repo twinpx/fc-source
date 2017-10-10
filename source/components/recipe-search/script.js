@@ -44,8 +44,8 @@
         self.$input = self.$elem.find(".b-recipe-search__input");
         /*self.$activeItem = self.$input;//active list item (highlighted by keyboard arrows)
         self.elemValue = $.trim(self.$input.val());
-        self.$delete = self.$elem.find(".b-recipe-search__delete");
         self.$button = self.$elem.find(".b-recipe-search__button");*/
+        self.$delete = self.$elem.find(".b-recipe-search__delete");
         self.$icon = self.$elem.find(".b-recipe-search__icon");
       }
       
@@ -65,10 +65,11 @@
           .keyup(keyupInput);
           //.tap(keyupInput);
         
-        $(document).bind( "click", clickDocument );
         self.$list.click( clickList );
-        self.$delete.click( clickDelete );
         self.$button.click( clickButton );*/
+        
+        $(document).bind( "click", clickDocument );
+        self.$delete.click( clickDelete );
         self.$icon.click( clickIcon );
         
         /*self.$elem.click( function(e) {
@@ -82,12 +83,27 @@
           }
         }
         
-        /*function clickDocument() {
-          self.$list.hide();
+        function clickDelete() {
+          self.elemValue = "";
+          self.$input
+            .val(self.elemValue)
+            .focus();
+          
+          //hideList();
+          //showHideDeleteButton();
+          
+          return false;
+        }
+        
+        function clickDocument(e) {
+          //self.$list.hide();
+          if ( e.target.className === 'title-search-result' ) {
+            return;
+          }
           self.$elem.removeClass( 'i-open' ).removeClass( "i-preloader" );
         }
         
-        function clickList(e) {
+        /*function clickList(e) {
           e.stopPropagation();
         }
         
@@ -101,18 +117,6 @@
           }
           
           e.preventDefault();
-          return false;
-        }
-        
-        function clickDelete() {
-          self.elemValue = "";
-          self.$input
-            .val(self.elemValue)
-            .focus();
-          
-          hideList();
-          showHideDeleteButton();
-          
           return false;
         }
         

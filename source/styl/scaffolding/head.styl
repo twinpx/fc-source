@@ -3,6 +3,14 @@
   min-height 60px
   rel()
   
+  .dropdown-menu > li > a
+    color #fff
+    
+    &:focus,
+    &:hover
+      background-color transparent
+      opacity 0.7
+  
   .i-mobile-search &
     position fixed
     width 100%
@@ -15,9 +23,12 @@
       margin-left 20px
   
   a
-    &,
-    &:hover
+    &
       color #fff
+      
+    &:hover
+      opacity 0.7
+      text-decoration none
       
   .b-mobile-menu-icon
     cursor pointer
@@ -70,12 +81,8 @@
       line-height 16px
       margin 0 17px
       
-      &:hover
-        color $grey
-      
       &.i-active
-        color #e2f50b
-        font-weight bold
+        color #b7b7b7
         
       @media( max-width $screen-sm-max )
         margin 0 11px
