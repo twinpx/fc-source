@@ -1,1 +1,1 @@
-!function(){"use strict"}(jQuery);
+!function(a){"use strict";a(function(){a(".b-recipe__ill img, .b-recipe__step-ill img").lazyload()})}(jQuery);

@@ -1,14 +1,28 @@
 @import '../../styl/component-include.styl'
 
 //bootstrap button
-.btn
-  background-color #6cc184
-  font-size 8pt
-  font-family $sans
-  color #fff
-  line-height 30px
-  padding 0 20px
-  border none
+.btn,
+.btn-default
+
+  &,
+  a&
+    background-color #6cc184
+    font-size 8pt
+    font-family $sans
+    color #fff
+    line-height 30px
+    padding 0 20px
+    border none
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus
+      background-color #6cc184
+      outline none
+      box-shadow none
+      color #fff
+      opacity 1
 
 div.button, button.button, input.button, .b-button, #authorization .bx-auth-service-form input.button
   height 41px

@@ -36,33 +36,33 @@ script( src="/components/recipe/script.js" )
       
   hr.i-size-M
 
-  .row
-    .col-sm-9
+  .b-recipe__intro
+    .b-recipe__intro-ill
     
       .b-recipe__ill
-        img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+        img( data-original="/upload/recipe/ill.jpg" alt="" itemprop="image" )
         
       hr.i-size-M
         
       .row
-        .col-sm-8
+        .col-sm-6
           
           include ../../modules/recipe-icons/include
           
         hr.visible-xs-block.i-size-M
           
-        .col-sm-4
+        .col-sm-6.text-right
           .b-recipe-menu__social
             include ../../modules/social-buttons/small.jade
       
-    .col-sm-3.hidden-xs
+    .b-recipe__intro-aside.hidden-xs
     
       include ../../modules/aside-banner/simple
       
   hr.i-size-M
   
   .row
-    .col-sm-8.col-sm-offset-2( itemprop="description" )
+    .col-md-8.col-md-offset-2( itemprop="description" )
       | Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)
       
   hr.i-size-M
@@ -71,7 +71,7 @@ script( src="/components/recipe/script.js" )
   include ../../modules/heading-linethrough/include
   
   .row.b-recipe__ingredients
-    .col-sm-4
+    .col-md-4
       table
         tr
           td( itemprop="recipeIngredient" ) Нерка копченая (филе)
@@ -86,7 +86,7 @@ script( src="/components/recipe/script.js" )
           td( itemprop="recipeIngredient" ) Горчица
           td 1.5 ч.л.
           
-    .col-sm-4
+    .col-md-4
       table
         tr
           td
@@ -102,7 +102,7 @@ script( src="/components/recipe/script.js" )
           td( itemprop="recipeIngredient" ) Горчица
           td 1.5 ч.л.
           
-    .col-sm-4
+    .col-md-4
       table
         tr
           td( itemprop="recipeIngredient" ) Нерка копченая (филе)
@@ -127,7 +127,7 @@ script( src="/components/recipe/script.js" )
       include ../../modules/heading-linethrough/include-name
       
       .row.b-recipe__ingredients
-        .col-sm-4
+        .col-md-4
           table
             tr
               td Нерка копченая (филе)
@@ -136,14 +136,14 @@ script( src="/components/recipe/script.js" )
               td Лаймы
               td 1 шт.
               
-        .col-sm-4
+        .col-md-4
           table
             tr
               td
                 a( href="" ) Нерка копченая (филе)
               td 150 г
               
-        .col-sm-4
+        .col-md-4
           table
             tr
               td Нерка копченая (филе)
@@ -152,10 +152,10 @@ script( src="/components/recipe/script.js" )
       hr
               
       .row
-        .col-sm-8.col-sm-offset-2
+        .col-md-8.col-md-offset-2
         
           .b-recipe__step-ill
-            img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+            img( data-original="/upload/recipe/ill.jpg" alt="" itemprop="image" )
             
           hr.i-size-M
             
@@ -169,7 +169,7 @@ script( src="/components/recipe/script.js" )
       include ../../modules/heading-linethrough/include-name
       
       .row.b-recipe__ingredients
-        .col-sm-4
+        .col-md-4
           table
             tr
               td Нерка копченая (филе)
@@ -178,14 +178,14 @@ script( src="/components/recipe/script.js" )
               td Лаймы
               td 1 шт.
               
-        .col-sm-4
+        .col-md-4
           table
             tr
               td
                 a( href="" ) Нерка копченая (филе)
               td 150 г
               
-        .col-sm-4
+        .col-md-4
           table
             tr
               td Нерка копченая (филе)
@@ -194,7 +194,7 @@ script( src="/components/recipe/script.js" )
       hr
               
       .row
-        .col-sm-8.col-sm-offset-2
+        .col-md-8.col-md-offset-2
         
           .b-recipe__step-ill
             img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )

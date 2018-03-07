@@ -12,13 +12,84 @@ script( src="/components/recipe-search/add-script.js" )
 #recipeSearch( class="b-recipe-search #{wrapper}" )
 
   form( action="/search/" method="post" )
-    .b-form-field.b-recipe-search__form-field
-      a.b-recipe-search__delete( href="#" title="Очистить поле" )
-      input.b-input-text.b-recipe-search__input( type="text" value="" autocomplete="off" )
-    span.b-recipe-search__icon.hidden-xs( title="Поиск" )
-    .i-clearfix
+  
+    span.b-recipe-search__icon.hidden-xs(title='Поиск')
     
     .b-recipe-search-field
+      .container
+        .b-recipe-search-field__icon
+        .b-recipe-search-field__clear( title="Очистить поле" )
+        .b-recipe-search-field__input
+          input( type="search" name="recipe-search" value="" )
+          
+     
+  .title-search-result(style='position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;')
+    
+    .container
+    
+      .title-search-result__wrapper
+      
+        .title-search-result__block
+      
+          .title-search-result__title Рецепты
+        
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Лазанья
+              span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+              
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/choco.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Лагман по-арабски
+              span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+              
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/stage.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Тыква, запеченная со специями
+              span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+        
+        .title-search-result__block
+      
+          .title-search-result__title Записи
+        
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Ледяная ваза для окрошки
+              
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Черника
+              
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Хумус
+        
+        .title-search-result__block
+      
+          .title-search-result__title Типы блюд
+        
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Супы
+              
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Пироги
+              
+          a.title-search-result__item( href="" )
+            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+            span.title-search-result__text
+              span.title-search-result__header Вторые блюда
+            
+      
   
 script#recipe_search_items( type="text/html" )
   |<li class="b-rs__item">

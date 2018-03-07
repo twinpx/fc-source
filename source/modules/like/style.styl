@@ -9,28 +9,21 @@
   font-size 8pt
   color #999999
   height 16px
-  background embedurl( 'img/normal.png' ) no-repeat center center
+  background embedurl( 'img/comments-like.svg' ) no-repeat center center
+  background-size cover
   vertical-align middle
-  width 18px
+  width 16px
 
-a
-  &.b-like-icon
-    &:hover
-      background-image embedurl( 'img/hover.png' )
-    &:active
-      background-image embedurl( 'img/active.png' )
+  &:hover,
+  &:active
+    opacity(.7)
 
 .b-like-icon__type-active
-  background-image embedurl( 'img/type-active-normal.png' )
-
-a.b-like-icon__type-active:hover, a:hover .b-like-icon__type-active
-  background-image embedurl( 'img/type-active-hover.png' )
-
-a.b-like-icon__type-active:active, a:active .b-like-icon__type-active
-  background-image embedurl( 'img/type-active-active.png' )
+  background-image embedurl( 'img/comments-like-active.svg' )
 
 .b-like-num
   vertical-align middle
   font-size 7pt
   display inline-block
   margin 1px 0 0 3px
+  

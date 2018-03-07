@@ -10,15 +10,11 @@ script( src="/components/recipe.comments/script.js" )
 
 script( type="text/template" id="comment-template" )
   |<div class="b-rc__block">
-  |  <div class="b-rc__item<%if(mine) {%> i-mine<%}%>" data-id="<%=id%>">
+  |  <div class="b-rc__item<%if(mine) {%> i-mine<%}%>" data-id="<%=id%>" itemscope itemtype="http://schema.org/Comment" >
   |    <div class="i-relative">
   |      <a href="#" class="b-rc__item__close b-close-icon b-close-icon__color_3" title="Закрыть"></a>
   |      <div class="b-rc__item__pointer"></div>
-  |      <div class="b-rc__item__author b-author-avatar">
-  |        <a href="<%=author.href%>" class="b-author-avatar__link">
-  |          <img src="<%=author.src%>" width="100%" height="100%" alt="<%=author.name%>" class="b-author-avatar__img">
-  |        </a>
-  |      </div>
+  |      <a href="<%=author.href%>" class="b-rc__item__author" title="<%=author.name%>" style="background-image: url('<%=author.src%>');"></a>
   |      <div class="b-rc__admin-buttons b-admin-buttons">
   |        <div class="b-admin-buttons__block">
   |          <div class="b-delete-icon" title="Удалить отзыв"></div>
@@ -27,11 +23,10 @@ script( type="text/template" id="comment-template" )
   |      </div>
   |    </div>
   |    <div class="b-rc__item__content">
-  |      <div class="b-rc__item__content__author"><a href="<%=author.href%>"><%=author.name%></a></div>
+  |      <div class="b-rc__item__content__author"><a href="<%=author.href%>" itemprop="author" ><%=author.name%></a></div>
   |      <% if(image.src && image.id) { %>
-  |      <div class="b-rc__item__content__text">
-  |        <div class="b-rc__item__content__text__img">
-  |          <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+  |      <div class="b-rc__item__content__text" itemprop="text" >
+  |        <div class="b-rc__item__content__text__img" style="background-image: url(<%=image.src%>);" data-id="<%=image.id%>">
   |        </div>
   |        <div class="b-rc__item__content__text__content"><%=text.html%></div>
   |        <div class="i-clearfix"></div>
@@ -42,7 +37,17 @@ script( type="text/template" id="comment-template" )
   |      </div>
   |      <% } %>
   |      <div class="b-rc-edit-form">
-  |        <form action="" method="get">
+  |        <form action="/" method="get">
+  |          
+  |          <div class="b-form-field b-form__text-block">
+  |            <input type="hidden" value="<%=id%>" name="cId">
+  |            <input type="hidden" value="<%=rId%>" name="rId">
+  |            <input type="hidden" value="e" name="a">
+  |            <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
+  |            <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+  |            <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
+  |          </div>
+  |          <button class="btn btn-default" type="submit">Добавить отзыв</button>
   |          <div class="b-form-field b-form__photo-block">
   |            <% if(image.src && image.id) { %>
   |            <div class="b-admin-buttons">
@@ -63,26 +68,16 @@ script( type="text/template" id="comment-template" )
   |            <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
   |            <% } %>
   |          </div>
-  |          
-  |          <div class="b-form-field b-form__text-block">
-  |            <input type="hidden" value="<%=id%>" name="cId">
-  |            <input type="hidden" value="<%=rId%>" name="rId">
-  |            <input type="hidden" value="e" name="a">
-  |            <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
-  |            <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
-  |            <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
-  |            <button class="b-button b-button__width_100" type="submit">Написать отзыв</button>
-  |          </div>
   |          <div class="i-clearfix"></div>
   |        </form>
   |      </div>
   |      <div class="b-rc__props">
   |        <div class="b-rc__props__reply">
-  |          <a class="b-button__size_S" href="#">Ответить</a>
+  |          <a class="btn btn-default" href="#">Ответить</a>
   |        </div>
   |        <div class="b-rc__props__like">
   |          <span class="b-like">
-  |            <a title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="#" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
+  |            <a id="liketn_<%=id%>" title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="/forms/auth/?action=like&commentid=<%=id%>" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
   |            <span class="b-like-num"><%=likeNum%></span>
   |          </span>
   |        </div>
@@ -94,16 +89,12 @@ script( type="text/template" id="comment-template" )
   |</div>
 
 script( type="text/template" id="reply-template" )
-  |<div class="b-rc__item" data-id="<%=id%>">
+  |<div class="b-rc__item" data-id="<%=id%>" itemscope itemtype="http://schema.org/Comment" >
   |  
   |  <div class="i-relative">
   |    <a href="#" class="b-rc__item__close b-close-icon b-close-icon__color_3" title="Закрыть"></a>
   |    <div class="b-rc__item__pointer"></div>
-  |    <div class="b-rc__item__author b-author-avatar">
-  |      <a href="<%=author.href%>" class="b-author-avatar__link">
-  |        <img src="<%=author.src%>" width="100%" height="100%" alt="<%=author.name%>" class="b-author-avatar__img">
-  |      </a>
-  |    </div>
+  |    <a href="<%=author.href%>" class="b-rc__item__author" title="<%=author.name%>" style="background-image: url('<%=author.src%>');"></a>
   |    <div class="b-rc__admin-buttons b-admin-buttons">
   |      <div class="b-admin-buttons__block">
   |        <div class="b-delete-icon" title="Удалить отзыв"></div>
@@ -113,12 +104,11 @@ script( type="text/template" id="reply-template" )
   |  </div>
   |  
   |  <div class="b-rc__item__content">
-  |    <div class="b-rc__item__content__author"><a href="<%=author.href%>"><%=author.name%></a></div>
+  |    <div class="b-rc__item__content__author"><a href="<%=author.href%>" itemprop="author" ><%=author.name%></a></div>
   |    
   |    <% if(image.src && image.id) { %>
-  |    <div class="b-rc__item__content__text">
-  |      <div class="b-rc__item__content__text__img">
-  |        <img src="<%=image.src%>" height="65" alt="" class="i-align-img" data-id="<%=image.id%>" />
+  |    <div class="b-rc__item__content__text" itemprop="text" >
+  |      <div class="b-rc__item__content__text__img" style="background-image: url(<%=image.src%>);" data-id="<%=image.id%>">
   |      </div>
   |      <div class="b-rc__item__content__text__content"><%=text.html%></div>
   |      <div class="i-clearfix"></div>
@@ -130,7 +120,18 @@ script( type="text/template" id="reply-template" )
   |    <% } %>
   |    
   |    <div class="b-rc-edit-form">
-  |      <form action="" method="get">
+  |      <form action="/" method="get">
+  |        
+  |        <div class="b-form-field b-form__text-block">
+  |          <input type="hidden" value="<%=cId%>" name="cId">
+  |          <input type="hidden" value="<%=rId%>" name="rId">
+  |          <input type="hidden" value="e" name="a">
+  |          <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
+  |          <input type="hidden" value="<%=root%>" name="root">
+  |          <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
+  |          <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
+  |        </div>
+  |        <button class="btn btn-default" type="submit">Добавить отзыв</button>
   |        <div class="b-form-field b-form__photo-block">
   |        
   |          <% if(image.src && image.id) { %>
@@ -152,24 +153,13 @@ script( type="text/template" id="reply-template" )
   |          <input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
   |          <% } %>
   |        </div>
-  |        
-  |        <div class="b-form-field b-form__text-block">
-  |          <input type="hidden" value="<%=cId%>" name="cId">
-  |          <input type="hidden" value="<%=rId%>" name="rId">
-  |          <input type="hidden" value="e" name="a">
-  |          <input id="sessid" type="hidden" value="<%=sessid%>" name="sessid">
-  |          <input type="hidden" value="<%=root%>" name="root">
-  |          <label class="b-form-label">Редактирование отзыва <span class="b-form-attention">?</span></label>
-  |          <div class="b-textarea-wrapper"><textarea name="comment" cols="10" rows="5" class="b-textarea" required><%=text.text%></textarea></div>
-  |          <button class="b-button b-button__width_100" type="submit">Написать отзыв</button>
-  |        </div>
   |        <div class="i-clearfix"></div>
   |      </form>
   |    </div>
   |    <div class="b-rc__props">
   |      <div class="b-rc__props__like">
   |        <span class="b-like">
-  |          <a title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="#" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
+  |          <a id="liketn_<%=id%>" title="Мне нравится" class="b-like-icon b-like-icon__type-button" href="/forms/auth/?action=like&commentid=<%=id%>" data-ajax-url="/components/recipe.comments/php/like.txt"></a>
   |          <span class="b-like-num"><%=likeNum%></span>
   |        </span>
   |      </div>
@@ -195,9 +185,7 @@ script( type="text/template" id="photo-template" )
   |    </div>
   |  </div>
   |</div>
-  |<div class="b-form__photo-block__img">
-  |  <img src="<%=url%>" height="65" alt="" class="i-align-img" data-id="<%=id%>" />
-  |</div>
+  |<div class="b-form__photo-block__img" style="background-image: url( '<%=url%>' );" data-id="<%=id%>"></div>
 
 script( type="text/template" id="file-input-template" )
   |<%
@@ -210,462 +198,452 @@ script( type="text/template" id="file-input-template" )
   |<div class="b-form__photo-block__img"></div>
   |<input type="hidden" name="comment-photo" value="" class="b-form__photo-block__url" />
 
-#b-comments
-  
-  h2.b-rc__heading Отзывы пользователей
-  
-  #comment
-  #b-comment-form
-    .b-rc__item.i-foodclub
-      .i-relative
-        .b-rc__item__pointer
-      .b-rc__item__content
-        .b-rc__item__content__text
-          | Если Вы хотите оставить комментарий, Вам необходимо 
-          a( href="/forms/authorization/" ) авторизоваться
-          | 
-          |или 
-          a( href="/forms/registration/" ) зарегистрироваться
-          | 
-          |на сайте.
-    form( action="/components/recipe.comments/php/comment.json" method="get" )
-      .b-form-field.b-form__photo-block
-        .input_file
-          input#fileupload-comment.text( type="file" data-ajax-url="/js/file-upload/server/php/index.php" )
-        .b-form__photo-block__img
-        input.b-comment-form__photo__url( type="hidden" name="comment-photo" value="" )
-      
-      .b-form-field.b-comment-form__text
-        label.b-form-label Ваш отзыв
-        | 
-        span.b-form-attention ?
-        .b-textarea-wrapper
-          textarea.b-textarea( name="comment" cols="10" rows="10" required )
-        input( type="hidden" name="recipe" value="12813" )
-        .error_message &mdash; универсальное сообщение об ошибке!
-        button.b-button.b-button__width_100( type="submit" ) Написать отзыв
-      
-      .i-clearfix
+.row
 
-  .b-recipe-comments( data-sessId="fdc4e58491fab80d2aea909fc98b690b" data-edit-form-action="/components/recipe.comments/php/edit.json" data-edit-form-method="GET"  data-delete-action="/components/recipe.comments/php/delete-recipe-comment.json" data-delete-method="GET" data-delete-photo-action="/components/recipe.comments/php/delete-photo-comment.json" data-delete-photo-method="GET" )
-    
-    .b-rc__block
-      .b-rc__item( data-id="78" )
-        .i-relative
-          a.b-rc__item__close.b-close-icon.b-close-icon__color_3( href="#" title="Закрыть" )
-          .b-rc__item__pointer
-          .b-rc__item__author.b-author-avatar
-            a.b-author-avatar__link( href="/personal/" )
-              img.b-author-avatar__img( src="http://www.foodclub.ru/upload/main/e6a/420594_299060910152835_1077967806_n d2q.jpg" width="100%" height="100%" alt="max_s" )
-              
-          include ../../modules/admin-buttons/include.jade
-          
-        .b-rc__item__content
-          .b-rc__item__content__author
-            a(href='/personal/') falabella
-          .b-rc__item__content__text
-            | Здорово! нужно попробовать.
-            br
-            | А можно добавить оливки? и на каком этапе лучше это сделать?
-          .b-rc-edit-form
-            form(action='', method='get')
-              .b-form-field.b-form__photo-block
-                .input_file
-                  input#fileupload78.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-                .b-form__photo-block__img
-                input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-              .b-form-field.b-form__text-block
-                input(type='hidden', value='51939', name='cId')
-                input(type='hidden', value='51801', name='rId')
-                input(type='hidden', value='e', name='a')
-                label.b-form-label
-                  span.b-form-attention ?
-                .b-textarea-wrapper
-                  textarea.b-textarea(name='comment', cols='10', rows='5', required='') Здорово! нужно попробовать.
-                button.b-button.b-button__width_100(type='submit') Написать отзыв
-              .i-clearfix
-              
-          .b-rc__props
-            .b-rc__props__reply
-              a.b-button__size_S(href='#') Ответить
-            .b-rc__props__like
-              include ../../modules/like/recipe.comments.like.jade
-            .b-rc__props__date 13.10.2008 &vcy; 05:15
-            .i-clearfix
-              
-    .b-rc__block
-      .b-rc__item(data-id='68')
-        .i-relative
-          a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-          .b-rc__item__pointer
-          .b-rc__item__author.b-author-avatar
-            a.b-author-avatar__link(href='/personal/')
-              img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-          
-          include ../../modules/admin-buttons/include.jade
-          
-        .b-rc__item__content
-          .b-rc__item__content__author
-            a(href='/personal/') falabella
-          .b-rc__item__content__text
-            | Здорово! нужно попробовать.
-            br
-            | А можно добавить оливки? и на каком этапе лучше это сделать?
-          .b-rc-edit-form
-            form(action='', method='get')
-              .b-form-field.b-form__photo-block
-                .input_file
-                  input#fileupload68.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-                .b-form__photo-block__img
-                input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-              .b-form-field.b-form__text-block
-                input(type='hidden', value='51939', name='cId')
-                input(type='hidden', value='51801', name='rId')
-                input(type='hidden', value='e', name='a')
-                label.b-form-label
-                  | Редактирование отзыва 
-                  span.b-form-attention ?
-                .b-textarea-wrapper
-                  textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                    | Здорово! нужно попробовать. А можно добавить оливки? и на каком этапе лучше это сделать?
-                button.b-button.b-button__width_100(type='submit') Написать отзыв
-              .i-clearfix
-          .b-rc__props
-            .b-rc__props__reply
-              a.b-button__size_S(href='#') Ответить
-            .b-rc__props__like
-              include ../../modules/like/recipe.comments.like.jade
-            .b-rc__props__date 13.10.2008 в 05:15
-            .i-clearfix
-      .b-rc__reply-block
-        .b-rc__item(data-id='58')
-          .i-relative
-            a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-            .b-rc__item__pointer
-            .b-rc__item__author.b-author-avatar
-              a.b-author-avatar__link(href='/personal/')
-                img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-            
-            include ../../modules/admin-buttons/include.jade
-            
+  .col-md-8.col-md-offset-2
+  
+    #b-comments
+      
+      h2.b-rc__heading Отзывы о рецепте
+      
+      #comment
+      #b-comment-form
+        .b-rc__item.i-foodclub
           .b-rc__item__content
-            .b-rc__item__content__author
-              a(href='/personal/') Мария Савельева
             .b-rc__item__content__text
-              | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
-            .b-rc-edit-form
-              form(action='', method='get')
-                .b-form-field.b-form__photo-block
-                  .input_file
-                    input#fileupload58.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-                  .b-form__photo-block__img
-                  input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-                .b-form-field.b-form__text-block
-                  input(type='hidden', value='51939', name='cId')
-                  input(type='hidden', value='51801', name='rId')
-                  input(type='hidden', value='e', name='a')
-                  label.b-form-label
-                    | Редактирование отзыва 
-                    span.b-form-attention ?
-                  .b-textarea-wrapper
-                    textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                      | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
-                  button.b-button.b-button__width_100(type='submit') Написать отзыв
-                .i-clearfix
-            .b-rc__props
-              .b-rc__props__like
-                include ../../modules/like/recipe.comments.like.jade
-              .b-rc__props__date 13.10.2008 в 05:15
-              .i-clearfix
-              
-    .b-rc__block
-      .b-rc__item.i-mine(data-id='79')
-        .i-relative
-          a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-          .b-rc__item__pointer
-          .b-rc__item__author.b-author-avatar
-            a.b-author-avatar__link(href='/personal/')
-              img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
+              | Если Вы хотите оставить комментарий, Вам необходимо 
+              a( href="/forms/authorization/" ) авторизоваться
+              | 
+              |или 
+              a( href="/forms/registration/" ) зарегистрироваться
+              | 
+              |на сайте.
+        form( action="/components/recipe.comments/php/comment.json" method="get" )
           
-          include ../../modules/admin-buttons/include.jade
-          
-        .b-rc__item__content
-          .b-rc__item__content__author
-            a(href='/personal/') madler
-          .b-rc__item__content__text
-            | Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!
-          .b-rc-edit-form
-            form(action='', method='get')
-              .b-form-field.b-form__photo-block
-                .input_file
-                  input#fileupload79.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-                .b-form__photo-block__img
-                input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-              .b-form-field.b-form__text-block
-                input(type='hidden', value='51939', name='cId')
-                input(type='hidden', value='51801', name='rId')
-                input(type='hidden', value='e', name='a')
-                label.b-form-label
-                  | Редактирование отзыва 
-                  span.b-form-attention ?
-                .b-textarea-wrapper
-                  textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                    | Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!
-                button.b-button.b-button__width_100(type='submit') Написать отзыв
-              .i-clearfix
-          .b-rc__props
-            .b-rc__props__reply
-              a.b-button__size_S(href='#') Ответить
-            .b-rc__props__like
-              include ../../modules/like/recipe.comments.like.jade
-            .b-rc__props__date 13.10.2008 в 05:15
-            .i-clearfix
-      .b-rc__reply-block
-        .b-rc__item(data-id='80')
-          .i-relative
-            a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-            .b-rc__item__pointer
-            .b-rc__item__author.b-author-avatar
-              a.b-author-avatar__link(href='/personal/')
-                img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-            
-            include ../../modules/admin-buttons/include.jade
-            
-          .b-rc__item__content
-            .b-rc__item__content__author
-              a(href='/personal/') madler
-            .b-rc__item__content__text
-              | katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!
-            .b-rc-edit-form
-              form(action='', method='get')
-                .b-form-field.b-form__photo-block
-                  .input_file
-                    input#fileupload80.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-                  .b-form__photo-block__img
-                  input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-                .b-form-field.b-form__text-block
-                  input(type='hidden', value='51939', name='cId')
-                  input(type='hidden', value='51801', name='rId')
-                  input(type='hidden', value='e', name='a')
-                  label.b-form-label
-                    | Редактирование отзыва 
-                    span.b-form-attention ?
-                  .b-textarea-wrapper
-                    textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                      | katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!
-                  button.b-button.b-button__width_100(type='submit') Написать отзыв
-                .i-clearfix
-            .b-rc__props
-              .b-rc__props__like
-                include ../../modules/like/recipe.comments.like.jade
-              .b-rc__props__date 13.10.2008 в 05:15
-              .i-clearfix
-    
-    .b-rc__block
-      .b-rc__item.i-mine(data-id='59')
-        .i-relative
-          a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-          .b-rc__item__pointer
-          .b-rc__item__author.b-author-avatar
-            a.b-author-avatar__link(href='/personal/')
-              img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-          
-          include ../../modules/admin-buttons/include.jade
-          
-        .b-rc__item__content
-          .b-rc__item__content__author
-            a(href='/personal/') madler
-          .b-rc__item__content__text
-            .b-rc__item__content__text__img
-              img.i-align-img(src='/upload/comments/hot-chocolate.jpg', height='65', alt='', data-id='1212')
-            .b-rc__item__content__text__content
-              | Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
-            .i-clearfix
-          .b-rc-edit-form
-            form(action='', method='get')
-              .b-form-field.b-form__photo-block
-                
-                include ../../modules/admin-buttons/photo.jade
-                
-                .b-form__photo-block__img
-                  img.i-align-img(src='/upload/comments/hot-chocolate.jpg', height='65', alt='', data-id='1212')
-              .b-form-field.b-form__text-block
-                input(type='hidden', value='51939', name='cId')
-                input(type='hidden', value='51801', name='rId')
-                input(type='hidden', value='e', name='a')
-                label.b-form-label
-                  | Редактирование отзыва 
-                  span.b-form-attention ?
-                .b-textarea-wrapper
-                  textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                    | Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
-                button.b-button.b-button__width_100(type='submit') Написать отзыв
-              .i-clearfix
-          .b-rc__props
-            .b-rc__props__reply
-              a.b-button__size_S(href='#') Ответить
-            .b-rc__props__like
-              include ../../modules/like/recipe.comments.like.jade
-            .b-rc__props__date 13.10.2008 в 05:15
-            .i-clearfix
-    .b-rc__block
-      .b-rc__item(data-id='48')
-        .i-relative
-          a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-          .b-rc__item__pointer
-          .b-rc__item__author.b-author-avatar
-            a.b-author-avatar__link(href='/personal/')
-              img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-          
-          include ../../modules/admin-buttons/include.jade
-          
-        .b-rc__item__content
-          .b-rc__item__content__author
-            a(href='/personal/') falabella
-          .b-rc__item__content__text
-            | Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
-          .b-rc-edit-form
-            form(action='', method='get')
-              .b-form-field.b-form__photo-block
-                .input_file
-                  input#fileupload48.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-                .b-form__photo-block__img
-                input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-              .b-form-field.b-form__text-block
-                input(type='hidden', value='51939', name='cId')
-                input(type='hidden', value='51801', name='rId')
-                input(type='hidden', value='e', name='a')
-                label.b-form-label
-                  | Редактирование отзыва 
-                  span.b-form-attention ?
-                .b-textarea-wrapper
-                  textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                    | Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
-                button.b-button.b-button__width_100(type='submit') Написать отзыв
-              .i-clearfix
-          .b-rc__props
-            .b-rc__props__reply
-              a.b-button__size_S(href='#') Ответить
-            .b-rc__props__like
-              include ../../modules/like/recipe.comments.like.jade
-            .b-rc__props__date 13.10.2008 в 05:15
-            .i-clearfix
-      .b-rc__reply-block
-        .b-rc__item(data-id='38')
-          .i-relative
-            a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-            .b-rc__item__pointer
-            .b-rc__item__author.b-author-avatar
-              a.b-author-avatar__link(href='/personal/')
-                img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-            
-            include ../../modules/admin-buttons/include.jade
-            
-          .b-rc__item__content
-            .b-rc__item__content__author
-              a(href='/personal/') Мария Савельева
-            .b-rc__item__content__text
-              .b-rc__item__content__text__img
-                img.i-align-img(src='/upload/comments/hot-chocolate.jpg', height='65', alt='', data-id='1313')
-              .b-rc__item__content__text__content Спасибо! Я тоже в этом уверена!
-              .i-clearfix
-            .b-rc-edit-form
-              form(action='', method='get')
-                .b-form-field.b-form__photo-block
-                  
-                  include ../../modules/admin-buttons/photo.jade
-                  
-                  .b-form__photo-block__img
-                    img.i-align-img(src='/upload/comments/hot-chocolate.jpg', height='65', alt='', data-id='1313')
-                .b-form-field.b-form__text-block
-                  input(type='hidden', value='51939', name='cId')
-                  input(type='hidden', value='51801', name='rId')
-                  input(type='hidden', value='e', name='a')
-                  label.b-form-label
-                    | Редактирование отзыва 
-                    span.b-form-attention ?
-                  .b-textarea-wrapper
-                    textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                      | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
-                  button.b-button.b-button__width_100(type='submit') Написать отзыв
-                .i-clearfix
-            .b-rc__props
-              .b-rc__props__like
-                include ../../modules/like/recipe.comments.like.jade
-              .b-rc__props__date 13.10.2008 в 05:15
-              .i-clearfix
-        .b-rc__item(data-id='28')
-          .i-relative
-            a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
-            .b-rc__item__pointer
-            .b-rc__item__author.b-author-avatar
-              a.b-author-avatar__link(href='/personal/')
-                img.b-author-avatar__img(src='http://www.foodclub.ru/images/avatar/avatar.jpg', width='100%', height='100%', alt='max_s')
-            
-            include ../../modules/admin-buttons/include.jade
-            
-          .b-rc__item__content
-            .b-rc__item__content__author
-              a(href='/personal/') Мария Савельева
-            .b-rc__item__content__text
-              .b-rc__item__content__text__img
-                img.i-align-img(src='/images/infoblock/pancake.jpg', height='65', alt='', data-id='1414')
-              .b-rc__item__content__text__content Спасибо! Я тоже в этом уверена!
-              .i-clearfix
-            .b-rc-edit-form
-              form(action='', method='get')
-                .b-form-field.b-form__photo-block
-                  
-                  include ../../modules/admin-buttons/photo.jade
-                  
-                  .b-form__photo-block__img
-                    img.i-align-img(src='/images/infoblock/pancake.jpg', height='65', alt='', data-id='1414')
-                .b-form-field.b-form__text-block
-                  input(type='hidden', value='51939', name='cId')
-                  input(type='hidden', value='51801', name='rId')
-                  input(type='hidden', value='e', name='a')
-                  label.b-form-label
-                    | Редактирование отзыва 
-                    span.b-form-attention ?
-                  .b-textarea-wrapper
-                    textarea.b-textarea(name='comment', cols='10', rows='5', required='')
-                      | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
-                  button.b-button.b-button__width_100(type='submit') Написать отзыв
-                .i-clearfix
-            .b-rc__props
-              .b-rc__props__like
-                include ../../modules/like/recipe.comments.like.jade
-              .b-rc__props__date 13.10.2008 в 05:15
-              .i-clearfix
-
-    #b-rc__reply-form
-      .i-relative
-        a.b-close-icon.b-rc__reply-form__close.b-close-icon__color_3(href='#')
-      form(action='/components/recipe.comments/php/reply.json', method='get')
-        .b-form-field.b-form__photo-block
-          .input_file
-            input#fileuploadReply.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
-          .b-form__photo-block__img
-          input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
-        .b-form-field.b-form__text-block
-          input(type='hidden', name='rId', value='')
-          input(type='hidden', name='authorId', value='456')
-          label.b-form-label
-            | Ответ на отзыв 
+          .b-form-field.b-comment-form__text
+            label.b-form-label Ваш отзыв
+            | 
             span.b-form-attention ?
-          .b-textarea-wrapper
-            textarea.b-textarea(name='comment', cols='10', rows='10', required='')
-          button.b-button.b-button__width_100(type='submit') Ответить
-        .i-clearfix
-      .b-rc__item.i-foodclub
-        .i-relative
-          .b-rc__item__pointer
-        .b-rc__item__content
-          .b-rc__item__content__text
-            | Если Вы хотите оставить комментарий, Вам необходимо 
-            a(href='/forms/authorization/') авторизоваться
-            |  или 
-            a(href='/forms/registration/') зарегистрироваться
-            |  на сайте.
+            .b-textarea-wrapper
+              textarea.b-textarea( name="comment" cols="10" rows="10" required )
+            input( type="hidden" name="recipe" value="12813" )
+            .error_message &mdash; универсальное сообщение об ошибке!
+            
+          button.btn.btn-default( type="submit" ) Добавить отзыв
+            
+          .b-form-field.b-form__photo-block
+            .input_file
+              input#fileupload-comment.text( type="file" data-ajax-url="/js/file-upload/server/php/index.php" )
+            .b-form__photo-block__img
+            input.b-comment-form__photo__url( type="hidden" name="comment-photo" value="" )
+          
+          .i-clearfix
+
+      .b-recipe-comments( data-sessId="fdc4e58491fab80d2aea909fc98b690b" data-edit-form-action="/components/recipe.comments/php/edit.json" data-edit-form-method="GET"  data-delete-action="/components/recipe.comments/php/delete-recipe-comment.json" data-delete-method="GET" data-delete-photo-action="/components/recipe.comments/php/delete-photo-comment.json" data-delete-photo-method="GET" )
+        
+        .b-rc__block
+          .b-rc__item( data-id="78" itemscope itemtype ="http://schema.org/Comment" )
+            .i-relative
+              a.b-rc__item__close.b-close-icon.b-close-icon__color_3( href="#" title="Закрыть" )
+              .b-rc__item__pointer
+              a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/upload/main/e6a/420594_299060910152835_1077967806_n d2q.jpg');" title="max_s" )
+                  
+              include ../../modules/admin-buttons/include.jade
+              
+            .b-rc__item__content
+              .b-rc__item__content__author
+                a(href='/personal/' itemprop="author" ) falabella
+              .b-rc__item__content__text( itemprop="text" )
+                | Здорово! нужно попробовать.
+                br
+                | А можно добавить оливки? и на каком этапе лучше это сделать?
+              .b-rc-edit-form
+                form(action="/", method='get')
+                  .b-form-field.b-form__text-block
+                    input(type='hidden', value='51939', name='cId')
+                    input(type='hidden', value='51801', name='rId')
+                    input(type='hidden', value='e', name='a')
+                    label.b-form-label
+                      span.b-form-attention ?
+                    .b-textarea-wrapper
+                      textarea.b-textarea(name='comment', cols='10', rows='5', required='') Здорово! нужно попробовать.
+                      
+                  button.btn.btn-default(type='submit') Добавить отзыв
+                  .b-form-field.b-form__photo-block
+                    .input_file
+                      input#fileupload78.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+                    .b-form__photo-block__img
+                    input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+                  .i-clearfix
+                  
+              .b-rc__props
+                .b-rc__props__reply
+                  a.btn.btn-default(href='#') Ответить
+                .b-rc__props__like
+                  include ../../modules/like/recipe.comments.like.jade
+                .b-rc__props__date 13.10.2008 &vcy; 05:15
+                .i-clearfix
+                  
+        .b-rc__block
+          .b-rc__item(data-id='68' itemscope itemtype ="http://schema.org/Comment" )
+            .i-relative
+              a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+              .b-rc__item__pointer
+              a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+              
+              include ../../modules/admin-buttons/include.jade
+              
+            .b-rc__item__content
+              .b-rc__item__content__author
+                a(href='/personal/' itemprop="author" ) falabella
+              .b-rc__item__content__text( itemprop="text" )
+                | Здорово! нужно попробовать.
+                br
+                | А можно добавить оливки? и на каком этапе лучше это сделать?
+              .b-rc-edit-form
+                form(action="/", method='get')
+                  .b-form-field.b-form__text-block
+                    input(type='hidden', value='51939', name='cId')
+                    input(type='hidden', value='51801', name='rId')
+                    input(type='hidden', value='e', name='a')
+                    label.b-form-label
+                      | Редактирование отзыва 
+                      span.b-form-attention ?
+                    .b-textarea-wrapper
+                      textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                        | Здорово! нужно попробовать. А можно добавить оливки? и на каком этапе лучше это сделать?
+                        
+                  button.btn.btn-default(type='submit') Добавить отзыв
+                  .b-form-field.b-form__photo-block
+                    .input_file
+                      input#fileupload68.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+                    .b-form__photo-block__img
+                    input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+                  .i-clearfix
+              .b-rc__props
+                .b-rc__props__reply
+                  a.btn.btn-default(href='#') Ответить
+                .b-rc__props__like
+                  include ../../modules/like/recipe.comments.like.jade
+                .b-rc__props__date 13.10.2008 в 05:15
+                .i-clearfix
+          .b-rc__reply-block
+            .b-rc__item(data-id='58' itemscope itemtype ="http://schema.org/Comment" )
+              .i-relative
+                a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+                .b-rc__item__pointer
+                a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+                
+                include ../../modules/admin-buttons/include.jade
+                
+              .b-rc__item__content
+                .b-rc__item__content__author
+                  a(href='/personal/' itemprop="author" ) Мария Савельева
+                .b-rc__item__content__text( itemprop="text" )
+                  | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
+                .b-rc-edit-form
+                  form(action="/", method='get')
+                    .b-form-field.b-form__text-block
+                      input(type='hidden', value='51939', name='cId')
+                      input(type='hidden', value='51801', name='rId')
+                      input(type='hidden', value='e', name='a')
+                      label.b-form-label
+                        | Редактирование отзыва 
+                        span.b-form-attention ?
+                      .b-textarea-wrapper
+                        textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                          | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
+                          
+                    button.btn.btn-default(type='submit') Добавить отзыв
+                    .b-form-field.b-form__photo-block
+                      .input_file
+                        input#fileupload58.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+                      .b-form__photo-block__img
+                      input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+                    .i-clearfix
+                .b-rc__props
+                  .b-rc__props__like
+                    include ../../modules/like/recipe.comments.like.jade
+                  .b-rc__props__date 13.10.2008 в 05:15
+                  .i-clearfix
+                  
+        .b-rc__block
+          .b-rc__item.i-mine(data-id='79' itemscope itemtype ="http://schema.org/Comment" )
+            .i-relative
+              a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+              .b-rc__item__pointer
+                a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+              
+              include ../../modules/admin-buttons/include.jade
+              
+            .b-rc__item__content
+              .b-rc__item__content__author
+                a(href='/personal/' itemprop="author" ) madler
+              .b-rc__item__content__text( itemprop="text" )
+                | Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!
+              .b-rc-edit-form
+                form(action="/", method='get')
+                  .b-form-field.b-form__text-block
+                    input(type='hidden', value='51939', name='cId')
+                    input(type='hidden', value='51801', name='rId')
+                    input(type='hidden', value='e', name='a')
+                    label.b-form-label
+                      | Редактирование отзыва 
+                      span.b-form-attention ?
+                    .b-textarea-wrapper
+                      textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                        | Ну надо же. Это мой любимый хлеб. Я ума не могла приложить, как его готовить, чтоб такой пористый получился. Вот спасибо!
+                        
+                  button.btn.btn-default(type='submit') Добавить отзыв
+                  .b-form-field.b-form__photo-block
+                    .input_file
+                      input#fileupload79.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+                    .b-form__photo-block__img
+                    input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+                  .i-clearfix
+              .b-rc__props
+                .b-rc__props__reply
+                  a.btn.btn-default(href='#') Ответить
+                .b-rc__props__like
+                  include ../../modules/like/recipe.comments.like.jade
+                .b-rc__props__date 13.10.2008 в 05:15
+                .i-clearfix
+          .b-rc__reply-block
+            .b-rc__item(data-id='80' itemscope itemtype ="http://schema.org/Comment" )
+              .i-relative
+                a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+                .b-rc__item__pointer
+                a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+                
+                include ../../modules/admin-buttons/include.jade
+                
+              .b-rc__item__content
+                .b-rc__item__content__author
+                  a(href='/personal/' itemprop="author" ) madler
+                .b-rc__item__content__text( itemprop="text" )
+                  | katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!
+                .b-rc-edit-form
+                  form(action="/", method='get')
+                    .b-form-field.b-form__text-block
+                      input(type='hidden', value='51939', name='cId')
+                      input(type='hidden', value='51801', name='rId')
+                      input(type='hidden', value='e', name='a')
+                      label.b-form-label
+                        | Редактирование отзыва 
+                        span.b-form-attention ?
+                      .b-textarea-wrapper
+                        textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                          | katrazzion, у меня и сейчас тесто стоит )) заодно фото получше сделаю. Попробуйте, ведь действительно очень удобно: поставил вечером, а с утра в духовку и свежий хлеб готов!
+                          
+                    button.btn.btn-default(type='submit') Добавить отзыв
+                    .b-form-field.b-form__photo-block
+                      .input_file
+                        input#fileupload80.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+                      .b-form__photo-block__img
+                      input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+                    .i-clearfix
+                .b-rc__props
+                  .b-rc__props__like
+                    include ../../modules/like/recipe.comments.like.jade
+                  .b-rc__props__date 13.10.2008 в 05:15
+                  .i-clearfix
+        
+        .b-rc__block
+          .b-rc__item.i-mine(data-id='59' itemscope itemtype="http://schema.org/Comment" )
+            .i-relative
+              a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+              .b-rc__item__pointer
+              a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+              
+              include ../../modules/admin-buttons/include.jade
+              
+            .b-rc__item__content
+              .b-rc__item__content__author
+                a(href='/personal/' itemprop="author" ) madler
+              .b-rc__item__content__text( itemprop="text" )
+                .b-rc__item__content__text__img( style="background-image: url('/upload/comments/hot-chocolate.jpg');" data-id='1212')
+                .b-rc__item__content__text__content
+                  | Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
+                .i-clearfix
+              .b-rc-edit-form
+                form(action="/", method='get')
+                  .b-form-field.b-form__text-block
+                    input(type='hidden', value='51939', name='cId')
+                    input(type='hidden', value='51801', name='rId')
+                    input(type='hidden', value='e', name='a')
+                    label.b-form-label
+                      | Редактирование отзыва 
+                      span.b-form-attention ?
+                    .b-textarea-wrapper
+                      textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                        | Максимальная ширина картинки - 562 пикселя. Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама! Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
+                        
+                  button.btn.btn-default(type='submit') Добавить отзыв
+                  .b-form-field.b-form__photo-block
+                    
+                    include ../../modules/admin-buttons/photo.jade
+                    
+                    .b-form__photo-block__img
+                      img.i-align-img(src='/upload/comments/hot-chocolate.jpg', height='65', alt='', data-id='1212')
+                  .i-clearfix
+              .b-rc__props
+                .b-rc__props__reply
+                  a.btn.btn-default(href='#') Ответить
+                .b-rc__props__like
+                  include ../../modules/like/recipe.comments.like.jade
+                .b-rc__props__date 13.10.2008 в 05:15
+                .i-clearfix
+        .b-rc__block
+          .b-rc__item(data-id='48' itemscope itemtype="http://schema.org/Comment" )
+            .i-relative
+              a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+              .b-rc__item__pointer
+              a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+              
+              include ../../modules/admin-buttons/include.jade
+              
+            .b-rc__item__content
+              .b-rc__item__content__author
+                a(href='/personal/' itemprop="author" ) falabella
+              .b-rc__item__content__text( itemprop="text" )
+                | Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
+              .b-rc-edit-form
+                form(action="/", method='get')
+                  .b-form-field.b-form__text-block
+                    input(type='hidden', value='51939', name='cId')
+                    input(type='hidden', value='51801', name='rId')
+                    input(type='hidden', value='e', name='a')
+                    label.b-form-label
+                      | Редактирование отзыва 
+                      span.b-form-attention ?
+                    .b-textarea-wrapper
+                      textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                        | Здорово! Чиабата своими руками! Спасибо вам за рецепт, завтра же займусь! Покупаем ее в метро с зелеными оливками очень вкусно, благодаря вам буду делать сама!
+                        
+                  button.btn.btn-default(type='submit') Добавить отзыв
+                  .b-form-field.b-form__photo-block
+                    .input_file
+                      input#fileupload48.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+                    .b-form__photo-block__img
+                    input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+                  .i-clearfix
+              .b-rc__props
+                .b-rc__props__reply
+                  a.btn.btn-default(href='#') Ответить
+                .b-rc__props__like
+                  include ../../modules/like/recipe.comments.like.jade
+                .b-rc__props__date 13.10.2008 в 05:15
+                .i-clearfix
+          .b-rc__reply-block
+            .b-rc__item(data-id='38' itemscope itemtype="http://schema.org/Comment" )
+              .i-relative
+                a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+                .b-rc__item__pointer
+                a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+                
+                include ../../modules/admin-buttons/include.jade
+                
+              .b-rc__item__content
+                .b-rc__item__content__author
+                  a(href='/personal/' itemprop="author" ) Мария Савельева
+                .b-rc__item__content__text( itemprop="text" )
+                  .b-rc__item__content__text__img( style="background-image: url('/upload/comments/hot-chocolate.jpg');" data-id='1313')
+                  .b-rc__item__content__text__content Спасибо! Я тоже в этом уверена!
+                  .i-clearfix
+                .b-rc-edit-form
+                  form(action="/", method='get')
+                    .b-form-field.b-form__text-block
+                      input(type='hidden', value='51939', name='cId')
+                      input(type='hidden', value='51801', name='rId')
+                      input(type='hidden', value='e', name='a')
+                      label.b-form-label
+                        | Редактирование отзыва 
+                        span.b-form-attention ?
+                      .b-textarea-wrapper
+                        textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                          | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
+                          
+                    button.btn.btn-default(type='submit') Добавить отзыв
+                    .b-form-field.b-form__photo-block
+                      
+                      include ../../modules/admin-buttons/photo.jade
+                      
+                      .b-form__photo-block__img
+                        img.i-align-img(src='/upload/comments/hot-chocolate.jpg', height='65', alt='', data-id='1313')
+                    .i-clearfix
+                .b-rc__props
+                  .b-rc__props__like
+                    include ../../modules/like/recipe.comments.like.jade
+                  .b-rc__props__date 13.10.2008 в 05:15
+                  .i-clearfix
+            .b-rc__item(data-id='28' itemscope itemtype="http://schema.org/Comment" )
+              .i-relative
+                a.b-rc__item__close.b-close-icon.b-close-icon__color_3(href='#', title='Закрыть')
+                .b-rc__item__pointer
+                a.b-rc__item__author( href="/personal/" style="background-image: url('http://www.foodclub.ru/images/avatar/avatar.jpg');" title="max_s" )
+                
+                include ../../modules/admin-buttons/include.jade
+                
+              .b-rc__item__content
+                .b-rc__item__content__author
+                  a(href='/personal/' itemprop="author" ) Мария Савельева
+                .b-rc__item__content__text( itemprop="text" )
+                  .b-rc__item__content__text__img( style="background-image: url('/upload/comments/pancake.jpg');" data-id='1414' )
+                  .b-rc__item__content__text__content Спасибо! Я тоже в этом уверена!
+                  .i-clearfix
+                .b-rc-edit-form
+                  form(action="/", method='get')
+                    .b-form-field.b-form__text-block
+                      input(type='hidden', value='51939', name='cId')
+                      input(type='hidden', value='51801', name='rId')
+                      input(type='hidden', value='e', name='a')
+                      label.b-form-label
+                        | Редактирование отзыва 
+                        span.b-form-attention ?
+                      .b-textarea-wrapper
+                        textarea.b-textarea(name='comment', cols='10', rows='5', required='')
+                          | falabella, если добавлять наполнители, то после основной расстойки теста, перед складыванием. Аккуратно распределите по тесту, а в процессе складывания оливки попадут внутрь хлеба. Можно еще добавить вяленые томаты.
+                          
+                    button.btn.btn-default(type='submit') Добавить отзыв
+                    .b-form-field.b-form__photo-block
+                      
+                      include ../../modules/admin-buttons/photo.jade
+                      
+                      .b-form__photo-block__img
+                        img.i-align-img(src='/images/infoblock/pancake.jpg', height='65', alt='', data-id='1414')
+                    .i-clearfix
+                .b-rc__props
+                  .b-rc__props__like
+                    include ../../modules/like/recipe.comments.like.jade
+                  .b-rc__props__date 13.10.2008 в 05:15
+                  .i-clearfix
+
+        #b-rc__reply-form
+          .i-relative
+            a.b-close-icon.b-rc__reply-form__close.b-close-icon__color_3(href='#')
+          form(action='/components/recipe.comments/php/reply.json', method='get')
+            .b-form-field.b-form__text-block
+              input(type='hidden', name='rId', value='')
+              input(type='hidden', name='authorId', value='456')
+              label.b-form-label
+                | Ответ на отзыв 
+                span.b-form-attention ?
+              .b-textarea-wrapper
+                textarea.b-textarea(name='comment', cols='10', rows='10', required='')
+            button.btn.btn-default(type='submit') Ответить
+            .b-form-field.b-form__photo-block
+              .input_file
+                input#fileuploadReply.text(type='file', data-ajax-url='/js/file-upload/server/php/index.php')
+              .b-form__photo-block__img
+              input.b-form__photo-block__url(type='hidden', name='comment-photo', value='')
+            .i-clearfix
+          .b-rc__item.i-foodclub
+            .b-rc__item__content
+              .b-rc__item__content__text
+                | Если Вы хотите оставить комментарий, Вам необходимо 
+                a(href='/forms/authorization/') авторизоваться
+                |  или 
+                a(href='/forms/registration/') зарегистрироваться
+                | на сайте.
 
 // end /components/recipe.comments/

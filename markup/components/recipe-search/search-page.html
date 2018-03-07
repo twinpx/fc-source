@@ -5,12 +5,32 @@
 <script src="/js/ss_data.js"></script>
 <script src="/components/recipe-search/add-script.js"></script>
 <div id="recipeSearch" class="b-recipe-search i-search-page">
-  <form action="/search/" method="post">
-    <div class="b-form-field b-recipe-search__form-field"><a href="#" title="Очистить поле" class="b-recipe-search__delete"></a>
-      <input type="text" value="" autocomplete="off" class="b-input-text b-recipe-search__input"/>
-    </div><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
-    <div class="i-clearfix"></div>
+  <form action="/search/" method="post"><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
+    <div class="b-recipe-search-field">
+      <div class="container">
+        <div class="b-recipe-search-field__icon"></div>
+        <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
+        <div class="b-recipe-search-field__input">
+          <input type="search" name="recipe-search" value=""/>
+        </div>
+      </div>
+    </div>
   </form>
+  <div style="position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;" class="title-search-result">
+    <div class="container">
+      <div class="title-search-result__wrapper">
+        <div class="title-search-result__block">
+          <div class="title-search-result__title">Рецепты</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лазанья</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/choco.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лагман по-арабски</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/stage.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Тыква, запеченная со специями</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a>
+        </div>
+        <div class="title-search-result__block">
+          <div class="title-search-result__title">Записи</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Ледяная ваза для окрошки</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Черника</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Хумус</span></span></a>
+        </div>
+        <div class="title-search-result__block">
+          <div class="title-search-result__title">Типы блюд</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Супы</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Пироги</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Вторые блюда</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script id="recipe_search_items" type="text/html">
   <li class="b-rs__item">
