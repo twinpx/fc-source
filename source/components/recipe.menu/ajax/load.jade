@@ -1,0 +1,72 @@
+.b-recipe-menu__info
+  .b-info-block.i-cooked
+    a.b-info-block__icon.i-cooked.i-active( href="#" style="background-image: url('/images/recipe-info.png');" title="Я готовил" data-href="/components/recipe.menu/new.json?action=uncooked&amp;id=13004&amp;code=test" )
+    .b-info-block__text
+      b Приготовили
+      .b-info-block__users
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+        | 
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+        | 
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+        | 
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+      .b-info-block__others и еще 318 кулинаров
+  
+  .b-info-block.i-like
+    a.b-info-block__icon.i-like.i-active( href="#" style="background-image: url('/images/recipe-info.png');" title="Нравится" data-href="/components/recipe.menu/empty.json?action=dislike&amp;id=13004&amp;code=test" )
+    .b-info-block__text
+      b Нравится
+      .b-info-block__users
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+        | 
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+        | 
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+        | 
+        a.b-info-block__user( href="/personal/" title="Ирина" )
+          img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
+          
+      b-info-block__others
+      
+.b-recipe-menu__info
+  .b-info-block.i-cooked
+    a.b-info-block__icon.i-cooked( href="#" style="background-image: url('/images/recipe-info.png');" title="Я готовил" data-href="/components/recipe.menu/one.json?action=cooked&amp;id=13004&amp;code=test" )
+    .b-info-block__title
+      b Приготовил
+  .b-info-block.i-like
+    a.b-info-block__icon.i-like( href="/forms/authorization/" style="background-image: url('/images/recipe-info.png');" title="Нравится" )
+    .b-info-block__title
+      b Нравится
+
+hr
+
+span.b-recipe-menu__i
+  a.b-print-button( href="#" title="Распечатать рецепт" )
+span.b-recipe-menu__i
+  a.b-like-button( href="#" title="Нравится" )
+  | 
+  span.b-like-button__num 32
+span.b-recipe-menu__i
+  a.b-cooked-button( href="#" title="Приготовили" )
+  | 
+  span.b-cooked-button__num 32
+span.b-recipe-menu__i
+  a.b-views-button( href="#" title="Просмотров" )
+  span.b-views-button__num 32
+span.b-recipe-menu__i
+  a.b-rating-button( href="#" title="Рейтинг" )
+  | 
+  span.b-rating-button__num 12 056
+  
+hr.visible-xs-block
+
+.b-recipe-menu__social
+  include ../../../modules/social-buttons/all.jade

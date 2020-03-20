@@ -3,10 +3,12 @@
 <link rel="stylesheet" href="/components/articles.article/style.css"/>
 <script src="/components/articles.article/script.js"></script>
 <div class="b-article">
-  <h2>Дайджест свежих публикаций из кулинарных ЖЖ</h2>
+  <h1>Дайджест свежих публикаций из кулинарных ЖЖ</h1>
   <div class="b-article-head">
     <div class="row">
-      <div class="col-sm-4"><a href="/detail/kartofel-veerom/?f=y" class="b-favorite-button"><span class="b-favorite-button__text">Поделиться</span></a></div>
+      <div class="col-sm-4">
+        <div data-ajax-url="/ajax-response/favorite-button.html" data-ajax-method="GET" class="b-favorite-ajax"></div>
+      </div>
       <hr class="i-size-S visible-xs-block"/>
       <div class="col-sm-4 text-center"><a href="/profile/" class="b-article-head__author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt="" class="img-circle"/><span>Виктория Фильберт</span></a></div>
       <div class="col-sm-4 b-article__info"><span title="Просмотров" class="b-views-info">323 455 678</span><span href="#" title="Рейтинг" class="b-rating-info">12 056</span></div>
@@ -129,9 +131,7 @@
     </div>
   </div>
   <hr class="i-size-L"/>
-  <div class="b-content-banner hidden-xs"><a href="" target="_blank"><img src="/upload/advertisement.gif" alt=""/></a>
-    <div class="b-content-banner__note">Реклама на Foodclub.ru</div>
-  </div>
+  <div data-ajax-url="/ajax-response/content-banner.html?id=89" data-ajax-method="GET" class="b-content-banner hidden-xs"></div>
   <hr class="i-size-L"/>
   <div class="text-center i-text-small">
     Материал подготовлен

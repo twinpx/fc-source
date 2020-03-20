@@ -1,0 +1,10 @@
+﻿{
+  "success": "Y",
+  "users": [
+    {
+      "name": "Елена",
+      "src": "\/images\/infoblock\/small_photo.jpg",
+      "href": "/personal/"
+    }
+  ]
+}

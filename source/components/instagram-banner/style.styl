@@ -1,0 +1,52 @@
+@import '../../styl/component-include.styl'
+
+.b-instagram-banner
+  position fixed
+  bottom 25px
+  left 0
+  width 100%
+  text-align center
+  
+  @media( min-width 1024px )
+    display none
+  
+  a
+    display inline-block
+    vertical-align top
+  
+  &__button
+    display inline-block
+    vertical-align top
+    opacity 0
+    transform( translateY( 30px ))
+    transition( all .5s ease )
+    
+    img
+      height 50px
+    
+    &:active,
+    &:hover
+      opacity .7
+      
+  &.i-animate
+    
+    .b-instagram-banner__button
+      opacity 1
+      transform( translateY(0))
+  
+  &__close
+    display inline-block
+    vertical-align top
+    margin-left 1px
+    margin-right -55px
+    opacity 0
+    transform( translateY( 30px ))
+    transition( all .5s ease )
+    
+    img
+      width 50px
+      height 50px
+      
+    &.i-animate
+      opacity 1
+      transform( translateY(0))

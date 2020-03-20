@@ -1,0 +1,33 @@
+﻿{
+  "success": "Y",
+  "action": "like",
+  "users": [
+    {
+      "name": "Елена",
+      "src": "\/images\/infoblock\/small_photo.jpg",
+      "href": "/personal/"
+    },
+    {
+      "name": "Юлия Потоцкая",
+      "src": "\/images\/infoblock\/small_photo.jpg",
+      "href": "/personal/"
+    },
+    {
+      "name": "Евгений",
+      "src": "\/images\/infoblock\/small_photo.jpg",
+      "href": "/personal/"
+    },
+    {
+      "name": "Денис Морозов",
+      "src": "\/images\/infoblock\/small_photo.jpg",
+      "href": "/personal/"
+    },
+    {
+      "name": "Дарья Шульц",
+      "src": "\/images\/infoblock\/small_photo.jpg",
+      "href": "/personal/"
+    }
+  ],
+  "others" : "и еще 319 кулинаров",
+  "total": 324
+}

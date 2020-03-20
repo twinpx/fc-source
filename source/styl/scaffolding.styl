@@ -1,6 +1,14 @@
 @import 'scaffolding/head.styl'
 @import 'scaffolding/footer.styl'
 
+body
+  position relative
+  min-height 100vh
+  padding-bottom 451px
+  
+  @media( max-width 767px )
+    padding-bottom 130px
+
 #body
   width 1000px
   margin 0 auto 0 auto
@@ -8,3 +16,20 @@
 #text_space
   width 674px
   float left
+  
+.b-page-cols
+  display flex
+    
+  &__content
+    width 100%
+    
+  &__aside
+    max-width 25%
+    
+    > div
+      margin-left 30px
+    
+.bx-composite-btn
+  top -35px !important
+  right 50% !important
+  margin-right -92px !important

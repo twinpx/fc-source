@@ -1,0 +1,67 @@
+﻿//-The only difference is with the place of components/recipe-search/template
+
+block var-page
+
+-var index = true
+
+header#header.b-header
+  .container
+    
+    .b-mobile-menu-icon.visible-xs-block
+    a( href="/search/" ).b-mobile-search-icon.visible-xs-block
+    
+    a( href="/" ).b-header__logo
+      img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
+      
+    block profile-buttons
+    
+      .b-header__buttons.hidden-xs
+    
+        .b-header__profile.dropdown
+          
+          button.b-header__profile-button( data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" )
+            img( src="/upload/user/small_photo.jpg" )
+          menu.b-header__profile-list.dropdown-menu( role="menu" )
+            li
+              a( href="" ).i-profile Профиль
+            li
+              a( href="" ).i-favorite Избранное
+            li
+              a( href="" ).i-recipes Мои рецепты
+            li
+              a( href="" ).i-articles Статьи
+            li
+              a( href="" ).i-subscribe Подписка
+            li
+              a( href="" ).i-kitchen Кухня
+            li
+              a( href="" ).i-signout Выйти
+              
+        button.btn.btn-default.b-header__add-button( data-toggle="modal" data-target="#addModal" ) Добавить
+        
+        include ../../modules/modals/add
+      
+      .b-header__nav
+        .row.visible-xs-block
+          .col-xs-6.col-xs-offset-6
+            include ../../modules/user/new
+        .row
+          .col-xs-6
+            //- bitrix composite
+            include ../../components/recipe-search/template
+            include ../../modules/search-helper/include.jade
+            a( href="/recipes/" ) Рецепты
+            a.i-active( href="/journal/" ) Журнал
+            a( href="/foodshot/" ) Фудшот
+            a( href="/lavka/" ) Лавка
+            
+          .col-xs-6.visible-xs-block
+            a( href="" ).i-profile Профиль
+            a( href="" ).i-favorite Избранное
+            a( href="" ).i-recipes Мои рецепты
+            a( href="" ).i-articles Статьи
+            a( href="" ).i-subscribe Подписка
+            a( href="" ).i-kitchen Кухня
+            a( href="" ).i-signout Выйти
+            
+      include ../../components/recipe-search/template

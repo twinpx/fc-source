@@ -9,8 +9,10 @@ block title
 block profile-buttons
 
   .b-header__buttons.hidden-xs
+    a.btn.btn-danger.b-header__auth-button( href="#" data-toggle="modal" data-target="#authModal" ) Войти
     
-    a.btn.btn-danger.b-header__auth-button( href="/forms/auth/" ) Войти
+  include ./modules/modals/auth
+  include ./modules/modals/email
       
   .b-header__nav
     .row
@@ -21,44 +23,43 @@ block profile-buttons
         a.i-active( href="/journal/" ) Журнал
         a( href="/foodshot/" ) Фудшот
         a( href="/lavka/" ) Лавка
+        
       .col-xs-6.visible-xs-block
-        a( href="/forms/auth/" ) Войти
+        a( href="#" data-toggle="modal" data-target="#authModal" ) Войти
         a( href="/forms/reg/" ) Зарегистрироваться
 
 block content
   
   .container
-  
-    hr.i-size-XL
-    
-    -var heading = "Авторские кулинарные рецепты"
+      
+    -var heading = "Foodclub.ru — кулинарное сообщество"
     include ./modules/heading-linethrough/h1
     
     hr
     
-    include modules/main-h1/include.jade
-  
-    hr.i-size-XL
+    include ./components/recipe-search-index/template
     
-    include modules/recipe-line/include.jade
+    hr.i-size-L
     
-    include modules/statistics/include.jade
+    include ./modules/index-brief/include
     
-    hr.i-size-XL
+    hr.i-size-L
     
-    include modules/feed-space/include.jade
+    .b-recipe-line.i-index
+
+      -var heading = "Последняя рекомендация"
+      include ./modules/heading-linethrough/include
+      
+      hr.i-size-L
+      
+      .row
+        -var n = 0
+          while n < 3
+            -n++
+            .col-sm-4
+              include ./modules/recipe-thumb/journal-item-short.jade
+            hr.i-size-L.visible-xs-block
     
-    hr.i-size-XL
+    hr.i-size-L
     
-    //-include modules/content-banner/hor.jade
-      #content
-        
-        include modules/cooks-space/include.jade
-        include modules/banner-space/index.jade
-        
-        .clear
-        
-        //div( style="margin: 45px 0;" )
-          script( charset="UTF-8" src="//www.travelpayouts.com/widgets/2e904aed9b11dc04a26ae5f66e4a9820.js?v=176" )
-        
-        include modules/collection-block/include.jade
+  //-include ./components/recipe-search-index/search-result

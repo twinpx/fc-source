@@ -3,81 +3,11 @@
 link( rel="stylesheet", href="/components/recipe.menu/style.css" )
 script( src="/components/recipe.menu/script.js" )
 
-.b-recipe-menu.i-bottom
-
-  .b-recipe-menu__info
-    .b-info-block.i-cooked
-      a.b-info-block__icon.i-cooked.i-active( href="#" title="Я готовил" data-href="/components/recipe.menu/new.json?action=uncooked&amp;id=13004&amp;code=test" )
-      .b-info-block__text
-        b Приготовили
-        .b-info-block__users
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-          | 
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-          | 
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-          | 
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-        .b-info-block__others и еще 318 кулинаров
-    
-    .b-info-block.i-like
-      a.b-info-block__icon.i-like.i-active( href="#" title="Нравится" data-href="/components/recipe.menu/empty.json?action=dislike&amp;id=13004&amp;code=test" )
-      .b-info-block__text
-        b Нравится
-        .b-info-block__users
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-          | 
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-          | 
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-          | 
-          a.b-info-block__user( href="/personal/" title="Ирина" )
-            img( src="/upload/user/small_photo.jpg" width="20" height="20" alt="" )
-            
-        b-info-block__others
+.row
+  .col-md-8.col-md-offset-2
+  
+    .b-recipe-menu.i-bottom( data-load-action="/components/recipe.menu/ajax/load.html?recipeId=456" data-load-method="GET" )
         
-  .b-recipe-menu__info
-    .b-info-block.i-cooked
-      a.b-info-block__icon.i-cooked( href="#" title="Я готовил" data-href="/components/recipe.menu/one.json?action=cooked&amp;id=13004&amp;code=test" )
-      .b-info-block__title
-        b Приготовил
-    .b-info-block.i-like
-      a.b-info-block__icon.i-like( href="/forms/authorization/" title="Нравится" )
-      .b-info-block__title
-        b Нравится
-  
-  
-  a.b-recipe-menu__i.b-favorite-button.i-remove-favorite( href="" title="Удалить из избранного" )
-    span.b-favorite-button__text Удалить
-  span.b-recipe-menu__title Мои рецепты для дня рождения, Все рецепты
-  
-  hr
-  
-  span.b-recipe-menu__i
-    a.b-print-button( href="#" title="Распечатать рецепт" )
-  span.b-recipe-menu__i
-    a.b-like-button( href="#" title="Нравится" )
-    | 
-    span.b-like-button__num 32
-  span.b-recipe-menu__i
-    a.b-cooked-button( href="#" title="Приготовили" )
-    | 
-    span.b-cooked-button__num 32
-  span.b-recipe-menu__i
-    a.b-views-button( href="#" title="Просмотров" )
-    span.b-views-button__num 32
-  span.b-recipe-menu__i
-    a.b-rating-button( href="#" title="Рейтинг" )
-    | 
-    span.b-rating-button__num 12 056
-  .b-recipe-menu__social
-    include ../../modules/social-buttons/all.jade
+    .text-mited.text-xsmall Рецепт «Картофельная запеканка с лисичками» добавлен: 31 марта 2015 года.
 
 // end /components/recipe/

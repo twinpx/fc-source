@@ -1,0 +1,78 @@
+﻿@import '../../styl/component-include.styl'
+
+.b-zen-button
+  position fixed
+  top calc( 50% - 70px )
+  right 15px
+  width 40px
+  height 40px
+  transform( scale(0))
+  transition( transform 0.4s cubic-bezier(.5,-.75,.7,2) )
+  cursor pointer
+  overflow hidden
+  border-radius 20px
+  z-index 10
+  
+  &__open
+    position absolute
+    top 0
+    right 0
+    width 120px
+    height 40px
+  
+  &__icon
+    position absolute
+    top 0
+    left 0
+    background url( '/bitrix/templates/fclub3.3/images/icons/zen-logo.svg' ) no-repeat center
+    background-size cover
+    width 40px
+    height 40px
+  
+  &.i-show
+    transform( scale(1))
+    
+  &:hover
+    width 120px
+    animation zen1 .4s linear
+    animation-fill-mode forwards
+      
+    .b-zen-button__open
+      background url( '/bitrix/templates/fclub3.3/images/icons/open-logo.svg' ) no-repeat center
+    
+    .b-zen-button__icon
+      animation zen .4s linear
+      animation-fill-mode forwards
+    
+  @media (max-width 767px)
+    bottom 50px
+  
+  @media (min-width 768px)
+    right calc( (100% - 750px)/2 )
+    
+  @media (min-width 992px)
+    right calc( (100% - 970px)/2 )
+  
+  @media (min-width: 1200px)
+    right calc( (100% - 1170px)/2 )
+    
+@keyframes zen
+
+  0%
+    transform( rotate(0))
+    
+  80%
+    opacity 1
+    
+  100%
+    transform( rotate(-360deg))
+    opacity 0
+    
+@keyframes zen1
+
+  0%
+    width 40px
+    
+  100%
+    width 120px
+    

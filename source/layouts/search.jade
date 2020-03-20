@@ -11,8 +11,10 @@ html
     //-script( src="/template/bootstrap.js" )
     
   body.i-mobile-search
+  
+    include includes/header-search.jade
     
-    header#header.b-header
+    //-header#header.b-header
       .container
         
         .b-mobile-menu-icon.visible-xs-block
@@ -45,3 +47,5 @@ html
                 a( href="" ).i-signout Выйти
                 
       include ../components/recipe-search/search-page
+      
+  include includes/styles-secondary.jade

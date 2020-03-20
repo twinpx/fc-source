@@ -17,16 +17,14 @@
     top 0
     left 0
     z-index 994
-    
-    .container
-      margin-right 20px
-      margin-left 20px
   
-  a
+  body & a
+  
     &
       color #fff
       
     &:hover
+      color #fff
       opacity 0.7
       text-decoration none
       
@@ -51,7 +49,8 @@
     z-index 2
     
     .i-mobile-search &
-      background-image embedurl( 'img/search-mobile.png' )
+      opacity .5
+      pointer-events none
     
   .col-xs-6
     position static
@@ -86,6 +85,12 @@
         
       @media( max-width $screen-sm-max )
         margin 0 11px
+        
+    [ id^=bx_incl_area ]
+      display inline-block
+      
+    .btn-default
+      max-width 150px
     
     @media( min-width $screen-tablet )
     
@@ -153,7 +158,7 @@
   &__profile
     rel()
     
-    &-list
+    .dropdown-menu&-list
       display none
       position absolute
       top 38px

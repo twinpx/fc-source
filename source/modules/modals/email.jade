@@ -1,0 +1,25 @@
+#emailModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='emailModalLabel')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close( type='button', data-dismiss='modal', aria-label='Close' )
+        h4#emailModalLabel.modal-title Завершите регистрацию
+      |       
+      .modal-body
+              
+        form( action="/php/form-email.json" method="GET" )
+          
+          .b-email-modal__form
+          
+            .input-field.b-auth-modal__form-b
+              input#email-form-b( type="text" name="b" value="" )
+              label( for="email-form-b" ) B
+              
+            .input-field
+              input#email-form( type="email" name="L" value="" )
+              label( for="email-form" ) Email
+            
+            hr.i-size-L
+            
+            .b-auth-modal__button
+              button.btn( type="submit" ) Сохранить

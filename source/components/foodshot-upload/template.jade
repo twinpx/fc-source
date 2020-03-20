@@ -1,0 +1,71 @@
+// start /components/foodshot-upload/
+
+link( rel="stylesheet", href="/components/foodshot-upload/style.css" )
+script( src="/components/foodshot-upload/script.js" )
+
+.b-foodshot-upload
+
+  form( action="/foodshot/upload/result/" method="GET" enctype="multipart/form-data" )
+  
+    .row
+    
+      .col-sm-6
+        .b-foodshot-upload__block
+        
+          .b-foodshot-upload__block-body
+          
+            .b-foodshot-upload__url
+            
+              .input-field
+                input#foodshotURL( type="text" name="image-url" value="" data-url="/components/foodshot-upload/url.json" data-method="GET" )
+                label( for="foodshotURL" ) URL картинки
+              
+            #foodshotDropArea
+            
+              .b-foodshot-upload__place( style="background-image: url( '/components/foodshot-upload/img/block-ill.png' );" )
+            
+              .box__input
+              
+                input#foodshotFileElem.box__file( type="file" name="files" )
+                
+                input#foodshotFileName( type="text" name="fileName" value="" )
+                input#foodshotFileBase64( type="text" name="fileBase64" value="" )
+                
+                label( for="foodshotFileElem" )
+                  
+                  span.b-foodshot-upload__label-place( style="background-image: url( '/components/foodshot-upload/img/block-ill.png' );" )
+                  
+                  strong Загрузите файл
+                  br
+                  span или перетащите его в область для загрузки.
+                  
+              .b-foodshot-upload__error
+              
+          #foodshotPreview
+          
+        .b-foodshot-upload__remove-image Удалить изображение
+        
+      .col-sm-6
+        .b-foodshot-upload__text
+        
+          .input-field
+            input#foodshotName( type="text" name="name" value="" )
+            label( for="foodshotName" ) Название
+        
+          .input-field
+            textarea#foodshotDescr.materialize-textarea( name="descr" )
+            label( for="foodshotDescr" ) Описание
+        
+          .input-field
+            input#foodshotHref( type="text" name="anchor" value="" )
+            label( for="foodshotHref" ) Ссылка на оригинал
+            
+          .chips.chips-placeholder.input-field
+            input( type="text" value="" placeholder="Введите тэг, нажмите Enter" )
+            
+          .b-foodshot-upload__buttons
+            button.btn.btn-default.btn-lg( type="submit" ) Добавить
+            span Отменить
+          
+
+// end /components/foodshot-upload/

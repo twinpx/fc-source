@@ -1,10 +1,27 @@
+//placeholders
+$( '.b-placeholder-content' ).each( function() {
+  var $block = $( this );
+  var id = $block.attr( 'id' );
+  $block.appendTo( '#' + id + '__placeholder' );
+});
+
+//yandex metrika
+$( 'body' ).delegate( '.title-search-result__item', 'click', function() {
+  if ( window.yaCounter7715218 ) {
+    yaCounter7715218.reachGoal( "titleSearch", { request_string: $( '#title-search-input' ).val(), chosen_recipe: $( this ).find( '.title-search-result__header' ).text() });
+  }
+});
+
 //header mobile menu icon
 $( '.b-header .b-mobile-menu-icon' ).click( function(e) {
   e.stopPropagation();
-  $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );//toggleClass( 'i-menu-open' );
+  $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );
 });
 
 $( '.b-header__nav' ).click( function(e) {
+  if ( $( e.target ).data( 'toggle' ) === 'modal' ) {
+    return;
+  }
   e.stopPropagation();
 });
 
@@ -39,3 +56,12 @@ $( ".recipe_list_item .photo a, .b-recipe-preview__photo__link" ).each( function
     });
   }
 });
+
+//input field from materialize
+/*$( '.input-field input' ).focus( function() {
+  $( this ).siblings( 'label' ).addClass( 'active' );
+}).blur( function() {
+  if ( $.trim($( this ).val()) === '' ) {
+    $( this ).siblings( 'label' ).removeClass( 'active' );
+  }
+});*/

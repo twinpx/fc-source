@@ -1,0 +1,51 @@
+#authModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='authModalLabel')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close( type='button', data-dismiss='modal', aria-label='Close' )
+        h4#authModalLabel.modal-title Войти
+      |       
+      .modal-body
+        .b-auth-modal__icons
+          .b-item.i-yandex
+            span( style="background-image: url( '/template/images/icons/auth/yandex.svg' );" )
+            | Яндекс
+          .b-item.i-google
+            span( style="background-image: url( '/template/images/icons/auth/google.svg' );" )
+            | Google
+          .b-item.i-vk
+            span( style="background-image: url( '/template/images/icons/auth/vk.svg' );" )
+            | ВКонтакте
+          .b-item.i-facebook
+            span( style="background-image: url( '/template/images/icons/auth/facebook.svg' );" )
+            | Facebook
+          .b-item.i-mail
+            span( style="background-image: url( '/template/images/icons/auth/mailru.svg' );" )
+            | Mail ru
+              
+        form( action="/php/form-auth.json" method="GET" )
+          .b-auth-modal__form
+            .row
+              .col-sm-6
+                .input-field.b-auth-modal__form-b
+                  input#auth-form-b( type="text" name="b" value="" )
+                  label( for="auth-form-b" ) B
+                  
+                .input-field
+                  input#auth-form-login( type="text" name="L" value="" )
+                  label( for="auth-form-login" ) Email
+                  
+              hr.visible-xs-block
+                  
+              .col-sm-6
+                .input-field
+                  input#auth-form-password( type="password" name="P" value="" )
+                  label( for="auth-form-password" ) Пароль
+            hr.i-size-M
+            .text-right
+              a( href="/forms/forgot/" ) Забыли пароль?
+          
+          hr.i-size-L
+          
+          .b-auth-modal__button
+            button.btn( type="submit" ) Войти

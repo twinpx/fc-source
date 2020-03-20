@@ -1,0 +1,40 @@
+﻿block var-page
+  - var page = 'index'
+
+extends ../layouts/main.jade
+
+block title
+  title 404 | food
+  
+block profile-buttons
+
+  .b-header__buttons.hidden-xs
+    
+    a.btn.btn-danger.b-header__auth-button( href="/forms/auth/" ) Войти
+      
+  .b-header__nav
+    .row
+      .col-xs-6
+        include ../components/recipe-search/template
+        include ../modules/search-helper/include.jade
+        a( href="/recipes/" ) Рецепты
+        a.i-active( href="/journal/" ) Журнал
+        a( href="/foodshot/" ) Фудшот
+        a( href="/lavka/" ) Лавка
+      .col-xs-6.visible-xs-block
+        a( href="/forms/auth/" ) Войти
+        a( href="/forms/reg/" ) Зарегистрироваться
+
+block content
+  
+  .container
+      
+    -var heading = "404 ошибка. Страница не существует"
+    include ../modules/heading-linethrough/h1
+    
+    hr.i-size-L
+    
+    .text-center
+      a( href="/" style="display: inline-block;" )
+        img( src="/template/images/404.jpg" alt="404 ошибка. Страница не существует" style="max-width: 100%; height: auto;" )
+      

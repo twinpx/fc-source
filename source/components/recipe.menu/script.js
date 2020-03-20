@@ -1,28 +1,69 @@
 ( function($) {
   
   $(function() {
-
-    $( '.b-recipe-menu' ).each( function( index, menu ) {
-      var $menu = $( menu );
-      if ( !$menu.hasClass( 'i-ready' )) {
-        $menu.addClass( 'i-ready' );
-        recipeMenu( $menu );
-      }
-    });
-
-    if ( window.BX ) {
-      BX.addCustomEvent( "onFrameDataReceived", function () {
+  
+    var sendFlag = false;
+    
+    $( window ).bind( 'scroll', function() {
+      //load
       
-        $( '.b-recipe-menu' ).each( function( index, menu ) {
-          var $menu = $( menu );
-          if ( !$menu.hasClass( 'i-ready' )) {
-            $menu.addClass( 'i-ready' );
-            recipeMenu( $menu );
+      if ( $.trim($( ".b-recipe-menu.i-bottom" ).text()) == '' ) {
+        var top = $( document ).scrollTop() + parseInt( window.screen.height ) - 50;
+      
+        $( ".b-recipe-menu.i-bottom" ).each( function() {
+          var $menuBlock = $( this );
+          if ( $menuBlock.offset().top < top ) {
+            if ( !sendFlag ) {
+              sendFlag = true;
+              $.ajax({
+                url: $menuBlock.data( 'load-action' ),
+                type: $menuBlock.data( 'load-method' ),//GET
+                dataType: "html",
+                success: function( html) {
+                  $menuBlock.html( html );
+                  init();
+                },
+                error: function( a, b, c ) {
+                  sendFlag = false;
+                  if ( window.console ) {
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                  }
+                }
+              });
+            }
           }
         });
         
+      }
+    });
+    
+    function init() {
+      // the menu
+      $( '.b-recipe-menu' ).each( function( index, menu ) {
+        var $menu = $( menu );
+        if ( !$menu.hasClass( 'i-ready' )) {
+          $menu.addClass( 'i-ready' );
+          recipeMenu( $menu );
+        }
       });
+
+      if ( window.BX ) {
+        BX.addCustomEvent( "onFrameDataReceived", function () {
+        
+          $( '.b-recipe-menu' ).each( function( index, menu ) {
+            var $menu = $( menu );
+            if ( !$menu.hasClass( 'i-ready' )) {
+              $menu.addClass( 'i-ready' );
+              recipeMenu( $menu );
+            }
+          });
+          
+        });
+      }
     }
+    
   });
   
   function recipeMenu( $menu ) {

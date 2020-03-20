@@ -11,16 +11,200 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/template/template_styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="/template/jscript.js"></script>
-    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+    <link rel="stylesheet" href="/template/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/minimal.css">
+    <script src="/template/jquery-3.1.1.min.js"></script>
+    <script src="/template/bootstrap.min.js" async></script>
+    <script src="/template/materialize.min.js" async></script>
+    <script src="/template/jscript.js" async></script>
   </head>
   <body>
     <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
     <header id="header" class="b-header">
+      <div id="header-content__placeholder"></div>
+    </header>
+    <link rel="stylesheet" href="advert-styles.css">
+    <div id="content">
+      <div id="text_space" class="advert">
+        <h1>Реклама на сайте Foodclub</h1>
+        <p>Ежеденевно более 1 000 человек ищут на сайте рецепты для приготовления блюд, поэтому реклама на сайте Foodclub — хорошая возможность сообщить Вашей аудитории о новых товарах, связанных с кулинарией.</p>
+        <p>Рекламодатели Foodclub`a должны понимать, что для посетителей нашего сайта важен не красивый баннер, созданный с целью привлечения внимания посетителей, а полезность рекламируемого товара. Очень трудно представить, что мы разместим рекламу известной лапши быстрого приготовления или рассказ об акциях, проводимых популярным фастфудом.</p>
+        <p>Но если Ваш товар по мнению администраторов сайта может быть полезен для кулинаров, Вы можете рассчитывать на скидку.</p>
+        <h2>Баннерная реклама</h2>
+        <p>К размещению принимаются баннеры 240х400 (справа) и баннеры-перетяжки 100%х90 или 728х90 (верхний). Если Вас интересует другой формат рекламы, мы с удовольствием обсудим возможности и варианты её размещения на сайте. Вы можете разместить на сайте уже готовый баннер либо заказать разработку баннера у нас.</p>
+        <h3>Пакет «Весь сайт»</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Количество контактов</td>
+              <td>Стоимость пакета</td>
+              <td>CPM</td>
+              <td class="period">Период</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>40 000</td>
+              <td>8 000 руб.</td>
+              <td>200 руб.</td>
+              <td class="period">2 недели</td>
+            </tr>
+            <tr>
+              <td>80 000</td>
+              <td>15 000 руб.</td>
+              <td>190 руб.</td>
+              <td class="period">Месяц</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Требования к баннерам</h3>
+        <p>Размер баннера не должен превышать 35 Кб. Баннер должен иметь видимую границу&nbsp;—&nbsp;рамку. В баннере не должно быть анимации, привлекающей внимание миганием или сменой контрастных цветов. Информация на баннере не должна нарушать законы Российской Федерации.</p>
+      </div>
+      <div id="banner_space" class="advert">
+        <form id="form" action="" method="post">
+          <div class="padding">
+            <div class="form_field">
+              <h5>
+                Имя
+                 <span>?</span>
+              </h5>
+              <input type="text" name="name" class="text">
+            </div>
+            <div class="form_field">
+              <h5>
+                E-mail
+                 <span>?</span>
+              </h5>
+              <input type="text" name="email" class="text">
+            </div>
+            <div class="two">
+              <div class="form_field first">
+                <h5>Сроки</h5>
+                <input type="text" name="period" class="text">
+              </div>
+              <div class="form_field">
+                <h5>Кол-во показов</h5>
+                <input type="text" name="number" class="text">
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="button">Отправить</div>
+          </div>
+        </form>
+      </div>
+      <div class="clear"></div>
+      <div class="advert_pic">
+        <div class="pointer">
+          <div class="pointer_100">100%х90</div>
+          <div class="pointer_240">240х400</div>
+        </div><img src="places.jpg" width="616" height="512" alt="">
+      </div>
+    </div>
+    <footer id="bottom" class="b-footer">
+      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
+        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
+      </div>
+      <div class="container hidden-xs">
+        <div class="b-subscribe">
+          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
+            <div class="form-group">
+              <label class="b-label text-center">Подписаться на рассылку</label>
+              <hr class="i-size-S">
+              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
+              <button type="submit" class="btn btn-default">Подписаться</button>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h4>Читайте нас</h4>
+            <menu>
+              <li><a href="" target="_blank">Facebook</a></li>
+              <li><a href="" target="_blank">Instagram</a></li>
+              <li><a href="" target="_blank">Twitter</a></li>
+              <li><a href="" target="_blank">LiveJournal</a></li>
+              <li><a href="" target="_blank">Одноклассники</a></li>
+              <li><a href="" target="_blank">ВКонтакте</a></li>
+              <li><a href="" target="_blank">Google+</a></li>
+              <li><a href="" target="_blank">Pinterest</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Моя Кухня</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Избранные рецепты</a></li>
+              <li><a href="">Моя лента</a></li>
+              <li><a href="">Подписка</a></li>
+              <li><a href="">Бейджи</a></li>
+              <li><a href="">Редактировать анкету</a></li>
+              <li><a href="">Добавить рецепт</a></li>
+              <li><a href="">Добавить рецепт (простой)</a></li>
+              <li><a href="">Добавить запись в клуб</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Темы</h4>
+            <menu>
+              <li><a href="">Рецепты с фото</a></li>
+              <li><a href="">Кулинарные клубы</a></li>
+              <li><a href="">Кулинары</a></li>
+              <li><a href="">Рецепт месяца</a></li>
+              <li><a href="">Самое интересное</a></li>
+              <li><a href="">Лавка</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Сервисы</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Поиск рецепта</a></li>
+              <li><a href="">Виджет Яндекса</a></li>
+              <li><a href="">Приложение Facebook</a></li>
+              <li><a href="">Приложение ВКонтакте</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Реклама</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Медиа-кит</a></li>
+              <li><a href="">Магазинам</a></li>
+              <li><a href="">Конкурсы</a></li>
+              <li><a href="">Брендирование</a></li>
+              <li><a href="">Статистика</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Пользователям</h4>
+            <menu>
+              <li><a href="">Новый профиль</a></li>
+              <li><a href="">Помощь</a></li>
+              <li><a href="">Ваши предложения</a></li>
+              <li><a href="">Сообщить об ошибке</a></li>
+              <li><a href="">Соглашение</a></li>
+              <li><a href="">Правила</a></li>
+            </menu>
+          </div>
+        </div>
+        <div><a href=""><span style="display: inline-block; width: 31px; height: 31px; background-color: #ccc;"></span></a><a href=""><span style="display: inline-block; width: 88px; height: 31px; background-color: #ccc;"></span></a>
+          <div id="bx-composite-banner" style="display: inline-block;"><span style="display: inline-block; width: 187px; height: 31px; background-color: #ccc;"></span></div>
+        </div>
+      </div>
+    </footer>
+    <!-- start /components/instagram-banner/-->
+    <link rel="stylesheet" href="/components/instagram-banner/style.css">
+    <script src="/components/instagram-banner/script.js"></script>
+    <div class="b-instagram-banner">
+      <div class="b-instagram-banner__button"><a href=""><img src="/template/images/icons/instagram-banner.svg" alt=""></a></div>
+      <div class="b-instagram-banner__close"><img src="/template/images/icons/close-button.svg" alt=""></div>
+    </div>
+    <!-- end /components/instagram-banner/-->
+    <div id="top_layer" style="display:none;">
+      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
+    </div>
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <div id="header-content" class="b-placeholder-content">
       <div class="container">
         <div class="b-mobile-menu-icon visible-xs-block"></div><a href="/search/" class="b-mobile-search-icon visible-xs-block"></a><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
         <div class="b-header__buttons hidden-xs">
@@ -51,6 +235,54 @@
               </div>
             </div>
           </div>
+          <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
+            <div role="document" class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                  <h4 id="authModalLabel" class="modal-title">Войти</h4>
+                </div>      
+                <div class="modal-body">
+                  <div class="b-auth-modal__icons">
+                    <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
+                    <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
+                    <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
+                    <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
+                    <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
+                  </div>
+                  <form action="/php/form-auth.json" method="GET">
+                    <div class="b-auth-modal__form">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="input-field b-auth-modal__form-b">
+                            <input id="auth-form-b" type="text" name="b" value="">
+                            <label for="auth-form-b">B</label>
+                          </div>
+                          <div class="input-field">
+                            <input id="auth-form-login" type="text" name="L" value="">
+                            <label for="auth-form-login">Email</label>
+                          </div>
+                        </div>
+                        <hr class="visible-xs-block">
+                        <div class="col-sm-6">
+                          <div class="input-field">
+                            <input id="auth-form-password" type="password" name="P" value="">
+                            <label for="auth-form-password">Пароль</label>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="i-size-M">
+                      <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
+                    </div>
+                    <hr class="i-size-L">
+                    <div class="b-auth-modal__button">
+                      <button type="submit" class="btn">Войти</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="b-header__nav">
           <div class="row visible-xs-block">
@@ -70,26 +302,11 @@
                       <div class="b-recipe-search-field__icon"></div>
                       <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
                       <div class="b-recipe-search-field__input">
-                        <input type="search" name="recipe-search" value="">
+                        <input id="title-search-input" type="search" name="recipe-search" value="">
                       </div>
                     </div>
                   </div>
                 </form>
-                <div style="position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;" class="title-search-result">
-                  <div class="container">
-                    <div class="title-search-result__wrapper">
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Рецепты</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лазанья</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/choco.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лагман по-арабски</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/stage.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Тыква, запеченная со специями</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a>
-                      </div>
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Записи</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Ледяная ваза для окрошки</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Черника</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Хумус</span></span></a>
-                      </div>
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Типы блюд</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Супы</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Пироги</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Вторые блюда</span></span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <script id="recipe_search_items" type="text/html">
                 <li class="b-rs__item">
@@ -320,181 +537,12 @@
                     <div></div>
                   </div>
                 </div>
-              </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a>
+              </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a><a href="/foodshot/upload/" class="btn btn-default visible-xs">Добавить фудшот</a>
             </div>
             <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
           </div>
         </div>
       </div>
-    </header>
-    <link rel="stylesheet" href="advert-styles.css">
-    <div id="content">
-      <div id="text_space" class="advert">
-        <h1>Реклама на сайте Foodclub</h1>
-        <p>Ежеденевно более 1 000 человек ищут на сайте рецепты для приготовления блюд, поэтому реклама на сайте Foodclub — хорошая возможность сообщить Вашей аудитории о новых товарах, связанных с кулинарией.</p>
-        <p>Рекламодатели Foodclub`a должны понимать, что для посетителей нашего сайта важен не красивый баннер, созданный с целью привлечения внимания посетителей, а полезность рекламируемого товара. Очень трудно представить, что мы разместим рекламу известной лапши быстрого приготовления или рассказ об акциях, проводимых популярным фастфудом.</p>
-        <p>Но если Ваш товар по мнению администраторов сайта может быть полезен для кулинаров, Вы можете рассчитывать на скидку.</p>
-        <h2>Баннерная реклама</h2>
-        <p>К размещению принимаются баннеры 240х400 (справа) и баннеры-перетяжки 100%х90 или 728х90 (верхний). Если Вас интересует другой формат рекламы, мы с удовольствием обсудим возможности и варианты её размещения на сайте. Вы можете разместить на сайте уже готовый баннер либо заказать разработку баннера у нас.</p>
-        <h3>Пакет «Весь сайт»</h3>
-        <table class="table">
-          <thead>
-            <tr>
-              <td>Количество контактов</td>
-              <td>Стоимость пакета</td>
-              <td>CPM</td>
-              <td class="period">Период</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>40 000</td>
-              <td>8 000 руб.</td>
-              <td>200 руб.</td>
-              <td class="period">2 недели</td>
-            </tr>
-            <tr>
-              <td>80 000</td>
-              <td>15 000 руб.</td>
-              <td>190 руб.</td>
-              <td class="period">Месяц</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>Требования к баннерам</h3>
-        <p>Размер баннера не должен превышать 35 Кб. Баннер должен иметь видимую границу&nbsp;—&nbsp;рамку. В баннере не должно быть анимации, привлекающей внимание миганием или сменой контрастных цветов. Информация на баннере не должна нарушать законы Российской Федерации.</p>
-      </div>
-      <div id="banner_space" class="advert">
-        <form id="form" action="" method="post">
-          <div class="padding">
-            <div class="form_field">
-              <h5>
-                Имя
-                 <span>?</span>
-              </h5>
-              <input type="text" name="name" class="text">
-            </div>
-            <div class="form_field">
-              <h5>
-                E-mail
-                 <span>?</span>
-              </h5>
-              <input type="text" name="email" class="text">
-            </div>
-            <div class="two">
-              <div class="form_field first">
-                <h5>Сроки</h5>
-                <input type="text" name="period" class="text">
-              </div>
-              <div class="form_field">
-                <h5>Кол-во показов</h5>
-                <input type="text" name="number" class="text">
-              </div>
-              <div class="clear"></div>
-            </div>
-            <div class="button">Отправить</div>
-          </div>
-        </form>
-      </div>
-      <div class="clear"></div>
-      <div class="advert_pic">
-        <div class="pointer">
-          <div class="pointer_100">100%х90</div>
-          <div class="pointer_240">240х400</div>
-        </div><img src="places.jpg" width="616" height="512" alt="">
-      </div>
-    </div>
-    <footer id="bottom" class="b-footer">
-      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
-        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
-      </div>
-      <div class="container hidden-xs">
-        <div class="b-subscribe">
-          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
-            <div class="form-group">
-              <label class="b-label text-center">Подписаться на рассылку</label>
-              <hr class="i-size-S">
-              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
-              <button type="submit" class="btn btn-default">Подписаться</button>
-            </div>
-          </form>
-        </div>
-        <div class="row">
-          <div class="col-sm-2">
-            <h4>Читайте нас</h4>
-            <menu>
-              <li><a href="" target="_blank">Facebook</a></li>
-              <li><a href="" target="_blank">Instagram</a></li>
-              <li><a href="" target="_blank">Twitter</a></li>
-              <li><a href="" target="_blank">LiveJournal</a></li>
-              <li><a href="" target="_blank">Одноклассники</a></li>
-              <li><a href="" target="_blank">ВКонтакте</a></li>
-              <li><a href="" target="_blank">Google+</a></li>
-              <li><a href="" target="_blank">Pinterest</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Моя Кухня</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Избранные рецепты</a></li>
-              <li><a href="">Моя лента</a></li>
-              <li><a href="">Подписка</a></li>
-              <li><a href="">Бейджи</a></li>
-              <li><a href="">Редактировать анкету</a></li>
-              <li><a href="">Добавить рецепт</a></li>
-              <li><a href="">Добавить рецепт (простой)</a></li>
-              <li><a href="">Добавить запись в клуб</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Темы</h4>
-            <menu>
-              <li><a href="">Рецепты с фото</a></li>
-              <li><a href="">Кулинарные клубы</a></li>
-              <li><a href="">Кулинары</a></li>
-              <li><a href="">Рецепт месяца</a></li>
-              <li><a href="">Самое интересное</a></li>
-              <li><a href="">Лавка</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Сервисы</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Поиск рецепта</a></li>
-              <li><a href="">Виджет Яндекса</a></li>
-              <li><a href="">Приложение Facebook</a></li>
-              <li><a href="">Приложение ВКонтакте</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Реклама</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Медиа-кит</a></li>
-              <li><a href="">Магазинам</a></li>
-              <li><a href="">Конкурсы</a></li>
-              <li><a href="">Брендирование</a></li>
-              <li><a href="">Статистика</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Пользователям</h4>
-            <menu>
-              <li><a href="">Новый профиль</a></li>
-              <li><a href="">Помощь</a></li>
-              <li><a href="">Ваши предложения</a></li>
-              <li><a href="">Сообщить об ошибке</a></li>
-              <li><a href="">Соглашение</a></li>
-              <li><a href="">Правила</a></li>
-            </menu>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <div id="top_layer" style="display:none;">
-      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
     </div>
   </body>
 </html>
