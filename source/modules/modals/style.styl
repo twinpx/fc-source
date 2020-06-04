@@ -1,0 +1,226 @@
+@import '../../styl/component-include.styl'
+
+#addModal
+
+  .close
+    
+    &,
+    &:hover
+      color #fff
+      text-shadow none
+      opacity(1)
+
+  @media (min-width 768px)
+    .modal-dialog
+      width 410px
+    
+  .modal-body
+    text-align center
+    padding-top 30px
+    padding-bottom 30px
+    
+    a
+      ib()
+      square( 90px )
+      color #fff
+      font-size $big-size
+      padding-top 61px
+      background-repeat no-repeat
+      background-position center 12px
+      
+      &:hover
+        background-color #419f5c
+        
+      &.i-recipe
+        background-image embedurl( 'img/recipe.png' )
+        
+      &.i-foodshot
+        background-image embedurl( 'img/foodshot.png' )
+        
+      &.i-article
+        background-image embedurl( 'img/article.png' )
+        
+.modal-content
+  box-shadow none
+  background-color #58a96f;
+  overflow hidden
+  border none
+      
+  .input-field
+      
+    > label
+      color #fff
+  
+    input,
+    textarea
+      border-bottom 1px solid #fff
+      color #fff
+      
+    &.i-empty
+    
+      > label
+        color #b41919
+        
+      input,
+      textarea
+        border-bottom 1px solid #b41919
+        color #b41919
+      
+  label.input-checkbox
+  
+    [type="checkbox"]+span:not(.lever):before,
+    [type="checkbox"]:not(.filled-in)+span:not(.lever):after
+      border 2px solid #fff
+      
+    [type="checkbox"]+span
+      color #fff
+      
+    [type="checkbox"]:checked+span:not(.lever):before
+      border-top 2px solid transparent
+      border-left 2px solid transparent
+      border-right 2px solid #fff
+      border-bottom 2px solid #fff
+
+.modal-header
+  background-color #419f5c;
+  border-bottom 0
+  position relative
+  
+  .close
+    width 16px
+    height 16px
+    background embedurl( 'img/close.svg' ) no-repeat center
+    float none
+    position absolute
+    top 30px
+    right 49px
+    margin 0
+    opacity 1
+    
+    &:hover
+      opacity .7
+
+.modal-footer
+  border-top 0
+  text-align center
+  padding-bottom 24px
+  
+  button
+    background transparent
+    color #fff
+    font-size $xxx-small
+    text-transform uppercase
+  
+.modal-title
+  color #fff
+  font-size 22pt
+  font-family $pt
+  font-weight bold
+  text-align center
+  padding-top 3px
+  padding-bottom 3px
+  
+//Auth modal
+
+#authModal,
+#emailModal
+
+  .modal-body
+    padding 30px 65px 48px
+    
+    @media( max-width 570px )
+      padding 20px 30px
+      
+  @media( max-width 570px )
+    padding 20px 5px
+    
+  @media ( min-width: 768px )
+  
+    .modal-dialog
+      width 730px
+    
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #58a96f inset
+    transition( background-color 5000s ease-in-out 0s )
+
+.b-auth-modal,
+.b-email-modal
+
+  &__icons
+    display flex
+    justify-content space-between
+    margin-bottom 40px
+    
+    @media( max-width 570px )
+      display block
+      overflow hidden
+    
+    .b-item
+      display inline-block
+      width 120px
+      height 120px
+      transition( background-color .5s ease )
+      cursor pointer
+      color #fff
+      text-align center
+      font-size 9pt
+      padding-top 33px
+      transition( opacity .5s ease )
+      
+      &:hover
+        opacity .7
+        
+      @media( max-width 570px )
+        width 33%
+        height 100px
+        float left
+        padding-top 20px
+        
+      span
+        display block
+        width 32px
+        height 32px
+        background-repeat no-repeat
+        background-position center
+        background-size cover
+        margin 0 auto 9px
+        
+  &__form
+    
+    .text-right
+      font-size 9pt
+      margin-top 3px
+      
+      @media( max-width 767px )
+        text-align left !important
+        
+    &-b
+      display none
+      
+  &__error
+    font-size 9pt
+    color $attention-color
+      
+  &__button
+    text-align center
+  
+    .btn
+      height 68px
+      line-height 68px
+      width 256px
+      max-width 100%
+      font-size 13.5pt
+      background-color #367649
+      transition( opacity .5s ease )
+      
+      &:hover
+        opacity .7

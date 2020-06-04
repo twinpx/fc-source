@@ -11,16 +11,507 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/template/template_styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="/template/jscript.js"></script>
-    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+    <link rel="stylesheet" href="/template/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/minimal.css">
+    <script src="/template/jquery-3.1.1.min.js"></script>
+    <script src="/template/bootstrap.min.js" async></script>
+    <script src="/template/materialize.min.js" async></script>
+    <script src="/template/jscript.js" async></script>
   </head>
   <body>
     <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
     <header id="header" class="b-header">
+      <div id="header-content__placeholder"></div>
+    </header>
+    <div class="container">
+      <div class="b-heading-linethrough">
+        <h1>Рецепты</h1>
+      </div>
+      <nav class="b-content-nav"><span>Все рецепты</span><a href="/rating/">Рейтинги рецептов</a><a href="/personal/recipes/">Мои рецепты</a><a href="/personal/favourite/">Избранное</a><a href="/recipes/add/" class="i-emphasise">Добавить рецепт</a></nav>
+    </div>
+    <div id="content" class="all_recipes">
+      <div class="container">
+        <hr>
+        <!-- start /components/recipes.filter/-->
+        <link rel="stylesheet" href="/components/recipes.filter/style.css">
+        <script src="/components/recipes.filter/script.js"></script>
+        <div id="filter_recipes" data-ajax-url="/json/all_recipes_result.html" class="i-link">
+          <div class="b-filter-items__wrapper">
+            <div data-type="cuisine" class="item b-filter__item"><span class="b-filter__item__heading hidden-xs">Кухня:</span><span class="b-filter__item__button"><span class="hidden-xs">Все</span><span class="b-filter__icon visible-xs"><img src="/template/images/icons/kitchen-type.svg" alt=""><img src="/template/images/icons/kitchen-type-act.svg" alt="" class="i-active"></span></span></div>
+            <div data-type="dish" class="item b-filter__item"><span class="b-filter__item__heading hidden-xs">Тип блюда:</span><span class="b-filter__item__button"><span class="hidden-xs">Все</span><span class="b-filter__icon visible-xs"><img src="/template/images/icons/dish-type.svg" alt=""><img src="/template/images/icons/dish-type-act.svg" alt="" class="i-active"></span></span></div>
+            <div data-type="ingredient" class="item b-filter__item"><span class="b-filter__item__heading hidden-xs">Основной ингредиент:</span><span class="b-filter__item__button"><span class="hidden-xs">Все</span><span class="b-filter__icon visible-xs"><img src="/template/images/icons/ingredients.svg" alt=""><img src="/template/images/icons/ingredients-act.svg" alt="" class="i-active"></span></span></div>
+            <div data-type="tag" class="item b-filter__item"><span class="b-filter__item__heading hidden-xs">Метка:</span><span class="b-filter__item__button"><span class="hidden-xs">Все</span><span class="b-filter__icon visible-xs"><img src="/template/images/icons/tag.svg" alt=""><img src="/template/images/icons/tag-act.svg" alt="" class="i-active"></span></span></div>
+          </div>
+          <div id="filter_lists">
+            <div id="filter_list">
+              <div id="filter-list-cuisine">
+                <div class="pad">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td><a href="#" data-id="42">Австралийская кухня</a></td>
+                        <td><a href="#" data-id="54">Грузинская кухня</a></td>
+                        <td><a href="#" data-id="68">Ливанская кухня</a></td>
+                        <td><a href="#" data-id="78">Турецкая кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="43">Австрийская кухня</a></td>
+                        <td><a href="#" data-id="55">Датская кухня</a></td>
+                        <td><a href="#" data-id="11119">Малышам</a></td>
+                        <td><a href="#" data-id="79">Узбекская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="44">Американская кухня</a></td>
+                        <td><a href="#" data-id="117">Домашние рецепты</a></td>
+                        <td><a href="#" data-id="70">Марокканская кухня</a></td>
+                        <td><a href="#" data-id="80">Украинская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="45">Английская кухня</a></td>
+                        <td><a href="#" data-id="56">Еврейская кухня</a></td>
+                        <td><a href="#" data-id="71">Мексиканская кухня</a></td>
+                        <td><a href="#" data-id="82">Французская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="46">Армянская кухня</a></td>
+                        <td><a href="#" data-id="59">Индийская кухня</a></td>
+                        <td><a href="#" data-id="9159">Молдавская кухня</a></td>
+                        <td><a href="#" data-id="83">Чешская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="47">Белорусская кухня</a></td>
+                        <td><a href="#" data-id="60">Индонезийская кухня</a></td>
+                        <td><a href="#" data-id="72">Немецкая кухня</a></td>
+                        <td><a href="#" data-id="8022">Шведская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="49">Болгарская кухня</a></td>
+                        <td><a href="#" data-id="61">Испанская кухня</a></td>
+                        <td><a href="#" data-id="73">Польская кухня</a></td>
+                        <td><a href="#" data-id="1286">Шотландская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="50">Бразильская кухня</a></td>
+                        <td><a href="#" data-id="62">Итальянская кухня</a></td>
+                        <td><a href="#" data-id="74">Португальская кухня</a></td>
+                        <td><a href="#" data-id="86">Ямайская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="51">Венгерская кухня</a></td>
+                        <td><a href="#" data-id="64">Китайская кухня</a></td>
+                        <td><a href="#" data-id="76">Русская кухня</a></td>
+                        <td><a href="#" data-id="87">Японская кухня</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="53">Греческая кухня</a></td>
+                        <td><a href="#" data-id="66">Кубинская кухня</a></td>
+                        <td><a href="#" data-id="77">Тайская кухня</a></td>
+                        <td><span></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="filter-list-dish">
+                <div class="pad">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td><a href="#" data-id="29">Блины, блинчики, оладьи</a></td>
+                        <td><a href="#" data-id="35">Запеканки</a></td>
+                        <td><a href="#" data-id="36">Пироги и пирожки</a></td>
+                        <td><a href="#" data-id="1">Супы</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="6242">Блюда из грибов</a></td>
+                        <td><a href="#" data-id="99">Каши</a></td>
+                        <td><a href="#" data-id="102">Пицца</a></td>
+                        <td><a href="#" data-id="40">Суши, сашими</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="6241">Блюда из яиц</a></td>
+                        <td><a href="#" data-id="4013">Котлеты</a></td>
+                        <td><a href="#" data-id="2317">Птица</a></td>
+                        <td><a href="#" data-id="1625">Сырники</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="3070">Варенье и цукаты</a></td>
+                        <td><a href="#" data-id="104">Мясо</a></td>
+                        <td><a href="#" data-id="1626">Рис</a></td>
+                        <td><a href="#" data-id="2318">Торты</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="940">Выпечка</a></td>
+                        <td><a href="#" data-id="34">Напитки</a></td>
+                        <td><a href="#" data-id="105">Рыба и морепродукты</a></td>
+                        <td><a href="#" data-id="4066">Хлеб</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="4524">Гарниры</a></td>
+                        <td><a href="#" data-id="8569">Овощи</a></td>
+                        <td><a href="#" data-id="38">Салаты</a></td>
+                        <td><a href="#" data-id="96">Холодцы и заливное</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="3">Десерты</a></td>
+                        <td><a href="#" data-id="27">Паста</a></td>
+                        <td><a href="#" data-id="6715">Сладкие пироги</a></td>
+                        <td><a href="#" data-id="95">Шашлыки</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="4">Закуски</a></td>
+                        <td><a href="#" data-id="92">Пельмени, вареники</a></td>
+                        <td><a href="#" data-id="41">Соусы</a></td>
+                        <td><span></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="filter-list-ingredient">
+                <div class="pad">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td><a href="#" data-id="10999">Алкоголь</a></td>
+                        <td><a href="#" data-id="10986">Молоко и кисломолочные продукты</a></td>
+                        <td><a href="#" data-id="10983">Рыба и морепродукты</a></td>
+                        <td><a href="#" data-id="10998">Чай, кофе</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="10992">Бобовые</a></td>
+                        <td><a href="#" data-id="10993">Мука</a></td>
+                        <td><a href="#" data-id="11000">Сахар</a></td>
+                        <td><a href="#" data-id="11001">Шоколад</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="10990">Грибы</a></td>
+                        <td><a href="#" data-id="11164">Мясо</a></td>
+                        <td><a href="#" data-id="10997">Соки</a></td>
+                        <td><a href="#" data-id="10989">Ягоды</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="10995">Крупы</a></td>
+                        <td><a href="#" data-id="10987">Овощи</a></td>
+                        <td><a href="#" data-id="10984">Субпродукты</a></td>
+                        <td><a href="#" data-id="10985">Яйца</a></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="10994">Макаронные изделия</a></td>
+                        <td><a href="#" data-id="10991">Орехи и сухофрукты</a></td>
+                        <td><a href="#" data-id="32701">Сыр</a></td>
+                        <td><span></span></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="10996">Масла и жиры</a></td>
+                        <td><a href="#" data-id="10982">Птица</a></td>
+                        <td><a href="#" data-id="10988">Фрукты</a></td>
+                        <td><span></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="filter-list-tag">
+                <div class="pad">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td><a href="#" data-id="42">праздники</a></td>
+                        <td><a href="#" data-id="44">на гарнир</a></td>
+                        <td><a href="#" data-id="46">вегетарианские</a></td>
+                        <td><span></span></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" data-id="43">к чаю</a></td>
+                        <td><a href="#" data-id="45">диетические</a></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end /components/recipes.filter/-->
+        <div class="b-page-cols">
+          <section class="b-page-cols__content">
+            <!-- start /components/recipes.filter/-->
+            <div id="fc_statistics">
+              <div class="wrapper"><span class="item"><span class="num">36</span> <span class="word">рецептов</span></span></div>
+            </div>
+            <div id="recipe_feed_block">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                    <div class="text-center">
+                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
+                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
+                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
+                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="visible-xs-block">
+                <div class="col-sm-4">
+                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                    <div class="text-center">
+                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
+                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
+                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
+                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="visible-xs-block">
+                <div class="col-sm-4">
+                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                    <div class="text-center">
+                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
+                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
+                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
+                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="i-size-L hidden-xs">
+              <hr class="visible-xs-block">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                    <div class="text-center">
+                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
+                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
+                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
+                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="visible-xs-block">
+                <div class="col-sm-4">
+                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                    <div class="text-center">
+                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
+                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
+                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
+                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="visible-xs-block">
+                <div class="col-sm-4">
+                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                    <div class="text-center">
+                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
+                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
+                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
+                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="i-size-L hidden-xs">
+              <hr class="visible-xs-block">
+            </div>
+            <div id="get_more_recipes" data-more-url="/json/get_more_recipes.html"><a href="#" data-id="456" class="btn btn-default btn-gray">Показать ещё</a><img src="/images/preloader.gif" width="281" height="52" alt=""></div>
+            <!-- end /components/recipes.filter/-->
+          </section>
+          <aside class="b-page-cols__aside hidden-sm hidden-xs">
+            <div class="b-aside-banner"><a href="" target="_blank"><img src="/upload/banner/app.jpg" width="100%" alt="Cosmopolitan"></a>
+              <div class="b-aside-banner__note">Реклама на Foodclub.ru</div>
+            </div>
+            <hr class="i-size-L">
+            <!-- start /components/aside.rom/-->
+            <link rel="stylesheet" href="/components/aside.rom/style.css">
+            <script src="/components/aside.rom/script.js"></script>
+            <div class="b-aside-rom">
+              <div class="b-h2">Рецепт месяца</div>
+              <div class="b-h4">Февраль</div><a href="" class="b-aside-rom__photo"><img src="/upload/recipe-preview/aside-rom.jpg" alt="Рецепт месяца - блинчики с вареньем"></a>
+              <hr class="i-size-M">
+              <div class="b-author"><a href="/profile/" class="b-author__pic"><img src="/upload/user/ca-ira.jpg" alt="Мария Савельева"></a><a href="/profile/" class="b-author__name">Мария Савельева</a></div>
+              <hr class="i-size-L i-decorated">
+              <div class="b-h3">Приз победителю</div><img src="/upload/kitchen/1.jpg" alt="Мультиварка POLARIS">
+              <hr>
+              <div class="b-h4">Мультиварка POLARIS</div>
+              <div class="b-aside-rom__note">Чтобы получить главный приз: добавьте рецепт, сообщите своим друзьям и следите за результатами.</div>
+              <hr class="i-size-M"><a href="/recipe-of-month/" class="btn btn-default">Участвовать</a>
+            </div>
+            <!-- end /components/aside.rom/-->
+          </aside>
+        </div>
+        <hr class="i-size-L">
+        <div class="b-heading-linethrough">
+          <h2>Подборки</h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4 text-center"><a href="/journal/article/"><img src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" class="img-responsive center-block"></a>
+            <hr class="i-size-S">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2><a href="/journal/article/">Постные блюда</a></h2>
+              </div>
+            </div>
+          </div>
+          <hr class="visible-xs-block">
+          <div class="col-sm-4 text-center hidden-xs"><a href="/journal/article/"><img src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" class="img-responsive center-block"></a>
+            <hr class="i-size-S">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2><a href="/journal/article/">Постные блюда</a></h2>
+              </div>
+            </div>
+          </div>
+          <hr class="visible-xs-block">
+          <div class="col-sm-4 text-center hidden-xs"><a href="/journal/article/"><img src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" class="img-responsive center-block"></a>
+            <hr class="i-size-S">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2><a href="/journal/article/">Готовимся к пляжному сезону!</a></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4 text-center"><a href="/journal/article/"><img src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" class="img-responsive center-block"></a>
+            <hr class="i-size-S">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2><a href="/journal/article/">Постные блюда</a></h2>
+              </div>
+            </div>
+          </div>
+          <hr class="visible-xs-block">
+          <div class="col-sm-4 text-center hidden-xs"><a href="/journal/article/"><img src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" class="img-responsive center-block"></a>
+            <hr class="i-size-S">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2><a href="/journal/article/">Постные блюда</a></h2>
+              </div>
+            </div>
+          </div>
+          <hr class="visible-xs-block">
+          <div class="col-sm-4 text-center hidden-xs"><a href="/journal/article/"><img src="/upload/journal/feed2.jpg" alt="Салаты и закуски Новогоднего стола" class="img-responsive center-block"></a>
+            <hr class="i-size-S">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h2><a href="/journal/article/">Готовимся к пляжному сезону!</a></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="i-size-L">
+      </div>
+    </div>
+    <footer id="bottom" class="b-footer">
+      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
+        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
+      </div>
+      <div class="container hidden-xs">
+        <div class="b-subscribe">
+          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
+            <div class="form-group">
+              <label class="b-label text-center">Подписаться на рассылку</label>
+              <hr class="i-size-S">
+              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
+              <button type="submit" class="btn btn-default">Подписаться</button>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h4>Читайте нас</h4>
+            <menu>
+              <li><a href="" target="_blank">Facebook</a></li>
+              <li><a href="" target="_blank">Instagram</a></li>
+              <li><a href="" target="_blank">Twitter</a></li>
+              <li><a href="" target="_blank">LiveJournal</a></li>
+              <li><a href="" target="_blank">Одноклассники</a></li>
+              <li><a href="" target="_blank">ВКонтакте</a></li>
+              <li><a href="" target="_blank">Google+</a></li>
+              <li><a href="" target="_blank">Pinterest</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Моя Кухня</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Избранные рецепты</a></li>
+              <li><a href="">Моя лента</a></li>
+              <li><a href="">Подписка</a></li>
+              <li><a href="">Бейджи</a></li>
+              <li><a href="">Редактировать анкету</a></li>
+              <li><a href="">Добавить рецепт</a></li>
+              <li><a href="">Добавить рецепт (простой)</a></li>
+              <li><a href="">Добавить запись в клуб</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Темы</h4>
+            <menu>
+              <li><a href="">Рецепты с фото</a></li>
+              <li><a href="">Кулинарные клубы</a></li>
+              <li><a href="">Кулинары</a></li>
+              <li><a href="">Рецепт месяца</a></li>
+              <li><a href="">Самое интересное</a></li>
+              <li><a href="">Лавка</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Сервисы</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Поиск рецепта</a></li>
+              <li><a href="">Виджет Яндекса</a></li>
+              <li><a href="">Приложение Facebook</a></li>
+              <li><a href="">Приложение ВКонтакте</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Реклама</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Медиа-кит</a></li>
+              <li><a href="">Магазинам</a></li>
+              <li><a href="">Конкурсы</a></li>
+              <li><a href="">Брендирование</a></li>
+              <li><a href="">Статистика</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Пользователям</h4>
+            <menu>
+              <li><a href="">Новый профиль</a></li>
+              <li><a href="">Помощь</a></li>
+              <li><a href="">Ваши предложения</a></li>
+              <li><a href="">Сообщить об ошибке</a></li>
+              <li><a href="">Соглашение</a></li>
+              <li><a href="">Правила</a></li>
+            </menu>
+          </div>
+        </div>
+        <div><a href=""><span style="display: inline-block; width: 31px; height: 31px; background-color: #ccc;"></span></a><a href=""><span style="display: inline-block; width: 88px; height: 31px; background-color: #ccc;"></span></a>
+          <div id="bx-composite-banner" style="display: inline-block;"><span style="display: inline-block; width: 187px; height: 31px; background-color: #ccc;"></span></div>
+        </div>
+      </div>
+    </footer>
+    <!-- start /components/instagram-banner/-->
+    <link rel="stylesheet" href="/components/instagram-banner/style.css">
+    <script src="/components/instagram-banner/script.js"></script>
+    <div class="b-instagram-banner">
+      <div class="b-instagram-banner__button"><a href=""><img src="/template/images/icons/instagram-banner.svg" alt=""></a></div>
+      <div class="b-instagram-banner__close"><img src="/template/images/icons/close-button.svg" alt=""></div>
+    </div>
+    <!-- end /components/instagram-banner/-->
+    <div id="top_layer" style="display:none;">
+      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
+    </div>
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <div id="header-content" class="b-placeholder-content">
       <div class="container">
         <div class="b-mobile-menu-icon visible-xs-block"></div><a href="/search/" class="b-mobile-search-icon visible-xs-block"></a><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
         <div class="b-header__buttons hidden-xs">
@@ -51,6 +542,54 @@
               </div>
             </div>
           </div>
+          <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
+            <div role="document" class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                  <h4 id="authModalLabel" class="modal-title">Войти</h4>
+                </div>      
+                <div class="modal-body">
+                  <div class="b-auth-modal__icons">
+                    <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
+                    <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
+                    <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
+                    <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
+                    <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
+                  </div>
+                  <form action="/php/form-auth.json" method="GET">
+                    <div class="b-auth-modal__form">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="input-field b-auth-modal__form-b">
+                            <input id="auth-form-b" type="text" name="b" value="">
+                            <label for="auth-form-b">B</label>
+                          </div>
+                          <div class="input-field">
+                            <input id="auth-form-login" type="text" name="L" value="">
+                            <label for="auth-form-login">Email</label>
+                          </div>
+                        </div>
+                        <hr class="visible-xs-block">
+                        <div class="col-sm-6">
+                          <div class="input-field">
+                            <input id="auth-form-password" type="password" name="P" value="">
+                            <label for="auth-form-password">Пароль</label>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="i-size-M">
+                      <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
+                    </div>
+                    <hr class="i-size-L">
+                    <div class="b-auth-modal__button">
+                      <button type="submit" class="btn">Войти</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="b-header__nav">
           <div class="row visible-xs-block">
@@ -70,26 +609,11 @@
                       <div class="b-recipe-search-field__icon"></div>
                       <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
                       <div class="b-recipe-search-field__input">
-                        <input type="search" name="recipe-search" value="">
+                        <input id="title-search-input" type="search" name="recipe-search" value="">
                       </div>
                     </div>
                   </div>
                 </form>
-                <div style="position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;" class="title-search-result">
-                  <div class="container">
-                    <div class="title-search-result__wrapper">
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Рецепты</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лазанья</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/choco.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лагман по-арабски</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/stage.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Тыква, запеченная со специями</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a>
-                      </div>
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Записи</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Ледяная ваза для окрошки</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Черника</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Хумус</span></span></a>
-                      </div>
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Типы блюд</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Супы</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Пироги</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Вторые блюда</span></span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <script id="recipe_search_items" type="text/html">
                 <li class="b-rs__item">
@@ -321,339 +845,12 @@
                   </div>
                 </div>
               </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a>
+              <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
             </div>
             <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
           </div>
         </div>
       </div>
-    </header>
-    <div id="content" class="all_recipes">
-      <nav class="b-content-nav"><a href="/recipes/"><b>Все рецепты</b></a><a href="/rating/">Рейтинги рецептов</a><a href="/personal/recipes/">Мои рецепты</a><a href="/personal/favourite/">Избранное</a><a href="/recipes/add/" class="i-emphasise">Добавить рецепт</a>
-      </nav>
-      <div class="container">
-        <div class="i-center">
-          <h1>Рецепты</h1>
-        </div>
-        <div id="filter_recipes" data-all-url="/json/all_recipes_result.json" data-last-url="/json/last_recipes_result.json">
-          <div class="item cuisine">
-            <h5>Кухня</h5><a href="#" class="frame_bg"><span class="left"><span class="right"><span class="bg"><span>Выберите</span></span></span></span></a>
-          </div>
-          <hr class="i-size-S visible-xs-block">
-          <div class="item dish">
-            <h5>Тип блюда</h5><a href="#" class="frame_bg"><span class="left"><span class="right"><span class="bg"><span>Выберите</span></span></span></span></a>
-          </div>
-          <hr class="i-size-S visible-xs-block">
-          <div class="item ingredient">
-            <h5>Основной ингредиент</h5><a href="#" class="frame_bg"><span class="left"><span class="right"><span class="bg"><span>Выберите</span></span></span></span></a>
-          </div>
-          <hr class="i-size-S visible-xs-block">
-          <div class="item tag">
-            <h5>Метка</h5><a href="#" class="frame_bg"><span class="left"><span class="right"><span class="bg"><span>Выберите</span></span></span></span></a>
-          </div>
-          <div class="clear"></div>
-          <div id="filter_lists">
-            <div id="filter_list"></div>
-          </div>
-        </div>
-        <div class="row">
-          <section class="col-md-8">
-            <div id="fc_statistics">
-              <div class="wrapper"><span class="item"><span class="num">36</span> <span class="word">рецептов</span></span></div>
-            </div>
-            <script>
-              //В массиве перечислены id последних рецептов. Первые 27 из них должны быть уже выведены на странице при загрузке, остальные n перечислены здесь для дальнейшей подгрузки через ajax
-              window.allRecipesResult = [5271,5256,5238,5226,5207,5317,5146,5128,5111,5087,5075,5063,5042,5034,5023,5000,4989,4976,4956,4940,4926,4918,4910,4898,4883,4860,4853];
-            </script>
-            <div id="recipe_feed_block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" style="background-image: url('/upload/recipe-preview/blocks/5.jpg');" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <hr class="i-size-S"><a href="" class="col-sm-10 center-block"><b>Яичница в корзиночках из бекона</b></a>
-                    <hr class="i-size-S">
-                    <div class="b-recipe-thumb__author author">От: irina_ctc</div>
-                    <div class="b-recipe-thumb__info"><span title="Оставить отзыв" class="comments_icon">
-                        <noindex><a href="/recipe/#comments">3</a></noindex></span></div>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
-            </div>
-            <div id="get_more_recipes" data-more-url="/json/get_more_recipes.json"><a href="#" class="btn btn-default">Ещё</a><img src="/images/preloader.gif" width="160" height="20" alt=""></div>
-          </section>
-          <aside class="col-md-4 hidden-sm hidden-xs">
-            <div class="b-aside-banner"><a href="" target="_blank"><img src="/upload/banner/app.jpg" width="300" height="500" alt="Cosmopolitan"></a>
-              <div class="b-aside-banner__note">Реклама на Foodclub.ru</div>
-            </div>
-            <hr class="i-size-L">
-            <!-- start /components/aside.rom/-->
-            <link rel="stylesheet" href="/components/aside.rom/style.css">
-            <script src="/components/aside.rom/script.js"></script>
-            <div class="b-aside-rom">
-              <div class="b-h2">Рецепт месяца</div>
-              <div class="b-h4">Февраль</div><a href="" class="b-aside-rom__photo"><img src="/upload/recipe-preview/aside-rom.jpg" alt="Рецепт месяца - блинчики с вареньем"></a>
-              <hr class="i-size-M">
-              <div class="b-author"><a href="/profile/" class="b-author__pic"><img src="/upload/user/ca-ira.jpg" alt="Мария Савельева"></a><a href="/profile/" class="b-author__name">Мария Савельева</a></div>
-              <hr class="i-size-L i-decorated">
-              <div class="b-h3">Приз победителю</div><img src="/upload/kitchen/1.jpg" alt="Мультиварка POLARIS">
-              <hr>
-              <div class="b-h4">Мультиварка POLARIS</div>
-              <div class="b-aside-rom__note">Чтобы получить главный приз: добавьте рецепт, сообщите своим друзьям и следите за результатами.</div>
-              <hr class="i-size-M"><a href="/recipe-of-month/" class="btn btn-default">Участвовать</a>
-            </div>
-            <!-- end /components/aside.rom/-->
-            <hr class="i-size-L">
-            <div class="b-aside-banner i-float"><a href="" target="_blank"><img src="/upload/banner/app.jpg" width="300" height="500" alt="Cosmopolitan"></a>
-              <div class="b-aside-banner__note">Реклама на Foodclub.ru</div>
-            </div>
-          </aside>
-        </div>
-      </div>
-      <hr class="i-size-L">
-    </div>
-    <footer id="bottom" class="b-footer">
-      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
-        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
-      </div>
-      <div class="container hidden-xs">
-        <div class="b-subscribe">
-          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
-            <div class="form-group">
-              <label class="b-label text-center">Подписаться на рассылку</label>
-              <hr class="i-size-S">
-              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
-              <button type="submit" class="btn btn-default">Подписаться</button>
-            </div>
-          </form>
-        </div>
-        <div class="row">
-          <div class="col-sm-2">
-            <h4>Читайте нас</h4>
-            <menu>
-              <li><a href="" target="_blank">Facebook</a></li>
-              <li><a href="" target="_blank">Instagram</a></li>
-              <li><a href="" target="_blank">Twitter</a></li>
-              <li><a href="" target="_blank">LiveJournal</a></li>
-              <li><a href="" target="_blank">Одноклассники</a></li>
-              <li><a href="" target="_blank">ВКонтакте</a></li>
-              <li><a href="" target="_blank">Google+</a></li>
-              <li><a href="" target="_blank">Pinterest</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Моя Кухня</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Избранные рецепты</a></li>
-              <li><a href="">Моя лента</a></li>
-              <li><a href="">Подписка</a></li>
-              <li><a href="">Бейджи</a></li>
-              <li><a href="">Редактировать анкету</a></li>
-              <li><a href="">Добавить рецепт</a></li>
-              <li><a href="">Добавить рецепт (простой)</a></li>
-              <li><a href="">Добавить запись в клуб</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Темы</h4>
-            <menu>
-              <li><a href="">Рецепты с фото</a></li>
-              <li><a href="">Кулинарные клубы</a></li>
-              <li><a href="">Кулинары</a></li>
-              <li><a href="">Рецепт месяца</a></li>
-              <li><a href="">Самое интересное</a></li>
-              <li><a href="">Лавка</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Сервисы</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Поиск рецепта</a></li>
-              <li><a href="">Виджет Яндекса</a></li>
-              <li><a href="">Приложение Facebook</a></li>
-              <li><a href="">Приложение ВКонтакте</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Реклама</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Медиа-кит</a></li>
-              <li><a href="">Магазинам</a></li>
-              <li><a href="">Конкурсы</a></li>
-              <li><a href="">Брендирование</a></li>
-              <li><a href="">Статистика</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Пользователям</h4>
-            <menu>
-              <li><a href="">Новый профиль</a></li>
-              <li><a href="">Помощь</a></li>
-              <li><a href="">Ваши предложения</a></li>
-              <li><a href="">Сообщить об ошибке</a></li>
-              <li><a href="">Соглашение</a></li>
-              <li><a href="">Правила</a></li>
-            </menu>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <div id="top_layer" style="display:none;">
-      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
     </div>
   </body>
 </html>

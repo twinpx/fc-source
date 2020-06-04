@@ -1,0 +1,24 @@
+﻿block var-page
+  - var page = foodshot
+
+extends ../../../layouts/inner
+
+block title
+  title Foodshot upload result | food
+
+block content
+    
+  .container
+  
+    -var heading = "Фудшот успешно добавлен"
+    include ../../../modules/heading-linethrough/h1
+    
+    p.text-center.text-xsmall Ваш фудшот «Название фудшота» успешно добавлен. Вы можете увидеть его в <a href="">ленте</a>.
+    
+    hr
+    
+    .text-center
+      a.btn.btn-default.btn-lg( href="/foodshot/upload/" style="padding: 0 60px;" ) Добавить
+      
+    hr.i-size-XL
+    

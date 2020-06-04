@@ -9,7 +9,45 @@
         init();
       });
     } else {*/
-      init();
+      var sendFlag = false;
+    
+      $( window ).bind( 'scroll', function() {
+        //load
+        
+        if ( $( ".b-recipe-comments" ).is( ':empty' )) {
+          var top = $( document ).scrollTop() + parseInt( window.screen.height ) - 150;
+        
+          $( ".b-recipe-comments" ).each( function() {
+            var $recipeBlock = $( this );
+            if ( $recipeBlock.offset().top < top ) {
+              if ( !sendFlag ) {
+                sendFlag = true;
+                $.ajax({
+                  url: $recipeBlock.data( 'load-action' ),
+                  type: $recipeBlock.data( 'load-method' ),//GET
+                  dataType: "html",
+                  success: function( html) {
+                    $recipeBlock.html( html );
+                    init();
+                  },
+                  error: function( a, b, c ) {
+                    sendFlag = false;
+                    if ( window.console ) {
+                      console.log(a);
+                      console.log(b);
+                      console.log(c);
+                    }
+                  }
+                });
+              }
+            }
+          });
+          
+        }
+      });
+    
+      $( '#b-comment-form .b-textarea' ).resizeTextarea();
+      
     //}
 
     function init() {
@@ -40,7 +78,7 @@
     
     function autolike() {
       var getParams = parseGetParams();
-      if ( getParams['commentid'].length ) {
+      if ( getParams['commentid'] && getParams['commentid'].length ) {
         $( '#liketn_' + getParams['commentid'] + ':eq(0)' ).click();
         setTimeout( function() {
           $.scrollTo( $( '[data-id=' + getParams['commentid'] + ']' ).offset().top - 100, 500 );
@@ -186,7 +224,7 @@
         var $replyButton = $(this);
         var $item = $replyButton.closest(".b-rc__item");
         
-        if($item.hasClass("i-reply")) {
+        if ( $item.hasClass("i-reply")) {
           self.$replyForm.find(".b-close-icon").click();
           return;
         }
@@ -289,7 +327,16 @@
       //requests
       function clickLike(e) {
         if ( !isAuthorized()) {
-          window.location.href = $( this ).attr( 'href' );
+          //window.location.href = $( this ).attr( 'href' );
+          if ( document.getElementById( 'authModal' )) {
+            $( '#authModal form' ).each( function() {
+              $( this ).find( 'div:first' ).append( '<input type="hidden" name="commentLikeFlag" value="Y">' );
+              Cookies.set( 'likeComment', $( this ).closest( '.b-rc__item' ).data( 'id' ));
+            });
+            
+            $( '.b-header__auth-button' ).click();
+            //$('#authModal').modal( 'show' );
+          }
           return false;
         };
         

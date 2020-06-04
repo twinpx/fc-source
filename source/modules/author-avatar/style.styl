@@ -12,7 +12,12 @@
     position absolute
     top 0
     left 0
-    trans( transform 0.1s linear )
+    trans( transform 0.3s ease-out )
+    border-radius 51%
+    overflow hidden
+    background-repeat no-repeat
+    background-position center
+    background-size cover
     
     &:hover
       transform (scale(2))
@@ -22,7 +27,7 @@
     height auto !important
     
   &__nickname
-    font-size $x-small
+    font-size 9pt
     display inline-block
     vertical-align middle
     padding-left 46px
@@ -32,3 +37,5 @@
     
     span
       white-space nowrap
+      display inline-block
+      max-width 100px

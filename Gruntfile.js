@@ -18,8 +18,10 @@ module.exports = function( grunt ) {
             cwd: './<%= source%>',
             src: [
               '**/*.jade',
+              'components/**/to-be-rendered/*.jade',
               '!layouts/**/*.jade',
               '!components/**/include/*.jade',
+              '!components/*/*.jade',
               '!modules/**/*.jade'
             ],
             dest: '<%= dest%>',
@@ -62,26 +64,38 @@ module.exports = function( grunt ) {
           $imagesPath: '/template/images/'
         }
       },
-      bootstrap: {
+      /*bootstrap: {
         files: {
           '<%= dest%>template/bootstrap.css': ['<%= source%>bootstrap/css/index.styl']
         }
-      },
+      },*/
       template: {
-        files: {
-          '<%= dest%>template/template_styles.css':
-            [
-              '<%= source%>styl/template_styles.styl',
-              '<%= source%>modules/**/*.styl'
-            ]
-        }
+        files: [
+          {
+            '<%= dest%>template/minimal.css':
+              [
+                '<%= source%>styl/minimal.styl',
+                '<%= source%>modules/heading-linethrough/style.styl',
+                '<%= source%>modules/content-nav/style.styl',//for the recipes page
+                '<%= source%>modules/recipe-thumb/styl/recipe-thumb-minimal.styl',//for the main page
+                '<%= source%>components/**/minimal.styl'
+              ]
+          },
+          {
+            '<%= dest%>template/template_styles.css':
+              [
+                '<%= source%>styl/template_styles.styl',
+                '<%= source%>modules/**/*.styl'
+              ]
+          }
+        ]
       },
       components: {
         files: [
           {
             expand: true,
             cwd: '<%= source%>components/',
-            src: [ '**/*.styl' ],
+            src: [ '**/style.styl' ],
             dest: '<%= dest%>components/',
             extDot: 'first',
             ext: '.css'
@@ -96,10 +110,20 @@ module.exports = function( grunt ) {
           {
             expand: true,
             cwd: '<%= source%>components/',
-            src: [ '**/*.styl' ],
+            src: [ '**/style.styl' ],
             dest: '<%= temp %>components/',
             extDot: 'first',
             ext: '.css'
+          },
+          {
+            '<%= temp %>template/minimal.css':
+              [
+                '<%= source%>styl/minimal.styl',
+                '<%= source%>modules/heading-linethrough/style.styl',
+                '<%= source%>modules/content-nav/style.styl',//for the recipes page
+                '<%= source%>modules/recipe-thumb/styl/recipe-thumb-minimal.styl',//for the main page
+                '<%= source%>components/**/minimal.styl'
+              ]
           },
           {
             '<%= temp %>template/template_styles.css':
@@ -207,7 +231,7 @@ module.exports = function( grunt ) {
     },
     
     uglify: {
-      devBootstrap: {
+      /*devBootstrap: {
         options: {
           mangle: false,
           compress: false,
@@ -232,7 +256,7 @@ module.exports = function( grunt ) {
             ]
           }
         ]
-      },
+      },*/
       devTemplate: {
         options: {
           mangle: false,
@@ -264,7 +288,7 @@ module.exports = function( grunt ) {
         ]
       },
       
-      prodBootstrap: {
+      /*prodBootstrap: {
         options: {
           mangle: true,
           compress: {},
@@ -288,7 +312,7 @@ module.exports = function( grunt ) {
             ]
           }
         ]
-      },
+      },*/
       prodTemplate: {
         options: {
           mangle: true,
@@ -389,11 +413,11 @@ module.exports = function( grunt ) {
             cwd: '<%= temp %>',
             src: [ '**/*.*' ],
             dest: '<%= prod %>'
-          },
+          }/*,
           {
             '<%= prod %>template/bootstrap.css': '<%= dest %>template/bootstrap.css',
             '<%= prod %>template/bootstrap.js': '<%= dest %>template/bootstrap.js'
-          }
+          }*/
         ]
       }
     },
@@ -439,6 +463,21 @@ module.exports = function( grunt ) {
           base: '<%= dest%>'
         }
       }
+    },
+    
+    critical: {
+      test: {
+        options: {
+          base: './',
+          css: [
+            '<%= dest %>template/minimal.css'
+          ],
+          width: 1300,
+          height: 1000
+        },
+        src: '<%= dest %>recipes/recipe/index.html',
+        dest: '<%= dest %>template/critical.css'
+      }
     }
     
   });
@@ -452,12 +491,13 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-clean' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+  grunt.loadNpmTasks('grunt-critical');
   
-  grunt.registerTask( 'bootstrap', [ 'stylus:bootstrap', 'uglify:devBootstrap' ] );
+  //grunt.registerTask( 'bootstrap', [ 'stylus:bootstrap', 'uglify:devBootstrap' ] );
   grunt.registerTask( 'css', [ 'stylus:template', 'stylus:components', 'concat:pluginsCSS' ] );
   grunt.registerTask( 'js', [ 'concat:js', /*'jshint:dev',*/ 'concat:pluginsJS', 'uglify:devTemplate', 'uglify:devComponents', 'clean:js' ] );
   grunt.registerTask( 'html', [ 'copy:images', 'jade:dev' ] );
-  grunt.registerTask( 'default', [ 'connect', 'css', 'js', 'bootstrap', 'html', 'watch' ] );
+  grunt.registerTask( 'default', [ 'connect', 'css', 'js', /*'bootstrap', */'html', 'watch' ] );
   
   grunt.registerTask( 'prod', [
     'stylus:prod',

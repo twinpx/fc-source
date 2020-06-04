@@ -20,76 +20,75 @@ script( src="/components/recipe-search/add-script.js" )
         .b-recipe-search-field__icon
         .b-recipe-search-field__clear( title="Очистить поле" )
         .b-recipe-search-field__input
-          input( type="search" name="recipe-search" value="" )
+          input#title-search-input( type="search" name="recipe-search" value="" )
           
      
-  .title-search-result(style='position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;')
-    
-    .container
-    
-      .title-search-result__wrapper
+  //-.title-search-result(style='position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;')
+      .container
       
-        .title-search-result__block
-      
-          .title-search-result__title Рецепты
+        .title-search-result__wrapper
         
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Лазанья
-              span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
-              
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/choco.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Лагман по-арабски
-              span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
-              
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/stage.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Тыква, запеченная со специями
-              span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+          .title-search-result__block
         
-        .title-search-result__block
-      
-          .title-search-result__title Записи
+            .title-search-result__title Рецепты
+          
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Лазанья
+                span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+                
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/choco.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Лагман по-арабски
+                span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+                
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/stage.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Тыква, запеченная со специями
+                span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
+          
+          .title-search-result__block
         
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Ледяная ваза для окрошки
-              
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Черника
-              
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Хумус
+            .title-search-result__title Записи
+          
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Ледяная ваза для окрошки
+                
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Черника
+                
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Хумус
+          
+          .title-search-result__block
         
-        .title-search-result__block
-      
-          .title-search-result__title Типы блюд
+            .title-search-result__title Типы блюд
+          
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Супы
+                
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Пироги
+                
+            a.title-search-result__item( href="" )
+              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
+              span.title-search-result__text
+                span.title-search-result__header Вторые блюда
+              
         
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Супы
-              
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Пироги
-              
-          a.title-search-result__item( href="" )
-            span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-            span.title-search-result__text
-              span.title-search-result__header Вторые блюда
-            
-      
   
 script#recipe_search_items( type="text/html" )
   |<li class="b-rs__item">

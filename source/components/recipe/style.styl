@@ -1,65 +1,10 @@
 @import '../../styl/component-include.styl'
+@import 'recipe-bootstrap.styl'
 
 .b-recipe
-  
-  &__chain-path
-    text-align center
-    font-size 8pt
-    margin-bottom 15px
-    vertical-align top
-    
-    a
-      margin 0 4px
-      
-  &__info
-    text-align center
-    display flex
-    justify-content space-around
-    
-    @media( max-width 575px )
-      justify-content space-between
-    
-    svg
-      width 24px
-      height 24px
-      display inline-block
-      vertical-align top
-      background-color #ccc
-      margin-right 10px
-      
-      @media( max-width 575px )
-        display none
-    
-    &-item,
-    &-icon
-      display inline-block
-      vertical-align middle
-      
-    &-text
-      display inline-block
-      vertical-align middle
-      font-size 9pt
-      
-  &__intro
-    display flex
-      
-    &-ill
-      width 100%
-      padding-right 15px
-      
-    &-aside
-      width 33.33%
-      padding-left 15px
-      
-  &__ill,
-  &__step-ill
-    background-color #f4f4f4
-    text-align center
-    
-    img
-      max-width 100%
       
   .b-recipe-icons
+    visibility visible
     
     @media( max-width 767px )
       display flex
@@ -90,8 +35,68 @@
       
         &:nth-child(2)
           text-align right
+          white-space nowrap
+          padding-right 12px
+          
+  &__included
+    display flex
+    justify-content center
+    align-items center
+    font-size 9pt
+    
+    @media( max-width 1023px )
+      flex-wrap wrap
+    
+    &__item
+      display flex
+      justify-content center
+      align-items center
+      width 21%
+      margin 0 2%
+      
+      img
+        width 100px
+        height 100px
+        
+        @media( max-width 600px )
+          width 50px
+          height 50px
+      
+      span
+        margin-left 10px
+        
+      @media( max-width 1023px )
+        width 46%
+        height 100px
+        
+      @media( max-width 600px )
+        height auto
+        margin-bottom 15px
+        font-size 7pt
+        
           
   &__step
     
     .b-heading-linethrough
       margin-bottom 15px
+  
+.b-recipe-icon
+  display inline-block
+  vertical-align middle
+  margin-right 15px
+  
+  img,
+  svg
+    display inline-block
+    vertical-align middle
+    width 16px
+    height 16px
+    
+  &__num
+    display inline-block
+    vertical-align middle
+    font-size 7pt
+    color #999
+      
+  &.b-print-button
+    display none

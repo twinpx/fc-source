@@ -1,0 +1,57 @@
+
+<!-- start /components/foodshot-upload/-->
+<link rel="stylesheet" href="/components/foodshot-upload/style.css"/>
+<script src="/components/foodshot-upload/script.js"></script>
+<div class="b-foodshot-upload">
+  <form action="/foodshot/upload/result/" method="GET" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="b-foodshot-upload__block">
+          <div class="b-foodshot-upload__block-body">
+            <div class="b-foodshot-upload__url">
+              <div class="input-field">
+                <input id="foodshotURL" type="text" name="image-url" value="" data-url="/components/foodshot-upload/url.json" data-method="GET"/>
+                <label for="foodshotURL">URL картинки</label>
+              </div>
+            </div>
+            <div id="foodshotDropArea">
+              <div style="background-image: url( '/components/foodshot-upload/img/block-ill.png' );" class="b-foodshot-upload__place"></div>
+              <div class="box__input">
+                <input id="foodshotFileElem" type="file" name="files" class="box__file"/>
+                <input id="foodshotFileName" type="text" name="fileName" value=""/>
+                <input id="foodshotFileBase64" type="text" name="fileBase64" value=""/>
+                <label for="foodshotFileElem"><span style="background-image: url( '/components/foodshot-upload/img/block-ill.png' );" class="b-foodshot-upload__label-place"></span><strong>Загрузите файл</strong><br/><span>или перетащите его в область для загрузки.</span></label>
+              </div>
+              <div class="b-foodshot-upload__error"></div>
+            </div>
+          </div>
+          <div id="foodshotPreview"></div>
+        </div>
+        <div class="b-foodshot-upload__remove-image">Удалить изображение</div>
+      </div>
+      <div class="col-sm-6">
+        <div class="b-foodshot-upload__text">
+          <div class="input-field">
+            <input id="foodshotName" type="text" name="name" value=""/>
+            <label for="foodshotName">Название</label>
+          </div>
+          <div class="input-field">
+            <textarea id="foodshotDescr" name="descr" class="materialize-textarea"></textarea>
+            <label for="foodshotDescr">Описание</label>
+          </div>
+          <div class="input-field">
+            <input id="foodshotHref" type="text" name="anchor" value=""/>
+            <label for="foodshotHref">Ссылка на оригинал</label>
+          </div>
+          <div class="chips chips-placeholder input-field">
+            <input type="text" value="" placeholder="Введите тэг, нажмите Enter"/>
+          </div>
+          <div class="b-foodshot-upload__buttons">
+            <button type="submit" class="btn btn-default btn-lg">Добавить</button><span>Отменить</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- end /components/foodshot-upload/-->

@@ -3,7 +3,14 @@
 link( rel="stylesheet", href="/components/recipe/style.css" )
 script( src="/components/recipe/script.js" )
 
-.b-recipe( itemscope itemtype="http://schema.org/Recipe" )
+include ../../modules/zen-button/include
+include ../../modules/favorite-button/include
+   
+//-заголовок вне рецепта, по причинам особенностей интеграции   
+-var heading = "Картофельная запеканка с лисичками"
+include ../../modules/heading-linethrough/h1-name
+
+.b-recipe( itemscope itemtype="http://schema.org/Recipe" data-id="88" )
   
   .b-recipe__chain-path
     a( href="/search/" )
@@ -13,24 +20,29 @@ script( src="/components/recipe/script.js" )
     | /
     a( href="/search/" ) Ягоды
     
-  -var heading = "Картофельная запеканка с лисичками"
-  include ../../modules/heading-linethrough/h1-name
+  .b-recipe__author
+    include ../../modules/author-avatar/nickname-bg
+    
+  .b-recipe__company
+    a( href="http://www..." rel="nofollow" target="_blank" )
+      img( src="/upload/recipe/company.gif" width="100" height="50" alt="Seafoodshop" )
+      i Спонсор рецепта
   
   .b-recipe__info
     
     .b-recipe__info-item
       .b-recipe__info-icon
-        svg
+        img( src="/template/images/icons/servings.svg" width="16" alt="" )
       .b-recipe__info-text( itemprop="recipeYield" ) 2 порции
       
     .b-recipe__info-item
       .b-recipe__info-icon
-        svg
+        img( src="/template/images/icons/servings.svg" width="16" alt="" )
       .b-recipe__info-text( itemprop="cookTime" content="PT1H20M" ) 1 час 20 мин
       
     .b-recipe__info-item
       .b-recipe__info-icon
-        svg
+        img( src="/template/images/icons/servings.svg" width="16" alt="" )
       .b-recipe__info-text( itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" )
         span( itemprop="calories" ) 192 кКал на порцию
       
@@ -40,14 +52,32 @@ script( src="/components/recipe/script.js" )
     .b-recipe__intro-ill
     
       .b-recipe__ill
-        img( data-original="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+        img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )
         
       hr.i-size-M
         
       .row
         .col-sm-6
           
-          include ../../modules/recipe-icons/include
+          .b-recipe-icons( data-ajax-url="/ajax-response/recipe-icons.html?id=45" data-ajax-method="GET" )
+            .b-recipe-icon.b-print-button
+              img( src="/template/images/icons/print.svg" width="16" alt="" )
+
+            .b-recipe-icon.b-like-button
+              img( src="/template/images/icons/like.svg" width="16" alt="" )
+              .b-recipe-icon__num 10
+              
+            .b-recipe-icon.b-cooked-button
+              img( src="/template/images/icons/cooking.svg" width="16" alt="" )
+              .b-recipe-icon__num 7
+              
+            .b-recipe-icon.b-views-button
+              img( src="/template/images/icons/views.svg" width="16" alt="" )
+              .b-recipe-icon__num 1 482 200
+              
+            .b-recipe-icon.b-rating-button
+              img( src="/template/images/icons/rating.svg" width="16" alt="" )
+              .b-recipe-icon__num 5 672
           
         hr.visible-xs-block.i-size-M
           
@@ -116,6 +146,40 @@ script( src="/components/recipe/script.js" )
         tr
           td( itemprop="recipeIngredient" ) Горчица
           td 1.5 ч.л.
+      
+  hr.i-size-L
+  
+  -var heading = "В рецепте использовали"
+  include ../../modules/heading-linethrough/include
+  
+  .b-recipe__included
+  
+    .b-recipe__included__item
+      a( href="http://www..." rel="nofollow" target="_blank" )
+        img( src="/upload/recipe/included.jpg" width="100" height="100" alt="Миксер Philips" )
+      span Миксер Philips
+        br
+        a( href="http://www..." rel="nofollow" target="_blank" ) Купить в Яндекс Маркет
+  
+    .b-recipe__included__item
+      a( href="http://www..." rel="nofollow" target="_blank" )
+        img( src="/upload/recipe/included2.jpg" width="100" height="100" alt="Соль морская марки Sol Mare" )
+      span
+        a( href="http://www..." rel="nofollow" target="_blank" ) Соль морская марки Sol Mare
+  
+    .b-recipe__included__item
+      a( href="http://www..." rel="nofollow" target="_blank" )
+        img( src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская" )
+      span Сельдь Алюторская
+        br
+        a( href="http://www..." rel="nofollow" target="_blank" ) Купить в Seafoodshop.ru
+  
+    .b-recipe__included__item
+      a( href="http://www..." rel="nofollow" target="_blank" )
+        img( src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская" )
+      span Сельдь Алюторская
+        br
+        a( href="http://www..." rel="nofollow" target="_blank" ) Купить в Seafoodshop.ru
           
   hr
   
@@ -126,28 +190,25 @@ script( src="/components/recipe/script.js" )
       -var heading = "Готовим тесто — этап 1"
       include ../../modules/heading-linethrough/include-name
       
-      .row.b-recipe__ingredients
-        .col-md-4
-          table
-            tr
-              td Нерка копченая (филе)
-              td 150 г
-            tr
-              td Лаймы
-              td 1 шт.
-              
-        .col-md-4
-          table
-            tr
-              td
-                a( href="" ) Нерка копченая (филе)
-              td 150 г
-              
-        .col-md-4
-          table
-            tr
-              td Нерка копченая (филе)
-              td 150 г
+      .row
+        .col-md-8.col-md-offset-2
+          
+          .row.b-recipe__ingredients
+            .col-md-6
+              table
+                tr
+                  td Нерка копченая (филе)
+                  td 150 г
+                tr
+                  td Лаймы
+                  td 1 шт.
+                  
+            .col-md-6
+              table
+                tr
+                  td
+                    a( href="" ) Нерка копченая (филе)
+                  td 150 г
               
       hr
               
@@ -155,7 +216,8 @@ script( src="/components/recipe/script.js" )
         .col-md-8.col-md-offset-2
         
           .b-recipe__step-ill
-            img( data-original="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+            img( src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image" )
+            img( data-original="/upload/recipe/ill.jpg" alt="" )
             
           hr.i-size-M
             
@@ -168,41 +230,39 @@ script( src="/components/recipe/script.js" )
       -var heading = "Готовим начинку — этап 2"
       include ../../modules/heading-linethrough/include-name
       
-      .row.b-recipe__ingredients
-        .col-md-4
-          table
-            tr
-              td Нерка копченая (филе)
-              td 150 г
-            tr
-              td Лаймы
-              td 1 шт.
-              
-        .col-md-4
-          table
-            tr
-              td
-                a( href="" ) Нерка копченая (филе)
-              td 150 г
-              
-        .col-md-4
-          table
-            tr
-              td Нерка копченая (филе)
-              td 150 г
-              
+      .row
+        .col-md-8.col-md-offset-2
+        
+          .row.b-recipe__ingredients
+            .col-md-6
+              table
+                tr
+                  td Нерка копченая (филе)
+                  td 150 г
+                tr
+                  td Лаймы
+                  td 1 шт.
+                  
+            .col-md-6
+              table
+                tr
+                  td
+                    a( href="" ) Нерка копченая (филе)
+                  td 150 г
+                  
       hr
               
       .row
         .col-md-8.col-md-offset-2
         
           .b-recipe__step-ill
-            img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+            img( src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image" )
+            img( src="/upload/recipe/ill.jpg" alt="" )
             
           hr.i-size-M
             
           div( itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection" ) Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)
     
-      
+     
 
 // end /components/recipe/

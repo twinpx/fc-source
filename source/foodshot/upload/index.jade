@@ -1,0 +1,19 @@
+﻿block var-page
+  - var page = foodshot
+
+extends ../../layouts/inner
+
+block title
+  title Foodshot upload | food
+
+block content
+    
+  .container
+  
+    -var heading = "Добавление фудшота"
+    include ../../modules/heading-linethrough/h1
+    
+    include ../../components/foodshot-upload/template
+    
+    hr
+    

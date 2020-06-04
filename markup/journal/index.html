@@ -11,16 +11,252 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/template/template_styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="/template/jscript.js"></script>
-    <script src="/js/history/scripts/bundled/html4+html5/jquery.history.js"></script>
+    <link rel="stylesheet" href="/template/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/minimal.css">
+    <script src="/template/jquery-3.1.1.min.js"></script>
+    <script src="/template/bootstrap.min.js" async></script>
+    <script src="/template/materialize.min.js" async></script>
+    <script src="/template/jscript.js" async></script>
   </head>
   <body>
     <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
     <header id="header" class="b-header">
+      <div id="header-content__placeholder"></div>
+    </header>
+    <hr>
+    <div class="container">
+      <!-- start /components/journal/-->
+      <link rel="stylesheet" href="/components/journal/style.css">
+      <script src="/components/journal/script.js"></script>
+      <div class="b-journal">
+        <h2>Свежие публикации</h2>
+        <div class="b-journal__feed">
+          <div class="b-journal__item">
+            <div class="b-journal__item-head">
+              <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+              <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Дайджест</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
+            </div>
+            <div class="b-journal__item-body">
+              <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Новогодние десерты! Дайджест по рецептам кулинарной блогосферы</a></h4>
+              <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
+              <div class="b-date">3 марта 2015 16:21:04</div>
+            </div>
+          </div>
+          <hr class="i-size-L">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="b-journal__item">
+                <div class="b-journal__item-head">
+                  <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+                  <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
+                </div>
+                <div class="b-journal__item-body">
+                  <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
+                  <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
+                  <div class="b-date">3 марта 2015 16:21:04</div>
+                </div>
+              </div>
+            </div>
+            <hr class="i-size-L visible-xs-block">
+            <div class="col-sm-6">
+              <div class="b-journal__item">
+                <div class="b-journal__item-head">
+                  <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+                  <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
+                </div>
+                <div class="b-journal__item-body">
+                  <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
+                  <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
+                  <div class="b-date">3 марта 2015 16:21:04</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="i-size-L">
+          <div data-ajax-url="/ajax-response/content-banner.html?id=89" data-ajax-method="GET" class="b-content-banner hidden-xs"></div>
+          <hr class="i-size-L hidden-xs">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="b-journal__item">
+                <div class="b-journal__item-head">
+                  <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+                  <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
+                </div>
+                <div class="b-journal__item-body">
+                  <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
+                  <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
+                  <div class="b-date">3 марта 2015 16:21:04</div>
+                </div>
+              </div>
+            </div>
+            <hr class="i-size-L visible-xs-block">
+            <div class="col-sm-6">
+              <div class="b-journal__item">
+                <noindex>
+                  <div class="b-journal__item-head">
+                    <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+                    <div class="b-journal__item-head-text"><a href="/journal/thematic/" target="_blank" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a><a href="/journal/thematic/" target="_blank" class="b-ext-icon"></a></div>
+                  </div>
+                  <div class="b-journal__item-body">
+                    <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
+                    <div class="b-journal__item-text">Внимание! Внешняя ссылка, блок обёрнут тэгом noindex, у ссылок атрибут target="_blank" (кроме ссылки автора).
+                      <p><a href="" target="_blank">Подробнее на сайте eda.ru</a></p>
+                    </div>
+                    <div class="b-date">3 марта 2015 16:21:04</div>
+                  </div>
+                </noindex>
+              </div>
+            </div>
+          </div>
+          <hr class="i-size-L">
+          <h2>Лавка</h2>
+          <p>Лавка предлагает вам товары связанные с приготовлением пиши и продукты питания представленные интернет-магазинами. У вас есть собственный интернет-магазин и товары, которые могут пригодиться нашим пользователям, разместите их в разделе лавка.</p>
+          <hr class="i-size-L">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="b-journal__item">
+                <div class="b-journal__item-head">
+                  <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+                  <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
+                </div>
+                <div class="b-journal__item-body">
+                  <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
+                  <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
+                  <div class="b-date">3 марта 2015 16:21:04</div>
+                </div>
+              </div>
+            </div>
+            <hr class="i-size-L visible-xs-block">
+            <div class="col-sm-6">
+              <div class="b-journal__item">
+                <noindex>
+                  <div class="b-journal__item-head">
+                    <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
+                    <div class="b-journal__item-head-text"><a href="/journal/thematic/" target="_blank" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a><a href="/journal/thematic/" target="_blank" class="b-ext-icon"></a></div>
+                  </div>
+                  <div class="b-journal__item-body">
+                    <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
+                    <div class="b-journal__item-text">Внимание! Внешняя ссылка, блок обёрнут тэгом noindex, у ссылок атрибут target="_blank" (кроме ссылки автора).
+                      <p><a href="" target="_blank">Подробнее на сайте eda.ru</a></p>
+                    </div>
+                    <div class="b-date">3 марта 2015 16:21:04</div>
+                  </div>
+                </noindex>
+              </div>
+            </div>
+          </div>
+          <hr class="i-size-XL i-decorated">
+          <div class="text-center"><a href="">Все публикации</a></div>
+        </div>
+      </div>
+      <!-- end /components/journal/-->
+      <hr class="i-size-L">
+    </div>
+    <footer id="bottom" class="b-footer">
+      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
+        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
+      </div>
+      <div class="container hidden-xs">
+        <div class="b-subscribe">
+          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
+            <div class="form-group">
+              <label class="b-label text-center">Подписаться на рассылку</label>
+              <hr class="i-size-S">
+              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
+              <button type="submit" class="btn btn-default">Подписаться</button>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h4>Читайте нас</h4>
+            <menu>
+              <li><a href="" target="_blank">Facebook</a></li>
+              <li><a href="" target="_blank">Instagram</a></li>
+              <li><a href="" target="_blank">Twitter</a></li>
+              <li><a href="" target="_blank">LiveJournal</a></li>
+              <li><a href="" target="_blank">Одноклассники</a></li>
+              <li><a href="" target="_blank">ВКонтакте</a></li>
+              <li><a href="" target="_blank">Google+</a></li>
+              <li><a href="" target="_blank">Pinterest</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Моя Кухня</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Избранные рецепты</a></li>
+              <li><a href="">Моя лента</a></li>
+              <li><a href="">Подписка</a></li>
+              <li><a href="">Бейджи</a></li>
+              <li><a href="">Редактировать анкету</a></li>
+              <li><a href="">Добавить рецепт</a></li>
+              <li><a href="">Добавить рецепт (простой)</a></li>
+              <li><a href="">Добавить запись в клуб</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Темы</h4>
+            <menu>
+              <li><a href="">Рецепты с фото</a></li>
+              <li><a href="">Кулинарные клубы</a></li>
+              <li><a href="">Кулинары</a></li>
+              <li><a href="">Рецепт месяца</a></li>
+              <li><a href="">Самое интересное</a></li>
+              <li><a href="">Лавка</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Сервисы</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Поиск рецепта</a></li>
+              <li><a href="">Виджет Яндекса</a></li>
+              <li><a href="">Приложение Facebook</a></li>
+              <li><a href="">Приложение ВКонтакте</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Реклама</h4>
+            <menu>
+              <li><a href="">Моя страница</a></li>
+              <li><a href="">Медиа-кит</a></li>
+              <li><a href="">Магазинам</a></li>
+              <li><a href="">Конкурсы</a></li>
+              <li><a href="">Брендирование</a></li>
+              <li><a href="">Статистика</a></li>
+            </menu>
+          </div>
+          <div class="col-sm-2">
+            <h4>Пользователям</h4>
+            <menu>
+              <li><a href="">Новый профиль</a></li>
+              <li><a href="">Помощь</a></li>
+              <li><a href="">Ваши предложения</a></li>
+              <li><a href="">Сообщить об ошибке</a></li>
+              <li><a href="">Соглашение</a></li>
+              <li><a href="">Правила</a></li>
+            </menu>
+          </div>
+        </div>
+        <div><a href=""><span style="display: inline-block; width: 31px; height: 31px; background-color: #ccc;"></span></a><a href=""><span style="display: inline-block; width: 88px; height: 31px; background-color: #ccc;"></span></a>
+          <div id="bx-composite-banner" style="display: inline-block;"><span style="display: inline-block; width: 187px; height: 31px; background-color: #ccc;"></span></div>
+        </div>
+      </div>
+    </footer>
+    <!-- start /components/instagram-banner/-->
+    <link rel="stylesheet" href="/components/instagram-banner/style.css">
+    <script src="/components/instagram-banner/script.js"></script>
+    <div class="b-instagram-banner">
+      <div class="b-instagram-banner__button"><a href=""><img src="/template/images/icons/instagram-banner.svg" alt=""></a></div>
+      <div class="b-instagram-banner__close"><img src="/template/images/icons/close-button.svg" alt=""></div>
+    </div>
+    <!-- end /components/instagram-banner/-->
+    <div id="top_layer" style="display:none;">
+      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
+    </div>
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <div id="header-content" class="b-placeholder-content">
       <div class="container">
         <div class="b-mobile-menu-icon visible-xs-block"></div><a href="/search/" class="b-mobile-search-icon visible-xs-block"></a><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
         <div class="b-header__buttons hidden-xs">
@@ -51,6 +287,54 @@
               </div>
             </div>
           </div>
+          <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
+            <div role="document" class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                  <h4 id="authModalLabel" class="modal-title">Войти</h4>
+                </div>      
+                <div class="modal-body">
+                  <div class="b-auth-modal__icons">
+                    <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
+                    <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
+                    <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
+                    <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
+                    <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
+                  </div>
+                  <form action="/php/form-auth.json" method="GET">
+                    <div class="b-auth-modal__form">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="input-field b-auth-modal__form-b">
+                            <input id="auth-form-b" type="text" name="b" value="">
+                            <label for="auth-form-b">B</label>
+                          </div>
+                          <div class="input-field">
+                            <input id="auth-form-login" type="text" name="L" value="">
+                            <label for="auth-form-login">Email</label>
+                          </div>
+                        </div>
+                        <hr class="visible-xs-block">
+                        <div class="col-sm-6">
+                          <div class="input-field">
+                            <input id="auth-form-password" type="password" name="P" value="">
+                            <label for="auth-form-password">Пароль</label>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="i-size-M">
+                      <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
+                    </div>
+                    <hr class="i-size-L">
+                    <div class="b-auth-modal__button">
+                      <button type="submit" class="btn">Войти</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="b-header__nav">
           <div class="row visible-xs-block">
@@ -70,26 +354,11 @@
                       <div class="b-recipe-search-field__icon"></div>
                       <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
                       <div class="b-recipe-search-field__input">
-                        <input type="search" name="recipe-search" value="">
+                        <input id="title-search-input" type="search" name="recipe-search" value="">
                       </div>
                     </div>
                   </div>
                 </form>
-                <div style="position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;" class="title-search-result">
-                  <div class="container">
-                    <div class="title-search-result__wrapper">
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Рецепты</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лазанья</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/choco.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Лагман по-арабски</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/stage.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Тыква, запеченная со специями</span><span class="title-search-result__info">1 час 32 минуты, 4 порции, 400 кКал</span></span></a>
-                      </div>
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Записи</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Ледяная ваза для окрошки</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Черника</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Хумус</span></span></a>
-                      </div>
-                      <div class="title-search-result__block">
-                        <div class="title-search-result__title">Типы блюд</div><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Супы</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Пироги</span></span></a><a href="" class="title-search-result__item"><span style="background-image: url( '/upload/recipe/ill.jpg' );" class="title-search-result__img"></span><span class="title-search-result__text"><span class="title-search-result__header">Вторые блюда</span></span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <script id="recipe_search_items" type="text/html">
                 <li class="b-rs__item">
@@ -321,263 +590,12 @@
                   </div>
                 </div>
               </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a>
+              <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
             </div>
             <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
           </div>
         </div>
       </div>
-    </header>
-    <div class="container">
-      <div class="row">
-        <section class="col-md-8">
-          <!-- start /components/journal/-->
-          <link rel="stylesheet" href="/components/journal/style.css">
-          <script src="/components/journal/script.js"></script>
-          <div class="b-journal">
-            <h2>Свежие публикации</h2>
-            <div class="b-journal__feed">
-              <div class="b-journal__item">
-                <div class="b-journal__item-head">
-                  <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                  <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Дайджест</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
-                </div>
-                <div class="b-journal__item-body">
-                  <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Новогодние десерты! Дайджест по рецептам кулинарной блогосферы</a></h4>
-                  <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
-                  <div class="b-date">3 марта 2015 16:21:04</div>
-                </div>
-              </div>
-              <hr class="i-size-L">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="b-journal__item">
-                    <div class="b-journal__item-head">
-                      <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                      <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
-                    </div>
-                    <div class="b-journal__item-body">
-                      <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
-                      <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
-                      <div class="b-date">3 марта 2015 16:21:04</div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="i-size-L visible-xs-block">
-                <div class="col-sm-6">
-                  <div class="b-journal__item">
-                    <div class="b-journal__item-head">
-                      <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                      <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
-                    </div>
-                    <div class="b-journal__item-body">
-                      <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
-                      <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
-                      <div class="b-date">3 марта 2015 16:21:04</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L">
-              <div class="b-content-banner hidden-xs"><a href="" target="_blank"><img src="/upload/advertisement.gif" alt=""></a>
-                <div class="b-content-banner__note">Реклама на Foodclub.ru</div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="b-journal__item">
-                    <div class="b-journal__item-head">
-                      <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                      <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
-                    </div>
-                    <div class="b-journal__item-body">
-                      <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
-                      <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
-                      <div class="b-date">3 марта 2015 16:21:04</div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="i-size-L visible-xs-block">
-                <div class="col-sm-6">
-                  <div class="b-journal__item">
-                    <noindex>
-                      <div class="b-journal__item-head">
-                        <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                        <div class="b-journal__item-head-text"><a href="/journal/thematic/" target="_blank" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a><a href="/journal/thematic/" target="_blank" class="b-ext-icon"></a></div>
-                      </div>
-                      <div class="b-journal__item-body">
-                        <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
-                        <div class="b-journal__item-text">Внимание! Внешняя ссылка, блок обёрнут тэгом noindex, у ссылок атрибут target="_blank" (кроме ссылки автора).
-                          <p><a href="" target="_blank">Подробнее на сайте eda.ru</a></p>
-                        </div>
-                        <div class="b-date">3 марта 2015 16:21:04</div>
-                      </div>
-                    </noindex>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-L">
-              <h2>Лавка</h2>
-              <p>Лавка предлагает вам товары связанные с приготовлением пиши и продукты питания представленные интернет-магазинами. У вас есть собственный интернет-магазин и товары, которые могут пригодиться нашим пользователям, разместите их в разделе лавка.</p>
-              <hr class="i-size-L">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="b-journal__item">
-                    <div class="b-journal__item-head">
-                      <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                      <div class="b-journal__item-head-text"><a href="/journal/thematic/" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a></div>
-                    </div>
-                    <div class="b-journal__item-body">
-                      <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
-                      <div class="b-journal__item-text">Несмотря на то что до праздника еще далеко, уже сейчас можно начинать планировать новогоднее меню. Десерты – это та часть праздничного стола, которую любят не только дети, но и взрослые. Необязательно нужно готовить сложные торты и пирожные, ведь есть множество других лакомств, которые создадут нужную праздничную обстановку. Посмотрим, какие сладости предлагают приготовить пользователи ЖЖ. <a href="/journal/thematic/">Читайте далее...</a></div>
-                      <div class="b-date">3 марта 2015 16:21:04</div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="i-size-L visible-xs-block">
-                <div class="col-sm-6">
-                  <div class="b-journal__item">
-                    <noindex>
-                      <div class="b-journal__item-head">
-                        <div class="b-journal__item-head-bg"><a href="/journal/thematic/" style="background-image: url(/upload/journal/item.jpg);"></a></div>
-                        <div class="b-journal__item-head-text"><a href="/journal/thematic/" target="_blank" class="b-journal__item-head-title">Foodclub</a><a href="/profile/" class="b-journal__item-head-author"><img src="/upload/user/ca-ira.jpg" width="50" height="50" alt=""><span>Виктория Фильберт</span></a><a href="/journal/thematic/" target="_blank" class="b-ext-icon"></a></div>
-                      </div>
-                      <div class="b-journal__item-body">
-                        <h4 class="b-journal__item-title"><a href="/journal/thematic/" target="_blank">Что приготовить на 8 марта? Дайджест публикаций из блогов</a></h4>
-                        <div class="b-journal__item-text">Внимание! Внешняя ссылка, блок обёрнут тэгом noindex, у ссылок атрибут target="_blank" (кроме ссылки автора).
-                          <p><a href="" target="_blank">Подробнее на сайте eda.ru</a></p>
-                        </div>
-                        <div class="b-date">3 марта 2015 16:21:04</div>
-                      </div>
-                    </noindex>
-                  </div>
-                </div>
-              </div>
-              <hr class="i-size-XL i-decorated">
-              <div class="text-center"><a href="">Все публикации</a></div>
-            </div>
-          </div>
-          <!-- end /components/journal/-->
-        </section>
-        <aside class="col-md-4 hidden-sm hidden-xs">
-          <div class="b-aside-banner"><a href="" target="_blank"><img src="/upload/banner/app.jpg" width="300" height="500" alt="Cosmopolitan"></a>
-            <div class="b-aside-banner__note">Реклама на Foodclub.ru</div>
-          </div>
-          <hr class="i-size-L">
-          <!-- start /components/aside.rom/-->
-          <link rel="stylesheet" href="/components/aside.rom/style.css">
-          <script src="/components/aside.rom/script.js"></script>
-          <div class="b-aside-rom">
-            <div class="b-h2">Рецепт месяца</div>
-            <div class="b-h4">Февраль</div><a href="" class="b-aside-rom__photo"><img src="/upload/recipe-preview/aside-rom.jpg" alt="Рецепт месяца - блинчики с вареньем"></a>
-            <hr class="i-size-M">
-            <div class="b-author"><a href="/profile/" class="b-author__pic"><img src="/upload/user/ca-ira.jpg" alt="Мария Савельева"></a><a href="/profile/" class="b-author__name">Мария Савельева</a></div>
-            <hr class="i-size-L i-decorated">
-            <div class="b-h3">Приз победителю</div><img src="/upload/kitchen/1.jpg" alt="Мультиварка POLARIS">
-            <hr>
-            <div class="b-h4">Мультиварка POLARIS</div>
-            <div class="b-aside-rom__note">Чтобы получить главный приз: добавьте рецепт, сообщите своим друзьям и следите за результатами.</div>
-            <hr class="i-size-M"><a href="/recipe-of-month/" class="btn btn-default">Участвовать</a>
-          </div>
-          <!-- end /components/aside.rom/-->
-          <hr class="i-size-L">
-          <div class="b-aside-banner i-float"><a href="" target="_blank"><img src="/upload/banner/app.jpg" width="300" height="500" alt="Cosmopolitan"></a>
-            <div class="b-aside-banner__note">Реклама на Foodclub.ru</div>
-          </div>
-        </aside>
-      </div>
-      <hr class="i-size-L">
-    </div>
-    <footer id="bottom" class="b-footer">
-      <div class="visible-xs-block text-center"><img src="/templates/images/twinpx-logo.gif" width="83" height="31" alt="Twin px">
-        <hr class="i-size-S">Сайт создан Twin px в 2008 году.
-      </div>
-      <div class="container hidden-xs">
-        <div class="b-subscribe">
-          <form action="" method="GET" data-url="/ajax-response/subscribe.json">
-            <div class="form-group">
-              <label class="b-label text-center">Подписаться на рассылку</label>
-              <hr class="i-size-S">
-              <input type="email" name="email" value="" placeholder="Ваш Email" class="form-control">
-              <button type="submit" class="btn btn-default">Подписаться</button>
-            </div>
-          </form>
-        </div>
-        <div class="row">
-          <div class="col-sm-2">
-            <h4>Читайте нас</h4>
-            <menu>
-              <li><a href="" target="_blank">Facebook</a></li>
-              <li><a href="" target="_blank">Instagram</a></li>
-              <li><a href="" target="_blank">Twitter</a></li>
-              <li><a href="" target="_blank">LiveJournal</a></li>
-              <li><a href="" target="_blank">Одноклассники</a></li>
-              <li><a href="" target="_blank">ВКонтакте</a></li>
-              <li><a href="" target="_blank">Google+</a></li>
-              <li><a href="" target="_blank">Pinterest</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Моя Кухня</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Избранные рецепты</a></li>
-              <li><a href="">Моя лента</a></li>
-              <li><a href="">Подписка</a></li>
-              <li><a href="">Бейджи</a></li>
-              <li><a href="">Редактировать анкету</a></li>
-              <li><a href="">Добавить рецепт</a></li>
-              <li><a href="">Добавить рецепт (простой)</a></li>
-              <li><a href="">Добавить запись в клуб</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Темы</h4>
-            <menu>
-              <li><a href="">Рецепты с фото</a></li>
-              <li><a href="">Кулинарные клубы</a></li>
-              <li><a href="">Кулинары</a></li>
-              <li><a href="">Рецепт месяца</a></li>
-              <li><a href="">Самое интересное</a></li>
-              <li><a href="">Лавка</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Сервисы</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Поиск рецепта</a></li>
-              <li><a href="">Виджет Яндекса</a></li>
-              <li><a href="">Приложение Facebook</a></li>
-              <li><a href="">Приложение ВКонтакте</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Реклама</h4>
-            <menu>
-              <li><a href="">Моя страница</a></li>
-              <li><a href="">Медиа-кит</a></li>
-              <li><a href="">Магазинам</a></li>
-              <li><a href="">Конкурсы</a></li>
-              <li><a href="">Брендирование</a></li>
-              <li><a href="">Статистика</a></li>
-            </menu>
-          </div>
-          <div class="col-sm-2">
-            <h4>Пользователям</h4>
-            <menu>
-              <li><a href="">Новый профиль</a></li>
-              <li><a href="">Помощь</a></li>
-              <li><a href="">Ваши предложения</a></li>
-              <li><a href="">Сообщить об ошибке</a></li>
-              <li><a href="">Соглашение</a></li>
-              <li><a href="">Правила</a></li>
-            </menu>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <div id="top_layer" style="display:none;">
-      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
     </div>
   </body>
 </html>

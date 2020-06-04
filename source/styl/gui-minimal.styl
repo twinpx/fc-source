@@ -1,0 +1,86 @@
+*
+  padding 0
+  margin 0
+  
+body
+  overflow-y scroll
+  font-size 10.5pt
+  font-family $sans
+  font-weight 400
+  width 100%
+  height 100%
+  background #ffffff
+  color #000
+  line-height 1.74
+  
+img
+  border 0
+  vertical-align bottom
+
+p
+  margin-top 20px
+  
+body a
+  color $link
+  text-decoration none
+  
+  &:hover
+    color $link-hover
+  
+  &:focus
+    outline none
+  
+//headings
+  
+h1,
+.h1
+  color $dark-grey
+  font-family $pt
+  font-weight bold
+  font-size 22pt
+  text-align center
+  
+  a
+    font-size 22pt
+    font-family $georgia
+    
+h2,
+.b-h2
+  font-family $pt-sans
+  font-size 12pt
+  font-weight bold
+  line-height 1.5
+  color $dark-grey
+  
+h3,
+h3 *,
+.b-h3
+  font-size $large-size
+  font-family $sans
+  font-weight bold
+  line-height normal
+            
+button
+  border 0
+        
+.clear,
+.i-clearfix
+	clear both
+	height 0
+	overflow hidden
+	width 1px
+  
+hr
+  border-color transparent
+        
+.i-relative
+  position relative
+    
+.b-placeholder-content
+  display none
+  
+[ id*="__placeholder" ] .b-placeholder-content
+  display block
+  
+.text-center
+  text-align center

@@ -1,5 +1,4 @@
 ﻿.b-recipe-menu
-  border 1px solid #dbdbdb
   margin 0 0 30px 0
   font-size 7pt
   padding 6px
@@ -13,7 +12,8 @@
     visibility hidden
 
   &.i-bottom
-    padding 10px
+    padding-top 20px
+    border-top 1px solid #dbdbdb
 
   &__i
     display inline-block
@@ -23,10 +23,6 @@
     font-size 7pt
     color #999
     margin-right 11px
-
-  &__title
-    display inline-block
-    vertical-align middle
 
   .b-favorite-button
     margin 2px 8px 0 0 !important
@@ -39,6 +35,9 @@
 
   &__social
     float right
+    
+    @media( max-width 575px )
+      float none
 
   hr
     border 0
@@ -46,7 +45,6 @@
     margin 7px 0 0
 
   &__info
-    border-bottom 1px solid #dbdbdb
     margin 0 -10px 10px
     padding 5px 10px 10px
 
@@ -58,12 +56,19 @@
       visibility hidden
 
     .b-info-block
-      width 45%
+      width 50%
       float left
+      
+      @media( max-width 575px )
+        float none
+        width auto
 
 .b-info-block
   font-size 9pt
   color #999
+  
+  @media( max-width 575px )
+    margin-bottom 10px
 
   &:after
     clear both
@@ -77,14 +82,18 @@
     width 67px
     height 67px
     margin-right 12px
-    background url("/images/recipe-info.png") no-repeat 0 0
+    background-repeat no-repeat
+    background-position 0 0
+    
+  &__text
+    margin-left 79px
 
   &__users,
   &__others
     margin-top 5px
 
   &__title
-    margin-top 22px
+    padding-top 22px
 
   &__user
     position relative
@@ -92,6 +101,7 @@
     vertical-align top
     width 20px
     height 20px
+    margin-bottom 4px
 
     img
       position absolute
@@ -133,43 +143,46 @@
     &.i-active
       background-position -86px -135px
 
-.b-print-button,
-.b-cooked-button,
-.b-views-button,
-.b-rating-button,
-.b-like-button
-  display inline-block
-  vertical-align top
-  width 24px
-  height 24px
+.b-recipe-menu
 
-.b-print-button__num,
-.b-cooked-button__num,
-.b-views-button__num,
-.b-rating-button__num,
-.b-like-button__num
-  display inline-block
-  vertical-align top
-  line-height 22px
-  margin 2px 0 0 -2px
+  .b-print-button,
+  .b-cooked-button,
+  .b-views-button,
+  .b-rating-button,
+  .b-like-button
+    display inline-block
+    vertical-align top
+    width 24px
+    height 24px
 
-.b-views-button__num
-  margin-left 0
+  .b-print-button__num,
+  .b-cooked-button__num,
+  .b-views-button__num,
+  .b-rating-button__num,
+  .b-like-button__num
+    display inline-block
+    vertical-align top
+    line-height 22px
+    margin 2px 0 0 -2px
 
-.b-print-button
-  background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAOCAYAAADJ7fe0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAL5JREFUeNqskk0OgjAQhacwop7AeAaXsHCjx3HhjfACXobDaFj4w099k4xJQavQ8JIvTR7ldTodY60lV6cs6xqfuoH1oSiubyOi8VqCp2uYPE0Z62xkkFRrQAwaCTiDDWh1Q6X4JD8neosHKCVkB1YB15Ke7MFRQsrAkAXIZWUtL0RzsAUX9mxoQO1pZtI7uGI1O8IM+MK/zVHM2uFaT6KBz91qtfJCd5KJdcHc2L7373tEE2iSEB7YvJ96CTAAmhJYgSywdt8AAAAASUVORK5CYII=") no-repeat center center
+  .b-views-button__num
+    margin-left 0
 
-.b-cooked-button
-  background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQxJREFUeNqMkr1KA0EURie7ZlG0M42NhY2NloKdZeptfAMbG99ArCwCBkLIS0jYfRc7G9HGUolGV6MkOTd8E8ZkXb1wmDtz55v7w9SyLLtxzo2hBR04g3N4SNO0mef5EX4fGuBWYBcKOIBN2IMdxZweash3EXzBSOtEYvOHvG7xbRdYpNVKepU/kNBsFeqLghjWYV9nh7pkse9APBe8wwak2h9DAs9BHz8ElxL5YKzyurC1JGB0V6wn8KEzK+OU8344ncWmLfgk/xOugzu1JQGvjVTK7IL2fnpJWYbf7BbacO+nVSkg0wtc4PbU258ZvBW+l/8K6mU9JBV9rZVlsAbf7FuXCO7g0UY+FWAAZC4/bBygIRIAAAAASUVORK5CYII=") no-repeat center center
+  .b-print-button
+    display none
+    background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAOCAYAAADJ7fe0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAL5JREFUeNqskk0OgjAQhacwop7AeAaXsHCjx3HhjfACXobDaFj4w099k4xJQavQ8JIvTR7ldTodY60lV6cs6xqfuoH1oSiubyOi8VqCp2uYPE0Z62xkkFRrQAwaCTiDDWh1Q6X4JD8neosHKCVkB1YB15Ke7MFRQsrAkAXIZWUtL0RzsAUX9mxoQO1pZtI7uGI1O8IM+MK/zVHM2uFaT6KBz91qtfJCd5KJdcHc2L7373tEE2iSEB7YvJ96CTAAmhJYgSywdt8AAAAASUVORK5CYII=") no-repeat center center
 
-.b-views-button
-  background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAALCAYAAACd1bY6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAWlJREFUeNpskk0oRFEUx2emKImmzMaCKCubWY2yoAwSEW9BsvGxkZWFepvRlJJiZSGSQhYWordSlIWdFE0s7CxGyvdHksxsnt/ReXXdceo35757zvm/8+acsO/7Ids8z0vg2qAVaiEKOXiAMziEI8dx3s26sCmGSCMuBV0SgyfYggzEoFtfIpaFFVhENPdHDKE0bhqKNHkfRkh8troewm1AsV6dwhh5V79iJCxzMWHU3EKchFdiDZyT2sG3Cs7g0kb+HXRGCLiWkNiOCtVzPobBQEhtHb6M50rYjfAzGSq0a/VNUKLduDCr9zKIN6umTsRW/xGrUX+iHcRhHqr0PqYTNi0rYvK2TSvQTxflfNol53ZYgikY1/gwlBr5MqSBYAAiOgeuroTYnk7pw5pmH247+HzsAkbJy9h7ltT1aNGrG/2zpaACeqBXY/ewBgsIfRYsrSHajOvQlaiGMsjDC5zDgYDIo1n3I8AAfp+E6zD4KSUAAAAASUVORK5CYII=") no-repeat center center
+  .b-cooked-button
+    background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQxJREFUeNqMkr1KA0EURie7ZlG0M42NhY2NloKdZeptfAMbG99ArCwCBkLIS0jYfRc7G9HGUolGV6MkOTd8E8ZkXb1wmDtz55v7w9SyLLtxzo2hBR04g3N4SNO0mef5EX4fGuBWYBcKOIBN2IMdxZweash3EXzBSOtEYvOHvG7xbRdYpNVKepU/kNBsFeqLghjWYV9nh7pkse9APBe8wwak2h9DAs9BHz8ElxL5YKzyurC1JGB0V6wn8KEzK+OU8344ncWmLfgk/xOugzu1JQGvjVTK7IL2fnpJWYbf7BbacO+nVSkg0wtc4PbU258ZvBW+l/8K6mU9JBV9rZVlsAbf7FuXCO7g0UY+FWAAZC4/bBygIRIAAAAASUVORK5CYII=") no-repeat center center
 
-.b-rating-button
-  background url("data:image/gif;base64,R0lGODlhDgALAIABAKCgoP///yH5BAEAAAEALAAAAAAOAAsAAAIajI8GkB3rFIMRUmQnS/ltD3ZSqHXmopHeSRYAOw==") no-repeat center center
+  .b-views-button
+    background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAALCAYAAACd1bY6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAWlJREFUeNpskk0oRFEUx2emKImmzMaCKCubWY2yoAwSEW9BsvGxkZWFepvRlJJiZSGSQhYWordSlIWdFE0s7CxGyvdHksxsnt/ReXXdceo35757zvm/8+acsO/7Ids8z0vg2qAVaiEKOXiAMziEI8dx3s26sCmGSCMuBV0SgyfYggzEoFtfIpaFFVhENPdHDKE0bhqKNHkfRkh8troewm1AsV6dwhh5V79iJCxzMWHU3EKchFdiDZyT2sG3Cs7g0kb+HXRGCLiWkNiOCtVzPobBQEhtHb6M50rYjfAzGSq0a/VNUKLduDCr9zKIN6umTsRW/xGrUX+iHcRhHqr0PqYTNi0rYvK2TSvQTxflfNol53ZYgikY1/gwlBr5MqSBYAAiOgeuroTYnk7pw5pmH247+HzsAkbJy9h7ltT1aNGrG/2zpaACeqBXY/ewBgsIfRYsrSHajOvQlaiGMsjDC5zDgYDIo1n3I8AAfp+E6zD4KSUAAAAASUVORK5CYII=") no-repeat center center
 
-.b-like-button
-  background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOpJREFUeNpi/P//P8PmiRMDGRgYyoBYDYj/A/FjIN4NxHOA+C8QpwCxGxDLATETEN8F4h7f/PxVjJsmTAgHclYwYAefoTQvDvkEFiCRx4Ab8DLgBzlMUGeTCxRABvyjwIB/IAPuUWDAI5ABmykwYDvIgEVA/JIMze+AeD4TMC6fABkNZBjQDNR7nxGUkEAAmJhmQxMMMWAxUHMcAzRVwUAmngSFDNYDcSqMAzcAaOIfIBULxFPxaAYl7Qig2p8wAbgXkAHQO8lAqh8pJX4F4lKgxunoarEaADUElEInAzEouecCNV/Dpg4gwAA8LkIcajewgwAAAABJRU5ErkJggg==") no-repeat center center
+  .b-rating-button
+    background url("data:image/gif;base64,R0lGODlhDgALAIABAKCgoP///yH5BAEAAAEALAAAAAAOAAsAAAIajI8GkB3rFIMRUmQnS/ltD3ZSqHXmopHeSRYAOw==") no-repeat center center
 
-.b-like-button.i-active
-  background-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOpJREFUeNpi/P//P8PmiRMDGRgYyoBYDYj/A/FjIN4NxHOA+C8QpwCxGxDLATETEN8F4h7f/PxVjJsmTAgHclYwYAefoTQvDvkEFiCRx4Ab8DLgBzlMUGeTCxRABvyjwIB/IAPuUWDAI5ABmykwYDvIgEVA/JIMze+AeD4TMC6fABkNZBjQDNR7nxGUkEAAmJhmQxMMMWAxUHMcAzRVwUAmngSFDNYDcSqMAzcAaOIfIBULxFPxaAYl7Qig2p8wAbgXkAHQO8lAqh8pJX4F4lKgxunoarEaADUElEInAzEouecCNV/Dpg4gwAA8LkIcajewgwAAAABJRU5ErkJggg==")
+  .b-like-button
+    background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOpJREFUeNpi/P//P8PmiRMDGRgYyoBYDYj/A/FjIN4NxHOA+C8QpwCxGxDLATETEN8F4h7f/PxVjJsmTAgHclYwYAefoTQvDvkEFiCRx4Ab8DLgBzlMUGeTCxRABvyjwIB/IAPuUWDAI5ABmykwYDvIgEVA/JIMze+AeD4TMC6fABkNZBjQDNR7nxGUkEAAmJhmQxMMMWAxUHMcAzRVwUAmngSFDNYDcSqMAzcAaOIfIBULxFPxaAYl7Qig2p8wAbgXkAHQO8lAqh8pJX4F4lKgxunoarEaADUElEInAzEouecCNV/Dpg4gwAA8LkIcajewgwAAAABJRU5ErkJggg==") no-repeat center center
+
+  .b-like-button.i-active
+    background-image url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOpJREFUeNpi/P//P8PmiRMDGRgYyoBYDYj/A/FjIN4NxHOA+C8QpwCxGxDLATETEN8F4h7f/PxVjJsmTAgHclYwYAefoTQvDvkEFiCRx4Ab8DLgBzlMUGeTCxRABvyjwIB/IAPuUWDAI5ABmykwYDvIgEVA/JIMze+AeD4TMC6fABkNZBjQDNR7nxGUkEAAmJhmQxMMMWAxUHMcAzRVwUAmngSFDNYDcSqMAzcAaOIfIBULxFPxaAYl7Qig2p8wAbgXkAHQO8lAqh8pJX4F4lKgxunoarEaADUElEInAzEouecCNV/Dpg4gwAA8LkIcajewgwAAAABJRU5ErkJggg==")

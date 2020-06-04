@@ -1,0 +1,47 @@
+﻿// start /components/search.result/
+
+link( rel="stylesheet", href="/components/search.result/style.css" )
+script( src="/components/search.result/script.js" )
+
+.b-search-result( data-ajax-method="GET" )
+  
+    .b-search-result__right-links
+      a( href="" ) Только рецепты
+      a( href="" ) Только записи журнала
+  
+    h1 По запросу: Салат, найдено
+    
+    .b-search-result__results
+    
+      hr
+    
+      .b-search-result__result-block( data-page="1" )
+      
+        .row
+          -var n = 0
+            while n < 4
+              -n++
+              .col-md-3.col-sm-4
+                include ../../modules/recipe-thumb/recipe-search-item.jade
+                if n!=4
+                  hr.i-size-XL.visible-xs
+                
+        hr.i-size-XL
+      
+        .row
+          -var n = 0
+            while n < 4
+              -n++
+              .col-md-3.col-sm-4
+                include ../../modules/recipe-thumb/journal-item.jade
+                if n!=4
+                  hr.i-size-XL.visible-xs
+                
+        hr.i-size-XL
+        
+        .b-search-result__button
+          a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
+          img( src="/images/preloader.gif" width="281" height="52" alt="" )
+          hr.i-size-XL
+
+// end /components/search.result/

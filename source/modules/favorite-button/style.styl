@@ -1,26 +1,36 @@
 ﻿@import '../../styl/component-include.styl'
 
 .b-favorite-button
-  ib()
-  width: 35px
-  height: 21px
-  background: url(/template/images/fav.png) no-repeat right 0
-  padding: 0
-  text-align: left !important
-
-  &.i-hover
-    background-position: right -50px
-
-  &.i-remove-favorite
-    background-position: right -25px
-
-    &.i-hover
-      background-position: right -75px
-
-  &__text
-    font-size: 7pt
-    color: #fff
-    display: none
-    padding: 0 0 0 8px
-    line-height: 21px
-    vertical-align: top
+  position fixed
+  top calc( 50% - 20px )
+  right 15px
+  width 40px
+  height 40px
+  background url( '/bitrix/templates/fclub3.3/images/icons/add-to-fav.svg' ) no-repeat center
+  background-size cover
+  transform( scale(0))
+  transition( all 0.4s cubic-bezier(.5,-.75,.7,2) )
+  cursor pointer
+  z-index 10
+  
+  &.i-show
+    transform( scale(1))
+  
+    &:hover
+      transform( scale(1.1))
+      opacity .7
+    
+  &.i-added
+    background url( '/bitrix/templates/fclub3.3/images/icons/remove-from-fav.svg' ) no-repeat center
+    
+  @media (max-width 767px)
+    bottom 50px
+  
+  @media (min-width 768px)
+    right calc( (100% - 750px)/2 )
+    
+  @media (min-width 992px)
+    right calc( (100% - 970px)/2 )
+  
+  @media (min-width: 1200px)
+    right calc( (100% - 1170px)/2 )

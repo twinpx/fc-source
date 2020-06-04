@@ -34,7 +34,11 @@
       $( '.b-recipe-search-field__clear' ).hide();
     });
     
-    $( '.title-search-result__wrapper' ).niceScroll();
+    $( 'body:not( .i-mobile-search ) #titleSearchHeaderResult .title-search-result__wrapper' ).niceScroll();
+    
+    setTimeout( function() {
+      $( '#title-search-input' ).focus();//doesn't work
+    }, 1000 );
   
     //new FcRecipeSearch();
 
@@ -67,7 +71,7 @@
     }
 
     function titleSearchCSS() {
-      var css = 'div.title-search-result:not(.b-recipe-search__ul1 ) { top: ' + (parseInt( $( '#bx-panel' ).height(), 10 ) + 120) + 'px !important; }',
+      var css = 'div#titleSearchHeaderResult.title-search-result:not(.b-recipe-search__ul1 ) { top: ' + (parseInt( $( '#bx-panel' ).height(), 10 ) + 120) + 'px !important; }',
           head = document.head || document.getElementsByTagName('head')[0];
       
       $( window.titleSearchStyleTag ).empty();
@@ -110,7 +114,7 @@
       
       function initVariables() {
         self.$elem = $("#recipeSearch");
-        self.$input = self.$elem.find(".b-recipe-search__input");
+        self.$input = self.$elem.find(".b-recipe-search-field__input input");
         /*self.$activeItem = self.$input;//active list item (highlighted by keyboard arrows)
         self.elemValue = $.trim(self.$input.val());
         self.$button = self.$elem.find(".b-recipe-search__button");*/
@@ -140,6 +144,7 @@
         $(document).bind( "click", clickDocument );
         self.$delete.click( clickDelete );
         self.$icon.click( clickIcon );
+        self.$input.keyup( pressEnter );
         
         /*self.$elem.click( function(e) {
           e.stopPropagation();
@@ -170,6 +175,12 @@
             return;
           }
           self.$elem.removeClass( 'i-open' ).removeClass( "i-preloader" );
+        }
+        
+        function pressEnter(e) {
+          if ( e.which === 13 ) {
+            window.location = window.location.origin + "/seach/?q=" + self.$input.val();
+          }
         }
         
         /*function clickList(e) {

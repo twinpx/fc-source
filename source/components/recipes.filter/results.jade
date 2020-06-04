@@ -1,0 +1,18 @@
+﻿// start /components/recipes.filter/
+
+#fc_statistics
+  .wrapper
+    span.item
+      span.num 36
+      | 
+      span.word рецептов
+        
+#recipe_feed_block
+  include ../../modules/recipe-thumb/recipe-thumb.jade
+  include ../../modules/recipe-thumb/recipe-thumb.jade
+  
+#get_more_recipes( data-more-url="/json/get_more_recipes.html" )
+  a.btn.btn-default.btn-gray( href="#" data-id="456" ) Показать ещё
+  img( src="/images/preloader.gif" width="281" height="52" alt="" )
+        
+// end /components/recipes.filter/

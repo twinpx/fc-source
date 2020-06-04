@@ -1,6 +1,20 @@
 @import '../../styl/component-include.styl'
 
 .i-mobile-search
+
+  #bottom
+    display none
+
+  div.title-search-result:not(.b-recipe-search__ul1 )
+    box-shadow none !important
+    position static !important
+    max-height none !important
+    
+    .title-search-result__wrapper
+      height auto !important
+      
+  .b-recipe-search-field
+    position fixed
   
   #recipe_search_list
     width auto
@@ -36,7 +50,7 @@
     right 27px
     //left 278px
     
-.title-search-result  
+#titleSearchHeaderResult.title-search-result  
   
   div&:not(.b-recipe-search__ul1 )
     box-shadow(0 20px 20px rgba( 0,0,0,.05 ))
@@ -44,6 +58,8 @@
     left 0 !important
     width 100% !important
     max-height 315px
+    
+#titleSearchHeaderResult .title-search-result
     
   table&:not(.b-recipe-search__ul1 )
     position static !important
@@ -75,9 +91,6 @@
     overflow hidden
     margin-bottom 12px
     
-    a&:hover
-      text-decoration none
-    
   &__img
     width 50px
     height 50px
@@ -98,6 +111,9 @@
     color #484848
     display block
     margin-top -3px
+    
+#titleSearchHeaderResult a.title-search-result__item:hover
+  text-decoration none
 
 .b-recipe-search
   ib()
@@ -106,6 +122,9 @@
   
   @media( max-width $screen-xs-max )
     display none
+      
+    .i-mobile-search &
+      display block
     
   &-field
     position absolute
@@ -120,6 +139,9 @@
     
     .container
       position relative
+      
+    .i-mobile-search &
+      display block
     
     &__icon
       width 16px
@@ -255,6 +277,10 @@
     .i-preloader &
       background-image url("/template/images/preloader-thin.gif")
       
+    .i-mobile-search &
+      opacity .5
+      pointer-events none
+    
   &__ul
     padding 1px
     list-style-type none
@@ -427,7 +453,7 @@ a.b-rs__item__link:hover,
   margin 0
   color $link
   
-.title-search-result:not( .b-recipe-search__ul1 )
+#titleSearchHeaderResult.title-search-result:not( .b-recipe-search__ul1 )
   position fixed !important
   top 120px !important
   width 100% !important
@@ -435,7 +461,7 @@ a.b-rs__item__link:hover,
   z-index 11
   display none
   
-.title-search-result.b-recipe-search__ul1
+#titleSearchHeaderResult.title-search-result.b-recipe-search__ul1
   margin 0 auto !important
   
   @media (min-width: 768px)

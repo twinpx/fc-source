@@ -1,0 +1,276 @@
+@import '../../styl/component-include.styl'
+
+.b-foodshot-upload
+    
+  .input-field
+    margin 0
+  
+    > label
+      color #333
+      
+    input,
+    textarea
+      border-bottom-color #e6e6e6
+  
+  &__block
+    background-color #f6f6f6
+    font-size 9pt
+    padding-top 100%
+    position relative
+    transition( all .5s ease )
+        
+    &-body
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      padding 77px 30px 0
+      transition( all .5s ease )
+      
+      @media( max-width 767px )
+        padding-top 37px
+      
+    .b-foodshot-upload__url
+      transition( all .5s ease )
+    
+    &.i-highlight
+      background-color #e6f4ea
+      
+      .b-foodshot-upload__block-body
+        padding-top 50px
+      
+      .b-foodshot-upload__url
+        transform( scale(.8))
+        opacity 0
+        
+  #foodshotDropArea
+    margin 0 -30px
+    overflow hidden
+    
+  .b-foodshot-upload__place
+    opacity .11
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    width 35%
+    padding-top 35%
+    margin 80px auto 40px
+    
+    @media( max-width 767px )
+      display none
+      
+  #foodshotFileElem,
+  #foodshotFileName,
+  #foodshotFileBase64
+    display none
+    
+  .box__input
+  
+    label
+      text-align center
+      display block
+      font-weight normal
+      
+      @media( max-width 767px )
+        display block
+  
+    .b-foodshot-upload__label-place
+      display none
+      
+      @media( max-width 767px )
+        display block
+        opacity .11
+        background-repeat no-repeat
+        background-position center
+        background-size cover
+        width 110px
+        height 110px
+        margin 40px auto
+    
+    strong
+      font-weight normal
+      color #990000
+      text-decoration underline
+      cursor pointer
+      
+      &:hover
+        opacity .7
+        text-decoration none
+        
+  #foodshotPreview
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background-repeat no-repeat
+    background-position center
+    background-size contain
+    display none
+    
+  .b-foodshot-upload__remove-image
+    color #990000
+    text-decoration underline
+    cursor pointer
+    font-size 8pt
+    text-align center
+    margin-top 10px
+    display none
+    
+    &:hover
+      text-decoration none
+    
+
+  &__text
+    padding-top 77px
+    
+    @media( max-width 767px )
+      padding-top 40px
+    
+    .input-field
+      margin-bottom 60px
+      
+      @media( max-width 767px )
+        margin-bottom 40px
+      
+  &__buttons
+  
+    .btn
+      padding 0 60px
+      
+      &.i-disabled
+        opacity .5
+        cursor default
+        pointer-events none
+    
+    span
+      line-height 48px
+      font-size 8pt
+      display inline-block
+      margin-left 15px
+      padding 0 25px
+      cursor pointer
+      
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;
+    margin-bottom: 5px;
+    margin-right: 5px
+}
+
+.chip:focus {
+    outline: none;
+    background-color: #6cc184;
+    color: #fff
+}
+
+.chip>img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%
+}
+
+.chip .close {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px
+}
+
+.chips {
+    border: none;
+    border-bottom: 1px solid #e6e6e6;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0 0 8px 0;
+    min-height: 45px;
+    outline: none;
+    -webkit-transition: all .3s;
+    transition: all .3s
+}
+
+.chips.input-field {
+  margin-top: -17px;
+}
+
+.chips:hover {
+    cursor: text
+}
+
+.chips .input {
+    background: none;
+    border: 0;
+    color: #333;
+    display: inline-block;
+    font-size: 9pt;
+    height: 3rem;
+    line-height: 32px;
+    outline: 0;
+    margin: 9px 0 0;
+    padding: 0 !important;
+    width: 120px !important
+}
+
+.chips .input:focus {
+    border: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+}
+
+.chips .autocomplete-content {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.prefix ~ .chips {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem)
+}
+
+.chips:empty ~ label {
+    font-size: 0.8rem;
+    -webkit-transform: translateY(-140%);
+    transform: translateY(-140%)
+}
+
+.material-icons.close {
+  font-size: 0;
+  color: transparent;
+  position: relative;
+  padding: 0;
+  width: 16px;
+}
+
+.material-icons.close:before {
+  content: '';
+  display: block;
+  height: 10px;
+  border-right: 1px solid #000;
+  transform: rotate(45deg);
+  position: absolute;
+  top: calc( 50% - 5px );
+  left: 10px;
+}
+
+.material-icons.close:after {
+  content: '';
+  display: block;
+  height: 10px;
+  border-right: 1px solid #000;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: calc( 50% - 5px );
+  left: 10px;
+}

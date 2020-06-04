@@ -1,0 +1,40 @@
+@import '../../styl/component-include.styl'
+
+.b-search-result
+  position relative
+
+  &__right-links
+    position absolute
+    top 10px
+    right 0
+    font-size 9pt
+    
+    a
+      margin-left 25px
+      
+    @media ( max-width 767px )
+      position static
+      top auto
+      right auto
+      
+      a
+        margin 0 25px 0 0
+        
+  &__result-block
+    display none
+    
+    &:first-of-type
+      display block
+        
+  &__button
+    text-align center
+  
+    img,
+    &.i-preload a
+      display none
+      
+    &.i-preload img
+      display inline-block
+      margin 3px 0 4px 0
+        
+        

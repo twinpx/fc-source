@@ -1,0 +1,21 @@
+// start /components/last-comments/
+
+.b-last-comments
+  
+  style
+    | .b-last-comments-placeholder { padding-left: 95px; }
+    | .b-last-comments-placeholder__body { position: relative; width: 50%; height: 210px; background-color: #f6f6f6; margin: 0 auto; }
+    | .b-last-comments-placeholder__userpic { position: absolute; top: 23px; left: -95px; width: 64px; height: 64px; border-radius: 51%; -webkit-border-radius: 51%; background-color: #f6f6f6; }
+    | @media( max-width: 767px ) {
+    |   .b-last-comments-placeholder { padding-left: 59px; }
+    |   .b-last-comments-placeholder__body { height: 180px; width: 100%; }
+    |   .b-last-comments-placeholder__userpic { left: -59px; width: 36px; height: 36px; }
+    | }
+    
+  .b-last-comments-placeholder.i-placeholder
+    .b-last-comments-placeholder__body
+      .b-last-comments-placeholder__userpic
+      
+  .b-placeholder-load( style="display: none;" data-url="/components/last-comments/to-be-rendered/last-comments.html" data-method="GET" )
+
+// end /components/last-comments/

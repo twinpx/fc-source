@@ -1,1 +1,1 @@
-!function(a){"use strict";a(function(){})}(jQuery);
+!function(a){"use strict";a(function(){a(".b-article").addtocopy({htmlcopytxt:'<br>Подробнее: <a href="'+window.location.href+'">'+window.location.href+"</a>",minlen:50,addcopyfirst:!1})})}(jQuery);

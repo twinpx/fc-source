@@ -1,0 +1,39 @@
+.b-foodshot
+  display none
+  
+  &-placeholder
+    position relative
+    margin 0 -15px
+    
+    &__grid
+      overflow hidden
+      position absolute
+      top 0
+      left 0
+      width 100%
+      z-index -1
+    
+    .b-foodshot__item
+      float left
+      margin-right 15px
+    
+      div
+        height 100px
+        background-color #eee
+        border-radius 15px
+        
+      &:nth-child(1)
+      
+        div
+          height 400px
+        
+      &:nth-child(2)
+        
+        div
+          height 500px
+        
+      &:nth-child(3)
+      
+        div
+          height 450px
+          margin-right 0

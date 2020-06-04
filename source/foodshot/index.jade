@@ -1,0 +1,17 @@
+﻿block var-page
+  - var page = foodshot
+
+extends ../layouts/inner.jade
+
+block title
+  title Foodshot | food
+
+block content
+    
+  .container
+  
+    -var heading = "Фудшоты"
+    include ../modules/heading-linethrough/h1
+    
+    include ../components/foodshot/template
+    

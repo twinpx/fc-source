@@ -1,0 +1,1 @@
+$( '.b-recipe-thumb__photo' ).lazyload();

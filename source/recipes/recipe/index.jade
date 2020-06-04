@@ -7,12 +7,22 @@ block title
   title Recipe | food
 
 block content
-
-  hr
     
   .container
+
+    hr
   
     //- include ../../components/recipe.menu/top.jade
     include ../../components/recipe/template.jade
-    //- include ../../components/recipe.menu/bottom.jade
+    hr.i-size-L
+    .row
+      .col-md-8.col-md-offset-2
+        include ../../modules/main-h1/include.jade
+    hr
+    include ../../components/recipe.menu/bottom.jade
+    hr.i-size-L
+    include ../../modules/recipe-line/include.jade
+    hr.i-size-L
+    include ../../components/lavka/template
+    hr.i-size-L
     include ../../components/recipe.comments/template.jade
