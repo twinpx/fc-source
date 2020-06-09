@@ -56,7 +56,18 @@
         <hr class="i-size-M">
         <div class="b-recipe__intro">
           <div class="b-recipe__intro-ill">
-            <div class="b-recipe__ill"><img src="/upload/recipe/ill.jpg" alt="" itemprop="image"></div>
+            <div class="b-recipe__ill"><img src="/upload/recipe/ill.jpg" alt="" itemprop="image"><span class="b-recipe__yt-button"><span style="background-image: url( '/template/images/icons/yt-icon.svg' );" class="b-recipe__yt-icon"></span><span class="i-desktop">Смотреть видео-рецепт</span><span class="i-mobile">Смотреть видео</span></span>
+              <div class="b-recipe__yt-overlay">
+                <div class="b-recipe__yt-wrapper">
+                  <div class="b-recipe__yt-close"><span>Закрыть</span><span style="background-image: url( '/template/images/icons/close-white.svg' );" class="b-recipe__yt-close-icon"></span></div>
+                  <iframe id="player" src="https://www.youtube.com/embed/1In7igJUxV8?modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;origin=https://www.foodclub.ru" allowfullscreen="" allowtransparency="" frameborder="0"></iframe>
+                  <div class="b-recipe__yt-subscribe">
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                    <div data-channelid="UCoeTjJ3oEmLSDl6_mEzrfdQ" data-layout="default" data-theme="dark" data-count="default" class="g-ytsubscribe"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <hr class="i-size-M">
             <div class="row">
               <div class="col-sm-6">
@@ -64,7 +75,6 @@
                   <div class="b-recipe-icon b-print-button"><img src="/template/images/icons/print.svg" width="16" alt=""></div>
                   <div class="b-recipe-icon b-like-button"><img src="/template/images/icons/like.svg" width="16" alt="">
                     <div class="b-recipe-icon__num">10</div>
-<<<<<<< HEAD
                   </div>
                   <div class="b-recipe-icon b-cooked-button"><img src="/template/images/icons/cooking.svg" width="16" alt="">
                     <div class="b-recipe-icon__num">7</div>
@@ -72,15 +82,6 @@
                   <div class="b-recipe-icon b-views-button"><img src="/template/images/icons/views.svg" width="16" alt="">
                     <div class="b-recipe-icon__num">1 482 200</div>
                   </div>
-=======
-                  </div>
-                  <div class="b-recipe-icon b-cooked-button"><img src="/template/images/icons/cooking.svg" width="16" alt="">
-                    <div class="b-recipe-icon__num">7</div>
-                  </div>
-                  <div class="b-recipe-icon b-views-button"><img src="/template/images/icons/views.svg" width="16" alt="">
-                    <div class="b-recipe-icon__num">1 482 200</div>
-                  </div>
->>>>>>> 4ecd2e9db1e6388c3070bc5cb034782813a056f8
                   <div class="b-recipe-icon b-rating-button"><img src="/template/images/icons/rating.svg" width="16" alt="">
                     <div class="b-recipe-icon__num">5 672</div>
                   </div>
@@ -108,8 +109,9 @@
         </div>
         <hr class="i-size-M">
         <div class="b-heading-linethrough">
-          <h2>Вам понадобится</h2>
+          <h2>Вам понадобится<span title="Скопировать ингредиенты" style="background-image: url( '/template/images/icons/copy.svg' );" class="b-copy-ingredients-icon"></span><span class="b-copy-ingredients-message">Ингредиенты скопированы</span></h2>
         </div>
+        <textarea class="b-recipe__ingredients-to-be-copied"></textarea>
         <div class="row b-recipe__ingredients">
           <div class="col-md-4">
             <table>
@@ -1065,12 +1067,8 @@
                     <div></div>
                   </div>
                 </div>
-<<<<<<< HEAD
               </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a>
               <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
-=======
-              </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a><a href="/foodshot/upload/" class="btn btn-default visible-xs">Добавить фудшот</a>
->>>>>>> 4ecd2e9db1e6388c3070bc5cb034782813a056f8
             </div>
             <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
           </div>

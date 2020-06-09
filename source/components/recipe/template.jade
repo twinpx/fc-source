@@ -53,6 +53,24 @@ include ../../modules/heading-linethrough/h1-name
     
       .b-recipe__ill
         img( src="/upload/recipe/ill.jpg" alt="" itemprop="image" )
+        span.b-recipe__yt-button
+          span.b-recipe__yt-icon( style="background-image: url( '/template/images/icons/yt-icon.svg' );" )
+          span.i-desktop Смотреть видео-рецепт
+          span.i-mobile Смотреть видео
+
+        .b-recipe__yt-overlay
+              
+          .b-recipe__yt-wrapper
+          
+            .b-recipe__yt-close
+              span Закрыть
+              span.b-recipe__yt-close-icon( style="background-image: url( '/template/images/icons/close-white.svg' );" )
+              
+            iframe#player(src="https://www.youtube.com/embed/1In7igJUxV8?modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1&origin=https://www.foodclub.ru" allowfullscreen="" allowtransparency="" frameborder="0")
+            
+            .b-recipe__yt-subscribe
+              script( src="https://apis.google.com/js/platform.js" )
+              .g-ytsubscribe( data-channelid="UCoeTjJ3oEmLSDl6_mEzrfdQ" data-layout="default" data-theme="dark" data-count="default" )
         
       hr.i-size-M
         
@@ -98,7 +116,9 @@ include ../../modules/heading-linethrough/h1-name
   hr.i-size-M
   
   -var heading = "Вам понадобится"
-  include ../../modules/heading-linethrough/include
+  include ../../modules/heading-linethrough/recipe
+  
+  textarea.b-recipe__ingredients-to-be-copied
   
   .row.b-recipe__ingredients
     .col-md-4
@@ -262,7 +282,5 @@ include ../../modules/heading-linethrough/h1-name
           hr.i-size-M
             
           div( itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection" ) Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)
-    
-     
-
+  
 // end /components/recipe/

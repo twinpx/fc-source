@@ -1,7 +1,70 @@
 @import '../../styl/component-include.styl'
 @import 'recipe-bootstrap.styl'
 
+html.i-noscroll
+  overflow hidden
+
 .b-recipe
+
+  .b-heading-linethrough h2
+    position relative
+    padding-right 33px
+    margin-right -20px
+    
+    .b-copy-ingredients-icon
+      position absolute
+      top 0
+      right 0
+      width 30px
+      height 25px
+      display block
+      background-repeat no-repeat
+      background-position left center
+      background-size contain
+      cursor pointer
+      transition( opacity .5s ease )
+      z-index 1
+      
+      &:hover
+        opacity .7
+        
+    .b-copy-ingredients-message
+      opacity 0
+      position absolute
+      top -8px
+      left 105%
+      height 40px
+      line-height 40px
+      color #fff
+      display block
+      background-color rgba( 0,0,0,.6 )
+      transition( opacity 1s ease )
+      padding 0 10px
+      white-space nowrap
+      font-family $sans
+      font-size 9pt
+      font-weight 200
+      z-index 1
+      
+      &.i-show
+        opacity 1
+        
+      @media( max-width 767px )
+        left calc( 50% - 210px/2 - 20px/2 )
+        top -48px
+        width 210px
+        
+  .b-recipe__step .b-heading-linethrough h2
+    position static
+    padding-right 13px
+    margin-right 0
+      
+  &__ingredients-to-be-copied
+    position absolute
+    top 0
+    left 0
+    opacity 0
+    z-index -1
       
   .b-recipe-icons
     visibility visible
@@ -79,7 +142,75 @@
     
     .b-heading-linethrough
       margin-bottom 15px
-  
+    
+  //yt button
+  &__yt-overlay
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100vh
+    background rgba(0,0,0,.6)
+    z-index 1060
+    
+.b-recipe__yt
+
+  &-wrapper
+    width 70%
+    height calc( 9/16 * 70vw )
+    margin calc( (100vh - 9/16 * 70vw) /2 ) auto
+    position relative
+    
+    @media( max-width 500px )
+      width 100%
+      height calc( 9/16 * 100vw )
+      margin calc( (100vh - 9/16 * 100vw) /2 ) auto
+    
+    iframe
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      z-index 1
+    
+  &-close
+    position absolute
+    top -40px
+    right 0
+    font-size 9pt
+    cursor pointer
+    color #fff
+    display flex
+    align-items center
+    font-size 10pt
+    
+    span&-icon
+      background-repeat no-repeat
+      background-position center
+      background-size contain
+      display block
+      width 15px
+      height 15px
+      margin-left 15px
+      
+    @media( max-width 500px )
+      right 15px
+      
+  &-subscribe
+    text-align center
+    margin-top 10px
+    position absolute
+    bottom -40px
+    left 0
+    width 100%
+    z-index 10
+    
+    > div,
+    iframe
+      width 110px !important      
+        
 .b-recipe-icon
   display inline-block
   vertical-align middle
