@@ -761,7 +761,7 @@
               showError( "maxNumberOfFiles", $fileupload );
             } else if ( !/(\.|\/)(gif|jpe?g|png)$/i.test( data.files[0].type ) ) {
               showError( "acceptFileTypes", $fileupload );
-            } else if ( data.files[0].size > 500000 ) {
+            } else if ( data.files[0].size > 2e6 ) {
               showError( "maxFileSize", $fileupload );
             } else {
               data.submit();
@@ -789,7 +789,7 @@
         var messages =  {
           maxNumberOfFiles: 'Загружайте только одну фотографию',
           acceptFileTypes: 'Загружайте фотографии формата jpg, jpeg, gif, png',
-          maxFileSize: 'Размер файла превышает 500 кб'
+          maxFileSize: 'Размер файла превышает 2 Мб'
         };
         var text = messages[ errorName ];
         alert( text );
