@@ -15,40 +15,6 @@
       
   .b-recipe-search-field
     position fixed
-  
-  #recipe_search_list
-    width auto
-    
-  .b-recipe-search__ul
-    width 100%
-    
-  .b-rs__item__image-wrapper
-    display none
-    
-  .b-rs__item__link
-    padding 13px 20px 14px
-    
-  .b-rs__item__text
-    width 70%
-    padding-top 14px
-    padding-bottom 14px
-    
-  .b-rs__item__info
-    width 30%
-    
-  .b-rs__item__time
-    margin-top 0
-    
-  .b-recipe-search__delete
-    position absolute
-    width 16px
-    height 16px
-    font-size 0
-    background embedurl("img/delete.gif") no-repeat transparent
-    cursor pointer
-    top 27px
-    right 27px
-    //left 278px
     
 #titleSearchHeaderResult.title-search-result  
   
@@ -116,9 +82,7 @@
   text-decoration none
 
 .b-recipe-search
-  ib()
-  margin -7px 0 0 38px
-  z-index 4
+  position relative
   
   @media( max-width $screen-xs-max )
     display none
@@ -129,7 +93,7 @@
   &-field
     position absolute
     background #fff
-    top 60px
+    top 0
     left 0
     width 100%
     height 60px
@@ -183,10 +147,6 @@
         outline none
   
   &.i-search-page
-    margin 0
-    display block
-    background $header-bg
-    padding 20px
     
     .b-recipe-search__form-field
       display block
@@ -199,259 +159,6 @@
   
   &.i-open
     z-index 6
-
-  &__form-field
-    ib()
-    margin-bottom 0 !important
-    position absolute
-    top 0
-    left -40px
-
-  .b-form-field__placeholder__text
-    font-size $big-size
-    color $dark-grey
-    line-height 32px
-    padding-top 11px
-    padding-left 11px
-    width 273px !important
-
-  &__delete
-    position absolute
-    width 21px
-    height 21px !important
-    font-size 0
-    background embedurl("img/delete.gif") no-repeat center transparent
-    cursor pointer
-    top 4px
-    right 7px
-    //left 279px
-    margin 0 !important
-    opacity 0
-    transition( opacity 0.5s ease )
-    
-    .i-preloader &
-      display none !important
-      
-    .i-open &
-      opacity 1
-  
-
-  &__input
-    width 0 !important
-    height 30px !important
-    font-size $base-size
-    padding 0 !important
-    color #fff
-    display block
-    line-height 30px
-    background $darker-grey
-    border none
-    box-shadow none
-    opacity(0)
-    trans( all 0.5s ease )
-    
-    /*.i-preloader &
-      background-image url("/template/images/preloader-thin.gif")
-      background-position right center
-      background-repeat no-repeat*/
-      
-    .i-open &
-      opacity(1)
-      width 455px !important
-      padding 2px 10px 2px 38px !important
-      
-      @media( max-width $screen-sm-max )
-        width 380px !important
-  
-
-  &__icon
-    ib()
-    background embedurl( 'img/search.png' ) no-repeat center center
-    width 22px
-    height 22px
-    padding 0
-    border none
-    cursor pointer
-    margin-top 4px
-    
-    .i-preloader &
-      background-image url("/template/images/preloader-thin.gif")
-      
-    .i-mobile-search &
-      opacity .5
-      pointer-events none
-    
-  &__ul
-    padding 1px
-    list-style-type none
-    position absolute
-    top 0
-    left 0
-    z-index 60
-    margin 0 !important
-    display none
-    background-color $light-grey
-    font-size $middle
-    width 455px
-    z-index 100
-    
-    @media( max-width $screen-sm-max )
-      width 380px
-
-/*
-#recipe_search button:hover,
-#recipe_search button:hover,
-#club_search button:hover
-  background url(/template/images/buttons.png) no-repeat -79px -2713px
-  
-#author_search button:active,
-#author_search button:active,
-#club_search button:active
-  background url(/template/images/buttons.png) no-repeat -79px -2766px
-  
-#recipe_search button span
-  display inline-block
-  margin -2px 0 0 0
-  font-family $georgia
-  font-size $base-size
-  color #7d7c7c
-  text-shadow 0 1px 0 #ffffff*/
-
-#recipe_search_list
-  position relative
-  width 100px
-  z-index 99
-
-.b-rs
-
-  &__heading
-    margin 0 0 1px
-    padding 18px 0
-    font-size $large-size
-    border-top 1px solid #ffffff
-    border-bottom 1px solid #ffffff
-    text-align center
-    color $dark-grey
-    font-weight bold
-    background-color #fff
-    
-    &__num
-      position relative
-      display block
-      
-      &__content
-        position absolute
-        top 0
-        right 10px
-        display block
-        font-size 8.5pt
-        font-weight normal
-
-  &__heading :first-child
-    border-top none
-
-  &__item
-    padding 0
-    margin-bottom 0
-    background-color #fff
-    
-    &__link
-      font-size $base-size
-      padding 10px 20px 8px
-      text-decoration none
-      display block
-      overflow hidden
-      
-    &__image
-      display none
-      
-      &-wrapper
-        float left
-        width 50px
-        height 50px
-        overflow hidden
-        margin-right 11px
-        
-        &__type_empty
-          border 1px solid #e5e5e5
-          
-    &__text
-      float left
-      width 235px
-      padding 17px 0 0
-      display table-cell
-      vertical-align middle
-      line-height 1
-      
-      @media( max-width $screen-sm-max )
-        width 170px !important
-      
-    &__info
-      float right
-      width 100px
-      
-    &__time
-      font-size $base-size
-      color $dark-grey
-      display block
-      text-align right
-      margin 4px 0 -7px 0
-      white-space nowrap
-      
-    &__nutrition
-      font-size $base-size
-      color $dark-grey
-      display block
-      text-align right
-      margin 0
-      
-    &__hr
-      display block
-      font-size 0
-      height 0
-      padding 0
-      margin 0
-      border-bottom 1px solid $light-grey
-
-  &__search-all
-    background-color $light-grey
-    border-top 1px solid #ffffff
-    margin -1px 0 0
-    padding 0
-
-    &__link
-      display block
-      text-align center
-      font-weight bold
-      padding 18px 15px 17px
-      font-size $middle
-
-a.b-rs__search-all__link:hover,
-.b-rs__search-all.i-hover .b-rs__search-all__link
-  background-color $link-bg
-
-a.b-rs__item__link:hover,
-.b-rs__item.i-hover .b-rs__item__link
-  background-color $link-bg
-  color $link
-  
-.b-header__nav a.b-rs__item__link
-  display block
-  vertical-align inherit
-  height auto
-  line-height inherit
-  margin 0
-  color $link
-  text-align left
-  font-weight 400
-  
-.b-header__nav a.b-rs__search-all__link
-  display block
-  vertical-align inherit
-  height auto
-  line-height inherit
-  margin 0
-  color $link
   
 #titleSearchHeaderResult.title-search-result:not( .b-recipe-search__ul1 )
   position fixed !important

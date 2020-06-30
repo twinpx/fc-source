@@ -12,25 +12,25 @@ $( 'body' ).delegate( '.title-search-result__item', 'click', function() {
   }
 });
 
-//header mobile menu icon
-$( '.b-header .b-mobile-menu-icon' ).click( function(e) {
-  e.stopPropagation();
-  $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );
-});
+            //header mobile menu icon
+            $( '.b-header .b-mobile-menu-icon' ).click( function(e) {
+              e.stopPropagation();
+              $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );
+            });
 
-$( '.b-header__nav' ).click( function(e) {
-  if ( $( e.target ).data( 'toggle' ) === 'modal' ) {
-    return;
-  }
-  e.stopPropagation();
-});
+            $( '.b-header__nav' ).click( function(e) {
+              if ( $( e.target ).data( 'toggle' ) === 'modal' ) {
+                return;
+              }
+              e.stopPropagation();
+            });
 
-$( document ).bind( 'click', function() {
-  if ( window.matchMedia( "(max-width: 767px)" ).matches ) {
-    $( '.b-header__nav' ).slideUp( 500 );//.removeClass( 'i-menu-open' );
-    $( '.b-content-nav .container' ).slideUp( 500 );//.removeClass( 'i-open' );
-  }/* else {}*/
-});
+            $( document ).bind( 'click', function() {
+              if ( window.matchMedia( "(max-width: 767px)" ).matches ) {
+                $( '.b-header__nav' ).slideUp( 500 );//.removeClass( 'i-menu-open' );
+                $( '.b-content-nav .container' ).slideUp( 500 );//.removeClass( 'i-open' );
+              }
+            });
 
 // vertical align for recipe preview photo
 $( ".recipe_list_item .photo a, .b-recipe-preview__photo__link" ).each( function() {

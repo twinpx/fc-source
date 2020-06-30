@@ -2,6 +2,15 @@
 
 .b-header-panel
   background-color #484848
+  
+  a
+    color #fff
+    transition( opacity .3s ease )
+    
+    &:hover
+      color #fff
+      opacity .7
+      text-decoration none
 
   &__wrapper
     display flex
@@ -10,24 +19,106 @@
     min-height 60px
 
   &__logo
-    width 15%
+    width 130px
     margin-right 50px
     
     img
-      width 100%
+      width 130px
       height auto
       
   &__menu
-    width 50%
+    width 40%
+    margin-right 50px
     
     a,
     span
       display inline-block
-      color #fff
       margin-right 25px
-      transition( opacity .2s ease )
       
-    a:hover
-      color #fff
-      opacity .7
-      text-decoration none
+  &__icons
+    width calc( 100% - 130px - 50px - 40% - 50px )
+    display flex
+    align-items center
+    justify-content flex-end
+    
+    @media( max-width 991px )
+      width  calc( 100% - 130px - 50px )
+    
+  &__icon
+    display inline-block
+    width 24px
+    height 24px
+    background-repeat no-repeat
+    background-position center
+    background-size contain
+    margin-right 25px
+      
+    @media( max-width 991px )
+      margin-right 15px
+    
+    &.i-menu
+      margin-right 0
+    
+  &__user
+    display inline-block
+    width 24px
+    height 24px
+    background-repeat no-repeat
+    background-position center
+    background-size contain
+    border-radius 50%
+    margin-left 25px
+      
+    @media( max-width 991px )
+      margin-right 15px
+      margin-left 0
+
+  &__profile-button
+    padding 0
+    width 30px
+    height 30px
+    rel()
+    float right
+    margin-left 14px
+    
+    &:after
+      content ' '
+      display block
+      position absolute
+      bottom 2px
+      right 2px
+      margin-left -2px
+      width 5px
+      height 5px
+      background embedurl( 'img/profile-pointer.gif' ) no-repeat 0 0
+      z-index 5
+
+  &__user-dropdown
+    rel()
+    
+    &-body
+      display none
+      position absolute
+      top 30px
+      right -7px
+      background #3c3c3c
+      padding 18px 20px
+      margin 0
+      border-radius( 3px )
+      list-style-type none
+      box-sizing( border-box )
+      width 200px
+      z-index 10
+        
+      a,
+      span
+        height 30px
+        line-height 30px
+        font-size 9pt
+        color #fff
+        display block
+        
+  for icon in 'profile' 'favorite' 'recipes' 'articles' 'subscribe' 'kitchen' 'signout' 
+    .i-{icon}
+      background embedurl( 'img/'+icon+'.png' ) no-repeat 5px center
+      padding-left 40px

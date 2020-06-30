@@ -1,119 +1,15 @@
 ﻿// start /components/recipe-search/
 
-block wrapper
-  - var wrapper=""
-
 link( rel="stylesheet", href="/components/recipe-search/style.css" )
 script( src="/components/recipe-search/script.js" )
-script( src="/js/ss_data.js" )
-script( src="/components/recipe-search/add-script.js" )
 
-
-#recipeSearch( class="b-recipe-search #{wrapper}" )
-
-  form( action="/search/" method="post" )
+#recipeSearch.b-recipe-search
   
-    span.b-recipe-search__icon.hidden-xs(title='Поиск')
-    
-    .b-recipe-search-field
-      .container
-        .b-recipe-search-field__icon
-        .b-recipe-search-field__clear( title="Очистить поле" )
-        .b-recipe-search-field__input
-          input#title-search-input( type="search" name="recipe-search" value="" )
-          
-     
-  //-.title-search-result(style='position: absolute; top: 200px; left: 205px; width: 199px; overflow: hidden; z-index: 200; background-color: #fff;')
-      .container
-      
-        .title-search-result__wrapper
-        
-          .title-search-result__block
-        
-            .title-search-result__title Рецепты
-          
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Лазанья
-                span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
-                
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/choco.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Лагман по-арабски
-                span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
-                
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/stage.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Тыква, запеченная со специями
-                span.title-search-result__info 1 час 32 минуты, 4 порции, 400 кКал
-          
-          .title-search-result__block
-        
-            .title-search-result__title Записи
-          
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Ледяная ваза для окрошки
-                
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Черника
-                
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Хумус
-          
-          .title-search-result__block
-        
-            .title-search-result__title Типы блюд
-          
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Супы
-                
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Пироги
-                
-            a.title-search-result__item( href="" )
-              span.title-search-result__img( style="background-image: url( '/upload/recipe/ill.jpg' );" )
-              span.title-search-result__text
-                span.title-search-result__header Вторые блюда
-              
-        
-  
-script#recipe_search_items( type="text/html" )
-  |<li class="b-rs__item">
-  |  <a href="<%=url%>" class="b-rs__item__link">
-  |    <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
-  |    <% if(imageRegExp.test(image)) { %>
-  |    <span class="b-rs__item__image-wrapper" data-image="<%=image%>"></span>
-  |    <% } else { %>
-  |    <span class="b-rs__item__image-wrapper b-rs__item__image-wrapper__type_empty"></span>
-  |    <% } %>
-  |    <span class="b-rs__item__text b-rs-str"><%=title%></span>
-  |    <span class="b-rs__item__info">
-  |      <span class="b-rs__item__time"><% if(time.hours && time.hours > 0) {%>
-  |      <% function recipeWord(num) {
-  |        if (/(10|11|12|13|14|15|16|17|18|19)$/.test(num)) {return 'часов';}
-  |        else if (/.*1$/.test(num)) {return 'час';}
-  |        else if (/[2-4]$/.test(num)) {return 'часа';}
-  |        else {return 'часов';}
-  |      } %>
-  |      <%=time.hours%> <%=recipeWord(time.hours)%><% } %><% if(time.minutes && time.minutes > 0) {%> <%=time.minutes%> мин<% } %></span>
-  |      <span class="b-rs__item__nutrition"><%=nutrition%></span>
-  |    </span>
-  |    <span class="clear"></span>
-  |  </a>
-  |  <span class="b-rs__item__hr"></span>
-  |</li>
+  .b-recipe-search-field
+    .container
+      .b-recipe-search-field__icon
+      .b-recipe-search-field__clear( title="Очистить поле" )
+      .b-recipe-search-field__input
+        input#title-search-input( type="search" name="recipe-search" value="" )
   
 // end /components/recipe-search/
