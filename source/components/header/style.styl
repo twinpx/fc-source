@@ -1,0 +1,33 @@
+@import '../../styl/component-include.styl'
+
+.b-header-panel
+  background-color #484848
+
+  &__wrapper
+    display flex
+    align-items center
+    justify-content space-between
+    min-height 60px
+
+  &__logo
+    width 15%
+    margin-right 50px
+    
+    img
+      width 100%
+      height auto
+      
+  &__menu
+    width 50%
+    
+    a,
+    span
+      display inline-block
+      color #fff
+      margin-right 25px
+      transition( opacity .2s ease )
+      
+    a:hover
+      color #fff
+      opacity .7
+      text-decoration none
