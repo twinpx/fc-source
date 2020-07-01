@@ -1,0 +1,15 @@
+// start /components/bitrix-panel/
+
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'header'
+  else
+    - var componentsArray = [ 'bitrix-panel' ]
+  
+#bx-panel.bx-panel-fixed.bx-panel-folded
+  #bx-panel-top
+  #bx-panel-site-toolbar
+  .adm-warning-block
+
+// end /components/bitrix-panel/

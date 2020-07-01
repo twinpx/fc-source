@@ -1,0 +1,23 @@
+.b-header-panel
+
+  &.b-ph-block
+    position relative
+    
+    .b-ph
+      height 60px
+      background-color $placeholder-color
+      position relative
+      z-index 1
+            
+      &-content
+        position absolute
+        top 0
+        left 0
+        width 100%
+        transition( opacity .5s ease )
+        opacity 0
+        z-index 0
+        
+  &__bg
+    transition( background-color .5s ease )
+      
