@@ -1,4 +1,11 @@
-﻿extends ../layouts/search.jade
+﻿block vars
+  - var page = 'search'
+  - var authorized = false
+
+extends ../layouts/header.jade
 
 block title
-  title Search | food
+  title Search | Foodclub
+  
+block content
+  .container

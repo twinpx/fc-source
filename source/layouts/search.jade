@@ -7,45 +7,9 @@ html
     include includes/meta.jade
     include includes/styles.jade
     include includes/scripts.jade
-    //-script( src="/template/jquery.js" )
-    //-script( src="/template/bootstrap.js" )
     
   body.i-mobile-search
   
     include includes/header-search.jade
-    
-    //-header#header.b-header
-      .container
-        
-        .b-mobile-menu-icon.visible-xs-block
-        span.b-mobile-search-icon.visible-xs-block
-        
-        a( href="/" ).b-header__logo
-          img( src="/template/images/foodclub_logo.png" alt="foodclub.ru" )
           
-        block profile-buttons
-        
-          .b-header__nav
-            .row.visible-xs-block
-              .col-xs-6.col-xs-offset-6
-                include ../modules/user/new
-            .row
-              .col-xs-6
-                a( href="/recipes/" ) Рецепты
-                a.i-active( href="/journal/" ) Журнал
-                a( href="/foodshot/" ) Фудшот
-                a( href="/lavka/" ) Лавка
-              .col-xs-6.visible-xs-block
-                a( href="" ) Войти
-                a( href="" ) Зарегистрироваться
-                a( href="" ).i-profile Профиль
-                a( href="" ).i-favorite Избранное
-                a( href="" ).i-recipes Мои рецепты
-                a( href="" ).i-articles Статьи
-                a( href="" ).i-subscribe Подписка
-                a( href="" ).i-kitchen Кухня
-                a( href="" ).i-signout Выйти
-                
-      include ../components/recipe-search/search-page
-      
   include includes/styles-secondary.jade

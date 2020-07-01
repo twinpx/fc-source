@@ -1,1 +1,4 @@
-﻿a.b-header-panel__icon.b-recipe-search__icon.i-search( href="#" style="background-image: url( '/template/images/icons/header/search.svg' );" )
+﻿if page == 'search'
+  span.b-header-panel__icon.b-recipe-search__icon.i-search( style="background-image: url( '/template/images/icons/header/search.svg' );" )
+else
+  a.b-header-panel__icon.b-recipe-search__icon.i-search( href="/search/" style="background-image: url( '/template/images/icons/header/search.svg' );" )

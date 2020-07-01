@@ -1,59 +1,17 @@
 // start /components/header/
 
-link( rel="stylesheet", href="/components/header/style.css" )
-script( src="/components/header/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'header'
+  else
+    - var componentsArray = [ 'header' ]
 
 header.b-header-panel.b-ph-block
-
   .b-ph
-
   .b-ph-content
+    #header-content__deferred
   
-    .container
-    
-      .b-header-panel__wrapper
-    
-        a.b-header-panel__logo( href="/" )
-          img( src="/template/images/logo-foodclub.svg" alt="Foodclub" )
-          
-        .b-header-panel__menu.hidden-xs.hidden-sm
-          a( href="/recipes/" ) Рецепты
-          a( href="/foodshot/" ) Фудшоты
-          a( href="/journal/" ) Журнал
-          
-        .b-header-panel__icons
-          a.b-header-panel__icon.i-youtube.hidden-xs.hidden-sm( href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" )
-          a.b-header-panel__icon.i-instagram.hidden-xs.hidden-sm( href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" )
-          
-          include ../../components/recipe-search/search-icon
-          
-          if authorized
-            a.btn.btn-default.b-header-panel__add.hidden-xs.hidden-sm( data-toggle="modal" data-target="#addModal" ) Добавить
-            a.b-header-panel__user( href="" style="background-image: url( '/upload/user/mariha_kitchen.jpg' );" )
-            
-            .b-header-panel__user-dropdown
-              .b-header-panel__user-dropdown-body
-                a( href="" ).i-profile Профиль
-                a( href="" ).i-favorite Избранное
-                a( href="" ).i-recipes Мои рецепты
-                a( href="" ).i-articles Статьи
-                a( href="" ).i-subscribe Подписка
-                a( href="" ).i-kitchen Кухня
-                a( href="" ).i-signout Выйти
-                  
-          else
-            a.btn.b-header-panel__login.hidden-xs.hidden-sm( href="#" data-toggle="modal" data-target="#authModal" ) Войти
-            
-            a.b-header-panel__icon.b-header-panel__login.visible-xs-inline-block.visible-sm-inline-block( href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" )
-            
-          a.b-header-panel__icon.i-menu.visible-xs-inline-block.visible-sm-inline-block( href="#" style="background-image: url( '/template/images/icons/header/menu.svg' );" )
-       
-    if authorized
-      include ../../modules/modals/add
-    else
-      include ../../modules/modals/auth
-      include ../../modules/modals/email
-      
-    include ../../components/recipe-search/template
+//- see header content in the content.jade file
 
 // end /components/header/

@@ -1,8 +1,13 @@
 //placeholders
-$( '.b-placeholder-content' ).each( function() {
+setTimeout( function() {
+  $( '.b-ph-block, h1' ).addClass( 'i-ph-animated' );
+}, 500 );
+  
+//defer  
+$( '.b-deferred-content' ).each( function() {
   var $block = $( this );
   var id = $block.attr( 'id' );
-  $block.appendTo( '#' + id + '__placeholder' );
+  $block.appendTo( '#' + id + '__deferred' );
 });
 
 //yandex metrika

@@ -90,6 +90,14 @@ module.exports = function( grunt ) {
       template: {
         files: [
           {
+            expand: true,
+            cwd: '<%= source%>styl/placeholders/',
+            src: [ '*.styl' ],
+            dest: '<%= dest%>template/placeholders/',
+            extDot: 'first',
+            ext: '.css'
+          },
+          {
             '<%= dest%>template/minimal.css':
               [
                 '<%= source%>styl/minimal.styl',
@@ -110,6 +118,10 @@ module.exports = function( grunt ) {
       },
       issue: {
         files: [
+          {
+            '<%= dest%>template/placeholders/search.css':
+            '<%= source%>styl/placeholders/search.styl'
+          },
           {
             expand: true,
             cwd: '<%= source %>components/header/',
@@ -142,6 +154,14 @@ module.exports = function( grunt ) {
             cwd: '<%= source%>components/',
             src: [ '**/style.styl' ],
             dest: '<%= temp %>components/',
+            extDot: 'first',
+            ext: '.css'
+          },
+          {
+            expand: true,
+            cwd: '<%= source%>styl/placeholders/',
+            src: [ '*.styl' ],
+            dest: '<%= temp %>template/placeholders/',
             extDot: 'first',
             ext: '.css'
           },
@@ -495,7 +515,8 @@ module.exports = function( grunt ) {
         files: [
           '<%= source %>**/*.jade',
           //change component name
-          '!<%= source %>components/header/**/*.jade'
+          '!<%= source %>components/header/**/*.jade',
+          '!<%= source %>header/**/*.jade'
         ],
         tasks: 'jade:dev'
       },
@@ -503,7 +524,8 @@ module.exports = function( grunt ) {
       htmlIssue: {
         files: [
           //change component name
-          '<%= source %>components/header/**/*.jade'
+          '<%= source %>components/header/**/*.jade',
+          '<%= source %>header/**/*.jade'
         ],
         tasks: 'htmlIssue'
       },
@@ -512,14 +534,16 @@ module.exports = function( grunt ) {
         files: [
           '<%= source %>**/*.styl',
           //change component name
-          '!<%= source %>components/header/**/*.styl'
+          '!<%= source %>components/header/**/*.styl',
+          '!<%= source %>styl/placeholders/**/*.styl'
         ],
         tasks: 'css'
       },
       
       cssIssue: {
         files: [
-          '<%= source %>components/header/**/*.styl'
+          '<%= source %>components/header/**/*.styl',
+          '<%= source %>styl/placeholders/**/*.styl'
         ],
         tasks: 'cssIssue'
       },

@@ -11,9 +11,13 @@
     $( '.b-recipe-search div.title-search-result' ).appendTo( 'body' );
     
     $( '.b-recipe-search__icon' ).click( function(e) {
-      e.preventDefault();
-      $( '.b-recipe-search-field' ).slideToggle( 300 );
-      $( '.b-recipe-search-field__input input' ).focus();
+      if ( window.matchMedia( "(min-width: 992px)" ).matches ) {
+        e.preventDefault();
+        $( '.b-recipe-search-field' ).slideToggle( 300 );
+        $( '.b-recipe-search-field__input input' ).focus();
+      } else {
+        window.location = $( this ).attr( 'href' );
+      }
     });
     
     $( '.b-recipe-search-field__input input' ).keyup( function() {

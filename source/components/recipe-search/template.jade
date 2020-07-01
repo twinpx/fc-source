@@ -1,10 +1,18 @@
 ﻿// start /components/recipe-search/
 
-link( rel="stylesheet", href="/components/recipe-search/style.css" )
-script( src="/components/recipe-search/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'recipe-search'
+  else
+    - var componentsArray = [ 'recipe-search' ]
 
-#recipeSearch.b-recipe-search
+if page == 'search'
+  - var wrapper = ' i-mobile-search'
+else
+  - var wrapper = ''
   
+#recipeSearch( class="b-recipe-search#{wrapper}" )
   .b-recipe-search-field
     .container
       .b-recipe-search-field__icon

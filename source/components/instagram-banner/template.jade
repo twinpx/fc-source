@@ -1,7 +1,11 @@
 // start /components/instagram-banner/
 
-link( rel="stylesheet", href="/components/instagram-banner/style.css" )
-script( src="/components/instagram-banner/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'instagram-banner'
+  else
+    - var componentsArray = [ 'instagram-banner' ]
 
 .b-instagram-banner
   

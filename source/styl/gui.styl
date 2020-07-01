@@ -53,12 +53,19 @@ h6
   font-weight normal
   
 h1
-  color $dark-grey
-  margin 0 0 29px 0
-  font-family $pt
-  font-weight bold
-  font-size 22pt
-  text-align center
+  
+  &.i-ph-animated
+    color $dark-grey !important
+    margin 0 0 29px 0 !important
+    font-family $pt
+    font-weight bold
+    font-size 22pt !important
+    text-align center
+    height auto
+    
+    &:after
+      opacity 0
+      z-index -1
   
   a
     font-size 22pt
@@ -313,7 +320,7 @@ hr
     margin 5px 0 4px
     
   &.i-line
-    border-color #ededed
+    border-color #ededed !important
     
 #opaco
   background-color #000
@@ -339,3 +346,9 @@ div.error_message
   
 .text-mited
   color $grey
+  
+.b-deferred-content
+  display none
+  
+[ id*="__deferred"] .b-deferred-content
+    display block
