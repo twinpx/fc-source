@@ -228,8 +228,6 @@
       </div>
     </footer>
     <!-- start /components/instagram-banner/-->
-    <link rel="stylesheet" href="/components/instagram-banner/style.css">
-    <script src="/components/instagram-banner/script.js"></script>
     <div class="b-instagram-banner">
       <div class="b-instagram-banner__button"><a href=""><img src="/template/images/icons/instagram-banner.svg" alt=""></a></div>
       <div class="b-instagram-banner__close"><img src="/template/images/icons/close-button.svg" alt=""></div>
@@ -260,7 +258,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span></button>
                   <div id="myModalLabel" class="modal-title">Добавить</div>
                 </div>
                 <div class="modal-body"><a href="" class="i-recipe">Рецепт</a><a href="" class="i-foodshot">Фудшот</a><a href="" class="i-article">Статью</a></div>
@@ -326,49 +324,17 @@
           <div class="row">
             <div class="col-xs-6">
               <!-- start /components/recipe-search/-->
-              <link rel="stylesheet" href="/components/recipe-search/style.css">
-              <script src="/components/recipe-search/script.js"></script>
-              <script src="/js/ss_data.js"></script>
-              <script src="/components/recipe-search/add-script.js"></script>
-              <div id="recipeSearch" class="b-recipe-search ">
-                <form action="/search/" method="post"><span title="Поиск" class="b-recipe-search__icon hidden-xs"></span>
-                  <div class="b-recipe-search-field">
-                    <div class="container">
-                      <div class="b-recipe-search-field__icon"></div>
-                      <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
-                      <div class="b-recipe-search-field__input">
-                        <input id="title-search-input" type="search" name="recipe-search" value="">
-                      </div>
+              <div id="recipeSearch" class="b-recipe-search">
+                <div class="b-recipe-search-field">
+                  <div class="container">
+                    <div class="b-recipe-search-field__icon"></div>
+                    <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
+                    <div class="b-recipe-search-field__input">
+                      <input id="title-search-input" type="search" name="recipe-search" value="">
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
-              <script id="recipe_search_items" type="text/html">
-                <li class="b-rs__item">
-                 <a href="<%=url%>" class="b-rs__item__link">
-                   <% var imageRegExp = new RegExp('\.(gif)|(jpeg)|(jpg)|(png)$', 'gi'); %>
-                   <% if(imageRegExp.test(image)) { %>
-                   <span class="b-rs__item__image-wrapper" data-image="<%=image%>"></span>
-                   <% } else { %>
-                   <span class="b-rs__item__image-wrapper b-rs__item__image-wrapper__type_empty"></span>
-                   <% } %>
-                   <span class="b-rs__item__text b-rs-str"><%=title%></span>
-                   <span class="b-rs__item__info">
-                     <span class="b-rs__item__time"><% if(time.hours && time.hours > 0) {%>
-                     <% function recipeWord(num) {
-                       if (/(10|11|12|13|14|15|16|17|18|19)$/.test(num)) {return 'часов';}
-                       else if (/.*1$/.test(num)) {return 'час';}
-                       else if (/[2-4]$/.test(num)) {return 'часа';}
-                       else {return 'часов';}
-                     } %>
-                     <%=time.hours%> <%=recipeWord(time.hours)%><% } %><% if(time.minutes && time.minutes > 0) {%> <%=time.minutes%> мин<% } %></span>
-                     <span class="b-rs__item__nutrition"><%=nutrition%></span>
-                   </span>
-                   <span class="clear"></span>
-                 </a>
-                 <span class="b-rs__item__hr"></span>
-                </li>
-              </script>
               <!-- end /components/recipe-search/-->
               <noindex class="b-recipe-search__helper hidden-xs"><a id="search_helper_link" href="#" title="Помощник" class="b-recipe-search__helper__link"></a></noindex>
               <div id="search_helper" style="display:none;">
