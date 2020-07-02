@@ -128,6 +128,14 @@ module.exports = function( grunt ) {
           },
           {
             expand: true,
+            cwd: '<%= source %>styl/minimals/',
+            src: [ '*.styl' ],
+            dest: '<%= dest %>template/minimals/',
+            extDot: 'first',
+            ext: '.css'
+          },
+          {
+            expand: true,
             cwd: '<%= source %>components/recipe/',
             src: [ '**/*.styl' ],
             dest: '<%= dest %>components/recipe/',
@@ -539,7 +547,8 @@ module.exports = function( grunt ) {
           '<%= source %>**/*.styl',
           //change component name
           '!<%= source %>components/recipe/**/*.styl',
-          '!<%= source %>styl/placeholders/**/*.styl'
+          '!<%= source %>styl/placeholders/**/*.styl',
+          '!<%= source %>styl/minimals/**/*.styl'
         ],
         tasks: 'css'
       },
@@ -547,7 +556,8 @@ module.exports = function( grunt ) {
       cssIssue: {
         files: [
           '<%= source %>components/recipe/**/*.styl',
-          '<%= source %>styl/placeholders/**/*.styl'
+          '<%= source %>styl/placeholders/**/*.styl',
+          '<%= source %>styl/minimals/**/*.styl'
         ],
         tasks: 'cssIssue'
       },

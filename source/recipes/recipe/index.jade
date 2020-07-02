@@ -1,7 +1,8 @@
-﻿block var-page
-  - var page = recipe
+﻿block vars
+  - var page = 'recipe'
+  - var authorized = false
 
-extends ../../layouts/main.jade
+extends ../../layouts/header.jade
 
 block title
   title Recipe | food
@@ -12,8 +13,8 @@ block content
 
     hr
   
-    //- include ../../components/recipe.menu/top.jade
     include ../../components/recipe/template.jade
+    
     hr.i-size-L
     .row
       .col-md-8.col-md-offset-2
