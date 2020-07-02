@@ -7,261 +7,289 @@
     <meta name="description" content="">
     <meta name="apple-itunes-app" content="app-id=445878711">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="/template/bootstrap.min.css">
-    <link rel="stylesheet" href="/template/minimal.css">
-    <script src="/template/jquery-3.1.1.min.js"></script>
-    <script src="/template/bootstrap.min.js" async></script>
-    <script src="/template/materialize.min.js" async></script>
-    <script src="/template/jscript.js" async></script>
+    <link href="/template/placeholders/recipe.css" rel="stylesheet">
   </head>
   <body>
-    <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
-    <header id="header" class="b-header">
-      <div id="header-content__placeholder"></div>
+    <!-- start /components/bitrix-panel/-->
+    <div id="bx-panel" class="bx-panel-fixed bx-panel-folded">
+      <div id="bx-panel-top"></div>
+      <div id="bx-panel-site-toolbar"></div>
+      <div class="adm-warning-block"></div>
+    </div>
+    <!-- end /components/bitrix-panel/-->
+    <!-- start /components/header/-->
+    <header class="b-header-panel b-ph-block">
+      <div class="b-ph"></div>
+      <div class="b-ph-content">
+        <div id="header-content__deferred"></div>
+      </div>
     </header>
+    <!-- end /components/header/-->
     <div class="container">
       <hr>
       <!-- start /components/recipe/-->
-      <link rel="stylesheet" href="/components/recipe/style.css">
-      <script src="/components/recipe/script.js"></script>
       <div data-ajax-url="/ajax-response/zen-button.html" data-ajax-method="GET" class="b-zen-ajax"></div>
       <div data-ajax-url="/ajax-response/favorite-button.html" data-ajax-method="GET" class="b-favorite-ajax"></div>
       <div class="b-heading-linethrough">
         <h1 itemprop="name">Картофельная запеканка с лисичками</h1>
       </div>
-      <div itemscope itemtype="http://schema.org/Recipe" data-id="88" class="b-recipe">
-        <div class="b-recipe__chain-path"><a href="/search/"><span itemprop="recipeCuisine">Американская кухня</span></a>/<a href="/search/">Кексы</a>/<a href="/search/">Ягоды</a></div>
-        <div class="b-recipe__author">
-          <div class="b-author-avatar"><a href="/personal/" style="background-image: url(/upload/user/mariha_kitchen.jpg);" class="b-author-avatar__link"></a><a href="/personal/" class="b-author-avatar__nickname"><span title="Mariha Kitchen">Mariha Kitchen</span></a></div>
+      <div itemscope itemtype="http://schema.org/Recipe" data-id="88" class="b-recipe b-ph-block">
+        <div class="b-ph">
+          <div class="b-ph__chain-path"></div>
+          <div class="b-ph__info">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="b-ph__ill"></div>
+          <div class="b-ph__icons">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="b-ph__descrpiton">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
-        <div class="b-recipe__company"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/company.gif" width="100" height="50" alt="Seafoodshop"><i>Спонсор рецепта</i></a></div>
-        <div class="b-recipe__info">
-          <div class="b-recipe__info-item">
-            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
-            <div itemprop="recipeYield" class="b-recipe__info-text">2 порции</div>
+        <div class="b-ph-content">
+          <div class="b-recipe__chain-path"><a href="/search/"><span itemprop="recipeCuisine">Американская кухня</span></a>/<a href="/search/">Кексы</a>/<a href="/search/">Ягоды</a></div>
+          <div class="b-recipe__author">
+            <div class="b-author-avatar"><a href="/personal/" style="background-image: url(/upload/user/mariha_kitchen.jpg);" class="b-author-avatar__link"></a><a href="/personal/" class="b-author-avatar__nickname"><span title="Mariha Kitchen">Mariha Kitchen</span></a></div>
           </div>
-          <div class="b-recipe__info-item">
-            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
-            <div itemprop="cookTime" content="PT1H20M" class="b-recipe__info-text">1 час 20 мин</div>
+          <div class="b-recipe__company"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/company.gif" width="100" height="50" alt="Seafoodshop"><i>Спонсор рецепта</i></a></div>
+          <div class="b-recipe__info">
+            <div class="b-recipe__info-item">
+              <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
+              <div itemprop="recipeYield" class="b-recipe__info-text">2 порции</div>
+            </div>
+            <div class="b-recipe__info-item">
+              <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
+              <div itemprop="cookTime" content="PT1H20M" class="b-recipe__info-text">1 час 20 мин</div>
+            </div>
+            <div class="b-recipe__info-item">
+              <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
+              <div itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" class="b-recipe__info-text"><span itemprop="calories">192 кКал на порцию</span></div>
+            </div>
           </div>
-          <div class="b-recipe__info-item">
-            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
-            <div itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" class="b-recipe__info-text"><span itemprop="calories">192 кКал на порцию</span></div>
-          </div>
-        </div>
-        <hr class="i-size-M">
-        <div class="b-recipe__intro">
-          <div class="b-recipe__intro-ill">
-            <div class="b-recipe__ill"><img src="/upload/recipe/ill.jpg" alt="" itemprop="image"><span class="b-recipe__yt-button"><span style="background-image: url( '/template/images/icons/yt-icon.svg' );" class="b-recipe__yt-icon"></span><span class="i-desktop">Смотреть видео-рецепт</span><span class="i-mobile">Смотреть видео</span></span>
-              <div class="b-recipe__yt-overlay">
-                <div class="b-recipe__yt-wrapper">
-                  <div class="b-recipe__yt-close"><span>Закрыть</span><span style="background-image: url( '/template/images/icons/close-white.svg' );" class="b-recipe__yt-close-icon"></span></div>
-                  <iframe id="player" src="https://www.youtube.com/embed/1In7igJUxV8?modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;origin=https://www.foodclub.ru" allowfullscreen="" allowtransparency="" frameborder="0"></iframe>
-                  <div class="b-recipe__yt-subscribe">
-                    <script src="https://apis.google.com/js/platform.js"></script>
-                    <div data-channelid="UCoeTjJ3oEmLSDl6_mEzrfdQ" data-layout="default" data-theme="dark" data-count="default" class="g-ytsubscribe"></div>
+          <hr class="i-size-M">
+          <div class="b-recipe__intro">
+            <div class="b-recipe__intro-ill">
+              <div class="b-recipe__ill"><img src="/upload/recipe/ill.jpg" alt="" itemprop="image"><span class="b-recipe__yt-button"><span style="background-image: url( '/template/images/icons/yt-icon.svg' );" class="b-recipe__yt-icon"></span><span class="i-desktop">Смотреть видео-рецепт</span><span class="i-mobile">Смотреть видео</span></span>
+                <div class="b-recipe__yt-overlay">
+                  <div class="b-recipe__yt-wrapper">
+                    <div class="b-recipe__yt-close"><span>Закрыть</span><span style="background-image: url( '/template/images/icons/close-white.svg' );" class="b-recipe__yt-close-icon"></span></div>
+                    <iframe id="player" src="https://www.youtube.com/embed/1In7igJUxV8?modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;origin=https://www.foodclub.ru" allowfullscreen="" allowtransparency="" frameborder="0"></iframe>
+                    <div class="b-recipe__yt-subscribe">
+                      <script src="https://apis.google.com/js/platform.js"></script>
+                      <div data-channelid="UCoeTjJ3oEmLSDl6_mEzrfdQ" data-layout="default" data-theme="dark" data-count="default" class="g-ytsubscribe"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="i-size-M">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div data-ajax-url="/ajax-response/recipe-icons.html?id=45" data-ajax-method="GET" class="b-recipe-icons">
+                    <div class="b-recipe-icon b-print-button"><img src="/template/images/icons/print.svg" width="16" alt=""></div>
+                    <div class="b-recipe-icon b-like-button"><img src="/template/images/icons/like.svg" width="16" alt="">
+                      <div class="b-recipe-icon__num">10</div>
+                    </div>
+                    <div class="b-recipe-icon b-cooked-button"><img src="/template/images/icons/cooking.svg" width="16" alt="">
+                      <div class="b-recipe-icon__num">7</div>
+                    </div>
+                    <div class="b-recipe-icon b-views-button"><img src="/template/images/icons/views.svg" width="16" alt="">
+                      <div class="b-recipe-icon__num">1 482 200</div>
+                    </div>
+                    <div class="b-recipe-icon b-rating-button"><img src="/template/images/icons/rating.svg" width="16" alt="">
+                      <div class="b-recipe-icon__num">5 672</div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="visible-xs-block i-size-M">
+                <div class="col-sm-6 text-right">
+                  <div class="b-recipe-menu__social">
+                    <div class="b-social-buttons__item b-ya-share">
+                      <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                      <script src="//yastatic.net/share2/share.js"></script>
+                      <div data-services="vkontakte,facebook" data-counter="" class="ya-share2"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <hr class="i-size-M">
-            <div class="row">
-              <div class="col-sm-6">
-                <div data-ajax-url="/ajax-response/recipe-icons.html?id=45" data-ajax-method="GET" class="b-recipe-icons">
-                  <div class="b-recipe-icon b-print-button"><img src="/template/images/icons/print.svg" width="16" alt=""></div>
-                  <div class="b-recipe-icon b-like-button"><img src="/template/images/icons/like.svg" width="16" alt="">
-                    <div class="b-recipe-icon__num">10</div>
-                  </div>
-                  <div class="b-recipe-icon b-cooked-button"><img src="/template/images/icons/cooking.svg" width="16" alt="">
-                    <div class="b-recipe-icon__num">7</div>
-                  </div>
-                  <div class="b-recipe-icon b-views-button"><img src="/template/images/icons/views.svg" width="16" alt="">
-                    <div class="b-recipe-icon__num">1 482 200</div>
-                  </div>
-                  <div class="b-recipe-icon b-rating-button"><img src="/template/images/icons/rating.svg" width="16" alt="">
-                    <div class="b-recipe-icon__num">5 672</div>
-                  </div>
-                </div>
-              </div>
-              <hr class="visible-xs-block i-size-M">
-              <div class="col-sm-6 text-right">
-                <div class="b-recipe-menu__social">
-                  <div class="b-social-buttons__item b-ya-share">
-                    <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-                    <script src="//yastatic.net/share2/share.js"></script>
-                    <div data-services="vkontakte,facebook" data-counter="" class="ya-share2"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="b-recipe__intro-aside hidden-xs">
+              <div class="b-aside-adv"><a href="" target="_blank"><img src="/upload/banner/3.gif" alt=""></a></div>
             </div>
           </div>
-          <div class="b-recipe__intro-aside hidden-xs">
-            <div class="b-aside-adv"><a href="" target="_blank"><img src="/upload/banner/3.gif" alt=""></a></div>
+          <hr class="i-size-M">
+          <div class="row">
+            <div itemprop="description" class="col-md-8 col-md-offset-2">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
           </div>
-        </div>
-        <hr class="i-size-M">
-        <div class="row">
-          <div itemprop="description" class="col-md-8 col-md-offset-2">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
-        </div>
-        <hr class="i-size-M">
-        <div class="b-heading-linethrough">
-          <h2>Вам понадобится<span title="Скопировать ингредиенты" style="background-image: url( '/template/images/icons/copy.svg' );" class="b-copy-ingredients-icon"></span><span class="b-copy-ingredients-message">Ингредиенты скопированы</span></h2>
-        </div>
-        <textarea class="b-recipe__ingredients-to-be-copied"></textarea>
-        <div class="row b-recipe__ingredients">
-          <div class="col-md-4">
-            <table>
-              <tr>
-                <td itemprop="recipeIngredient">Нерка копченая (филе)</td>
-                <td>150 г</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Лаймы</td>
-                <td>1 шт.</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Соль морская</td>
-                <td>¼ шт.</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Горчица</td>
-                <td>1.5 ч.л.</td>
-              </tr>
-            </table>
+          <hr class="i-size-M">
+          <div class="b-heading-linethrough">
+            <h2>Вам понадобится<span title="Скопировать ингредиенты" style="background-image: url( '/template/images/icons/copy.svg' );" class="b-copy-ingredients-icon"></span><span class="b-copy-ingredients-message">Ингредиенты скопированы</span></h2>
           </div>
-          <div class="col-md-4">
-            <table>
-              <tr>
-                <td><a href="" itemprop="recipeIngredient">Нерка копченая (филе)</a></td>
-                <td>150 г</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Лаймы</td>
-                <td>1 шт.</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Соль морская</td>
-                <td>¼ шт.</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Горчица</td>
-                <td>1.5 ч.л.</td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-md-4">
-            <table>
-              <tr>
-                <td itemprop="recipeIngredient">Нерка копченая (филе)</td>
-                <td>150 г</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Лаймы</td>
-                <td>1 шт.</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Соль морская</td>
-                <td>¼ шт.</td>
-              </tr>
-              <tr>
-                <td itemprop="recipeIngredient">Горчица</td>
-                <td>1.5 ч.л.</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <hr class="i-size-L">
-        <div class="b-heading-linethrough">
-          <h2>В рецепте использовали</h2>
-        </div>
-        <div class="b-recipe__included">
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included.jpg" width="100" height="100" alt="Миксер Philips"></a><span>Миксер Philips<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Яндекс Маркет</a></span></div>
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included2.jpg" width="100" height="100" alt="Соль морская марки Sol Mare"></a><span><a href="http://www..." rel="nofollow" target="_blank">Соль морская марки Sol Mare</a></span></div>
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
-        </div>
-        <hr>
-        <div itemprop="steps" itemscope itemtype="http://schema.org/HowToSection">
-          <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToStep" class="b-recipe__step">
-            <div class="b-heading-linethrough">
-              <h2 itemprop="name">Готовим тесто — этап 1</h2>
+          <textarea class="b-recipe__ingredients-to-be-copied"></textarea>
+          <div class="row b-recipe__ingredients">
+            <div class="col-md-4">
+              <table>
+                <tr>
+                  <td itemprop="recipeIngredient">Нерка копченая (филе)</td>
+                  <td>150 г</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Лаймы</td>
+                  <td>1 шт.</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Соль морская</td>
+                  <td>¼ шт.</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Горчица</td>
+                  <td>1.5 ч.л.</td>
+                </tr>
+              </table>
             </div>
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="row b-recipe__ingredients">
-                  <div class="col-md-6">
-                    <table>
-                      <tr>
-                        <td>Нерка копченая (филе)</td>
-                        <td>150 г</td>
-                      </tr>
-                      <tr>
-                        <td>Лаймы</td>
-                        <td>1 шт.</td>
-                      </tr>
-                    </table>
-                  </div>
-                  <div class="col-md-6">
-                    <table>
-                      <tr>
-                        <td><a href="">Нерка копченая (филе)</a></td>
-                        <td>150 г</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-4">
+              <table>
+                <tr>
+                  <td><a href="" itemprop="recipeIngredient">Нерка копченая (филе)</a></td>
+                  <td>150 г</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Лаймы</td>
+                  <td>1 шт.</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Соль морская</td>
+                  <td>¼ шт.</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Горчица</td>
+                  <td>1.5 ч.л.</td>
+                </tr>
+              </table>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image"><img data-original="/upload/recipe/ill.jpg" alt=""></div>
-                <hr class="i-size-M">
-                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
-              </div>
+            <div class="col-md-4">
+              <table>
+                <tr>
+                  <td itemprop="recipeIngredient">Нерка копченая (филе)</td>
+                  <td>150 г</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Лаймы</td>
+                  <td>1 шт.</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Соль морская</td>
+                  <td>¼ шт.</td>
+                </tr>
+                <tr>
+                  <td itemprop="recipeIngredient">Горчица</td>
+                  <td>1.5 ч.л.</td>
+                </tr>
+              </table>
             </div>
+          </div>
+          <hr class="i-size-L">
+          <div class="b-heading-linethrough">
+            <h2>В рецепте использовали</h2>
+          </div>
+          <div class="b-recipe__included">
+            <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included.jpg" width="100" height="100" alt="Миксер Philips"></a><span>Миксер Philips<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Яндекс Маркет</a></span></div>
+            <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included2.jpg" width="100" height="100" alt="Соль морская марки Sol Mare"></a><span><a href="http://www..." rel="nofollow" target="_blank">Соль морская марки Sol Mare</a></span></div>
+            <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
+            <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
           </div>
           <hr>
-          <div class="b-recipe__step">
-            <div class="b-heading-linethrough">
-              <h2 itemprop="name">Готовим начинку — этап 2</h2>
-            </div>
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="row b-recipe__ingredients">
-                  <div class="col-md-6">
-                    <table>
-                      <tr>
-                        <td>Нерка копченая (филе)</td>
-                        <td>150 г</td>
-                      </tr>
-                      <tr>
-                        <td>Лаймы</td>
-                        <td>1 шт.</td>
-                      </tr>
-                    </table>
+          <div itemprop="steps" itemscope itemtype="http://schema.org/HowToSection">
+            <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToStep" class="b-recipe__step">
+              <div class="b-heading-linethrough">
+                <h2 itemprop="name">Готовим тесто — этап 1</h2>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="row b-recipe__ingredients">
+                    <div class="col-md-6">
+                      <table>
+                        <tr>
+                          <td>Нерка копченая (филе)</td>
+                          <td>150 г</td>
+                        </tr>
+                        <tr>
+                          <td>Лаймы</td>
+                          <td>1 шт.</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="col-md-6">
+                      <table>
+                        <tr>
+                          <td><a href="">Нерка копченая (филе)</a></td>
+                          <td>150 г</td>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <table>
-                      <tr>
-                        <td><a href="">Нерка копченая (филе)</a></td>
-                        <td>150 г</td>
-                      </tr>
-                    </table>
-                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image"><img data-original="/upload/recipe/ill.jpg" alt=""></div>
+                  <hr class="i-size-M">
+                  <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
                 </div>
               </div>
             </div>
             <hr>
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image"><img src="/upload/recipe/ill.jpg" alt=""></div>
-                <hr class="i-size-M">
-                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
+            <div class="b-recipe__step">
+              <div class="b-heading-linethrough">
+                <h2 itemprop="name">Готовим начинку — этап 2</h2>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="row b-recipe__ingredients">
+                    <div class="col-md-6">
+                      <table>
+                        <tr>
+                          <td>Нерка копченая (филе)</td>
+                          <td>150 г</td>
+                        </tr>
+                        <tr>
+                          <td>Лаймы</td>
+                          <td>1 шт.</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="col-md-6">
+                      <table>
+                        <tr>
+                          <td><a href="">Нерка копченая (филе)</a></td>
+                          <td>150 г</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image"><img src="/upload/recipe/ill.jpg" alt=""></div>
+                  <hr class="i-size-M">
+                  <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -271,14 +299,12 @@
       <hr class="i-size-L">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <nav class="b-h1-tags"><a href="">Семейный ужин</a><a href="">Пироги</a><a href="">Низкоуглеводные блюда</a><a href="">Простые рецепты</a><a href="">Холостяку</a><a href="">День святого Валентина</a><a href="">Вегетарианское</a></nav>
+          <nav class="b-h1-tags b-ph-block"><a href="">Семейный ужин</a><a href="">Пироги</a><a href="">Низкоуглеводные блюда</a><a href="">Простые рецепты</a><a href="">Холостяку</a><a href="">День святого Валентина</a><a href="">Вегетарианское</a></nav>
         </div>
       </div>
       <hr>
       <!-- start /components/recipe/-->
-      <link rel="stylesheet" href="/components/recipe.menu/style.css">
-      <script src="/components/recipe.menu/script.js"></script>
-      <div class="row">
+      <div class="row b-ph-block">
         <div class="col-md-8 col-md-offset-2">
           <div data-load-action="/components/recipe.menu/ajax/load.html?recipeId=456" data-load-method="GET" class="b-recipe-menu i-bottom"></div>
           <div class="text-mited text-xsmall">Рецепт «Картофельная запеканка с лисичками» добавлен: 31 марта 2015 года.</div>
@@ -286,7 +312,7 @@
       </div>
       <!-- end /components/recipe/-->
       <hr class="i-size-L">
-      <div class="b-recipe-line">
+      <div class="b-recipe-line b-ph-block">
         <div class="b-heading-linethrough">
           <h2><a href="/recipes/">Рецепты с пошаговыми фотографиями</a></h2>
         </div>
@@ -336,9 +362,7 @@
       </div>
       <hr class="i-size-L">
       <!-- start /components/lavka/-->
-      <link rel="stylesheet" href="/components/lavka/style.css">
-      <script src="/components/lavka/script.js"></script>
-      <div class="b-lavka">
+      <div class="b-lavka b-ph-block">
         <hr>
         <div class="b-heading-linethrough">
           <h2>Лавка</h2>
@@ -394,11 +418,6 @@
       <!-- end /components/lavka/-->
       <hr class="i-size-L">
       <!-- start /components/recipe.comments/-->
-      <link rel="stylesheet" href="/components/recipe.comments/style.css">
-      <script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
-      <script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
-      <script src="/js/file-upload/js/jquery.fileupload.js"></script>
-      <script src="/components/recipe.comments/script.js"></script>
       <script type="text/template" id="comment-template">
         <div class="b-rc__block">
          <div class="b-rc__item<%if(mine) {%> i-mine<%}%>" data-id="<%=id%>" itemscope itemtype="http://schema.org/Comment" >
@@ -591,7 +610,7 @@
       </script>
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <div id="b-comments">
+          <div id="b-comments" class="b-ph-block">
             <h2 class="b-rc__heading">Отзывы о рецепте</h2>
             <div id="comment"></div>
             <div id="b-comment-form">
@@ -728,318 +747,148 @@
       <div class="b-instagram-banner__close"><img src="/template/images/icons/close-button.svg" alt=""></div>
     </div>
     <!-- end /components/instagram-banner/-->
-    <div id="top_layer" style="display:none;">
-      <iframe src="/iframe.html" width="10" height="10" frameborder="0"></iframe>
-    </div>
-    <link rel="stylesheet" href="/template/template_styles.css">
-    <div id="header-content" class="b-placeholder-content">
-      <div class="container">
-        <div class="b-mobile-menu-icon visible-xs-block"></div><a href="/search/" class="b-mobile-search-icon visible-xs-block"></a><a href="/" class="b-header__logo"><img src="/template/images/foodclub_logo.png" alt="foodclub.ru"></a>
-        <div class="b-header__buttons hidden-xs">
-          <div class="b-header__profile dropdown">
-            <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="b-header__profile-button"><img src="/upload/user/small_photo.jpg"></button>
-            <menu role="menu" class="b-header__profile-list dropdown-menu">
-              <li><a href="" class="i-profile">Профиль</a></li>
-              <li><a href="" class="i-favorite">Избранное</a></li>
-              <li><a href="" class="i-recipes">Мои рецепты</a></li>
-              <li><a href="" class="i-articles">Статьи</a></li>
-              <li><a href="" class="i-subscribe">Подписка</a></li>
-              <li><a href="" class="i-kitchen">Кухня</a></li>
-              <li><a href="" class="i-signout">Выйти</a></li>
-            </menu>
-          </div>
-          <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
-          <div id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"></span></button>
-                  <div id="myModalLabel" class="modal-title">Добавить</div>
-                </div>
-                <div class="modal-body"><a href="" class="i-recipe">Рецепт</a><a href="" class="i-foodshot">Фудшот</a><a href="" class="i-article">Статью</a></div>
-                <div class="modal-footer">
-                  <button type="button" data-dismiss="modal">Вернуться</button>
-                </div>
+    <div id="header-content" class="b-deferred-content">
+      <div class="b-header-content">
+        <div class="b-header-panel__bg">
+          <div class="container">
+            <div class="b-header-panel__wrapper"><a href="/" class="b-header-panel__logo"><img src="/template/images/logo-foodclub.svg" alt="Foodclub"></a>
+              <div class="b-header-panel__menu hidden-xs hidden-sm"><a href="/recipes/">Рецепты</a><a href="/foodshot/">Фудшоты</a><a href="/journal/">Журнал</a></div>
+              <div class="b-header-panel__icons"><a href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" class="b-header-panel__icon i-youtube hidden-xs hidden-sm"></a><a href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" class="b-header-panel__icon i-instagram hidden-xs hidden-sm"></a><a href="/search/" style="background-image: url( '/template/images/icons/header/search.svg' );" class="b-header-panel__icon b-recipe-search__icon i-search"></a><a href="#" data-toggle="modal" data-target="#authModal" class="btn b-header-panel__login hidden-xs hidden-sm">Войти</a><a href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" class="b-header-panel__icon b-header-panel__login visible-xs-inline-block visible-sm-inline-block"></a><a href="#" style="background-image: url( '/template/images/icons/header/menu.svg' );" class="b-header-panel__icon i-menu visible-xs-inline-block visible-sm-inline-block"></a>
               </div>
             </div>
           </div>
-          <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
-            <div role="document" class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
-                  <h4 id="authModalLabel" class="modal-title">Войти</h4>
-                </div>      
-                <div class="modal-body">
-                  <div class="b-auth-modal__icons">
-                    <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
-                    <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
-                    <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
-                    <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
-                    <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
-                  </div>
-                  <form action="/php/form-auth.json" method="GET">
-                    <div class="b-auth-modal__form">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="input-field b-auth-modal__form-b">
-                            <input id="auth-form-b" type="text" name="b" value="">
-                            <label for="auth-form-b">B</label>
-                          </div>
-                          <div class="input-field">
-                            <input id="auth-form-login" type="text" name="L" value="">
-                            <label for="auth-form-login">Email</label>
-                          </div>
+          <div class="b-header-panel__mobile-menu">
+            <div class="b-header-panel__mobile-menu-body"><a href="/recipes/">Рецепты</a><a href="/foodshot/">Фудшоты</a><a href="/journal/">Журнал</a><a href="/search/">Найти</a>
+              <hr><a href="#" data-toggle="modal" data-target="#authModal" class="i-login">Войти</a>
+              <hr>
+              <h6>Следите за нами</h6>
+              <div class="b-header-panel__mobile-menu-icons"><a href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" class="i-youtube"></a><a href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" class="i-instagram"></a></div>
+            </div>
+          </div>
+          <div class="b-header-panel__mobile-user-menu">
+            <div class="b-header-panel__mobile-user-menu-body"><a href="">Профиль</a><a href="">Избранное</a><a href="">Мои рецепты</a><a href="">Подписка</a><a href="">Кухня</a><a href="" class="i-logout">Выйти</a></div>
+          </div>
+        </div>
+        <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
+          <div role="document" class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                <h4 id="authModalLabel" class="modal-title">Войти</h4>
+              </div>      
+              <div class="modal-body">
+                <div class="b-auth-modal__icons">
+                  <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
+                  <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
+                  <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
+                  <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
+                  <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
+                </div>
+                <form action="/php/form-auth.json" method="GET">
+                  <div class="b-auth-modal__form">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="input-field b-auth-modal__form-b">
+                          <input id="auth-form-b" type="text" name="b" value="">
+                          <label for="auth-form-b">B</label>
                         </div>
-                        <hr class="visible-xs-block">
-                        <div class="col-sm-6">
-                          <div class="input-field">
-                            <input id="auth-form-password" type="password" name="P" value="">
-                            <label for="auth-form-password">Пароль</label>
-                          </div>
+                        <div class="input-field">
+                          <input id="auth-form-login" type="text" name="L" value="">
+                          <label for="auth-form-login">Email</label>
                         </div>
                       </div>
-                      <hr class="i-size-M">
-                      <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
+                      <hr class="visible-xs-block">
+                      <div class="col-sm-6">
+                        <div class="input-field">
+                          <input id="auth-form-password" type="password" name="P" value="">
+                          <label for="auth-form-password">Пароль</label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="i-size-M">
+                    <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
+                  </div>
+                  <hr class="i-size-L">
+                  <div class="b-auth-modal__button">
+                    <button type="submit" class="btn">Войти</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" class="modal fade">
+          <div role="document" class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                <h4 id="emailModalLabel" class="modal-title">Завершите регистрацию</h4>
+              </div>      
+              <div class="modal-body">
+                <form action="/php/form-email.json" method="GET">
+                  <div class="b-email-modal__form">
+                    <div class="input-field b-auth-modal__form-b">
+                      <input id="email-form-b" type="text" name="b" value="">
+                      <label for="email-form-b">B</label>
+                    </div>
+                    <div class="input-field">
+                      <input id="email-form" type="email" name="L" value="">
+                      <label for="email-form">Email</label>
                     </div>
                     <hr class="i-size-L">
                     <div class="b-auth-modal__button">
-                      <button type="submit" class="btn">Войти</button>
+                      <button type="submit" class="btn">Сохранить</button>
                     </div>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
-        <div class="b-header__nav">
-          <div class="row visible-xs-block">
-            <div class="col-xs-6 col-xs-offset-6"><a href="/personal/" class="b-userpic"><img src="/upload/user/small_photo.jpg" width="30" height="30" alt=""><span class="b-userpic__name">Максим Савельев Максим Савельев</span></a></div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <!-- start /components/recipe-search/-->
-              <div id="recipeSearch" class="b-recipe-search">
-                <div class="b-recipe-search-field">
-                  <div class="container">
-                    <div class="b-recipe-search-field__icon"></div>
-                    <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
-                    <div class="b-recipe-search-field__input">
-                      <input id="title-search-input" type="search" name="recipe-search" value="">
-                    </div>
-                  </div>
-                </div>
+        <!-- start /components/recipe-search/-->
+        <div id="recipeSearch" class="b-recipe-search">
+          <div class="b-recipe-search-field">
+            <div class="container">
+              <div class="b-recipe-search-field__icon"></div>
+              <div title="Очистить поле" class="b-recipe-search-field__clear"></div>
+              <div class="b-recipe-search-field__input">
+                <input id="title-search-input" type="search" name="recipe-search" value="">
               </div>
-              <!-- end /components/recipe-search/-->
-              <noindex class="b-recipe-search__helper hidden-xs"><a id="search_helper_link" href="#" title="Помощник" class="b-recipe-search__helper__link"></a></noindex>
-              <div id="search_helper" style="display:none;">
-                <div class="body">
-                  <div class="menu">
-                    <noindex>
-                      <div class="item act"><a href="#" rel="h_helper">Помощник поиска</a><span>Помощник поиска</span></div>
-                      <div class="item"><a href="#" rel="h_ingredients">Ингредиенты</a><span>Ингредиенты</span></div>
-                      <!--<div class="item"><a href="#" rel="h_dishes">Типы блюд</a><span>Типы блюд</span></div>-->
-                      <div class="item right"><a href="#" rel="h_cuisines">Национальные кухни</a><span>Национальные кухни</span></div>
-                      <div class="clear"></div>
-                    </noindex>
-                  </div>
-                  <div id="h_helper" class="search_blocks">
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/diet.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">Низкокалорийные</a></li>
-                          <li><a href="/search/">Диетические</a></li>
-                          <li><a href="/search/">Постные</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/dinner.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">Позавтракать</a></li>
-                          <li><a href="/search/">Пообедать</a></li>
-                          <li><a href="/search/">Поужинать</a></li>
-                          <li><a href="/search/">Поздний ужин</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/quick.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">Холостяку</a></li>
-                          <li><a href="/search/">Быстренько</a></li>
-                          <li><a href="/search/">Хочется экзотики</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column right">
-                      <div class="item"><img src="/upload/search/guests.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">День рождения</a></li>
-                          <li><a href="/search/">Удивить гостей</a></li>
-                          <li><a href="/search/">Романтический ужин</a></li>
-                          <li><a href="/search/">Вечеринка с друзьями</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="random_dish"><a href="/recipe/">Случайное блюдо?</a></div>
-                  </div>
-                  <div id="h_ingredients" class="search_blocks">
-                    <noindex>
-                      <div id="i_have_list">
-                        <div class="bg">
-                          <h2>У меня есть:</h2>
-                          <h2 class="stage_helper">Ингредиенты:</h2>
-                          <div id="i_have_dash">—</div>
-                          <table></table>
-                        </div>
-                        <div id="i_have_button">Найти</div>
-                        <div id="stage_button">Найти</div>
-                      </div>
-                      <div id="i_have_ingredients">
-                        <div class="search_field">
-                          <div class="search_input b-form-field">
-                            <input id="helper_smartsearch" type="text" value="" data-placeholder="Введите название" class="text">
-                            <div class="search_list">
-                              <ul class="search_list"></ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div id="i_have_ingredients_group">
-                          <ul></ul>
-                        </div>
-                        <div id="i_have_ingredients_list">
-                          <h2></h2>
-                          <div class="column">
-                            <ul></ul>
-                          </div>
-                          <div class="column">
-                            <ul></ul>
-                          </div>
-                          <div class="clear"></div>
-                        </div>
-                        <div class="clear"></div>
-                      </div>
-                      <div class="clear"></div>
-                    </noindex>
-                  </div>
-                  <div id="h_dishes" class="search_blocks">
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/diet.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">Низкокалорийные</a></li>
-                          <li><a href="/search/">Диетические</a></li>
-                          <li><a href="/search/">Постные</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/dinner.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">Позавтракать</a></li>
-                          <li><a href="/search/">Пообедать</a></li>
-                          <li><a href="/search/">Поужинать</a></li>
-                          <li><a href="/search/">Поздний ужин</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/quick.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">Холостяку</a></li>
-                          <li><a href="/search/">Быстренько</a></li>
-                          <li><a href="/search/">Хочется экзотики</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column right">
-                      <div class="item"><img src="/upload/search/guests.jpg" width="200" height="150" alt="">
-                        <ul>
-                          <li><a href="/search/">День рождения</a></li>
-                          <li><a href="/search/">Удивить гостей</a></li>
-                          <li><a href="/search/">Романтический ужин</a></li>
-                          <li><a href="/search/">Вечеринка с друзьями</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div id="h_cuisines" class="search_blocks">
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/europe.jpg" width="200" height="150" alt="">
-                        <h3>Европа</h3>
-                        <ul>
-                          <li><a href="/search/">Австрийская кухня</a></li>
-                          <li><a href="/search/">Английская кухня</a></li>
-                          <li><a href="/search/">Болгарская кухня</a></li>
-                          <li><a href="/search/">Венгерская кухня</a></li>
-                          <li><a href="/search/">Немецкая кухня</a></li>
-                          <li><a href="/search/">Польская кухня</a></li>
-                          <li><a href="/search/">Португальская кухня</a></li>
-                          <li><a href="/search/">Чешская кухня</a></li>
-                          <li><a href="/search/">Шотландская кухня</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/mediterranean.jpg" width="200" height="150" alt="">
-                        <h3>Средиземноморье</h3>
-                        <ul>
-                          <li><a href="/search/">Греческая кухня</a></li>
-                          <li><a href="/search/">Испанская кухня</a></li>
-                          <li><a href="/search/">Итальянская кухня</a></li>
-                          <li><a href="/search/">Французская кухня</a></li>
-                        </ul>
-                      </div>
-                      <div class="item"><img src="/upload/search/asia.jpg" width="200" height="150" alt="">
-                        <h3>Азия</h3>
-                        <ul>
-                          <li><a href="/search/">Индонезийская кухня</a></li>
-                          <li><a href="/search/">Китайская кухня</a></li>
-                          <li><a href="/search/">Тайская кухня</a></li>
-                          <li><a href="/search/">Японская кухня</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column">
-                      <div class="item"><img src="/upload/search/ussr.jpg" width="200" height="150" alt="">
-                        <h3>Бывший СССР</h3>
-                        <ul>
-                          <li><a href="/search/">Армянская кухня</a></li>
-                          <li><a href="/search/">Белорусская кухня</a></li>
-                          <li><a href="/search/">Грузинская кухня</a></li>
-                          <li><a href="/search/">Русская кухня</a></li>
-                          <li><a href="/search/">Узбекская кухня</a></li>
-                          <li><a href="/search/">Украинская кухня</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="column right">
-                      <div class="item"><img src="/upload/search/america.jpg" width="200" height="150" alt="">
-                        <h3>Америка</h3>
-                        <ul>
-                          <li><a href="/search/">Американская кухня</a></li>
-                          <li><a href="/search/">Бразильская кухня</a></li>
-                          <li><a href="/search/">Кубинская кухня</a></li>
-                          <li><a href="/search/">Мексиканская кухня</a></li>
-                          <li><a href="/search/">Ямайская кухня</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="slide_up_button">
-                    <div></div>
-                  </div>
-                </div>
-              </div><a href="/recipes/">Рецепты</a><a href="/journal/" class="i-active">Журнал</a><a href="/foodshot/">Фудшот</a><a href="/lavka/">Лавка</a>
-              <button data-toggle="modal" data-target="#addModal" class="btn btn-default b-header__add-button">Добавить</button>
             </div>
-            <div class="col-xs-6 visible-xs-block"><a href="" class="i-profile">Профиль</a><a href="" class="i-favorite">Избранное</a><a href="" class="i-recipes">Мои рецепты</a><a href="" class="i-articles">Статьи</a><a href="" class="i-subscribe">Подписка</a><a href="" class="i-kitchen">Кухня</a><a href="" class="i-signout">Выйти</a></div>
           </div>
         </div>
+        <!-- end /components/recipe-search/-->
       </div>
     </div>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="/template/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/minimal.css">
+    <link rel="stylesheet" href="/template/template_styles.css">
+    <script src="/template/jquery-3.1.1.min.js"></script>
+    <script src="/template/bootstrap.min.js" async></script>
+    <script src="/template/materialize.min.js" async></script>
+    <script src="/template/jscript.js" async></script>
+    <link rel="stylesheet" href="/components/bitrix-panel/style.css">
+    <script src="/components/bitrix-panel/script.js"></script>
+    <link rel="stylesheet" href="/components/header/style.css">
+    <script src="/components/header/script.js"></script>
+    <link rel="stylesheet" href="/components/recipe/style.css">
+    <script src="/components/recipe/script.js"></script>
+    <link rel="stylesheet" href="/components/recipe.menu/style.css">
+    <script src="/components/recipe.menu/script.js"></script>
+    <link rel="stylesheet" href="/components/lavka/style.css">
+    <script src="/components/lavka/script.js"></script>
+    <script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="/js/file-upload/js/jquery.fileupload.js"></script>
+    <link rel="stylesheet" href="/components/recipe.comments/style.css">
+    <script src="/components/recipe.comments/script.js"></script>
+    <link rel="stylesheet" href="/components/instagram-banner/style.css">
+    <script src="/components/instagram-banner/script.js"></script>
+    <link rel="stylesheet" href="/components/recipe-search/style.css">
+    <script src="/components/recipe-search/script.js"></script>
   </body>
 </html>

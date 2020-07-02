@@ -1,10 +1,5 @@
 
 <!-- start /components/recipe.comments/-->
-<link rel="stylesheet" href="/components/recipe.comments/style.css"/>
-<script src="/js/file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="/js/file-upload/js/jquery.iframe-transport.js"></script>
-<script src="/js/file-upload/js/jquery.fileupload.js"></script>
-<script src="/components/recipe.comments/script.js"></script>
 <script type="text/template" id="comment-template">
   <div class="b-rc__block">
    <div class="b-rc__item<%if(mine) {%> i-mine<%}%>" data-id="<%=id%>" itemscope itemtype="http://schema.org/Comment" >
@@ -197,7 +192,7 @@
 </script>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div id="b-comments">
+    <div id="b-comments" class="b-ph-block">
       <h2 class="b-rc__heading">Отзывы о рецепте</h2>
       <div id="comment"></div>
       <div id="b-comment-form">
