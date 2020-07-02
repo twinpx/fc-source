@@ -116,6 +116,14 @@ module.exports = function( grunt ) {
             ext: '.css'
           },
           {
+            expand: true,
+            cwd: '<%= source%>styl/placeholders/',
+            src: [ '*.styl' ],
+            dest: '<%= temp %>template/placeholders/',
+            extDot: 'first',
+            ext: '.css'
+          },
+          {
             '<%= temp %>template/minimal.css':
               [
                 '<%= source%>styl/minimal.styl',
