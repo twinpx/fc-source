@@ -119,8 +119,12 @@ module.exports = function( grunt ) {
       issue: {
         files: [
           {
-            '<%= dest%>template/placeholders/search.css':
-            '<%= source%>styl/placeholders/search.styl'
+            expand: true,
+            cwd: '<%= source %>styl/placeholders/',
+            src: [ '*.styl' ],
+            dest: '<%= dest %>template/placeholders/',
+            extDot: 'first',
+            ext: '.css'
           },
           {
             expand: true,

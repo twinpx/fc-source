@@ -50,22 +50,8 @@
           a( href="/journal/" ) Журнал
           a( href="/search/" ) Найти
           
-          if authorized
-            hr
-            
-            .b-header-panel__mobile-menu-user
-              a( href="" ) Профиль
-              a( href="" ) Избранное
-              a( href="" ) Мои рецепты
-              a( href="" ) Подписка
-              a( href="" ) Кухня
-              a( href="" ).i-logout Выйти
-          
-          else
-            hr
-            
-            a.i-login( href="#" data-toggle="modal" data-target="#authModal" ) Войти
-          
+          hr
+          a.i-login( href="#" data-toggle="modal" data-target="#authModal" ) Войти
           hr
           
           h6 Следите за нами
@@ -73,6 +59,15 @@
           .b-header-panel__mobile-menu-icons
             a.i-youtube( href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" )
             a.i-instagram( href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" )
+            
+      .b-header-panel__mobile-user-menu
+        .b-header-panel__mobile-user-menu-body
+          a( href="" ) Профиль
+          a( href="" ) Избранное
+          a( href="" ) Мои рецепты
+          a( href="" ) Подписка
+          a( href="" ) Кухня
+          a( href="" ).i-logout Выйти
        
     if authorized
       include ../../modules/modals/add

@@ -92,7 +92,6 @@
       margin-right 15px
       margin-left 0
       cursor default
-      pointer-events none
 
   &__profile-button
     padding 0
@@ -156,7 +155,7 @@
       background-color #484848
       color #fff
       padding 25px 0
-      z-index 10
+      z-index 100
       
       a
         display block
@@ -167,10 +166,10 @@
         padding 3px 15px
         
         &.i-login
-          color green
+          color #6fc086
           
         &.i-logout
-          color red
+          color #cb999a
         
       hr
         margin 0
@@ -179,15 +178,6 @@
       h6
         text-align center
         font-size 9pt
-        
-    &-user
-    
-      a
-        
-        &,
-        &:hover,
-        &:focus
-          color gray
           
     &-icons
       text-align center
@@ -200,3 +190,36 @@
         background-position center
         background-size contain
         margin 0 7px
+        
+  &__mobile-user-menu
+    position relative
+    
+    &-body
+      display none
+      position absolute
+      top 1px
+      left 0
+      width 100%
+      background-color #484848
+      color #fff
+      padding 25px 0
+      z-index 100
+      
+      a
+        display block
+        font-size 15pt
+        font-weight bold
+        color #fff
+        text-align center
+        padding 3px 15px
+      
+        &,
+        &:hover,
+        &:focus
+          color #cccccc
+        
+        &.i-login
+          color #6fc086
+          
+        &.i-logout
+          color #cb999a

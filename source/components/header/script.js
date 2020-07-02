@@ -23,31 +23,40 @@
         e.preventDefault();
         $( '.b-header-panel__user-dropdown-body' ).slideToggle( 300 );
       });
+    } else {
+      $( '.b-header-panel__user' ).click( function(e) {
+        e.preventDefault();
+        $( '.b-header-panel__mobile-user-menu-body' ).slideToggle( 300 );
+        $( '.b-header-panel__mobile-menu-body' ).slideUp( 300 );
+      });
     }
     
     //mobile dropdown
     $( '.b-header-panel__icon.i-menu' ).click( function(e) {
       e.preventDefault();
       $( '.b-header-panel__mobile-menu-body' ).slideToggle( 300 );
+      $( '.b-header-panel__mobile-user-menu-body' ).slideUp( 300 );
     });
     
     //swipe the menu
     var mobileMenuCoords = {
           start: 0,
-          current: 0,
           end: 0
         };
         
-    $( '.b-header-panel__mobile-menu-body' )
+    $( '.b-header-panel__mobile-menu-body, .b-header-panel__mobile-user-menu-body' )
       .on( "touchstart", function(e) {
           e.stopPropagation();
+          mobileMenuCoords = { start: 0, end: 0 };
           mobileMenuCoords.start = e.originalEvent.changedTouches[0].pageY;
       })
       .on( "touchend", function(e) {
+        e.stopPropagation();
         mobileMenuCoords.end = e.originalEvent.changedTouches[0].pageY;
         if ( ( mobileMenuCoords.start - mobileMenuCoords.end ) > 35 ) {
           $( this ).slideUp();
         }
+        mobileMenuCoords = { start: 0, end: 0 };
       });
 
   });
