@@ -1,12 +1,11 @@
 ﻿// start /components/recipe.comments/
 
-link( rel="stylesheet", href="/components/recipe.comments/style.css" )
-
-script( src="/js/file-upload/js/vendor/jquery.ui.widget.js" )
-script( src="/js/file-upload/js/jquery.iframe-transport.js" )
-script( src="/js/file-upload/js/jquery.fileupload.js" )
-
-script( src="/components/recipe.comments/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'recipe.comments'
+  else
+    - var componentsArray = [ 'recipe.comments' ]
 
 script( type="text/template" id="comment-template" )
   |<div class="b-rc__block">
@@ -202,7 +201,7 @@ script( type="text/template" id="file-input-template" )
 
   .col-md-8.col-md-offset-2
   
-    #b-comments
+    #b-comments.b-ph-block
       
       h2.b-rc__heading Отзывы о рецепте
       

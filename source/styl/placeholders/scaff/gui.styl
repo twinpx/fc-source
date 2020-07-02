@@ -19,13 +19,14 @@ body
   @media (min-width 1200px)
     width 1170px
   
-h1  
+h1
   height 32px
   //anti bootstrap
   font-size 0 !important
   color #fff !important
   position relative
   margin 0 0 29px 0 !important
+  transition( color .5s ease )
   
   &:after
     display block
@@ -38,6 +39,10 @@ h1
     left 30%
     transition( opacity .5s ease )
     z-index 1
+    
+    @media( max-width 767px )
+      width 90%
+      left 5%
   
 hr
   border-color transparent !important

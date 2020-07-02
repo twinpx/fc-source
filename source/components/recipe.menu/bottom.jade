@@ -1,9 +1,13 @@
 // start /components/recipe/
 
-link( rel="stylesheet", href="/components/recipe.menu/style.css" )
-script( src="/components/recipe.menu/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'recipe.menu'
+  else
+    - var componentsArray = [ 'recipe.menu' ]
 
-.row
+.row.b-ph-block
   .col-md-8.col-md-offset-2
   
     .b-recipe-menu.i-bottom( data-load-action="/components/recipe.menu/ajax/load.html?recipeId=456" data-load-method="GET" )

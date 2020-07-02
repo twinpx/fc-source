@@ -13,9 +13,6 @@ html
     //- placeholder styles
     link( href="/template/placeholders/#{page}.css" rel="stylesheet" )
     
-    //- minimal styles
-    link( href="/template/minimal/#{page}.css" rel="stylesheet" )
-    
   body
   
     include ../components/bitrix-panel/template.jade
@@ -43,5 +40,11 @@ html
     
       if componentsArray
         - each componentName in componentsArray
+        
+          if componentName == 'recipe.comments'
+            script( src="/js/file-upload/js/vendor/jquery.ui.widget.js" )
+            script( src="/js/file-upload/js/jquery.iframe-transport.js" )
+            script( src="/js/file-upload/js/jquery.fileupload.js" )
+          
           link( rel="stylesheet", href="/components/#{componentName}/style.css" )
           script( src="/components/#{componentName}/script.js" )

@@ -1,5 +1,21 @@
 @import '../../styl/component-include.styl'
-@import 'recipe-bootstrap.styl'
+//@import 'recipe-bootstrap.styl'
+
+.b-recipe.b-ph-block
+  
+  &.i-ph-animated
+    
+    .b-ph-content
+      position static
+      width auto
+      opacity 1
+      
+    .b-ph
+      position absolute
+      top 0
+      left 0
+      opacity 0
+      z-index -1
 
 html.i-noscroll
   overflow hidden
@@ -231,3 +247,6 @@ html.i-noscroll
       
   &.b-print-button
     display none
+          
+.i-ph-animated .text-mited  
+  display block

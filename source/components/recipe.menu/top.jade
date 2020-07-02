@@ -1,7 +1,11 @@
 // start /components/recipe/
 
-link( rel="stylesheet", href="/components/recipe.menu/style.css" )
-script( src="/components/recipe.menu/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'recipe.menu'
+  else
+    - var componentsArray = [ 'recipe.menu' ]
 
 .b-recipe-menu
   a.b-recipe-menu__i.b-favorite-button( href="" )
