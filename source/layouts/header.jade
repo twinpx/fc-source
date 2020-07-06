@@ -32,7 +32,10 @@ html
     //- include page's styles and scripts
     include includes/fonts.jade
     include includes/styles.jade
-    include includes/styles-secondary.jade
+    
+    if page != 'search'
+      include includes/styles-secondary.jade
+    
     include includes/scripts.jade
     
     //- include styles and scripts for all page's components
