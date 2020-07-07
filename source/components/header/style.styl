@@ -1,8 +1,11 @@
 @import '../../styl/component-include.styl'
+
+//modals
 @import '../../modules/modals/style.styl'
 @import '../../styl/input-field.styl'
-
-.btn, .btn-default
+  
+.btn,
+.btn-default
 
   &,
   a&
@@ -10,12 +13,9 @@
     color #fff
     padding 0 20px
     border none
-  
-.btn,
-.btn-default
-
-  &,
-  a&
+    background-color: #6cc184;
+    font-size: 8pt;
+    line-height: 30px;
 
     &:hover,
     &:focus,
@@ -252,3 +252,17 @@ hr.i-size-L
           
         &.i-logout
           color #cb999a
+          
+  .modal-open &
+    padding-right 17px
+    margin-right -17px
+
+  &.i-fixed
+    width 100%
+    position fixed
+    top 0
+    left 0
+    z-index 1050
+    
+    .modal-open &
+      padding-right 17px

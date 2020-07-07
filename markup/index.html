@@ -11,6 +11,7 @@
   </head>
   <body>
     <!-- start /components/bitrix-panel/-->
+    <div id="bx-panel-back" style="display: block; overflow: hidden; height: 75.8px;"></div>
     <div id="bx-panel" class="bx-panel-fixed bx-panel-folded">
       <div id="bx-panel-top"></div>
       <div id="bx-panel-site-toolbar"></div>
@@ -200,7 +201,83 @@
           <div class="container">
             <div class="b-header-panel__wrapper"><a href="/" class="b-header-panel__logo"><img src="/template/images/logo-foodclub.svg" alt="Foodclub"></a>
               <div class="b-header-panel__menu hidden-xs hidden-sm"><a href="/recipes/">Рецепты</a><a href="/foodshot/">Фудшоты</a><a href="/journal/">Журнал</a></div>
-              <div class="b-header-panel__icons"><a href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" class="b-header-panel__icon i-youtube hidden-xs hidden-sm"></a><a href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" class="b-header-panel__icon i-instagram hidden-xs hidden-sm"></a><a href="/search/" style="background-image: url( '/template/images/icons/header/search.svg' );" class="b-header-panel__icon b-recipe-search__icon i-search"></a><a href="#" data-toggle="modal" data-target="#authModal" class="btn b-header-panel__login hidden-xs hidden-sm">Войти</a><a href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" class="b-header-panel__icon b-header-panel__login visible-xs-inline-block visible-sm-inline-block"></a><a href="#" style="background-image: url( '/template/images/icons/header/menu.svg' );" class="b-header-panel__icon i-menu visible-xs-inline-block visible-sm-inline-block"></a>
+              <div class="b-header-panel__icons"><a href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" class="b-header-panel__icon i-youtube hidden-xs hidden-sm"></a><a href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" class="b-header-panel__icon i-instagram hidden-xs hidden-sm"></a><a href="/search/" style="background-image: url( '/template/images/icons/header/search.svg' );" class="b-header-panel__icon b-recipe-search__icon i-search"></a><a href="#" data-toggle="modal" data-target="#authModal" class="btn b-header-panel__login hidden-xs hidden-sm">Войти</a><a href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" class="b-header-panel__icon b-header-panel__login visible-xs-inline-block visible-sm-inline-block"></a>
+                <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
+                  <div role="document" class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                        <h4 id="authModalLabel" class="modal-title">Войти</h4>
+                      </div>      
+                      <div class="modal-body">
+                        <div class="b-auth-modal__icons">
+                          <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
+                          <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
+                          <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
+                          <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
+                          <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
+                        </div>
+                        <form action="/php/form-auth.json" method="GET">
+                          <div class="b-auth-modal__form">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="input-field b-auth-modal__form-b">
+                                  <input id="auth-form-b" type="text" name="b" value="">
+                                  <label for="auth-form-b">B</label>
+                                </div>
+                                <div class="input-field">
+                                  <input id="auth-form-login" type="text" name="L" value="">
+                                  <label for="auth-form-login">Email</label>
+                                </div>
+                              </div>
+                              <hr class="visible-xs-block">
+                              <div class="col-sm-6">
+                                <div class="input-field">
+                                  <input id="auth-form-password" type="password" name="P" value="">
+                                  <label for="auth-form-password">Пароль</label>
+                                </div>
+                              </div>
+                            </div>
+                            <hr class="i-size-M">
+                            <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
+                          </div>
+                          <hr class="i-size-L">
+                          <div class="b-auth-modal__button">
+                            <button type="submit" class="btn">Войти</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" class="modal fade">
+                  <div role="document" class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
+                        <h4 id="emailModalLabel" class="modal-title">Завершите регистрацию</h4>
+                      </div>      
+                      <div class="modal-body">
+                        <form action="/php/form-email.json" method="GET">
+                          <div class="b-email-modal__form">
+                            <div class="input-field b-auth-modal__form-b">
+                              <input id="email-form-b" type="text" name="b" value="">
+                              <label for="email-form-b">B</label>
+                            </div>
+                            <div class="input-field">
+                              <input id="email-form" type="email" name="L" value="">
+                              <label for="email-form">Email</label>
+                            </div>
+                            <hr class="i-size-L">
+                            <div class="b-auth-modal__button">
+                              <button type="submit" class="btn">Сохранить</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div><a href="#" style="background-image: url( '/template/images/icons/header/menu.svg' );" class="b-header-panel__icon i-menu visible-xs-inline-block visible-sm-inline-block"></a>
               </div>
             </div>
           </div>
@@ -214,82 +291,6 @@
           </div>
           <div class="b-header-panel__mobile-user-menu">
             <div class="b-header-panel__mobile-user-menu-body"><a href="">Профиль</a><a href="">Избранное</a><a href="">Мои рецепты</a><a href="">Подписка</a><a href="">Кухня</a><a href="" class="i-logout">Выйти</a></div>
-          </div>
-        </div>
-        <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
-          <div role="document" class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
-                <h4 id="authModalLabel" class="modal-title">Войти</h4>
-              </div>      
-              <div class="modal-body">
-                <div class="b-auth-modal__icons">
-                  <div class="b-item i-yandex"><span style="background-image: url( '/template/images/icons/auth/yandex.svg' );"></span>Яндекс</div>
-                  <div class="b-item i-google"><span style="background-image: url( '/template/images/icons/auth/google.svg' );"></span>Google</div>
-                  <div class="b-item i-vk"><span style="background-image: url( '/template/images/icons/auth/vk.svg' );"></span>ВКонтакте</div>
-                  <div class="b-item i-facebook"><span style="background-image: url( '/template/images/icons/auth/facebook.svg' );"></span>Facebook</div>
-                  <div class="b-item i-mail"><span style="background-image: url( '/template/images/icons/auth/mailru.svg' );"></span>Mail ru</div>
-                </div>
-                <form action="/php/form-auth.json" method="GET">
-                  <div class="b-auth-modal__form">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="input-field b-auth-modal__form-b">
-                          <input id="auth-form-b" type="text" name="b" value="">
-                          <label for="auth-form-b">B</label>
-                        </div>
-                        <div class="input-field">
-                          <input id="auth-form-login" type="text" name="L" value="">
-                          <label for="auth-form-login">Email</label>
-                        </div>
-                      </div>
-                      <hr class="visible-xs-block">
-                      <div class="col-sm-6">
-                        <div class="input-field">
-                          <input id="auth-form-password" type="password" name="P" value="">
-                          <label for="auth-form-password">Пароль</label>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="i-size-M">
-                    <div class="text-right"><a href="/forms/forgot/">Забыли пароль?</a></div>
-                  </div>
-                  <hr class="i-size-L">
-                  <div class="b-auth-modal__button">
-                    <button type="submit" class="btn">Войти</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" class="modal fade">
-          <div role="document" class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"></button>
-                <h4 id="emailModalLabel" class="modal-title">Завершите регистрацию</h4>
-              </div>      
-              <div class="modal-body">
-                <form action="/php/form-email.json" method="GET">
-                  <div class="b-email-modal__form">
-                    <div class="input-field b-auth-modal__form-b">
-                      <input id="email-form-b" type="text" name="b" value="">
-                      <label for="email-form-b">B</label>
-                    </div>
-                    <div class="input-field">
-                      <input id="email-form" type="email" name="L" value="">
-                      <label for="email-form">Email</label>
-                    </div>
-                    <hr class="i-size-L">
-                    <div class="b-auth-modal__button">
-                      <button type="submit" class="btn">Сохранить</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
           </div>
         </div>
         <!-- start /components/recipe-search/-->
