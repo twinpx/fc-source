@@ -1,23 +1,16 @@
 @import '../../styl/component-include.styl'
-
-/*.i-mobile-search
-
-  div.title-search-result:not(.b-recipe-search__ul1 )
-    box-shadow none !important
-    position static !important
-    max-height none !important
     
-    .title-search-result__wrapper
-      height auto !important*/
-    
-#titleSearchHeaderResult.title-search-result  
+#titleSearchHeaderResult.title-search-result
   
   div&:not(.b-recipe-search__ul1 )
-    box-shadow(0 20px 20px rgba( 0,0,0,.05 ))
     background-color #fff
     left 0 !important
     width 100% !important
     max-height 315px
+    
+    @media( max-width: 991px )
+      max-height none
+      position static !important
     
 #titleSearchHeaderResult .title-search-result
     
@@ -25,9 +18,11 @@
     position static !important
     
   &__wrapper
-    border-top 1px solid #ededed
     padding-left 15px
     height 315px
+    
+    @media( max-width: 991px )
+      height auto
     
   &__block
     margin-bottom 22px
@@ -88,6 +83,9 @@
     box-shadow(0 20px 20px rgba( 0,0,0,.05 ))
     z-index 10
     display none
+    
+    @media( max-width: 991px )
+      position static
     
     .container
       position relative

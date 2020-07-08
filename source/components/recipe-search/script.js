@@ -34,7 +34,9 @@
       $( '.b-recipe-search-field__clear' ).hide();
     });
     
-    $( 'body:not( .i-mobile-search ) #titleSearchHeaderResult .title-search-result__wrapper' ).niceScroll();
+    if ( window.matchMedia( "(min-width: 992px)" ).matches ) {
+      $( 'body #titleSearchHeaderResult .title-search-result__wrapper' ).niceScroll();
+    }
     
     setTimeout( function() {
       $( '#title-search-input' ).focus();//doesn't work because the page needs user's activity - click or focus
@@ -59,7 +61,7 @@
     }
 
     function titleSearchCSS() {
-      var css = 'div#titleSearchHeaderResult.title-search-result:not(.b-recipe-search__ul1 ) { top: ' + (parseInt( $( '#bx-panel' ).height(), 10 ) + 120) + 'px !important; }',
+      var css = 'div#titleSearchHeaderResult.title-search-result:not(.b-recipe-search__ul1 ) { top: ' + (parseInt( $( '#bx-panel' ).height(), 10 ) + 120) + 'px !important; } ',
           head = document.head || document.getElementsByTagName('head')[0];
       
       $( window.titleSearchStyleTag ).empty();
