@@ -32,6 +32,7 @@
       e.preventDefault();
       $( '.b-recipe-search-field__input input' ).val( '' ).focus();
       $( '.b-recipe-search-field__clear' ).hide();
+      $( '#titleSearchHeaderResult' ).empty();
     });
     
     if ( window.matchMedia( "(min-width: 992px)" ).matches ) {
@@ -41,6 +42,15 @@
     setTimeout( function() {
       $( '#title-search-input' ).focus();//doesn't work because the page needs user's activity - click or focus
     }, 1000 );
+    
+    $( document ).bind( 'click', function(e) {
+      
+      if ( !$( e.target ).closest( '.b-recipe-search-field' ).length && !$( e.target ).hasClass( 'b-recipe-search__icon' )) {
+        $( '.b-recipe-search-field' ).slideUp( 500 );
+        $( '#titleSearchHeaderResult' ).empty();
+      }
+      
+    });
     
     function bxCss() {
       if ( !$( '#bx-panel' ).length ) {

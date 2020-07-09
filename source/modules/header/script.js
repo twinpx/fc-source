@@ -10,11 +10,15 @@
       $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );
     });
 
-    $( document ).bind( 'click', function() {
-      if ( window.matchMedia( "(max-width: 767px)" ).matches ) {
-        $( '.b-header__nav' ).slideUp( 500 );
-        $( '.b-content-nav .container' ).slideUp( 500 );
+    $( document ).bind( 'click', function(e) {
+      
+      if ( !$( e.target ).closest( '.b-header-panel__user-dropdown-body' ).length && !$( e.target ).hasClass( 'b-header-panel__user' )) {
+        $( '.b-header-panel__user-dropdown-body' ).slideUp( 500 );
       }
+      if ( !$( e.target ).closest( '.b-header-panel__mobile-menu-body' ).length && !$( e.target ).is( '.b-header-panel__icon.i-menu' )) {
+        $( '.b-header-panel__mobile-menu-body' ).slideUp( 500 );
+      }
+        
     });
     
     //user dropdown

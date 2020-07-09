@@ -18,14 +18,12 @@
       <div class="adm-warning-block"></div>
     </div>
     <!-- end /components/bitrix-panel/-->
-    <!-- start /components/header/-->
     <header class="b-header-panel b-ph-block">
       <div class="b-ph"></div>
       <div class="b-ph-content">
         <div id="header-content__deferred"></div>
       </div>
     </header>
-    <!-- end /components/header/-->
     <div class="container">
       <hr>
       <!-- start /components/recipe/-->
@@ -753,8 +751,11 @@
         <div class="b-header-panel__bg">
           <div class="container">
             <div class="b-header-panel__wrapper"><a href="/" class="b-header-panel__logo"><img src="/template/images/logo-foodclub.svg" alt="Foodclub"></a>
+              <!-- start /components/header.menu.top/-->
               <div class="b-header-panel__menu hidden-xs hidden-sm"><a href="/recipes/">Рецепты</a><a href="/foodshot/">Фудшоты</a><a href="/journal/">Журнал</a></div>
-              <div class="b-header-panel__icons"><a href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" class="b-header-panel__icon i-youtube hidden-xs hidden-sm"></a><a href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" class="b-header-panel__icon i-instagram hidden-xs hidden-sm"></a><a href="/search/" style="background-image: url( '/template/images/icons/header/search.svg' );" class="b-header-panel__icon b-recipe-search__icon i-search"></a><a href="#" data-toggle="modal" data-target="#authModal" class="btn b-header-panel__login hidden-xs hidden-sm">Войти</a><a href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" class="b-header-panel__icon b-header-panel__login visible-xs-inline-block visible-sm-inline-block"></a>
+              <!-- end /components/header.menu.top/-->
+              <div class="b-header-panel__icons"><a href="/youtube/" style="background-image: url( '/template/images/icons/header/youtube.svg' );" class="b-header-panel__icon i-youtube hidden-xs hidden-sm"></a><a href="/instagram/" style="background-image: url( '/template/images/icons/header/instagram.svg' );" class="b-header-panel__icon i-instagram hidden-xs hidden-sm"></a><a href="/search/" style="background-image: url( '/template/images/icons/header/search.svg' );" class="b-header-panel__icon b-recipe-search__icon i-search"></a>
+                <!-- start /components/header.main.user.link/--><a href="#" data-toggle="modal" data-target="#authModal" class="btn b-header-panel__login hidden-xs hidden-sm">Войти</a><a href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" class="b-header-panel__icon b-header-panel__login visible-xs-inline-block visible-sm-inline-block"></a>
                 <div id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" class="modal fade">
                   <div role="document" class="modal-dialog">
                     <div class="modal-content">
@@ -830,7 +831,8 @@
                       </div>
                     </div>
                   </div>
-                </div><a href="#" style="background-image: url( '/template/images/icons/header/menu.svg' );" class="b-header-panel__icon i-menu visible-xs-inline-block visible-sm-inline-block"></a>
+                </div>
+                <!-- end /components/header.main.user.link/--><a href="#" style="background-image: url( '/template/images/icons/header/menu.svg' );" class="b-header-panel__icon i-menu visible-xs-inline-block visible-sm-inline-block"></a>
               </div>
             </div>
           </div>
@@ -874,8 +876,6 @@
     <script src="/template/jscript.js" async></script>
     <link rel="stylesheet" href="/components/bitrix-panel/style.css">
     <script src="/components/bitrix-panel/script.js"></script>
-    <link rel="stylesheet" href="/components/header/style.css">
-    <script src="/components/header/script.js"></script>
     <link rel="stylesheet" href="/components/recipe/style.css">
     <script src="/components/recipe/script.js"></script>
     <link rel="stylesheet" href="/components/recipe.menu/style.css">
@@ -889,6 +889,10 @@
     <script src="/components/recipe.comments/script.js"></script>
     <link rel="stylesheet" href="/components/instagram-banner/style.css">
     <script src="/components/instagram-banner/script.js"></script>
+    <link rel="stylesheet" href="/components/header.menu.top/style.css">
+    <script src="/components/header.menu.top/script.js"></script>
+    <link rel="stylesheet" href="/components/header.main.user.link/style.css">
+    <script src="/components/header.main.user.link/script.js"></script>
     <link rel="stylesheet" href="/components/recipe-search/style.css">
     <script src="/components/recipe-search/script.js"></script>
   </body>

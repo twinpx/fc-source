@@ -1,0 +1,15 @@
+﻿// start /components/header.menu.top/
+
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'header.menu.top'
+  else
+    - var componentsArray = [ 'header.menu.top' ]
+
+.b-header-panel__menu.hidden-xs.hidden-sm
+  a( href="/recipes/" ) Рецепты
+  a( href="/foodshot/" ) Фудшоты
+  a( href="/journal/" ) Журнал
+
+// end /components/header.menu.top/

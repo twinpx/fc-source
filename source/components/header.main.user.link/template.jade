@@ -1,0 +1,17 @@
+﻿// start /components/header.main.user.link/
+
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'header.main.user.link'
+  else
+    - var componentsArray = [ 'header.main.user.link' ]
+    
+a.btn.b-header-panel__login.hidden-xs.hidden-sm( href="#" data-toggle="modal" data-target="#authModal" ) Войти
+
+a.b-header-panel__icon.b-header-panel__login.visible-xs-inline-block.visible-sm-inline-block( href="#" data-toggle="modal" data-target="#authModal" style="background-image: url( '/template/images/icons/header/login.svg' );" )
+
+include ../../modules/modals/auth
+include ../../modules/modals/email
+
+// end /components/header.main.user.link/
