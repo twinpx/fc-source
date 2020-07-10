@@ -7,16 +7,16 @@
     <meta name="description" content="">
     <meta name="apple-itunes-app" content="app-id=445878711">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic&amp;subset=latin,cyrillic&amp;display=swap" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic&amp;display=swap" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic&amp;display=swap" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=latin,cyrillic&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/template/bootstrap.min.css">
     <link rel="stylesheet" href="/template/minimal.css">
-    <script src="/template/jquery-3.1.1.min.js"></script>
-    <script src="/template/bootstrap.min.js" async></script>
-    <script src="/template/materialize.min.js" async></script>
-    <script src="/template/jscript.js" async></script>
+    <script src="/template/jquery-3.1.1.min.js" defer></script>
+    <script src="/template/bootstrap.min.js" defer></script>
+    <script src="/template/materialize.min.js" defer></script>
+    <script src="/template/jscript.js" defer></script>
   </head>
   <body>
     <div id="bx-panel" style="height: 50px; background: yellow; z-index: 995; top: 0; left: 0; width: 100%;" class="b-bitrix-panel"><b id="bx-panel-hider" onclick="this.innerHTML='Развернуть'; this.parentNode.style.height='100px'" style="cursor: pointer;">Свернуть</b><br><i onclick="this.parentNode.style.position='fixed';">Fixed</i></div>
@@ -36,25 +36,25 @@
         <div class="b-recipe__author">
           <div class="b-author-avatar"><a href="/personal/" style="background-image: url(/upload/user/mariha_kitchen.jpg);" class="b-author-avatar__link"></a><a href="/personal/" class="b-author-avatar__nickname"><span title="Mariha Kitchen">Mariha Kitchen</span></a></div>
         </div>
-        <div class="b-recipe__company"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/company.gif" width="100" height="50" alt="Seafoodshop"><i>Спонсор рецепта</i></a></div>
+        <div class="b-recipe__company"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/company.gif" width="100" height="50" alt="Seafoodshop" loading="lazy"><i>Спонсор рецепта</i></a></div>
         <div class="b-recipe__info">
           <div class="b-recipe__info-item">
-            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
+            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt="" loading="lazy"></div>
             <div itemprop="recipeYield" class="b-recipe__info-text">2 порции</div>
           </div>
           <div class="b-recipe__info-item">
-            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
+            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt="" loading="lazy"></div>
             <div itemprop="cookTime" content="PT1H20M" class="b-recipe__info-text">1 час 20 мин</div>
           </div>
           <div class="b-recipe__info-item">
-            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt=""></div>
+            <div class="b-recipe__info-icon"><img src="/template/images/icons/servings.svg" width="16" alt="" loading="lazy"></div>
             <div itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" class="b-recipe__info-text"><span itemprop="calories">192 кКал на порцию</span></div>
           </div>
         </div>
         <hr class="i-size-M">
         <div class="b-recipe__intro">
           <div class="b-recipe__intro-ill">
-            <div class="b-recipe__ill"><img src="/upload/recipe/ill.jpg" alt="" itemprop="image"><span class="b-recipe__yt-button"><span style="background-image: url( '/template/images/icons/yt-icon.svg' );" class="b-recipe__yt-icon"></span><span class="i-desktop">Смотреть видео-рецепт</span><span class="i-mobile">Смотреть видео</span></span>
+            <div class="b-recipe__ill"><img src="/upload/recipe/ill.jpg" alt="" itemprop="image" loading="lazy"><span class="b-recipe__yt-button"><span style="background-image: url( '/template/images/icons/yt-icon.svg' );" class="b-recipe__yt-icon"></span><span class="i-desktop">Смотреть видео-рецепт</span><span class="i-mobile">Смотреть видео</span></span>
               <div class="b-recipe__yt-overlay">
                 <div class="b-recipe__yt-wrapper">
                   <div class="b-recipe__yt-close"><span>Закрыть</span><span style="background-image: url( '/template/images/icons/close-white.svg' );" class="b-recipe__yt-close-icon"></span></div>
@@ -70,17 +70,17 @@
             <div class="row">
               <div class="col-sm-6">
                 <div data-ajax-url="/ajax-response/recipe-icons.html?id=45" data-ajax-method="GET" class="b-recipe-icons">
-                  <div class="b-recipe-icon b-print-button"><img src="/template/images/icons/print.svg" width="16" alt=""></div>
-                  <div class="b-recipe-icon b-like-button"><img src="/template/images/icons/like.svg" width="16" alt="">
+                  <div class="b-recipe-icon b-print-button"><img src="/template/images/icons/print.svg" width="16" alt="" loading="lazy"></div>
+                  <div class="b-recipe-icon b-like-button"><img src="/template/images/icons/like.svg" width="16" alt="" loading="lazy">
                     <div class="b-recipe-icon__num">10</div>
                   </div>
-                  <div class="b-recipe-icon b-cooked-button"><img src="/template/images/icons/cooking.svg" width="16" alt="">
+                  <div class="b-recipe-icon b-cooked-button"><img src="/template/images/icons/cooking.svg" width="16" alt="" loading="lazy">
                     <div class="b-recipe-icon__num">7</div>
                   </div>
-                  <div class="b-recipe-icon b-views-button"><img src="/template/images/icons/views.svg" width="16" alt="">
+                  <div class="b-recipe-icon b-views-button"><img src="/template/images/icons/views.svg" width="16" alt="" loading="lazy">
                     <div class="b-recipe-icon__num">1 482 200</div>
                   </div>
-                  <div class="b-recipe-icon b-rating-button"><img src="/template/images/icons/rating.svg" width="16" alt="">
+                  <div class="b-recipe-icon b-rating-button"><img src="/template/images/icons/rating.svg" width="16" alt="" loading="lazy">
                     <div class="b-recipe-icon__num">5 672</div>
                   </div>
                 </div>
@@ -177,10 +177,10 @@
           <h2>В рецепте использовали</h2>
         </div>
         <div class="b-recipe__included">
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included.jpg" width="100" height="100" alt="Миксер Philips"></a><span>Миксер Philips<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Яндекс Маркет</a></span></div>
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included2.jpg" width="100" height="100" alt="Соль морская марки Sol Mare"></a><span><a href="http://www..." rel="nofollow" target="_blank">Соль морская марки Sol Mare</a></span></div>
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
-          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
+          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included.jpg" width="100" height="100" alt="Миксер Philips" loading="lazy"></a><span>Миксер Philips<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Яндекс Маркет</a></span></div>
+          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included2.jpg" width="100" height="100" alt="Соль морская марки Sol Mare" loading="lazy"></a><span><a href="http://www..." rel="nofollow" target="_blank">Соль морская марки Sol Mare</a></span></div>
+          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская" loading="lazy"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
+          <div class="b-recipe__included__item"><a href="http://www..." rel="nofollow" target="_blank"><img src="/upload/recipe/included3.jpg" width="100" height="100" alt="Сельдь Алюторская" loading="lazy"></a><span>Сельдь Алюторская<br><a href="http://www..." rel="nofollow" target="_blank">Купить в Seafoodshop.ru</a></span></div>
         </div>
         <hr>
         <div itemprop="steps" itemscope itemtype="http://schema.org/HowToSection">
@@ -217,7 +217,7 @@
             <hr>
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image"><img data-original="/upload/recipe/ill.jpg" alt=""></div>
+                <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image" loading="lazy"><img data-original="/upload/recipe/ill.jpg" alt="" loading="lazy"></div>
                 <hr class="i-size-M">
                 <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
               </div>
@@ -257,7 +257,7 @@
             <hr>
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image"><img src="/upload/recipe/ill.jpg" alt=""></div>
+                <div class="b-recipe__step-ill"><img src="/upload/recipe/ill.jpg" width="0" height="0" alt="" itemprop="image" loading="lazy"><img src="/upload/recipe/ill.jpg" alt="" loading="lazy"></div>
                 <hr class="i-size-M">
                 <div itemprop="itemListElement" itemscope itemtype="http://schema.org/HowToDirection">Картофельная запеканка с грибами любима многими, ведь это настоящая комфортная еда (comfort food): привычная, домашняя, не вызывающая непонимания и недоумения. Для того, чтобы запеканка была вкусной и могла вызвать по-настоящему ностальгические чувства, она должна быть приготовлена из хорошей крахмалистой картошки, свежих ароматных грибов и непременно с любовью :)</div>
               </div>
