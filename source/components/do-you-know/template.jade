@@ -1,0 +1,11 @@
+// start /components/do-you-know/
+
+//- push style and script file to the end of the page
+if componentsArray
+  - componentsArray[ componentsArray.length ] = 'do-you-know'
+else
+  - var componentsArray = [ 'do-you-know' ]
+    
+#doYouKnow( data-load-url="/components/do-you-know/response.html" data-update-url="/components/do-you-know/update.html" data-ajax-method="GET" )
+
+// end /components/do-you-know/

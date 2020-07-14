@@ -1,0 +1,43 @@
+﻿block vars
+  - var page = 'main'
+  - var authorized = false
+
+extends ../layouts/header.jade
+
+block title
+  title Main page | food
+  
+block content
+  
+  .container
+      
+    -var heading = "Foodclub.ru — кулинарное сообщество"
+    include ../modules/heading-linethrough/h1
+    
+    hr
+    
+    include ../components/recipe-search-index/template
+    
+    hr.i-size-L
+    
+    include ../modules/index-brief/include
+    
+    hr.i-size-L
+    
+    .b-recipe-line.i-index
+
+      -var heading = "Последняя рекомендация"
+      include ../modules/heading-linethrough/include
+      
+      hr.i-size-L
+      
+      .row
+        -var n = 0
+          while n < 3
+            -n++
+            .col-sm-4
+              include ../modules/recipe-thumb/journal-item-short.jade
+            hr.i-size-L.visible-xs-block
+    
+    hr.i-size-L
+    
