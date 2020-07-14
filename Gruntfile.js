@@ -5,7 +5,7 @@ module.exports = function( grunt ) {
     source: 'source/',
     dest: 'dest/',
     temp: 'temp/',
-    prod: 'markup/',
+    prod: /*'Z:/food/*/'markup/',
     
     jade: {
       dev: {
@@ -27,28 +27,6 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>',
             ext: '.html',
             extDot: 'first'
-          }
-        ]
-      },
-      
-      issue: {
-        options: {
-          pretty: true
-        },
-        files: [
-          {
-            expand: true, 
-            cwd: './<%= source %>recipes/recipe/',
-            src: [
-              '**/*.jade'
-            ],
-            dest: '<%= dest %>recipes/recipe/',
-            ext: '.html',
-            extDot: 'first'
-          },
-          {
-            '<%= dest %>components/do-you-know/response.html': '<%= source %>components/do-you-know/response.jade',
-            '<%= dest %>components/do-you-know/update.html': '<%= source %>components/do-you-know/update.jade'
           }
         ]
       },
@@ -94,14 +72,6 @@ module.exports = function( grunt ) {
       template: {
         files: [
           {
-            expand: true,
-            cwd: '<%= source%>styl/placeholders/',
-            src: [ '*.styl' ],
-            dest: '<%= dest%>template/placeholders/',
-            extDot: 'first',
-            ext: '.css'
-          },
-          {
             '<%= dest%>template/minimal.css':
               [
                 '<%= source%>styl/minimal.styl',
@@ -117,22 +87,14 @@ module.exports = function( grunt ) {
                 '<%= source%>styl/template_styles.styl',
                 '<%= source%>modules/**/*.styl'
               ]
-          }
-        ]
-      },
-      issue: {
-        files: [
-          {
-            expand: true,
-            cwd: '<%= source %>styl/placeholders/',
-            src: [ '*.styl' ],
-            dest: '<%= dest %>template/placeholders/',
-            extDot: 'first',
-            ext: '.css'
           },
           {
-            '<%= dest%>components/recipe/style.css': '<%= source%>components/recipe/style.styl',
-            '<%= dest%>components/do-you-know/style.css': '<%= source%>components/do-you-know/style.styl'
+            expand: true,
+            cwd: '<%= source%>styl/placeholders/',
+            src: [ '*.styl' ],
+            dest: '<%= dest%>template/placeholders/',
+            extDot: 'first',
+            ext: '.css'
           }
         ]
       },
@@ -264,26 +226,6 @@ module.exports = function( grunt ) {
           ]
         }
       },
-      
-      issue: {
-        options: {
-          curly: true,
-          eqeqeq: true,
-          eqnull: true,
-          browser: true,
-          globals: {
-            jQuery: true,
-            console: true
-          }
-        },
-        files: {
-          src: [
-            '<%= source %>components/recipe/**/*.js',
-            '<%= source %>components/do-you-know/**/*.js',
-          ]
-        }
-      },
-      
       prod: {
         options: {
           curly: true,
@@ -358,21 +300,6 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>components/',
             ext: '.js',
             extDot: 'first'
-          }
-        ]
-      },
-      
-      issue: {
-        options: {
-          mangle: false,
-          compress: false,
-          beautify: true,
-          preserveComments: 'some'
-        },
-        files: [
-          {
-            '<%= dest%>components/recipe/script.js': '<%= source %>components/recipe/script.js',
-            '<%= dest%>components/do-you-know/script.js': '<%= source %>components/do-you-know/script.js'
           }
         ]
       },
@@ -512,62 +439,29 @@ module.exports = function( grunt ) {
     },
     
     watch: {
+      livereload: {
+        options: {
+          livereload: true
+        },
+        files: [ '**/*' ]
+      },
       
-      htmlGeneral: {
-        files: [
-          '<%= source %>**/*.jade',
-          //change component name
-          '!<%= source %>components/recipe/**/*.jade',
-          '!<%= source %>components/do-you-know/**/*.jade'
-        ],
+      html: {
+        files: '**/*.jade',
         tasks: 'jade:dev'
       },
       
-      htmlIssue: {
-        files: [
-          //change component name
-          '<%= source %>components/recipe/**/*.jade',
-          '<%= source %>components/do-you-know/**/*.jade'
-        ],
-        tasks: 'htmlIssue'
-      },
-      
-      cssGeneral: {
-        files: [
-          '<%= source %>**/*.styl',
-          //change component name
-          '!<%= source %>components/recipe/**/*.styl',
-          '!<%= source %>components/do-you-know/**/*.styl'
-        ],
+      css: {
+        files: '<%= source %>**/*.styl',
         tasks: 'css'
       },
       
-      cssIssue: {
-        files: [
-          '<%= source %>components/recipe/**/*.styl',
-          '<%= source %>components/do-you-know/**/*.styl'
-        ],
-        tasks: 'cssIssue'
-      },
-      
-      jsGeneral: {
+      js: {
         files: [
           '<%= source %>**/*.js',
-          '!<%= source %>js/jscript.js',
-          //change component name
-          '!<%= source %>components/recipe/**/*.js',
-          '!<%= source %>components/do-you-know/**/*.js'
+          '!<%= source %>js/jscript.js'
         ],
         tasks: [ 'js' ]
-      },
-      
-      jsIssue: {
-        files: [
-          //change component name
-          '<%= source %>components/recipe/**/*.js',
-          '<%= source %>components/do-you-know/**/*.js'
-        ],
-        tasks: [ 'jsIssue' ]
       },
       
       img: {
@@ -592,13 +486,15 @@ module.exports = function( grunt ) {
         options: {
           base: './',
           css: [
+            '<%= dest %>template/bootstrap.min.css',
+            '<%= dest %>template/template_styles.css',
             '<%= dest %>template/minimal.css'
           ],
-          width: 1300,
-          height: 1000
+          width: 1920,
+          height: 1080
         },
-        src: '<%= dest %>recipes/recipe/index.html',
-        dest: '<%= dest %>template/critical.css'
+        src: '<%= dest %>recipes/recipe-ph/index.html',
+        dest: '<%= dest %>template/criticals/recipe.css'
       }
     }
     
@@ -613,18 +509,13 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-clean' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-  grunt.loadNpmTasks('grunt-critical');
+  grunt.loadNpmTasks( 'grunt-critical' );
   
   //grunt.registerTask( 'bootstrap', [ 'stylus:bootstrap', 'uglify:devBootstrap' ] );
   grunt.registerTask( 'css', [ 'stylus:template', 'stylus:components', 'concat:pluginsCSS' ] );
   grunt.registerTask( 'js', [ 'concat:js', /*'jshint:dev',*/ 'concat:pluginsJS', 'uglify:devTemplate', 'uglify:devComponents', 'clean:js' ] );
   grunt.registerTask( 'html', [ 'copy:images', 'jade:dev' ] );
   grunt.registerTask( 'default', [ 'connect', 'css', 'js', /*'bootstrap', */'html', 'watch' ] );
-  
-  //issue tasks
-  grunt.registerTask( 'htmlIssue', [ 'jade:issue' ] );
-  grunt.registerTask( 'cssIssue', [ 'stylus:issue' ] );
-  grunt.registerTask( 'jsIssue', [ 'concat:js', 'uglify:issue', 'clean:js' ] );
   
   grunt.registerTask( 'prod', [
     'stylus:prod',
