@@ -47,8 +47,8 @@ module.exports = function( grunt ) {
             extDot: 'first'
           },
           {
-            '<%= dest %>components/do-you-know/response.html': '<%= source %>components/do-you-know/response.jade',
-            '<%= dest %>components/do-you-know/update.html': '<%= source %>components/do-you-know/update.jade'
+            '<%= dest %>components/recipe/response.html': '<%= source %>components/recipe/response.jade',
+            '<%= dest %>components/recipe/update.html': '<%= source %>components/recipe/update.jade'
           }
         ]
       },
@@ -131,8 +131,7 @@ module.exports = function( grunt ) {
             ext: '.css'
           },
           {
-            '<%= dest%>components/recipe/style.css': '<%= source%>components/recipe/style.styl',
-            '<%= dest%>components/do-you-know/style.css': '<%= source%>components/do-you-know/style.styl'
+            '<%= dest%>components/recipe/style.css': '<%= source%>components/recipe/style.styl'
           }
         ]
       },
@@ -278,8 +277,7 @@ module.exports = function( grunt ) {
         },
         files: {
           src: [
-            '<%= source %>components/recipe/**/*.js',
-            '<%= source %>components/do-you-know/**/*.js',
+            '<%= source %>components/recipe/**/*.js'
           ]
         }
       },
@@ -371,8 +369,7 @@ module.exports = function( grunt ) {
         },
         files: [
           {
-            '<%= dest%>components/recipe/script.js': '<%= source %>components/recipe/script.js',
-            '<%= dest%>components/do-you-know/script.js': '<%= source %>components/do-you-know/script.js'
+            '<%= dest%>components/recipe/script.js': '<%= source %>components/recipe/script.js'
           }
         ]
       },
@@ -517,8 +514,7 @@ module.exports = function( grunt ) {
         files: [
           '<%= source %>**/*.jade',
           //change component name
-          '!<%= source %>components/recipe/**/*.jade',
-          '!<%= source %>components/do-you-know/**/*.jade'
+          '!<%= source %>components/recipe/**/*.jade'
         ],
         tasks: 'jade:dev'
       },
@@ -526,8 +522,7 @@ module.exports = function( grunt ) {
       htmlIssue: {
         files: [
           //change component name
-          '<%= source %>components/recipe/**/*.jade',
-          '<%= source %>components/do-you-know/**/*.jade'
+          '<%= source %>components/recipe/**/*.jade'
         ],
         tasks: 'htmlIssue'
       },
@@ -536,16 +531,14 @@ module.exports = function( grunt ) {
         files: [
           '<%= source %>**/*.styl',
           //change component name
-          '!<%= source %>components/recipe/**/*.styl',
-          '!<%= source %>components/do-you-know/**/*.styl'
+          '!<%= source %>components/recipe/**/*.styl'
         ],
         tasks: 'css'
       },
       
       cssIssue: {
         files: [
-          '<%= source %>components/recipe/**/*.styl',
-          '<%= source %>components/do-you-know/**/*.styl'
+          '<%= source %>components/recipe/**/*.styl'
         ],
         tasks: 'cssIssue'
       },
@@ -555,8 +548,7 @@ module.exports = function( grunt ) {
           '<%= source %>**/*.js',
           '!<%= source %>js/jscript.js',
           //change component name
-          '!<%= source %>components/recipe/**/*.js',
-          '!<%= source %>components/do-you-know/**/*.js'
+          '!<%= source %>components/recipe/**/*.js'
         ],
         tasks: [ 'js' ]
       },
@@ -564,8 +556,7 @@ module.exports = function( grunt ) {
       jsIssue: {
         files: [
           //change component name
-          '<%= source %>components/recipe/**/*.js',
-          '<%= source %>components/do-you-know/**/*.js'
+          '<%= source %>components/recipe/**/*.js'
         ],
         tasks: [ 'jsIssue' ]
       },
