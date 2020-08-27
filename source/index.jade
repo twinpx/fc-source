@@ -20,6 +20,13 @@ block content
     
     hr.i-size-L
     
+    -var heading = "Свежий видеорецепт"
+    include ./modules/heading-linethrough/h1
+    
+    iframe(width="100%" height="500" src="https://www.youtube.com/embed/1j6eHN_y2Vs" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy")
+    
+    hr.i-size-L
+    
     include ./modules/index-brief/include
     
     hr.i-size-L
@@ -38,6 +45,13 @@ block content
             .col-sm-4
               include ./modules/recipe-thumb/journal-item-short.jade
             hr.i-size-L.visible-xs-block
+    
+    hr.i-size-L
+    
+    -var heading = "Свежий видеорецепт"
+    include ./modules/heading-linethrough/h1
+    
+    include ./components/last-comments/template
     
     hr.i-size-L
     
