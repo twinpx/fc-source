@@ -5,7 +5,7 @@ module.exports = function( grunt ) {
     source: 'source/',
     dest: 'dest/',
     temp: 'temp/',
-    prod: /*'Z:/food/*/'markup/',
+    prod: 'markup/',
     
     jade: {
       dev: {
@@ -27,6 +27,28 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>',
             ext: '.html',
             extDot: 'first'
+          }
+        ]
+      },
+      
+      issue: {
+        options: {
+          pretty: true
+        },
+        files: [
+          {
+            expand: true, 
+            cwd: './<%= source %>recipes/recipe/',
+            src: [
+              '**/*.jade'
+            ],
+            dest: '<%= dest %>recipes/recipe/',
+            ext: '.html',
+            extDot: 'first'
+          },
+          {
+            '<%= dest %>components/recipe/response.html': '<%= source %>components/recipe/response.jade',
+            '<%= dest %>components/recipe/update.html': '<%= source %>components/recipe/update.jade'
           }
         ]
       },
@@ -72,6 +94,14 @@ module.exports = function( grunt ) {
       template: {
         files: [
           {
+            expand: true,
+            cwd: '<%= source%>styl/placeholders/',
+            src: [ '*.styl' ],
+            dest: '<%= dest%>template/placeholders/',
+            extDot: 'first',
+            ext: '.css'
+          },
+          {
             '<%= dest%>template/minimal.css':
               [
                 '<%= source%>styl/minimal.styl',
@@ -87,14 +117,21 @@ module.exports = function( grunt ) {
                 '<%= source%>styl/template_styles.styl',
                 '<%= source%>modules/**/*.styl'
               ]
-          },
+          }
+        ]
+      },
+      issue: {
+        files: [
           {
             expand: true,
-            cwd: '<%= source%>styl/placeholders/',
+            cwd: '<%= source %>styl/placeholders/',
             src: [ '*.styl' ],
-            dest: '<%= dest%>template/placeholders/',
+            dest: '<%= dest %>template/placeholders/',
             extDot: 'first',
             ext: '.css'
+          },
+          {
+            '<%= dest%>components/recipe/style.css': '<%= source%>components/recipe/style.styl'
           }
         ]
       },
@@ -226,6 +263,25 @@ module.exports = function( grunt ) {
           ]
         }
       },
+      
+      issue: {
+        options: {
+          curly: true,
+          eqeqeq: true,
+          eqnull: true,
+          browser: true,
+          globals: {
+            jQuery: true,
+            console: true
+          }
+        },
+        files: {
+          src: [
+            '<%= source %>components/recipe/**/*.js'
+          ]
+        }
+      },
+      
       prod: {
         options: {
           curly: true,
@@ -300,6 +356,20 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>components/',
             ext: '.js',
             extDot: 'first'
+          }
+        ]
+      },
+      
+      issue: {
+        options: {
+          mangle: false,
+          compress: false,
+          beautify: true,
+          preserveComments: 'some'
+        },
+        files: [
+          {
+            '<%= dest%>components/recipe/script.js': '<%= source %>components/recipe/script.js'
           }
         ]
       },
@@ -439,29 +509,56 @@ module.exports = function( grunt ) {
     },
     
     watch: {
-      livereload: {
-        options: {
-          livereload: true
-        },
-        files: [ '**/*' ]
-      },
       
-      html: {
-        files: '**/*.jade',
+      htmlGeneral: {
+        files: [
+          '<%= source %>**/*.jade',
+          //change component name
+          '!<%= source %>components/recipe/**/*.jade'
+        ],
         tasks: 'jade:dev'
       },
       
-      css: {
-        files: '<%= source %>**/*.styl',
+      htmlIssue: {
+        files: [
+          //change component name
+          '<%= source %>components/recipe/**/*.jade'
+        ],
+        tasks: 'htmlIssue'
+      },
+      
+      cssGeneral: {
+        files: [
+          '<%= source %>**/*.styl',
+          //change component name
+          '!<%= source %>components/recipe/**/*.styl'
+        ],
         tasks: 'css'
       },
       
-      js: {
+      cssIssue: {
+        files: [
+          '<%= source %>components/recipe/**/*.styl'
+        ],
+        tasks: 'cssIssue'
+      },
+      
+      jsGeneral: {
         files: [
           '<%= source %>**/*.js',
-          '!<%= source %>js/jscript.js'
+          '!<%= source %>js/jscript.js',
+          //change component name
+          '!<%= source %>components/recipe/**/*.js'
         ],
         tasks: [ 'js' ]
+      },
+      
+      jsIssue: {
+        files: [
+          //change component name
+          '<%= source %>components/recipe/**/*.js'
+        ],
+        tasks: [ 'jsIssue' ]
       },
       
       img: {
@@ -486,15 +583,13 @@ module.exports = function( grunt ) {
         options: {
           base: './',
           css: [
-            '<%= dest %>template/bootstrap.min.css',
-            '<%= dest %>template/template_styles.css',
             '<%= dest %>template/minimal.css'
           ],
-          width: 1920,
-          height: 1080
+          width: 1300,
+          height: 1000
         },
-        src: '<%= dest %>recipes/recipe-ph/index.html',
-        dest: '<%= dest %>template/criticals/recipe.css'
+        src: '<%= dest %>recipes/recipe/index.html',
+        dest: '<%= dest %>template/critical.css'
       }
     }
     
@@ -509,13 +604,18 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-clean' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-  grunt.loadNpmTasks( 'grunt-critical' );
+  grunt.loadNpmTasks('grunt-critical');
   
   //grunt.registerTask( 'bootstrap', [ 'stylus:bootstrap', 'uglify:devBootstrap' ] );
   grunt.registerTask( 'css', [ 'stylus:template', 'stylus:components', 'concat:pluginsCSS' ] );
   grunt.registerTask( 'js', [ 'concat:js', /*'jshint:dev',*/ 'concat:pluginsJS', 'uglify:devTemplate', 'uglify:devComponents', 'clean:js' ] );
   grunt.registerTask( 'html', [ 'copy:images', 'jade:dev' ] );
   grunt.registerTask( 'default', [ 'connect', 'css', 'js', /*'bootstrap', */'html', 'watch' ] );
+  
+  //issue tasks
+  grunt.registerTask( 'htmlIssue', [ 'jade:issue' ] );
+  grunt.registerTask( 'cssIssue', [ 'stylus:issue' ] );
+  grunt.registerTask( 'jsIssue', [ 'concat:js', 'uglify:issue', 'clean:js' ] );
   
   grunt.registerTask( 'prod', [
     'stylus:prod',
