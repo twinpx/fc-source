@@ -31,28 +31,6 @@ module.exports = function( grunt ) {
         ]
       },
       
-      issue: {
-        options: {
-          pretty: true
-        },
-        files: [
-          {
-            expand: true, 
-            cwd: './<%= source %>recipes/recipe/',
-            src: [
-              '**/*.jade'
-            ],
-            dest: '<%= dest %>recipes/recipe/',
-            ext: '.html',
-            extDot: 'first'
-          },
-          {
-            '<%= dest %>components/recipe/response.html': '<%= source %>components/recipe/response.jade',
-            '<%= dest %>components/recipe/update.html': '<%= source %>components/recipe/update.jade'
-          }
-        ]
-      },
-      
       prod: {
         options: {
           pretty: true
@@ -117,9 +95,6 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>template/placeholders/',
             extDot: 'first',
             ext: '.css'
-          },
-          {
-            '<%= dest%>components/recipe/style.css': '<%= source%>components/recipe/style.styl'
           }
         ]
       },
@@ -251,25 +226,6 @@ module.exports = function( grunt ) {
           ]
         }
       },
-      
-      issue: {
-        options: {
-          curly: true,
-          eqeqeq: true,
-          eqnull: true,
-          browser: true,
-          globals: {
-            jQuery: true,
-            console: true
-          }
-        },
-        files: {
-          src: [
-            '<%= source %>components/recipe/**/*.js'
-          ]
-        }
-      },
-      
       prod: {
         options: {
           curly: true,
@@ -344,20 +300,6 @@ module.exports = function( grunt ) {
             dest: '<%= dest%>components/',
             ext: '.js',
             extDot: 'first'
-          }
-        ]
-      },
-      
-      issue: {
-        options: {
-          mangle: false,
-          compress: false,
-          beautify: true,
-          preserveComments: 'some'
-        },
-        files: [
-          {
-            '<%= dest%>components/recipe/script.js': '<%= source %>components/recipe/script.js'
           }
         ]
       },
@@ -497,56 +439,29 @@ module.exports = function( grunt ) {
     },
     
     watch: {
+      livereload: {
+        options: {
+          livereload: true
+        },
+        files: [ '**/*' ]
+      },
       
-      htmlGeneral: {
-        files: [
-          '<%= source %>**/*.jade',
-          //change component name
-          '!<%= source %>components/recipe/**/*.jade'
-        ],
+      html: {
+        files: '**/*.jade',
         tasks: 'jade:dev'
       },
       
-      htmlIssue: {
-        files: [
-          //change component name
-          '<%= source %>components/recipe/**/*.jade'
-        ],
-        tasks: 'htmlIssue'
-      },
-      
-      cssGeneral: {
-        files: [
-          '<%= source %>**/*.styl',
-          //change component name
-          '!<%= source %>components/recipe/**/*.styl'
-        ],
+      css: {
+        files: '<%= source %>**/*.styl',
         tasks: 'css'
       },
       
-      cssIssue: {
-        files: [
-          '<%= source %>components/recipe/**/*.styl'
-        ],
-        tasks: 'cssIssue'
-      },
-      
-      jsGeneral: {
+      js: {
         files: [
           '<%= source %>**/*.js',
-          '!<%= source %>js/jscript.js',
-          //change component name
-          '!<%= source %>components/recipe/**/*.js'
+          '!<%= source %>js/jscript.js'
         ],
         tasks: [ 'js' ]
-      },
-      
-      jsIssue: {
-        files: [
-          //change component name
-          '<%= source %>components/recipe/**/*.js'
-        ],
-        tasks: [ 'jsIssue' ]
       },
       
       img: {
