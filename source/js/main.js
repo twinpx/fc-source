@@ -1,6 +1,6 @@
 //placeholders
 setTimeout( function() {
-  $( '.b-ph-block, h1' ).addClass( 'i-ph-animated' );
+  $( '.b-ph-block, h1, .b-heading-linethrough h2' ).addClass( 'i-ph-animated' );
 }, 500 );
   
 //defer  

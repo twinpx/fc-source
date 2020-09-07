@@ -10,48 +10,19 @@ block title
 block content
   
   .container
+  
+    hr.i-size-L
       
-    -var heading = "Foodclub.ru — кулинарное сообщество"
-    include ./modules/heading-linethrough/h1
+    h1 Список страниц
     
-    hr
+    ul
+      li
+        a( href="/pages/main/" ) Главная
+      li
+        a( href="/pages/recipes/" ) Рецепты
+      li
+        a( href="/pages/recipe/" ) Рецепт
+      li
+        a( href="/pages/recipe-add/" ) Добавить рецепт
     
-    include ./components/recipe-search-index/template
-    
-    hr.i-size-L
-    
-    -var heading = "Свежий видеорецепт"
-    include ./modules/heading-linethrough/h1
-    
-    iframe(width="100%" height="500" src="https://www.youtube.com/embed/1j6eHN_y2Vs" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy")
-    
-    hr.i-size-L
-    
-    include ./modules/index-brief/include
-    
-    hr.i-size-L
-    
-    .b-recipe-line.i-index
-
-      -var heading = "Последняя рекомендация"
-      include ./modules/heading-linethrough/include
-      
-      hr.i-size-L
-      
-      .row
-        -var n = 0
-          while n < 3
-            -n++
-            .col-sm-4
-              include ./modules/recipe-thumb/journal-item-short.jade
-            hr.i-size-L.visible-xs-block
-    
-    hr.i-size-L
-    
-    -var heading = "Свежий видеорецепт"
-    include ./modules/heading-linethrough/h1
-    
-    include ./components/last-comments/template
-    
-    hr.i-size-L
     

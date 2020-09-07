@@ -1,8 +1,23 @@
+*
+  box-sizing border-box
+
 body
   margin 0
   overflow-y scroll
   
 /*From Bootstrap*/
+
+.visible-xs-block
+  display none!important
+    
+@media (max-width: 767px)
+
+  .hidden-xs
+    display none!important
+    
+  .visible-xs-block
+    display block!important
+
 .container
   padding-right 15px
   padding-left 15px
@@ -46,6 +61,8 @@ h1
   
 hr
   border-color transparent !important
+  border 0
+  border-top 1px solid transparent
   box-sizing content-box
   height 0
   //anti bootstrap
@@ -55,6 +72,12 @@ hr
   @media( max-width 575px )
     //anti bootstrap
     margin 10px 0 !important
+  
+  &.i-size-L
+    margin 20px 0 19px !important
+    
+  &.i-size-M
+    margin 10px 0 9px !important
   
 .b-deferred-content
   display none

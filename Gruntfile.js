@@ -76,7 +76,6 @@ module.exports = function( grunt ) {
               [
                 '<%= source%>styl/minimal.styl',
                 '<%= source%>modules/heading-linethrough/style.styl',
-                '<%= source%>modules/content-nav/style.styl',//for the recipes page
                 '<%= source%>modules/recipe-thumb/styl/recipe-thumb-minimal.styl',//for the main page
                 '<%= source%>components/**/minimal.styl'
               ]
@@ -136,7 +135,6 @@ module.exports = function( grunt ) {
               [
                 '<%= source%>styl/minimal.styl',
                 '<%= source%>modules/heading-linethrough/style.styl',
-                '<%= source%>modules/content-nav/style.styl',//for the recipes page
                 '<%= source%>modules/recipe-thumb/styl/recipe-thumb-minimal.styl',//for the main page
                 '<%= source%>components/**/minimal.styl'
               ]

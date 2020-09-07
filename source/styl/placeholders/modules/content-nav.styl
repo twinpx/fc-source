@@ -1,0 +1,26 @@
+.b-content-nav
+
+  &.b-ph-block
+    position relative
+    height 23px
+    
+  a,
+  span
+    opacity 0
+    transition( opacity .5s ease )
+  
+  .b-ph
+    position absolute
+    top 4px
+    left 0
+    width 100%
+    transition( opacity .5s ease )
+    text-align center
+    z-index 0
+  
+    div
+      display inline-block
+      margin 0 17px
+      height 17px
+      background-color $placeholder-color
+      width 100px

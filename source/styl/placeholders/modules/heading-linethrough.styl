@@ -4,5 +4,26 @@
   @media( max-width 575px )
     margin 20px 0
     
-  h1
+  h1,
+  h2
     width 100%
+    
+  h2
+    text-align center
+    font-size 0 !important
+    color #fff !important
+    height 24px
+    position relative
+    transition( color .5s ease )
+    
+    &:after
+      display block
+      content ''
+      height 24px
+      width 40%
+      background-color $placeholder-color
+      position absolute
+      top 0
+      left 30%
+      transition( opacity .5s ease )
+      z-index 1

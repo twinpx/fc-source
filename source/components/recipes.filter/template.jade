@@ -1,9 +1,19 @@
 ﻿// start /components/recipes.filter/
 
-link( rel="stylesheet", href="/components/recipes.filter/style.css" )
-script( src="/components/recipes.filter/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'recipes.filter'
+  else
+    - var componentsArray = [ 'recipes.filter' ]
 
-#filter_recipes.i-link( data-ajax-url="/json/all_recipes_result.html" )
+#filter_recipes.i-link( data-ajax-url="/json/all_recipes_result.html" ).b-ph-block
+
+  .b-ph
+    div
+    div
+    div
+    div
 
   .b-filter-items__wrapper
 

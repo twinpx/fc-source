@@ -1,7 +1,11 @@
 ﻿// start /components/recipe-search-index/
 
-link( rel="stylesheet", href="/components/recipe-search-index/style.css" )
-script( src="/components/recipe-search-index/script.js" )
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'recipe-search-index'
+  else
+    - var componentsArray = [ 'recipe-search-index' ]
 
 .hidden-xs
   form( action="/search/index.php" )

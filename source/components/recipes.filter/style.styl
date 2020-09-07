@@ -1,14 +1,22 @@
 @import '../../styl/component-include.styl'
 
-/*Cancel minimal.css*/
+/*Cancel placeholder.css*/
 #filter_recipes
   min-height auto
   
-.b-filter-items__wrapper,
+  &.i-ph-animated
+  
+    .b-ph
+      opacity 0
+      z-index -1
+      
+    .b-filter-items__wrapper
+      opacity 1
+  
 #filter_lists
   display block
   
-/*_Cancel minimal.css_*/
+/*_Cancel placeholder.css_*/
   
 #filter_recipes,
 .b-filter
