@@ -1,17 +1,58 @@
 ﻿// start /components/recipes.filter/
 
-#fc_statistics
+#fc_statistics.b-ph-block
   .wrapper
     span.item
       span.num 36
       | 
       span.word рецептов
         
-#recipe_feed_block
-  include ../../modules/recipe-thumb/recipe-thumb.jade
-  include ../../modules/recipe-thumb/recipe-thumb.jade
+#recipe_feed_block.b-ph-block
+
+  .b-ph
   
-#get_more_recipes( data-more-url="/json/get_more_recipes.html" )
+    .b-ph__recipe
+      .b-ph__img
+      .b-ph__text
+        div
+        div
+      
+    .b-ph__recipe
+      .b-ph__img
+      .b-ph__text
+        div
+        div
+        
+    .b-ph__recipe
+      .b-ph__img
+      .b-ph__text
+        div
+        div
+  
+    .b-ph__recipe
+      .b-ph__img
+      .b-ph__text
+        div
+        div
+      
+    .b-ph__recipe
+      .b-ph__img
+      .b-ph__text
+        div
+        div
+        
+    .b-ph__recipe
+      .b-ph__img
+      .b-ph__text
+        div
+        div
+    
+  .b-ph-content
+    
+    include ../../modules/recipe-thumb/recipe-thumb.jade
+    include ../../modules/recipe-thumb/recipe-thumb.jade
+  
+#get_more_recipes.b-ph-block( data-more-url="/json/get_more_recipes.html" )
   a.btn.btn-default.btn-gray( href="#" data-id="456" ) Показать ещё
   img( src="/images/preloader.gif" width="281" height="52" alt="" )
         

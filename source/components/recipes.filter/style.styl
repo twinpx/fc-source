@@ -12,6 +12,26 @@
       
     .b-filter-items__wrapper
       opacity 1
+
+#recipe_feed_block.b-ph-block
+  
+  &.i-ph-animated
+    padding-top 0
+    
+    @media( max-width 767px )
+      height auto
+    
+    .b-ph-content
+      position static
+      width auto
+      opacity 1
+      
+    .b-ph
+      position absolute
+      top 0
+      left 0
+      opacity 0
+      z-index -1
   
 #filter_lists
   display block
@@ -161,27 +181,37 @@
 #filter_list.tag #filter-list-tag
   display block
     
-#fc_statistics
+#fc_statistics.i-ph-animated
   text-align center
   margin 0 0 20px
   font-family $pt-sans
   font-weight bold
   font-size 12pt
+  color inherit
+  
+  &:after
+    opacity 0
+    z-index -1
     
-#get_more_recipes
+#get_more_recipes.i-ph-animated
   text-align center
   margin 0 0 40px 0
+  opacity 1
   
-#get_more_recipes a
-  cursor pointer
+  a
+    cursor pointer
   
-#get_more_recipes img,
-#get_more_recipes.preload a
-  display none
+  img
+    display none
+    
+  &.preload
   
-#get_more_recipes.preload img
-  display inline-block
-  margin 3px 0 4px 0
+    a
+      display none
+    
+    img
+      display inline-block
+      margin 3px 0 4px 0
   
 #recipe_feed_block
 

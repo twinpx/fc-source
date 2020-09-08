@@ -27,15 +27,27 @@
       <div class="b-heading-linethrough">
         <h1>Рецепты</h1>
       </div>
-      <nav class="b-content-nav"><span>Все рецепты</span><a href="/rating/">Рейтинги рецептов</a><a href="/personal/recipes/">Мои рецепты</a><a href="/personal/favourite/">Избранное</a><a href="/recipes/add/" class="i-emphasise">Добавить рецепт</a></nav>
+      <nav class="b-content-nav hidden-xs b-ph-block">
+        <div class="b-ph">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div><span>Все рецепты</span><a href="/rating/">Рейтинги рецептов</a><a href="/personal/recipes/">Мои рецепты</a><a href="/personal/favourite/">Избранное</a><a href="/recipes/add/" class="i-emphasise">Добавить рецепт</a>
+      </nav>
     </div>
     <div id="content" class="all_recipes">
       <div class="container">
         <hr>
         <!-- start /components/recipes.filter/-->
-        <link rel="stylesheet" href="/components/recipes.filter/style.css">
-        <script src="/components/recipes.filter/script.js"></script>
-        <div id="filter_recipes" data-ajax-url="/json/all_recipes_result.html" class="i-link">
+        <div id="filter_recipes" data-ajax-url="/json/all_recipes_result.html" class="i-link b-ph-block">
+          <div class="b-ph">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
           <div class="b-filter-items__wrapper">
             <div data-type="cuisine" class="item b-filter__item"><span class="b-filter__item__heading hidden-xs">Кухня:</span><span class="b-filter__item__button"><span class="hidden-xs">Все</span><span class="b-filter__icon visible-xs"><img src="/template/images/icons/kitchen-type.svg" alt=""><img src="/template/images/icons/kitchen-type-act.svg" alt="" class="i-active"></span></span></div>
             <div data-type="dish" class="item b-filter__item"><span class="b-filter__item__heading hidden-xs">Тип блюда:</span><span class="b-filter__item__button"><span class="hidden-xs">Все</span><span class="b-filter__icon visible-xs"><img src="/template/images/icons/dish-type.svg" alt=""><img src="/template/images/icons/dish-type-act.svg" alt="" class="i-active"></span></span></div>
@@ -239,84 +251,112 @@
         <div class="b-page-cols">
           <section class="b-page-cols__content">
             <!-- start /components/recipes.filter/-->
-            <div id="fc_statistics">
+            <div id="fc_statistics" class="b-ph-block">
               <div class="wrapper"><span class="item"><span class="num">36</span> <span class="word">рецептов</span></span></div>
             </div>
-            <div id="recipe_feed_block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <div class="text-center">
-                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
-                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
-                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
-                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
-                    </div>
+            <div id="recipe_feed_block" class="b-ph-block">
+              <div class="b-ph">
+                <div class="b-ph__recipe">
+                  <div class="b-ph__img"></div>
+                  <div class="b-ph__text">
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <div class="text-center">
-                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
-                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
-                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
-                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
-                    </div>
+                <div class="b-ph__recipe">
+                  <div class="b-ph__img"></div>
+                  <div class="b-ph__text">
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <div class="text-center">
-                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
-                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
-                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
-                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
-                    </div>
+                <div class="b-ph__recipe">
+                  <div class="b-ph__img"></div>
+                  <div class="b-ph__text">
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
-              </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <div class="text-center">
-                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
-                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
-                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
-                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
-                    </div>
+                <div class="b-ph__recipe">
+                  <div class="b-ph__img"></div>
+                  <div class="b-ph__text">
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <div class="text-center">
-                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
-                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
-                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
-                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
-                    </div>
+                <div class="b-ph__recipe">
+                  <div class="b-ph__img"></div>
+                  <div class="b-ph__text">
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
-                <hr class="visible-xs-block">
-                <div class="col-sm-4">
-                  <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
-                    <div class="text-center">
-                      <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a></div>
-                      <div class="b-recipe-thumb__time"><b>1 час</b></div>
-                      <div class="b-recipe-thumb__servings">Порций: <b>4</b></div>
-                      <div class="b-recipe-thumb__nutrition"><b>510 кКал на порцию</b></div>
-                    </div>
+                <div class="b-ph__recipe">
+                  <div class="b-ph__img"></div>
+                  <div class="b-ph__text">
+                    <div></div>
+                    <div></div>
                   </div>
                 </div>
               </div>
-              <hr class="i-size-L hidden-xs">
-              <hr class="visible-xs-block">
+              <div class="b-ph-content">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                      <div class="text-center">
+                        <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a><b><nobr>1 час 15 минут</nobr>, <nobr>4 порции</nobr>, <nobr>510 кКал на порцию</nobr></b></div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="visible-xs-block">
+                  <div class="col-sm-4">
+                    <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                      <div class="text-center">
+                        <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a><b><nobr>1 час 15 минут</nobr>, <nobr>4 порции</nobr>, <nobr>510 кКал на порцию</nobr></b></div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="visible-xs-block">
+                  <div class="col-sm-4">
+                    <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                      <div class="text-center">
+                        <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a><b><nobr>1 час 15 минут</nobr>, <nobr>4 порции</nobr>, <nobr>510 кКал на порцию</nobr></b></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="i-size-L hidden-xs">
+                <hr class="visible-xs-block">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                      <div class="text-center">
+                        <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a><b><nobr>1 час 15 минут</nobr>, <nobr>4 порции</nobr>, <nobr>510 кКал на порцию</nobr></b></div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="visible-xs-block">
+                  <div class="col-sm-4">
+                    <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                      <div class="text-center">
+                        <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a><b><nobr>1 час 15 минут</nobr>, <nobr>4 порции</nobr>, <nobr>510 кКал на порцию</nobr></b></div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="visible-xs-block">
+                  <div class="col-sm-4">
+                    <div class="b-recipe-thumb"><a href="" data-original="/upload/recipe-preview/blocks/5.jpg" class="b-recipe-thumb__photo"><img src="data:image/gif;base64,R0lGODlhBgAEAIAAAP///wAAACH5BAEAAAAALAAAAAAGAAQAAAIEhI+pVwA7"></a>
+                      <div class="text-center">
+                        <div class="b-recipe-thumb__name"><a href="">Салат нисуаз</a><b><nobr>1 час 15 минут</nobr>, <nobr>4 порции</nobr>, <nobr>510 кКал на порцию</nobr></b></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="i-size-L hidden-xs">
+                <hr class="visible-xs-block">
+              </div>
             </div>
-            <div id="get_more_recipes" data-more-url="/json/get_more_recipes.html"><a href="#" data-id="456" class="btn btn-default btn-gray">Показать ещё</a><img src="/images/preloader.gif" width="281" height="52" alt=""></div>
+            <div id="get_more_recipes" data-more-url="/json/get_more_recipes.html" class="b-ph-block"><a href="#" data-id="456" class="btn btn-default btn-gray">Показать ещё</a><img src="/images/preloader.gif" width="281" height="52" alt=""></div>
             <!-- end /components/recipes.filter/-->
           </section>
           <aside class="b-page-cols__aside hidden-sm hidden-xs">

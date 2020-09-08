@@ -33,6 +33,11 @@ body
   
   @media (min-width 1200px)
     width 1170px
+    
+  &:after
+    clear both
+    display table
+    content " "
   
 h1
   height 32px
@@ -71,7 +76,7 @@ hr
   
   @media( max-width 575px )
     //anti bootstrap
-    margin 10px 0 !important
+    margin 10px 0 9px !important
   
   &.i-size-L
     margin 20px 0 19px !important

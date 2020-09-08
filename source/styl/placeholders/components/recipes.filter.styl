@@ -1,5 +1,6 @@
 #filter_recipes
   min-height 17px
+  margin-bottom 20px
   
   &.b-ph-block
     position relative
@@ -23,6 +24,111 @@
       height 17px
       background-color $placeholder-color
       width 80px
+      
+    @media( max-width 540px )
+      top 0
+      display flex
+      justify-content space-around
+    
+      div
+        width 24px
+        height 24px
+        margin 0
   
 #filter_lists
   display none
+  
+#fc_statistics
+  height 27px
+  margin-bottom 20px
+  color #fff
+  position relative
+  
+  &:after
+    content ''
+    height 17px
+    width 40%
+    background-color $placeholder-color
+    position absolute
+    top 5px
+    left 30%
+    transition( opacity .5s ease )
+    z-index 1
+    
+    @media( max-width 767px )
+      width 50%
+      left 25%
+  
+#recipe_feed_block
+  position relative
+  padding-top calc( (((100% + 30px) / 3 - 30px) / 3 * 2 + 18px + 34px) * 2 + 40px )
+  
+  @media( max-width 767px )
+    padding-top 0
+    height 100vh
+  
+  .b-ph
+    position absolute
+    top 0
+    left 0
+    width calc( 100% + 30px )
+    transition( opacity .5s ease )
+    display flex
+    flex-wrap wrap
+    justify-content space-between
+    margin 0 -15px
+    z-index 0
+      
+    @media( max-width 767px )
+      width 100%
+      display block
+      margin 0
+  
+    &__recipe
+      width calc( 100% / 3 )
+      padding 0 15px
+      margin-bottom 40px
+      
+      @media( max-width 767px )
+        width auto
+        padding 0
+        margin-bottom 20px
+        
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6)
+          display none
+      
+    &__img
+      background-color $placeholder-color
+      padding-top calc( 100% / 3 * 2 )
+      border-radius 15px
+      margin-bottom calc( 18px + 9px )
+        
+    &__text
+      height calc( 34px - 9px )
+        
+      div
+        height 7px
+        background-color $placeholder-color
+        margin 0 auto 9px
+        width 80%
+        
+        &:last-child
+          width 30%
+          margin-bottom 0
+            
+    &-content
+      position absolute
+      top 0
+      left 0
+      width 100%
+      transition( opacity .5s ease )
+      opacity 0
+      z-index 0
+      
+#get_more_recipes
+  height 50px
+  opacity 0
+  transition( opacity .5s ease )

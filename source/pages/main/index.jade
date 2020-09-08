@@ -22,17 +22,18 @@ block content
     hr.i-size-L
     
     -var heading = "Свежий видеорецепт"
-    include ../../modules/heading-linethrough/h1
+    include ../../modules/heading-linethrough/include
     
     iframe(width="100%" height="500" src="https://www.youtube.com/embed/1j6eHN_y2Vs" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy")
     
+    //-
+      hr.i-size-L
+    
+      include ../../modules/index-brief/include
+    
     hr.i-size-L
     
-    include ../../modules/index-brief/include
-    
-    hr.i-size-L
-    
-    .b-recipe-line.i-index
+    .b-recipe-line.b-ph-block
 
       -var heading = "Последняя рекомендация"
       include ../../modules/heading-linethrough/include
@@ -49,8 +50,8 @@ block content
     
     hr.i-size-L
     
-    -var heading = "Свежий видеорецепт"
-    include ../../modules/heading-linethrough/h1
+    -var heading = "Отзывы к рецептам"
+    include ../../modules/heading-linethrough/include
     
     include ../../components/last-comments/template
     

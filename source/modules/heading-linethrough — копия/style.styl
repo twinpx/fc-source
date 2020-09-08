@@ -1,0 +1,35 @@
+@import '../../styl/component-include.styl'
+
+.b-heading-linethrough
+  background embedurl( 'img/bg.gif' ) repeat-x center
+  margin 30px 0
+  display flex
+  align-items center
+  justify-content center
+  
+  @media( max-width 575px )
+    margin 20px 0
+  
+  h1,
+  h2
+    background-color #fff
+    padding 0 13px
+    margin 0 !important
+    
+    &.i-ph-animated
+      width auto
+      
+    a
+      &,
+      &:hover,
+      &:focus
+        color $dark-grey
+        
+  h2.i-ph-animated
+    color $dark-grey !important
+    font-size 12pt !important
+    height auto
+    
+    &:after
+      opacity 0
+      z-index -1

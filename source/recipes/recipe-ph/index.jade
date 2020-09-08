@@ -22,7 +22,22 @@ block content
     hr
     include ../../components/recipe.menu/bottom.jade
     hr.i-size-L
-    include ../../modules/recipe-line/include.jade
+    
+    .b-recipe-line.b-ph-block
+
+      -var heading = "Рецепты с пошаговыми фотографиями"
+      include ../../modules/heading-linethrough/link
+      
+      hr.i-size-L
+      
+      .row
+        -var n = 0
+          while n < 4
+            -n++
+            .col-sm-3
+              include ../../modules/recipe-thumb/recipe-thumb.jade
+            hr.i-size-L.visible-xs-block
+    
     hr.i-size-L
     include ../../components/lavka/template
     hr.i-size-L
