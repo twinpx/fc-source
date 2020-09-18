@@ -25,7 +25,7 @@
         dataType: "html",
         success: function( data ) {
           $( '.b-search-result__button.i-preload' ).remove();
-          $( '.b-search-result__results' ).append( data );
+          $( '.b-search-result__results' ).append( data ).find( 'a[ data-original ]' ).lazyload();
           $( '.b-search-result__result-block:last' ).slideDown();
           var page = $( '.b-search-result__result-block:last' ).data( 'page' );
           

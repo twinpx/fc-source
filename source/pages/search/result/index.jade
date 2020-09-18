@@ -1,0 +1,26 @@
+﻿block vars
+  - var page = 'search-result'
+  - var authorized = true
+
+extends ../../../layouts/header.jade
+
+block title
+  title Search result | food
+  
+block content
+  
+  hr
+  
+  .container
+  
+    h1 Вы искали: рассольник
+    
+    hr
+    
+    include ../../../components/recipe-search-index/template
+    
+    hr
+
+    include ../../../components/search.result/template
+  
+  hr

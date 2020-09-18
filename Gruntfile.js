@@ -19,10 +19,12 @@ module.exports = function( grunt ) {
             src: [
               '**/*.jade',
               'components/**/to-be-rendered/*.jade',
+              'components/**/result.jade',
               '!layouts/**/*.jade',
               '!components/**/include/*.jade',
               '!components/*/*.jade',
-              '!modules/**/*.jade'
+              '!modules/**/*.jade',
+              'components/**/result.jade'
             ],
             dest: '<%= dest%>',
             ext: '.html',
