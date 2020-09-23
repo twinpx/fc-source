@@ -81,7 +81,7 @@ function clickFavorite() {
         $( this ).find( 'div:first' ).append( '<input type="hidden" name="addToFavoriteFlag" value="Y">' );
         Cookies.set( 'favorite', $( '.b-recipe' ).data( 'id' ));
       });
-      $( '.b-header__auth-button' ).click();
+      $( '.btn.b-header-panel__login' ).click();
       //$('#authModal').modal( 'open' );//Doesn't work due to materialize method modal
     }
   }
