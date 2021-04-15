@@ -1,0 +1,47 @@
+.b-yt-links
+
+  &.b-ph-block
+    position relative
+        
+  .b-ph
+    overflow hidden
+
+    &__header
+      height 15px
+      background-color $placeholder-color
+      width 200px
+      margin-bottom 29px
+
+    &__row
+      display flex
+      justify-content space-between
+
+      div
+        width calc( 100% / 4 - 30px )
+        padding-top calc( (100% / 4 - 30px) * 1.4 )
+        background-color $placeholder-color
+        border-radius 20px
+      
+      @media( max-width 991px )
+        width calc( 4 * (100% - 75px) / 2.8 + 90px )
+      
+      @media( max-width 767px )
+        width calc( 4 * (100% - 45px) / 1.15 + 90px )
+
+    @media( max-width 991px )
+      margin 0 -15px
+
+      &__header
+        margin-left 15px
+
+      &__row
+        justify-content space-around
+  
+    &-content
+      position absolute
+      top 0
+      left 0
+      width 100%
+      transition( opacity .5s ease )
+      opacity 0
+      z-index 0

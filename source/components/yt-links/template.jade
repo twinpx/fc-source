@@ -1,0 +1,57 @@
+// start /components/yt-links/
+
+//- push style and script file to the end of the page
+block components-array
+  if componentsArray
+    - componentsArray[ componentsArray.length ] = 'yt-links'
+  else
+    - var componentsArray = [ 'yt-links' ]
+
+.b-yt-links.b-ph-block
+
+  link( rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" )
+  script( src="https://unpkg.com/swiper/swiper-bundle.min.js" )
+
+  .b-ph
+    .b-ph__header 
+    .b-ph__row
+      div
+      div
+      div
+      div
+
+  .b-ph-content
+  
+    h2 Видео рецепты на YouTube
+
+    hr.i-size-M
+
+    .swiper-container
+      .swiper-wrapper.row
+
+        .col-xs-3.swiper-slide
+          a.b-yt-links__item( href="" target="_blank" style="background-image: url('/upload/foodshot/a8c460defb8ffda9c01edf93109aebeb.jpg');" )
+            span.b-yt-links__decor
+            span.b-yt-links__text Лазанья с фаршем
+            span.b-yt-links__yt-icon( style="background-image: url('/template/images/icons/yt-icon.svg');" )
+
+        .col-xs-3.swiper-slide
+          a.b-yt-links__item( href="" target="_blank" style="background-image: url('/upload/foodshot/a8c460defb8ffda9c01edf93109aebeb.jpg');" )
+            span.b-yt-links__decor
+            span.b-yt-links__text Пирожки с картошкой (постные)
+            span.b-yt-links__yt-icon( style="background-image: url('/template/images/icons/yt-icon.svg');" )
+
+        .col-xs-3.swiper-slide
+          a.b-yt-links__item( href="" target="_blank" style="background-image: url('/upload/foodshot/a8c460defb8ffda9c01edf93109aebeb.jpg');" )
+            span.b-yt-links__decor
+            span.b-yt-links__text Соус тахини
+            span.b-yt-links__yt-icon( style="background-image: url('/template/images/icons/yt-icon.svg');" )
+
+        .col-xs-3.swiper-slide
+          a.b-yt-links__item( href="" target="_blank" style="background-image: url('/upload/foodshot/a8c460defb8ffda9c01edf93109aebeb.jpg');" )
+            span.b-yt-links__decor
+            span.b-yt-links__text Яблочные оладьи
+            span.b-yt-links__yt-icon( style="background-image: url('/template/images/icons/yt-icon.svg');" )
+
+
+// end /components/yt-links/

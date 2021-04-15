@@ -1,0 +1,72 @@
+@import '../../styl/component-include.styl'
+
+.b-yt-links.b-ph-block
+  
+  &.i-ph-animated
+    
+    .b-ph-content
+      position static
+      width auto
+      opacity 1
+      
+    .b-ph
+      position absolute
+      width 100%
+      top 0
+      left 0
+      opacity 0
+      z-index -1
+
+.b-yt-links
+
+  h2
+    margin-top 0
+
+  &__item
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    padding-top 140%
+    border-radius 20px
+    overflow hidden 
+    position relative
+    display block
+    box-shadow( 0 30px 20px -20px #0000004D )
+
+  &__decor
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background transparent linear-gradient(180deg, #00000000 0%, #00000012 60%, #000000 100%) 0% 0% no-repeat padding-box
+    z-index 1
+
+  &__text
+    position absolute
+    bottom 28px
+    left 30px
+    width calc( 100% - 30px * 2 - 32px - 10px )
+    font-weight bold
+    line-height 1.2
+    color #fff
+    z-index 2
+
+  &__yt-icon
+    position absolute
+    bottom 21px
+    right 30px
+    width 32px
+    height 32px
+    background-repeat no-repeat
+    background-position center
+    background-size 32px
+    z-index 2
+
+  @media( max-width 991px )
+    .swiper-container
+      padding-bottom 30px
+      margin 0 -15px
+
+    .row
+      margin 0

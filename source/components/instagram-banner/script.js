@@ -4,7 +4,7 @@
   
   $( function() {
     
-    if ( window.Cookies && Cookies.get( 'close-instagram-banner' ) && Cookies.get( 'click-instagram-banner' )) {
+    if ( window.Cookies && (Cookies.get( 'close-instagram-banner' ) || Cookies.get( 'click-instagram-banner' ))) {
       $( '.b-instagram-banner' ).remove();
       return;
     }
