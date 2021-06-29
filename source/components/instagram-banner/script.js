@@ -40,12 +40,12 @@
       }
       
       //cookie
-      Cookies.set( 'close-instagram-banner', 'Y', { expires: 3, path: '', domain: window.location.hostname });
+      Cookies.set( 'close-instagram-banner', 'Y', { expires: 3, domain: window.location.hostname });
     });
     
     //click instagram
     $( '.b-instagram-banner__button' ).click( function() {
-      Cookies.set( 'click-instagram-banner', 'Y', { expires: 365, path: '', domain: window.location.hostname });
+      Cookies.set( 'click-instagram-banner', 'Y', { expires: 365, domain: window.location.hostname });
     });
   
     /*if ( window.BX ) {

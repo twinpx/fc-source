@@ -7,65 +7,79 @@
 
   .container.hidden-xs
   
-    include ../../modules/subscribe/include
+    //-include ../../modules/subscribe/include
   
     .row
     
-      .col-sm-2
-        
-        h4 Читайте нас
+      .col-sm-3
 
         menu
-          each title in [ 'Facebook', 'Instagram', 'Twitter', 'LiveJournal', 'Одноклассники', 'ВКонтакте', 'Google+', 'Pinterest' ]
+          each title in [ 'Facebook', 'Instagram', 'Яндекс Дзен', 'Яндекс Коллекции', 'Telegram' ]
+            li
+              a( href="" target="_blank" )=title
+    
+      .col-sm-3
+
+        menu
+          each title in [ 'YouTube', 'LiveJournal', 'Одноклассники', 'ВКонтакте', 'Pinterest' ]
             li
               a( href="" target="_blank" )=title
               
-      .col-sm-2
-        
-        h4 Моя Кухня
-
-        menu
-          each title in [ 'Моя страница', 'Избранные рецепты', 'Моя лента', 'Подписка', 'Бейджи', 'Редактировать анкету', 'Добавить рецепт', 'Добавить рецепт (простой)', 'Добавить запись в клуб' ]
-            li
-              a( href="" )=title
-              
-      .col-sm-2
+      .col-sm-3
         
         h4 Темы
 
         menu
-          each title in [ 'Рецепты с фото', 'Кулинарные клубы', 'Кулинары', 'Рецепт месяца', 'Самое интересное', 'Лавка' ]
+          each title in [ 'Рецепты', 'Фудшоты', 'Журнал' ]
             li
               a( href="" )=title
               
-      .col-sm-2
-        
-        h4 Сервисы
-
-        menu
-          each title in [ 'Моя страница', 'Поиск рецепта', 'Виджет Яндекса', 'Приложение Facebook', 'Приложение ВКонтакте' ]
-            li
-              a( href="" )=title
-              
-      .col-sm-2
-        
-        h4 Реклама
-
-        menu
-          each title in [ 'Моя страница', 'Медиа-кит', 'Магазинам', 'Конкурсы', 'Брендирование', 'Статистика' ]
-            li
-              a( href="" )=title
-              
-      .col-sm-2
+      .col-sm-3
         
         h4 Пользователям
 
         menu
-          each title in [ 'Новый профиль', 'Помощь', 'Ваши предложения', 'Сообщить об ошибке', 'Соглашение', 'Правила' ]
+          each title in [ 'Соглашение' ]
+            li
+              a( href="" )=title
+
+    hr
+  
+    .row
+    
+      .col-sm-3
+        
+        h4 Актуально
+
+        menu
+          each title in [ 'Летние рецепты', 'Летние супы', 'Летние десерты', 'Летние салаты' ]
+            li
+              a( href="" target="_blank" )=title
+    
+      .col-sm-3
+
+        menu
+          each title in [ 'Рецепты голубцов', 'Диетические блюда', 'Фаршированные яйца', 'Классические салаты' ]
+            li
+              a( href="" target="_blank" )=title
+              
+      .col-sm-3
+
+        menu
+          each title in [ 'Классические супы', 'Крабовый салат', 'Лазанья' ]
             li
               a( href="" )=title
               
-    div
+      .col-sm-3
+
+        menu
+          each title in [ 'Рецепты макаронс', 'Рецепты маффинов', 'Необычные рецепты', 'Низкоуглеводные блюда' ]
+            li
+              a( href="" )=title
+
+    #bx-composite-banner( style="display: inline-block;" )
+              
+    //-div
       a( href="" )
         span( style="display: inline-block; width: 31px; height: 31px; background-color: #ccc;" )
       a( href="" )

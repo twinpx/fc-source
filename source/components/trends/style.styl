@@ -1,0 +1,75 @@
+@import '../../styl/component-include.styl'
+
+.b-trends.b-ph-block
+  
+  &.i-ph-animated
+    
+    .b-ph-content
+      position static
+      width auto
+      opacity 1
+      
+    .b-ph
+      position absolute
+      width 100%
+      top 0
+      left 0
+      opacity 0
+      z-index -1
+
+    @media( max-width 767px )
+      margin 0 -15px !important
+
+      h2
+        margin-left 15px
+
+.b-trends
+
+  @media( max-width 767px )
+    margin 0 -15px
+
+  h2
+    margin-top 0
+
+    @media( max-width 767px )
+      margin-left 15px
+
+  &__item
+    border-radius 7px
+    font-size 12px
+    min-height 40px
+    line-height 40px
+    padding 0 20px
+    display inline-block
+    vertical-align top
+    margin 0 30px 17px 0
+
+  span&__item
+    background-color #F7E847
+    cursor default
+
+  a&__item
+    background-color #F4F4F4
+    color $link
+    transition( color .3s ease )
+
+    &:hover
+      text-decoration none
+      color $link-hover
+
+  @media( max-width 767px )
+
+    &-wrapper
+      overflow-y hidden
+      height 53px
+
+      &__body
+        overflow-x auto
+        white-space nowrap
+        padding 0 10px 13px
+
+    &__item
+      margin 0 2px 0 0
+
+      &:last-child
+        margin-right 0

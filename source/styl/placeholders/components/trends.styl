@@ -1,0 +1,43 @@
+.b-trends
+
+  &.b-ph-block
+    position relative
+        
+  .b-ph
+    overflow hidden
+    height 85px
+
+    &-content
+      position absolute
+      top 0
+      left 0
+      width 100%
+      transition( opacity .5s ease )
+      opacity 0
+      z-index 0
+
+    &__wrapper
+      display flex
+      justify-content flex-start
+
+      div
+        border-radius 7px
+        width 100px
+        height 40px
+        margin-right 30px
+        background-color $placeholder-color
+
+      @media( max-width 575px )
+        justify-content space-between
+
+        div
+          margin-right 2px
+          width 90px
+
+    &:before
+      content ''
+      display block
+      width 200px
+      height 15px
+      background-color $placeholder-color
+      margin 5px 0 25px
