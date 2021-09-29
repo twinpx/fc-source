@@ -1,0 +1,37 @@
+﻿@import '../../styl/component-include.styl'
+
+.b-smm
+  position fixed
+  top calc( 50% - 20px + 10px + 40px )
+  right 15px
+  z-index 10
+
+  &-button
+    width 40px
+    height 40px
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    transform( scale(0))
+    transition( all 0.4s cubic-bezier(.5,-.75,.7,2) )
+    cursor pointer
+    border none
+  
+    &.i-show
+      transform( scale(1))
+    
+      &:hover
+        transform( scale(1.1))
+        opacity .7
+    
+  @media (max-width 767px)
+    bottom 120px
+  
+  @media (min-width 768px)
+    right calc( (100% - 750px)/2 )
+    
+  @media (min-width 992px)
+    right calc( (100% - 970px)/2 )
+  
+  @media (min-width: 1200px)
+    right calc( (100% - 1170px)/2 )
