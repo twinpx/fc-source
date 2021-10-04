@@ -1,4 +1,1755 @@
-function tmpl(a){var b="var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('"+a.replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/<%-([\s\S]+?)%>/g,function(a,b){return"',esc("+b.replace(/\\'/g,"'")+"),'"}).replace(/<%=([\s\S]+?)%>/g,function(a,b){return"',"+b.replace(/\\'/g,"'")+",'"}).replace(/<%([\s\S]+?)%>/g,function(a,b){return"');"+b.replace(/\\'/g,"'").replace(/[\r\n\t]/g," ")+";__p.push('"}).replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/\t/g,"\\t")+"');}return __p.join('');",c=new Function("obj",b);return function(a){return c.call(this,a)}}function showHideLayer(a){var b=document.getElementById(a);if("none"==b.style.display)if(b.style.display="block","top_layer"==a){b.style.height=getyScroll()+"px";for(var c=0;c<b.childNodes.length;c++)"IFRAME"==b.childNodes[c].tagName&&(b.childNodes[c].style.height=getyScroll()+"px",b.childNodes[c].style.width="100%")}else{var d=$(b).height();if(""!=$(b).find("div.padding").height()&&(d=$(b).find("div.padding").height()),document.documentElement.clientHeight>d)var e=document.documentElement.clientHeight/2+$(window).scrollTop()-d/2-20+"px";else var e=$(window).scrollTop()+20+"px";if("ingredients_list_layer"==a||"stage_ingredients_list_layer"==a)var e=$(window).scrollTop()+20+"px";$("#"+a).animate({top:e},500,function(){$("#top_layer").height($(document).height()+30),$("#top_layer iframe").height($(document).height()+30)})}else b.style.display="none"}function getyScroll(){var a=0;if(window.innerHeight&&window.scrollMaxY){a=window.innerHeight+window.scrollMaxY;var b=document.documentElement,c=b&&b.clientHeight||document.body.clientHeight||window.innerHeight||self.innerHeight;a-=window.innerHeight-c}else a=document.body.scrollHeight>document.body.offsetHeight?document.body.scrollHeight:document.body.offsetHeight;return a}function showList(a,b,c){for(var d=Math.ceil(a.length/3),e=$("<ul>").appendTo($("#search_list_layer div.relative div.padding div.column:eq(0)")),f=0;d>f;f++)if(a[f]){for(var g=$('<li rel="'+f+'">').appendTo($(e)),h=$('<a href="#">'+a[f]+"</a>").appendTo($(g)),i=0;i<b.length;i++)b[i]==f&&$(g).addClass("selected");$(h).click(function(){return $(this).parent().toggleClass("selected"),!1})}for(var j=$("<ul>").appendTo($("#search_list_layer div.relative div.padding div.column:eq(1)")),f=d;2*d>f;f++)if(a[f]){for(var g=$('<li rel="'+f+'">').appendTo($(j)),h=$('<a href="#">'+a[f]+"</a>").appendTo($(g)),i=0;i<b.length;i++)b[i]==f&&$(g).addClass("selected");$(h).click(function(){return $(this).parent().toggleClass("selected"),!1})}for(var k=$("<ul>").appendTo($("#search_list_layer div.relative div.padding div.column:eq(2)")),f=2*d;f<a.length;f++)if(a[f]){for(var g=$('<li rel="'+f+'">').appendTo($(k)),h=$('<a href="#">'+a[f]+"</a>").appendTo($(g)),i=0;i<b.length;i++)b[i]==f&&$(g).addClass("selected");$(h).click(function(){return $(this).parent().toggleClass("selected"),!1})}$("#search_list_layer div.relative div.padding h2").text(c)}function createGroupList(a){for(var b=$("#i_have_ingredients_group ul").empty(),c=new Array,d=0;d<ingredientArray[1].length;d++){var e=$('<li><a href="#" onClick="showIngredients('+d+", "+a+'); return false;">'+ingredientArray[1][d]+"</a><span>"+ingredientArray[1][d]+"</span></li>").appendTo($(b));c.push(e)}if($("#i_have_ingredients_group ul li:eq(0)").addClass("act"),showIngredients(0,a),0!=chosenSearchIngredient[0].length)for(var d=0;d<chosenSearchIngredient[0].length;d++)showSubList(c[chosenSearchIngredient[0][d]],!0,chosenSearchIngredient[0][d],chosenSearchIngredient[1][d])}function showIngredients(a,b){var c=a;$("#i_have_ingredients_list div.column ul").empty(),$("#i_have_ingredients_group ul li").removeClass("act"),$("#i_have_ingredients_group ul li:eq("+c+")").addClass("act"),$("#i_have_ingredients_list h2").text(ingredientArray[1][a]);var d=new Array;if($("#i_have_list").find("tr").each(function(){d.push($(this).attr("class"))}),18*ingredientArray[2][c][0].length+50>$("#i_have_ingredients_group").height())if(ingredientArray[2][c][0].length/2*18+50>=$("#i_have_ingredients_group").height()){for(var e=$("#i_have_ingredients_list div.column ul:eq(0)"),f=0;f<ingredientArray[2][c][0].length/2;f++){for(var g=ingredientArray[2][c][0][f],h=0;h<d.length;h++)d[h]==g&&(g+=" selected");$(e).append('<li class="'+g+'"><a href="#" onClick="selectIngredient(this, '+c+", "+f+", "+b+'); return false;">'+ingredientArray[2][c][1][f]+"</a></li>")}e=$("#i_have_ingredients_list div.column ul:eq(1)");for(var f=Math.ceil(ingredientArray[2][c][0].length/2);f<ingredientArray[2][c][0].length;f++){for(var g=ingredientArray[2][c][0][f],h=0;h<d.length;h++)d[h]==g&&(g+=" selected");$(e).append('<li class="'+g+'"><a href="#" onClick="selectIngredient(this, '+c+", "+f+", "+b+'); return false;">'+ingredientArray[2][c][1][f]+"</a></li>")}}else for(var e=$("#i_have_ingredients_list div.column ul:eq(0)"),f=0;f<ingredientArray[2][c][0].length;f++)if($("#i_have_ingredients_group").height()>$("#i_have_ingredients_list").height()){for(var g=ingredientArray[2][c][0][f],h=0;h<d.length;h++)d[h]==g&&(g+=" selected");$(e).append('<li class="'+g+'"><a href="#" onClick="selectIngredient(this, '+c+", "+f+", "+b+'); return false;">'+ingredientArray[2][c][1][f]+"</a></li>")}else{e=$("#i_have_ingredients_list div.column ul:eq(1)");for(var g=ingredientArray[2][c][0][f],h=0;h<d.length;h++)d[h]==g&&(g+=" selected");$(e).append('<li class="'+g+'"><a href="#" onClick="selectIngredient(this, '+c+", "+f+", "+b+'); return false;">'+ingredientArray[2][c][1][f]+"</a></li>")}else for(var e=$("#i_have_ingredients_list div.column ul:eq(0)"),f=0;f<ingredientArray[2][c][0].length;f++){for(var g=ingredientArray[2][c][0][f],h=0;h<d.length;h++)d[h]==g&&(g+=" selected");$(e).append('<li class="'+g+'"><a href="#" onClick="selectIngredient(this, '+c+", "+f+", "+b+'); return false;">'+ingredientArray[2][c][1][f]+"</a></li>")}increaseTopLayer()}function selectIngredient(a,b,c,d){if(10==d){var e=a;$("#dish_description input.smartsearch").attr({value:$(e).text()}).closest("div.form_field").find(":hidden").attr({value:$(e).parent().attr("class")}),hideStageIngredientsLayer()}else{var e=a;if($(a).parent().toggleClass("selected"),-1!=e.parentNode.className.search("selected"))var f=1;else var f=0;fillIHaveTable(f,b,c)}}function fillIHaveTable(a,b,c){if(1==a){var d=$('<tr class="'+ingredientArray[2][b][0][c]+'"><td><span>'+ingredientArray[2][b][1][c]+'</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');$(d).find("a.delete").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover")}).click(function(){var a=this.parentNode.parentNode.className;return $("#i_have_ingredients_list").find("li."+a).removeClass("selected"),$(this).parent().parent().remove(),0==$("#i_have_list div.bg table tr").length&&$("#i_have_dash").css({display:"block"}),!1}),$("#i_have_list div.bg table").append(d),$("#i_have_dash").css({display:"none"})}else $("#i_have_list div.bg table").find("tr."+ingredientArray[2][b][0][c]).remove(),0==$("#i_have_list div.bg table tr").length&&$("#i_have_dash").css({display:"block"})}function addIngredients(){for(var a=chosenSearchIngredient[0].length,b=0;a>b;b++)chosenSearchIngredient[0].pop();for(var c=chosenSearchIngredient[1].length,b=0;c>b;b++)chosenSearchIngredient[1].pop();for(var d=document.getElementById("ingredients_group"),b=0;b<d.childNodes.length;b++)if("UL"==d.childNodes[b].tagName)for(var e=d.childNodes[b],f=new Array,g=0;g<e.childNodes.length;g++)"LI"==e.childNodes[g].tagName&&f.push(e.childNodes[g]);for(var b=0;b<f.length;b++)for(var g=0;g<f[b].childNodes.length;g++)if("items"==f[b].childNodes[g].className)for(var h=f[b].childNodes[g],i=0;i<h.childNodes.length;i++)if("UL"==h.childNodes[i].tagName)for(var j=0;j<h.childNodes[i].childNodes.length;j++)"LI"==h.childNodes[i].childNodes[j].tagName&&"separator"!=h.childNodes[i].childNodes[j].className&&(chosenSearchIngredient[0].push(b),chosenSearchIngredient[1].push(h.childNodes[i].childNodes[j].className));fillSearchField(),hideIngredientsLayer()}function fillSearchField(){for(var a=new String,b=(new Array,new Array,new Array,0);b<chosenSearchKitchen.length;b++)""==a?a=kitchenArray[1][chosenSearchKitchen[b]]:(a+=", ",a+=kitchenArray[1][chosenSearchKitchen[b]].toLowerCase());for(var b=0;b<chosenSearchDish.length;b++)""==a?a=dishArray[1][chosenSearchDish[b]]:(a+=", ",a+=dishArray[1][chosenSearchDish[b]].toLowerCase());for(var b=0;b<chosenSearchIngredient[0].length;b++)""==a?a=ingredientArray[2][chosenSearchIngredient[0][b]][1][chosenSearchIngredient[1][b]]:(a+=", ",a+=ingredientArray[2][chosenSearchIngredient[0][b]][1][chosenSearchIngredient[1][b]].toLowerCase());$("#recipe_search_field").attr({value:""}).attr({value:a})}function smartsearchNavUp(a){var b=$(a).siblings("div.search_list").children("ul").children("li.hover");if(""==$(b).text()){smartsearchInputValue=$(a).attr("value");var c=$(a).siblings("div.search_list").children("ul").children("li:last");$(c).addClass("hover"),$(a).attr({value:$(c).text()})}else{$(b).removeClass("hover");var c=$(b).prev("li");""!=$(c).text()?($(c).addClass("hover"),$(a).attr({value:$(c).text()})):$(a).attr({value:smartsearchInputValue})}}function smartsearchNavDown(a){var b=$(a).siblings("div.search_list").children("ul").children("li.hover");if(""==$(b).text()){smartsearchInputValue=$(a).attr("value");var c=$(a).siblings("div.search_list").children("ul").children("li:first");$(c).addClass("hover"),$(a).attr({value:$(c).text()})}else{$(b).removeClass("hover");var c=$(b).next("li");""!=$(c).text()?($(c).addClass("hover"),$(a).attr({value:$(c).text()})):$(a).attr({value:smartsearchInputValue})}}function smartsearchFunction(a){if($(a).siblings("div.search_list").children("ul").empty(),""!=$(a).attr("value")){for(var b=new String($(a).attr("value")).toLowerCase().split(" "),c=new Array,d=0;d<smartsearchArray.length;d++)c.push(String(smartsearchArray[d]).toLowerCase());for(var e=new Array,d=0;d<c.length;d++){for(var f=100,g=0;g<b.length;g++)f=Math.min(f,c[d].indexOf(b[g]));-1!=f&&(e[f]||(e[f]=new Array),e[f].push(smartsearchArray[d]))}for(var h=new Array,d=0;d<e.length;d++)if(e[d]){e[d].sort();for(var i=0;i<e[d].length;i++)h.push(e[d][i])}$(a).siblings("div.search_list").children("ul").css(0!=h.length?{display:"block"}:{display:"none"});for(var d=0;d<h.length;d++)7>d&&$(a).siblings("div.search_list").children("ul").append("<li>"+h[d]+"</li>");$(a).siblings("div.search_list").children("ul").children("li").hover(function(){$(this).addClass("hover"),$(a).siblings("input.click_field").attr({value:$(this).text()})},function(){$(this).removeClass("hover")}).click(function(){if("item"==this.parentNode.parentNode.parentNode.className)$(this).parent().css({display:"none"}).empty(),$(a).attr({value:$(a).siblings("input.click_field").attr("value")}).focus(),showUnitField(a);else if("dish_parents"==this.parentNode.parentNode.parentNode.parentNode.className){$(this).parent().css({display:"none"}).empty(),$(a).attr({value:$(this).text()}).focus();for(var b,c=0;c<smartsearchArray.length;c++)$(this).text()==smartsearchArray[c]&&(b=smartsearchIdArray[c]);$(a).siblings("input[name*='id']").attr({value:b})}else{$(a).attr({value:""}).focus(),$(this).parent().css({display:"none"}).empty();for(var b,c=0;c<smartsearchArray.length;c++)$(this).text()==smartsearchArray[c]&&(b=smartsearchIdArray[c]);if(!$("#i_have_list div.bg table").find("tr."+b).html()){var d=$('<tr class="'+b+'"><td><span>'+$(this).text()+'</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');$(d).find("a.delete").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover")}).click(function(){var a=this.parentNode.parentNode.className;return $("#i_have_ingredients_list").find("li."+a).removeClass("selected"),$(this).parent().parent().remove(),0==$("#i_have_list div.bg table tr").length&&$("#i_have_dash").css({display:"block"}),!1}),$("#i_have_list div.bg table").append(d),$("#i_have_ingredients_list").find("li."+b).addClass("selected"),$("#i_have_dash").css({display:"none"})}}})}else $(a).siblings("div.search_list").children("ul").css({display:"none"})}function pressEnter(){var a=$("#helper_smartsearch").parent().find("li.hover");if($(a).text()){$("#helper_smartsearch").attr({value:""}).focus(),$(this).parent().css({display:"none"}).empty();for(var b,c=0;c<smartsearchArray.length;c++)$(a).text()==smartsearchArray[c]&&(b=smartsearchIdArray[c]);if(!$("#i_have_list div.bg table").find("tr."+b).html()){var d=$('<tr class="'+b+'"><td><span>'+$(a).text()+'</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');$(d).find("a.delete").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover")}).click(function(){var a=this.parentNode.parentNode.className;return $("#i_have_ingredients_list").find("li."+a).removeClass("selected"),$(this).parent().parent().remove(),0==$("#i_have_list div.bg table tr").length&&$("#i_have_dash").css({display:"block"}),!1}),$("#i_have_list div.bg table").append(d),$("#i_have_ingredients_list").find("li."+b).addClass("selected"),$("#i_have_dash").css({display:"none"})}}else for(var e=0;e<smartsearchArray.length;e++)if($("#helper_smartsearch").attr("value").toLowerCase()==smartsearchArray[e].toLowerCase()){var f=smartsearchArray[e],g=smartsearchIdArray[e];if(!$("#i_have_list div.bg table").find("tr."+g).html()){var d=$('<tr class="'+g+'"><td><span>'+f+'</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');$(d).find("a.delete").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover")}).click(function(){var a=this.parentNode.parentNode.className;$("#i_have_ingredients_list").find("li."+a).removeClass("selected"),$(this).parent().parent().remove(),0==$("#i_have_list div.bg table tr").length&&$("#i_have_dash").css({display:"block"})}),$("#i_have_list div.bg table").append(d),$("#i_have_ingredients_list").find("li."+g).addClass("selected"),$("#i_have_dash").css({display:"none"})}$("#helper_smartsearch").attr({value:""}).focus(),$(this).parent().css({display:"none"}).empty()}}!function(a){"use strict";a(function(){function b(b){function c(){return document.getElementById(b)?(f.$elem=a("#"+b),void d()):!1}function d(){function b(){function b(){function b(){function b(a){f.factsArray=a.facts,e()}a.getJSON("/php/get_more_facts.php",b)}function c(){window.ga&&ga("send","event","������ �� �� ���","������ ������ ���",f.$elem.find(".b-facts__item").text())}return f.factsArray?(e(),c(),!1):(b(),!1)}f.$elem.find(".b-facts__more__link").click(b)}b()}function e(){function a(){f.$elem.find(".b-facts__item").fadeOut(500,function(){f.$elem.find(".b-facts__item").attr({"data-id":c.id}).html(c.text).fadeIn(500)})}function b(){function a(){f.factsArray.push(f.factsArray.shift())}for(var b={id:f.$elem.find(".b-facts__item").attr("data-id"),text:f.$elem.find(".b-facts__item").text()};f.factsArray[0].id==b.id;)a();var c=f.factsArray[0];return a(),c}if(!f.factsArray)return f.$elem.find(".b-facts__more__link").click(),!1;var c=b();a()}var f=this;c()}function c(){var b=a(this);b.hasClass("i-added")?a.ajax({url:b.data("remove-ajax-url"),type:b.data("method"),dataType:"json",success:function(){b.removeClass("i-added"),window._gaq&&_gaq.push(["_trackEvent","Избранное","Удалили из избранного"]),window.ga&&ga("send","event","Избранное","Удалили из избранного")},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}}):b.data("add-ajax-url")?a.ajax({url:b.data("add-ajax-url"),type:b.data("method"),dataType:"json",success:function(){b.addClass("i-added"),window._gaq&&_gaq.push(["_trackEvent","Избранное","Добавили в избранное"]),window.ga&&ga("send","event","Избранное","Добавили в избранное")},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}}):document.getElementById("authModal")&&(a("#authModal form").each(function(){a(this).find("div:first").append('<input type="hidden" name="addToFavoriteFlag" value="Y">'),Cookies.set("favorite",a(".b-recipe").data("id"))}),a(".btn.b-header-panel__login").click())}function d(a,b){function c(){d(),i.$name=i.$elem.find("div.new_file_name"),i.$input.change(function(){e()})}function d(){i.$elem.html('<div class="browse_button" title="Выбрать файл"></div><div class="blocker"></div><div class="new_file_name"></div>'),i.$elem.find(".browse_button").after(i.$input)}function e(){var a=h(),b=g(a);f(b)?(i.$name.text(a),i.$name.removeClass("i-attention")):(i.$name.text(j.messages.wrongExtention),i.$name.addClass("i-attention")),i.$name.css({display:"block"})}function f(a){for(var b=!1,c=0;c<j.extentions.length;c++)a.toLowerCase()==j.extentions[c]&&(b=!0);return b}function g(a){var b=/.*\.(.*)/,c=a.replace(b,"$1");return c}function h(){var a=i.$input.val(),b=/.*\\(.*)/,c=a.replace(b,"$1"),d=/.*\/(.*)/;return c=c.replace(d,"$1"),c.length>18&&(c="..."+c.substr(c.length-16,16)),c}var i=this;i.$elem=a,i.$input=i.$elem.find(":file");var j={},b=b||{};j.extentions=b.extentions||["jpg","jpeg"],j.messages=b.maessages||{wrongExtention:"Загружайте изображения в jpeg формате"},c()}function e(){var b=a(this);b.addClass("i-open")}function f(){var b=a(this);b.removeClass("i-open")}setTimeout(function(){a(".b-ph-block, h1, .b-heading-linethrough h2").addClass("i-ph-animated")},500),a(".b-deferred-content").each(function(){var b=a(this),c=b.attr("id");b.appendTo("#"+c+"__deferred")}),a("body").delegate(".title-search-result__item","click",function(){window.yaCounter7715218&&yaCounter7715218.reachGoal("titleSearch",{request_string:a("#title-search-input").val(),chosen_recipe:a(this).find(".title-search-result__header").text()})}),a(".b-header .b-mobile-menu-icon").click(function(b){b.stopPropagation(),a(this).closest(".b-header").find(".b-header__nav").slideToggle(500)}),a(".b-header__nav").click(function(b){"modal"!==a(b.target).data("toggle")&&b.stopPropagation()}),a(document).bind("click",function(){window.matchMedia("(max-width: 767px)").matches&&(a(".b-header__nav").slideUp(500),a(".b-content-nav .container").slideUp(500))}),a(".recipe_list_item .photo a, .b-recipe-preview__photo__link").each(function(){var b,c=a(this),d=c.children("img"),e=new Image;e.src=d.attr("src");var f=Math.floor(e.height*d.attr("width")/e.width);f>0?(b=parseInt(c.css("height"))/2-f/2,d.css({marginTop:b+"px"})):d.load(function(){var a=Math.floor(e.height*d.attr("width")/e.width);a>0&&(b=parseInt(c.css("height"))/2-a/2,d.css({marginTop:b+"px"}))})}),function(){function b(){var b=a(this).find(".b-admin-buttons__block").addClass("i-hover");b.stop().show().animate({opacity:1},100)}function c(){var b=a(this).find(".b-admin-buttons__block").removeClass("i-hover");setTimeout(function(){b.hasClass("i-hover")||b.stop().animate({opacity:0},100,function(){b.hide()})},100)}function d(){return confirm(a(this).attr("title")+"?")?!0:!1}a(document).delegate(".b-admin-buttons","mouseenter",b).delegate(".b-admin-buttons","mouseleave",c).delegate(".b-delete-icon","click",d)}(),a(".b-aside-banner.i-float").each(function(){function b(){n=d()+10||void 0,o=e(),q=m.offset().top,r=m.offset().left,s=m.height(),t=a("<div></div>"),t.width(m.outerWidth()).height(m.outerHeight()),v=a("aside.col-md-4"),a(window).bind("scroll",f).bind("resize",g).scroll()}function c(){var a,c=document.getElementById("aviasales-app");c?a=setInterval(function(){return document.getElementById("ng-app")?(clearInterval(a),void b()):void 0},500):b()}function d(){return a("#header").height()}function e(){function b(a,b){return a.topBorder<b.topBorder?-1:a.topBorder>b.topBorder?1:0}var c=[];return a(".b-store-block:not(.b-store-block__type_aside), #bottom, .collection_block, #ng-app:not(#banner_space #ng-app)").each(function(){c.push({elem:this,topBorder:a(this).offset().top})}),c.sort(b),a(c[0].elem)}function f(){u=h(),p=o.offset().top-10,!m.hasClass("i-top-fixed")&&u>=q-n&&u<p-m.outerHeight()-n?k():!m.hasClass("i-bottom-fixed")&&u>=p-m.outerHeight()-n?i():(m.hasClass("i-top-fixed")||m.hasClass("i-bottom-fixed"))&&q-n>u&&(l(),j())}function g(){r=m.parent().offset().left,m.css({left:r+"px"})}function h(){return a(window).scrollTop()}function i(){m.removeClass("i-top-fixed").addClass("i-bottom-fixed").css({top:p-v.offset().top-m.outerHeight()+"px",left:r-v.offset().left+"px"})}function j(){m.removeClass("i-bottom-fixed")}function k(){m.removeClass("i-bottom-fixed").addClass("i-top-fixed").css({top:n+"px",left:r+"px"}).after(t)}function l(){m.removeClass("i-top-fixed"),t.remove()}var m=a(this);setTimeout(c,1e3);var n,o,p,q,r,s,t,t,u,v}),a("#bx-panel-hider").bind("click",function(){var b=a(".b-header");b.data("topBorder",b.offset().top)}),a(".b-content-banner").each(function(){var b=a(this);a.ajax({url:b.data("ajax-url"),type:b.data("ajax-method"),dataType:"html",success:function(a){b.html(a)},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})}),a(".b-content-nav .b-mobile-menu-icon").click(function(b){b.stopPropagation(),a(this).closest(".b-content-nav").find(".container").slideToggle(500)}),a(".b-content-nav").click(function(a){a.stopPropagation()}),new b("do-you-know-that"),a(".b-favorite-ajax").length&&setTimeout(function(){var b=a(".b-favorite-ajax");a.ajax({url:b.data("ajax-url"),type:b.data("ajax-method"),dataType:"html",success:function(d){var e=a(d);e.appendTo("body").click(c),b.remove(),setTimeout(function(){e.addClass("i-show")},0)},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})},8e3),a(".b-figure__img img").each(function(){var b=a(this),c=b.attr("title");b.closest("figure").find("figcaption").text(c)}),window.jQuery&&window.jQuery.fn.fotorama&&a(".fotorama").fotorama(),function(a){a(function(){a(".b-header .b-mobile-menu-icon").click(function(b){b.stopPropagation(),a(this).closest(".b-header").find(".b-header__nav").slideToggle(500)}),a(document).bind("click",function(b){a(b.target).closest(".b-header-panel__user-dropdown-body").length||a(b.target).hasClass("b-header-panel__user")||a(".b-header-panel__user-dropdown-body").slideUp(500),a(b.target).closest(".b-header-panel__mobile-menu-body").length||a(b.target).is(".b-header-panel__icon.i-menu")||a(".b-header-panel__mobile-menu-body").slideUp(500)}),a(".b-header-panel__user").click(window.matchMedia("(min-width: 992px)").matches?function(b){b.preventDefault(),a(".b-header-panel__user-dropdown-body").slideToggle(300)}:function(b){b.preventDefault(),a(".b-header-panel__mobile-user-menu-body").slideToggle(300),a(".b-header-panel__mobile-menu-body").slideUp(300)}),a(".b-header-panel__icon.i-menu").click(function(b){b.preventDefault(),a(".b-header-panel__mobile-menu-body").slideToggle(300),a(".b-header-panel__mobile-user-menu-body").slideUp(300)});var b={start:0,end:0};a(".b-header-panel__mobile-menu-body, .b-header-panel__mobile-user-menu-body").on("touchstart",function(a){a.stopPropagation(),b={start:0,end:0},b.start=a.originalEvent.changedTouches[0].pageY}).on("touchend",function(c){c.stopPropagation(),b.end=c.originalEvent.changedTouches[0].pageY,b.start-b.end>35&&a(this).slideUp(),b={start:0,end:0}}),function(){function b(){var b=window.pageYOffset||document.documentElement.scrollTop,c=0;a("#bx-panel").length&&a("#bx-panel").hasClass("bx-panel-fixed")&&(b+=a("#bx-panel").height(),c=a("#bx-panel").height()),a("#bx-panel-pin").hasClass("bx-panel-pin-fixed")||d.data("topBorder"),b>d.data("topBorder")&&!d.hasClass("i-fixed")?(d.css({top:c+"px"}).addClass("i-fixed"),d.after('<div id="headerPanelFixed" style="height:'+d.height()+'px;"></div>')):b<=d.data("topBorder")&&d.hasClass("i-fixed")&&(a("#headerPanelFixed").remove(),d.removeClass("i-fixed").css({top:0}))}function c(){a("#bx-panel").length&&(d.data("topBorder",d.offset().top),b(),a("#bx-panel-expander, #bx-panel-hider").bind("click",function(){setTimeout(function(){d.data("topBorder",d.offset().top),b()},0)}),a("#bx-panel-pin").bind("click",function(){a(this).hasClass("bx-panel-pin-fixed")}))}var d=a(".b-header-panel");d.length&&(d.data("topBorder",d.offset().top),a(window).bind("scroll",b),c())}()})}(jQuery),a(".input_file").each(function(){new d(a(this))}),a(".i-float .form-control").focus(function(){a(this).parent(".i-float").addClass("i-focus")}).blur(function(){var b=a(this);""===b.val()&&b.parent(".i-float").removeClass("i-focus")}).each(function(){""!==a(this).val()&&a(this).parent(".i-float").addClass("i-focus")}),a(".i-float .b-label").click(function(){var b=a(this).parent(".i-float");b.hasClass("i-focus")||b.find(".form-control").focus()}),a("#authModal form").submit(function(){return""===a.trim(a("#auth-form-login").val())?(a("#auth-form-login").focus().closest(".input-field").addClass("i-empty"),!1):(a("#auth-form-login").removeClass("i-empty"),""===a.trim(a("#auth-form-password").val())?(a("#auth-form-password").focus().closest(".input-field").addClass("i-empty"),!1):void a("#auth-form-password").removeClass("i-empty"))}),document.getElementById("emailModal")&&(Cookies.get("GET_EMAIL")&&setTimeout(function(){a(".modal.in").modal("hide"),setTimeout(function(){a("#emailModal").modal("show")},500)},1*Cookies.get("GET_EMAIL")),a("#emailModal form").submit(function(b){if(b.preventDefault(),""===a.trim(a("#email-form").val()))return a("#email-form").focus().closest(".input-field").addClass("i-empty"),!1;a("#email-form").removeClass("i-empty");var c=a(this);a.ajax({url:c.attr("action"),type:c.attr("method"),dataType:"json",data:c.serialize(),success:function(b){b&&"Y"===b.STATUS&&(a("#emailModal").modal("hide"),Cookies.remove("GET_EMAIL",{path:window.location.hostname})),b&&"N"===b.STATUS&&b.ERROR&&(a(".b-email-modal__error").remove(),a(".b-email-modal__form").before('<div class="b-auth-modal__error">'+b.ERROR+"</div>"))},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})})),a(".b-placeholder-load").each(function(){var b=a(this),c=b.parent();a.ajax({url:b.data("url"),type:b.data("method"),dataType:"html",success:function(a){b.html(a),c.children("style, .i-placeholder").remove()},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})}),a(".b-recipe-thumb__photo").lazyload(),a.placeholder&&a("#helper_smartsearch").placeholder(),a("#search_helper_link").click(function(){return showHideLayer("top_layer"),a("#search_helper div.body div.menu div.item").removeClass("act"),a("#search_helper div.body div.menu div.item:eq(0)").addClass("act"),a("#search_helper div.body div.search_blocks").css({display:"none"}),a("#h_helper").css({display:"block"}),a("#i_have_list div.bg table").empty(),a("#i_have_dash").css({display:"block"}),a("#search_helper").css({top:"0"}).removeClass("stage_helper").slideDown("middle"),!1}),a("#search_helper div.body div.slide_up_button").click(function(){a("#search_helper").slideUp("middle",function(){showHideLayer("top_layer")})}),a("#search_helper div.body div.menu div.item a").click(function(){return a("#search_helper div.body div.search_blocks").css({display:"none"}),a("#"+a(this).attr("rel")).css({display:"block"}),a(this).parent().parent().children("div.item").removeClass("act"),a(this).parent().addClass("act"),"h_ingredients"==a(this).attr("rel")&&(a("#i_have_ingredients_list div.column ul").empty(),a("#i_have_ingredients_list h2").empty(),createGroupList()),!1}),a("#i_have_button").click(function(){var b="/search/";a(this).parent().find("tr").each(function(){b+=a(this).find("span").text().toLowerCase()+"/"}),window.location.href=b}),a("#helper_smartsearch").focus(function(){""==this.value&&(this.value="")}),a("#helper_smartsearch").blur(function(){""==this.value&&(this.value="")});var g=0;a("#helper_smartsearch").keyup(function(a){switch(window.event&&(a=window.event),a.keyCode?a.keyCode:a.which?a.which:null){case 38:0==g&&smartsearchNavUp(this);break;case 40:0==g&&smartsearchNavDown(this);break;default:smartsearchFunction(this)}}),a("#helper_smartsearch").keypress(function(a){switch(window.event&&(a=window.event),a.keyCode?a.keyCode:a.which?a.which:null){case 38:g=1,smartsearchNavUp(this);break;case 40:g=1,smartsearchNavDown(this);break;case 13:g=0,pressEnter()}}),document.querySelector(".b-smm-ajax")&&setTimeout(function(){var b=a(".b-smm-ajax");a.ajax({url:b.data("ajax-url"),type:b.data("ajax-method"),dataType:"html",success:function(c){var d=a(c);d.appendTo("body");var e=d.find(".b-smm-button");b.remove(),setTimeout(function(){e.addClass("i-show")},0)},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})},8e3),a(function(){function b(){a(".b-social-buttons__i__icon").unbind("click").bind("click",function(){var b=a(this),c=b.parent(),d=b.data("url"),e="get";return c.addClass("i-preload"),a.ajax({url:d,type:e,dataType:"json",success:function(b){try{a(".b-social-buttons__i__icon").each(function(){var c=a(this);c.data("url")===d&&c.parent().find(".b-social-buttons__i__num").text(b.num)})}catch(e){}c.removeClass("i-preload")},error:function(a){window.console&&console.log(a)}}),!1})}b()}),"Y"===Cookies.get("SUBSCRIBED")&&a(".b-subscribe").height("58px").html('<div class="text-success">Спасибо за подписку!</div>'),a(".b-subscribe form").submit(function(b){b.preventDefault();var c=a(this),d=c.find("[type=email]").val(),e=/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;d.match(e)&&(c.addClass("i-preload"),a.ajax({url:c.data("url"),type:c.attr("method"),dataType:"json",data:c.serialize(),success:function(a){c.removeClass("i-preload").find("p.text-warning").remove();try{"success"===a.response?(c.parent().height(c.parent().height()),c.before('<div class="text-success">'+a.text+"</div>"),c.remove(),Cookies.set("SUBSCRIBED","Y",{expires:7,path:window.location.hostname})):c.prepend('<p class="text-warning">'+a.text+"</p>")}catch(b){throw b}}}))}),a(document).bind("click",function(){a("#top_panel .kitchen .submenu").slideUp("middle").siblings("a").children("span").addClass("up").removeClass("down"),a("#top_panel .add .body").slideUp("middle")}),a("#top_panel span.kitchen > a").click(function(b){a(this).siblings(".submenu").slideToggle("middle").end().children("span").toggleClass("up").toggleClass("down"),b.preventDefault(),b.stopPropagation()}),a("#top_panel .add .button").click(function(b){a(this).siblings(".submenu").children(".body").slideToggle("middle"),b.preventDefault(),b.stopPropagation()}),window.BX&&BX.addCustomEvent("onFrameDataReceived",function(){a("#top_panel span.kitchen > a").click(function(b){a(this).siblings(".submenu").slideToggle("middle").end().children("span").toggleClass("up").toggleClass("down"),b.preventDefault(),b.stopPropagation()}),a("#top_panel .add .button").click(function(b){a(this).siblings(".submenu").children(".body").slideToggle("middle"),b.preventDefault(),b.stopPropagation()})}),a(".b-zen-ajax").length&&setTimeout(function(){var b=a(".b-zen-ajax");a.ajax({url:b.data("ajax-url"),type:b.data("ajax-method"),dataType:"html",success:function(c){var d=a(c);d.appendTo("body").hover(e,f),b.remove(),setTimeout(function(){d.addClass("i-show")},0)},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})},7800)})}(jQuery);var smartsearchInputValue;
+( function($) {
+
+'use strict';
+
+  $( function() {
+  
+
+//placeholders
+setTimeout( function() {
+  $( '.b-ph-block, h1, .b-heading-linethrough h2' ).addClass( 'i-ph-animated' );
+}, 500 );
+  
+//defer  
+$( '.b-deferred-content' ).each( function() {
+  var $block = $( this );
+  var id = $block.attr( 'id' );
+  $block.appendTo( '#' + id + '__deferred' );
+});
+
+//yandex metrika
+$( 'body' ).delegate( '.title-search-result__item', 'click', function() {
+  if ( window.yaCounter7715218 ) {
+    yaCounter7715218.reachGoal( "titleSearch", { request_string: $( '#title-search-input' ).val(), chosen_recipe: $( this ).find( '.title-search-result__header' ).text() });
+  }
+});
+
+            //header mobile menu icon
+            $( '.b-header .b-mobile-menu-icon' ).click( function(e) {
+              e.stopPropagation();
+              $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );
+            });
+
+            $( '.b-header__nav' ).click( function(e) {
+              if ( $( e.target ).data( 'toggle' ) === 'modal' ) {
+                return;
+              }
+              e.stopPropagation();
+            });
+
+            $( document ).bind( 'click', function() {
+              if ( window.matchMedia( "(max-width: 767px)" ).matches ) {
+                $( '.b-header__nav' ).slideUp( 500 );//.removeClass( 'i-menu-open' );
+                $( '.b-content-nav .container' ).slideUp( 500 );//.removeClass( 'i-open' );
+              }
+            });
+
+// vertical align for recipe preview photo
+$( ".recipe_list_item .photo a, .b-recipe-preview__photo__link" ).each( function() {
+  var $this = $( this ),
+    $img = $this.children( "img" ),
+    img = new Image(),
+    marginTop;
+    
+  img.src = $img.attr("src");
+  var hei = Math.floor( img.height * $img.attr("width") / img.width );
+  
+  if ( hei > 0 ) {
+    marginTop = (parseInt($this.css("height"))/2-hei/2);
+    $img.css({ marginTop: marginTop + "px" });
+  }
+  else {
+    $img.load( function() {
+      var hei = Math.floor( img.height * $img.attr( "width" ) / img.width );
+      if ( hei > 0 ) {
+        marginTop = (parseInt($this.css("height"))/2-hei/2);
+        $img.css({ marginTop: marginTop + "px" });
+      }
+    });
+  }
+});
+
+//input field from materialize
+/*$( '.input-field input' ).focus( function() {
+  $( this ).siblings( 'label' ).addClass( 'active' );
+}).blur( function() {
+  if ( $.trim($( this ).val()) === '' ) {
+    $( this ).siblings( 'label' ).removeClass( 'active' );
+  }
+});*/
+(function() {
+	$(document)
+		.delegate(".b-admin-buttons", "mouseenter", mouseenterAdmin)
+		.delegate(".b-admin-buttons", "mouseleave", mouseleaveAdmin)
+		.delegate(".b-delete-icon", "click", deleteAdmin);
+	
+	function mouseenterAdmin() {
+		var $block = $(this).find(".b-admin-buttons__block").addClass("i-hover");
+		$block.stop().show().animate({opacity: 1}, 100);
+	}
+	
+	function mouseleaveAdmin() {
+		var $block = $(this).find(".b-admin-buttons__block").removeClass("i-hover");
+		setTimeout(function() {
+			if($block.hasClass("i-hover")) return;
+			$block.stop().animate({opacity: 0}, 100, function() {$block.hide();});
+		}, 100);
+	}
+	
+	function deleteAdmin(e) {
+		if(confirm($(this).attr("title") + "?")) return true;
+		return false;
+	}
+}());
+
+$( '.b-aside-banner.i-float' ).each( function() {
+  var $banner = $( this );
+  
+  setTimeout( checkAviasales, 1000 );
+  
+  var topBorder, $bottomElement, bottomBorder, topElemBorder, leftElemBorder, elemHeight, $spacer, $spacer, scroll, $aside;
+    
+  function init() {
+    topBorder = getTopBorder() + 10 || undefined;
+    $bottomElement = getBottomElement();
+    topElemBorder = $banner.offset().top;
+    leftElemBorder = $banner.offset().left;
+    elemHeight = $banner.height();
+    $spacer = $('<div></div>');
+    $spacer.width( $banner.outerWidth()).height( $banner.outerHeight());
+    $aside = $( 'aside.col-md-4' );
+    
+    $( window )
+      .bind( "scroll", scrollWindow )
+      .bind( "resize", resizeWindow )
+      .scroll();
+  }
+    
+  function checkAviasales() {
+		var intId,
+				script = document.getElementById( "aviasales-app" );
+		
+		if ( script ) {
+			intId = setInterval( function() {
+				if ( document.getElementById( "ng-app" )) {
+					clearInterval( intId );
+					init();
+					return;
+				}
+			}, 500);
+		} else {
+			init();
+		}
+	}
+  
+  function getTopBorder() {
+		return $( '#header' ).height();
+	}
+  
+  function getBottomElement() {
+    var footerTopBorders = [];
+
+    $( '.b-store-block:not(.b-store-block__type_aside), #bottom, .collection_block, #ng-app:not(#banner_space #ng-app)' ).each( function() {
+      footerTopBorders.push({
+        "elem": this,
+        "topBorder": $( this ).offset().top
+      });
+    });
+
+    footerTopBorders.sort( sortTopBorders );
+    
+    return $( footerTopBorders[0].elem );
+    
+    function sortTopBorders(a, b) {
+			if ( a.topBorder < b.topBorder ) {
+        return -1;
+      } if ( a.topBorder > b.topBorder ) {
+        return 1;
+      }
+			return 0;
+		}
+  }
+
+	function getBottomBorder( action ) {
+    var footerTopBorders = [];
+
+    $( '.b-store-block:not(.b-store-block__type_aside), #bottom, .collection_block, #ng-app:not(#banner_space #ng-app)' ).each( function() {
+      footerTopBorders.push({
+        "elem": this,
+        "topBorder": $( this ).offset().top
+      });
+    });
+
+    footerTopBorders.sort( sortTopBorders );
+
+		return footerTopBorders[0].topBorder;
+
+		function sortTopBorders(a, b) {
+			if ( a.topBorder < b.topBorder ) {
+        return -1;
+      } if ( a.topBorder > b.topBorder ) {
+        return 1;
+      }
+			return 0;
+		}
+	}
+  
+  function scrollWindow() {
+		scroll = getScroll();
+    bottomBorder = $bottomElement.offset().top - 10;
+		
+		if ( !$banner.hasClass( 'i-top-fixed' ) &&
+				 ( scroll >= topElemBorder - topBorder &&
+				 scroll < bottomBorder - $banner.outerHeight() - topBorder)) {
+				 
+			doTopFixed();
+			
+		} else if ( !$banner.hasClass( 'i-bottom-fixed' ) &&
+								( scroll >= bottomBorder - $banner.outerHeight() - topBorder)) {
+								
+			doBottomFixed();
+			
+		} else if ( ( $banner.hasClass( 'i-top-fixed' ) ||
+								 $banner.hasClass( 'i-bottom-fixed' )) &&
+								 scroll < topElemBorder - topBorder) {
+								 
+			undoTopFixed();
+			undoBottomFixed();
+		}
+	}
+  
+  function resizeWindow() {
+		leftElemBorder = $banner.parent().offset().left;
+		$banner.css({left: leftElemBorder + 'px'});
+	}
+
+	function getScroll() {
+		return $( window ).scrollTop();
+	}
+	
+	function doBottomFixed() {
+		$banner
+			.removeClass( 'i-top-fixed' )
+			.addClass( 'i-bottom-fixed' )
+			.css({ top: bottomBorder - $aside.offset().top - $banner.outerHeight() + 'px', left: leftElemBorder - $aside.offset().left + 'px' });
+	}
+	
+	function undoBottomFixed() {
+		$banner.removeClass( 'i-bottom-fixed' );
+	}
+	
+	function doTopFixed() {
+		$banner
+			.removeClass( 'i-bottom-fixed' )
+			.addClass( 'i-top-fixed' )
+			.css({ top: topBorder + 'px', left: leftElemBorder + 'px'})
+			.after( $spacer );
+	}
+	
+	function undoTopFixed() {
+		$banner.removeClass( 'i-top-fixed' );
+		$spacer.remove();
+	}
+});
+/*( function() {
+	$(document)
+		.delegate(".b-author-avatar", "mouseenter", mouseenterAvatar)
+		.delegate(".b-author-avatar", "mouseleave", mouseleaveAvatar);
+	
+	function mouseenterAvatar() {
+		var $avatar = $(this);
+		$avatar.find(".b-author-avatar__link").stop().animate({width: "100px", height: "100px", top: "-35px", left: "-35px"}, 100);
+	}
+	
+	function mouseleaveAvatar() {
+		var $avatar = $(this);
+		$avatar.find(".b-author-avatar__link").stop().animate({width: "30px", height: "30px", top: "0", left: "0"}, 100);
+	}
+}());*/
+
+
+$( '#bx-panel-hider' ).bind( 'click', function() {
+  var $header = $( '.b-header' );
+  $header.data( 'topBorder', $header.offset().top );
+});
+
+$( '.b-content-banner' ).each( function() {
+  var $banner = $( this );
+  
+  $.ajax({
+    url: $banner.data( 'ajax-url' ),
+    type: $banner.data( 'ajax-method' ),
+    dataType: "html",
+    success: function( data ) {
+      $banner.html( data );
+    },
+    error: function( a, b, c ) {
+      if ( window.console ) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+    }
+  });
+});
+$( '.b-content-nav .b-mobile-menu-icon' ).click( function(e) {
+  e.stopPropagation();
+  $( this ).closest( '.b-content-nav' ).find( '.container' ).slideToggle( 500 )//.toggleClass( 'i-open' );
+});
+
+$( '.b-content-nav' ).click( function(e) {
+  e.stopPropagation();
+});
+function DoYouKnowThat( id ) {
+  var self = this;
+	
+	init();
+	
+	function init() {
+		if(!document.getElementById(id)) return false;
+		
+		self.$elem = $("#" + id);
+		handleEvents();
+	}
+	
+	function handleEvents() {
+		initMoreButton();
+		
+		function initMoreButton() {
+			self.$elem.find(".b-facts__more__link").click(clickMoreLink);
+			
+			function clickMoreLink() {
+				if(!self.factsArray) {
+					getFactsArray();
+					return false;
+				}
+					
+				showNextFact();
+				trackEvent();
+				
+				function getFactsArray() {
+					$.getJSON(
+						"/php/get_more_facts.php",
+						success
+					)
+					
+					function success(data, textStatus, jqXHR) {
+						self.factsArray = data.facts;
+						showNextFact();
+					}
+				}
+				
+				function trackEvent() {
+					if(!window.ga) return;
+					ga('send', 'event', '������ �� �� ���', '������ ������ ���', self.$elem.find(".b-facts__item").text());
+				}
+				
+				return false;
+			}
+		}
+	}
+	
+	function showNextFact() {
+		if(!self.factsArray) {
+			self.$elem.find(".b-facts__more__link").click();
+			return false;
+		}
+		
+		var factObject = getNextFactObject();
+		replaceFactWithNew();
+		
+		function replaceFactWithNew() {
+			self.$elem.find(".b-facts__item").fadeOut(500, function() {
+				self.$elem.find(".b-facts__item")
+					.attr({"data-id": factObject.id})
+					.html(factObject.text)
+					.fadeIn(500);
+			});
+		}
+		
+		function getNextFactObject() {
+			var currentFactObject = {
+					id: self.$elem.find(".b-facts__item").attr("data-id"),
+					text: self.$elem.find(".b-facts__item").text()
+				}
+			
+			while(self.factsArray[0].id == currentFactObject.id) {
+				moveFactObjectToTheEnd();
+			}
+			
+			var resultFactObject = self.factsArray[0];
+			moveFactObjectToTheEnd();
+			
+			function moveFactObjectToTheEnd() {
+				self.factsArray.push(self.factsArray.shift());
+			}
+			
+			return resultFactObject;
+		}
+		
+	}
+}
+
+new DoYouKnowThat( 'do-you-know-that' );
+if ( $( '.b-favorite-ajax' ).length ) {
+  setTimeout( function() {
+    var $favAjax = $( '.b-favorite-ajax' );
+    $.ajax({
+      url: $favAjax.data( 'ajax-url' ),
+      type: $favAjax.data( 'ajax-method' ),//GET
+      dataType: "html",
+      success: function( html ) {
+        var $favButton = $( html );
+        $favButton.appendTo( 'body' ).click( clickFavorite );
+        $favAjax.remove();
+        setTimeout( function() {
+          $favButton.addClass( 'i-show' );
+        }, 0);
+      },
+      error: function( a, b, c ) {
+        if ( window.console ) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      }
+    });
+  }, 8000);
+}
+
+function clickFavorite() {
+  var $favButton = $(this);
+
+  if ( $favButton.hasClass( 'i-added' )) {//we see green fav button
+    $.ajax({
+      url: $favButton.data( 'remove-ajax-url' ),
+      type: $favButton.data( 'method' ),//GET
+      dataType: "json",
+      success: function( data ) {
+        $favButton.removeClass( 'i-added' );
+        //events
+        if ( window._gaq ) {
+          _gaq.push(['_trackEvent', 'Избранное', 'Удалили из избранного']);
+        }
+        if ( window.ga ) {
+          ga('send', 'event', 'Избранное', 'Удалили из избранного');
+        }
+      },
+      error: function( a, b, c ) {
+        if ( window.console ) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      }
+    });
+    
+  } else if ( $favButton.data( 'add-ajax-url' )) {//we see red fav button and the user is authorized
+    $.ajax({
+      url: $favButton.data( 'add-ajax-url' ),
+      type: $favButton.data( 'method' ),//GET
+      dataType: "json",
+      success: function( data ) {
+        $favButton.addClass( 'i-added' );
+        //events
+        if ( window._gaq ) {
+          _gaq.push(['_trackEvent', 'Избранное', 'Добавили в избранное']);
+        }
+        if ( window.ga ) {
+          ga('send', 'event', 'Избранное', 'Добавили в избранное');
+        }
+      },
+      error: function( a, b, c ) {
+        if ( window.console ) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      }
+    });
+    
+  } else {//we see red button and the user is not authorized
+    if ( document.getElementById( 'authModal' )) {
+      $( '#authModal form' ).each( function() {
+        $( this ).find( 'div:first' ).append( '<input type="hidden" name="addToFavoriteFlag" value="Y">' );
+        Cookies.set( 'favorite', $( '.b-recipe' ).data( 'id' ));
+      });
+      $( '.btn.b-header-panel__login' ).click();
+      //$('#authModal').modal( 'open' );//Doesn't work due to materialize method modal
+    }
+  }
+}
+$( '.b-figure__img img' ).each( function() {
+  var $this = $( this );
+  var title = $this.attr( 'title' );
+  $this.closest( 'figure' ).find( 'figcaption' ).text( title );
+});
+
+
+
+if ( window.jQuery && window.jQuery.fn.fotorama ) {
+  $('.fotorama').fotorama();
+}
+( function($) {
+
+  'use strict';
+  
+  $( function() {
+  
+    //header mobile menu icon
+    $( '.b-header .b-mobile-menu-icon' ).click( function(e) {
+      e.stopPropagation();
+      $( this ).closest( '.b-header' ).find( '.b-header__nav' ).slideToggle( 500 );
+    });
+
+    $( document ).bind( 'click', function(e) {
+      
+      if ( !$( e.target ).closest( '.b-header-panel__user-dropdown-body' ).length && !$( e.target ).hasClass( 'b-header-panel__user' )) {
+        $( '.b-header-panel__user-dropdown-body' ).slideUp( 500 );
+      }
+      if ( !$( e.target ).closest( '.b-header-panel__mobile-menu-body' ).length && !$( e.target ).is( '.b-header-panel__icon.i-menu' )) {
+        $( '.b-header-panel__mobile-menu-body' ).slideUp( 500 );
+      }
+        
+    });
+    
+    //user dropdown
+    if ( window.matchMedia( "(min-width: 992px)" ).matches ) {
+      $( '.b-header-panel__user' ).click( function(e) {
+        e.preventDefault();
+        $( '.b-header-panel__user-dropdown-body' ).slideToggle( 300 );
+      });
+    } else {
+      $( '.b-header-panel__user' ).click( function(e) {
+        e.preventDefault();
+        $( '.b-header-panel__mobile-user-menu-body' ).slideToggle( 300 );
+        $( '.b-header-panel__mobile-menu-body' ).slideUp( 300 );
+      });
+    }
+    
+    //mobile dropdown
+    $( '.b-header-panel__icon.i-menu' ).click( function(e) {
+      e.preventDefault();
+      $( '.b-header-panel__mobile-menu-body' ).slideToggle( 300 );
+      $( '.b-header-panel__mobile-user-menu-body' ).slideUp( 300 );
+    });
+    
+    //swipe the menu
+    var mobileMenuCoords = {
+          start: 0,
+          end: 0
+        };
+        
+    $( '.b-header-panel__mobile-menu-body, .b-header-panel__mobile-user-menu-body' )
+      .on( "touchstart", function(e) {
+          e.stopPropagation();
+          mobileMenuCoords = { start: 0, end: 0 };
+          mobileMenuCoords.start = e.originalEvent.changedTouches[0].pageY;
+      })
+      .on( "touchend", function(e) {
+        e.stopPropagation();
+        mobileMenuCoords.end = e.originalEvent.changedTouches[0].pageY;
+        if ( ( mobileMenuCoords.start - mobileMenuCoords.end ) > 35 ) {
+          $( this ).slideUp();
+        }
+        mobileMenuCoords = { start: 0, end: 0 };
+      });
+      
+    //fixed header
+    ( function() {
+      var $header = $( '.b-header-panel' );
+      
+      if ( !$header.length ) {
+        return;
+      }
+      
+      /*if ( $( '#recipeSearch' ).hasClass( 'i-mobile-search' )) {
+        $header.addClass( "i-fixed" );
+        $header.after( '<div id="headerPanelFixed" style="height:' + $header.height() + 'px;"></div>' );
+      } else {*/
+        $header.data( 'topBorder', $header.offset().top );
+        $( window ).bind( "scroll", scrollWindow );
+      /*}*/
+      
+      bxCss();
+      
+      function scrollWindow() {
+        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        var top = 0;
+        
+        /*if ( $( '#bx-panel' ).length && !$( '#bx-panel' ).hasClass( 'bx-panel-fixed' )) {
+          $header.removeClass( "i-fixed" );
+        }*/
+        
+        if ( $( '#bx-panel' ).length && $( '#bx-panel' ).hasClass( 'bx-panel-fixed' )) {
+          scrolled += $( '#bx-panel' ).height();
+          top = $( '#bx-panel' ).height();
+        }
+        
+        if ( !$( '#bx-panel-pin' ).hasClass( 'bx-panel-pin-fixed' )) {
+          $header.data( 'topBorder' );
+        }
+        
+        if ( scrolled > $header.data( 'topBorder' ) && !$header.hasClass( "i-fixed" )) {
+          $header.css({ top: top + 'px' }).addClass( "i-fixed" );
+          $header.after( '<div id="headerPanelFixed" style="height:' + $header.height() + 'px;"></div>' );
+        } else if ( scrolled <= $header.data( 'topBorder' ) && $header.hasClass( "i-fixed" )) {
+          $( "#headerPanelFixed" ).remove();
+          $header.removeClass( "i-fixed" ).css({ top: 0 });
+        }
+        
+      }
+      
+      function bxCss() {
+        if ( !$( '#bx-panel' ).length ) {
+          return;
+        }
+        
+        $header.data( 'topBorder', $header.offset().top );
+        scrollWindow();
+        
+        $( '#bx-panel-expander, #bx-panel-hider' ).bind( 'click', function () {
+          setTimeout( function() {
+            $header.data( 'topBorder', $header.offset().top );
+            scrollWindow();
+          }, 0);
+        });
+        
+        $( '#bx-panel-pin' ).bind( 'click', function() {
+          if ( $( this ).hasClass( 'bx-panel-pin-fixed' )) {
+            
+          }
+        });
+      }
+      
+    }());
+  });
+
+}( jQuery ));
+
+
+
+$(".input_file").each(function() {
+  new InputFile($(this));
+});
+
+function InputFile($elem, params) {
+	var self = this;
+	self.$elem = $elem;
+	self.$input = self.$elem.find(":file");
+	
+	var options = {}, params = params || {};
+	options.extentions = params.extentions || ["jpg", "jpeg"];
+	options.messages = params.maessages ||
+		{
+			wrongExtention : "Загружайте изображения в jpeg формате"
+		};
+	init();
+	
+	function init() {
+		
+		createHTML();
+		
+		self.$name = self.$elem.find("div.new_file_name");
+		
+		self.$input.change(function() {
+			handleChanges();
+		});
+		
+	}
+	
+	function clearValue() {
+		self.$elem.find(":file").remove();
+		self.$elem.find(".browse_button").after(self.$input);
+	}
+	
+	function createHTML() {
+		self.$elem.html('<div class="browse_button" title="Выбрать файл"></div><div class="blocker"></div><div class="new_file_name"></div>');
+		self.$elem.find(".browse_button").after(self.$input);
+	}
+	
+	function handleChanges() {
+		
+		var fileTitle = getFileTitle();
+		
+		var fileExt = getFileExt(fileTitle);
+		
+		if(isValidFileExt(fileExt)) {
+			self.$name.text(fileTitle);
+			self.$name.removeClass("i-attention");
+		}
+		else {
+			self.$name.text(options.messages.wrongExtention);
+			self.$name.addClass("i-attention");
+			//clearValue();
+		}
+		
+		self.$name.css({display:"block"});
+	}
+	
+	function filesize (url) {
+		var req = this.window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
+		if (!req) {
+			throw new Error('XMLHttpRequest not supported');
+		}
+	 
+		req.open('HEAD', url, false);
+		req.send(null);
+	 
+		if (!req.getResponseHeader) {
+			try {
+				throw new Error('No getResponseHeader!');
+			} catch (e) {
+				return false;
+			}
+		} else if (!req.getResponseHeader('Content-Length')) {
+			try {
+				throw new Error('No Content-Length!');
+			} catch (e2) {
+				return false;
+			}
+		} else {
+			return req.getResponseHeader('Content-Length');
+		}
+	}
+	
+	function isValidFileExt(fileExt) {
+		
+		var flag = false;
+		
+		for(var i = 0; i < options.extentions.length; i++) {
+			if(fileExt.toLowerCase() == options.extentions[i]) flag = true;
+		}
+		
+		return flag;
+	}
+	
+	function getFileExt(fileTitle) {
+		var RegExExt =/.*\.(.*)/;
+		var fileExt = fileTitle.replace(RegExExt, "$1");
+		
+		return fileExt;
+	}
+	
+	function getFileTitle() {
+		var value = self.$input.val();
+		
+		var reWin = /.*\\(.*)/;
+		var fileTitle = value.replace(reWin, "$1");
+		
+		var reUnix = /.*\/(.*)/;
+		fileTitle = fileTitle.replace(reUnix, "$1");
+		
+		if (fileTitle.length > 18) {
+			fileTitle = "..." + fileTitle.substr(fileTitle.length - 16, 16);
+		}
+		
+		return fileTitle;
+	}
+}
+$( '.i-float .form-control' )
+  .focus( function() {
+    $( this ).parent( '.i-float' ).addClass( 'i-focus' );
+  })
+  .blur( function() {
+    var $this = $( this );
+    if ( $this.val() === '' ) {
+      $this.parent( '.i-float' ).removeClass( 'i-focus' );
+    }
+  })
+  .each( function() {
+    if ( $( this ).val() !== '' ) {
+      $( this ).parent( '.i-float' ).addClass( 'i-focus' );
+    }
+  });
+
+$( '.i-float .b-label' ).click( function() {
+  var $float = $( this ).parent( '.i-float' );
+  
+  if ( !$float.hasClass( 'i-focus' )) {
+    $float.find( '.form-control' ).focus();
+  }
+});
+
+
+
+$( '#authModal form' ).submit( function(e) {
+  //e.preventDefault();
+  
+  //highlite empty fields
+  if ( $.trim( $( '#auth-form-login' ).val()) === '' ) {
+    $( '#auth-form-login' ).focus().closest( '.input-field' ).addClass( 'i-empty' );
+    return false;
+  } else {
+    $( '#auth-form-login' ).removeClass( 'i-empty' );
+  }
+  
+  if ( $.trim( $( '#auth-form-password' ).val()) === '' ) {
+    $( '#auth-form-password' ).focus().closest( '.input-field' ).addClass( 'i-empty' );
+    return false;
+  } else {
+    $( '#auth-form-password' ).removeClass( 'i-empty' );
+  }
+  
+  //send ajax
+  /*var $form = $( this );
+  $.ajax({
+    url: $form.attr( 'action' ),
+    type: $form.attr( 'method' ),
+    dataType: "json",
+    data: $form.serialize(),
+    success: function( data ) {
+      if ( data && data.STATUS === 'Y' && data.URL ) {//success
+        window.location.href = data.URL;
+      }
+      if ( data && data.STATUS === 'N' && data.ERROR ) {//error
+        $( '.b-auth-modal__error' ).remove();
+        $( '.b-auth-modal__form' ).before( '<div class="b-auth-modal__error">' + data.ERROR + '</div>' );
+      }
+    },
+    error: function( a, b, c ) {
+      if ( window.console ) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+    }
+  });*/
+});
+
+//show email form
+
+//check the cookie
+/*Cookies.set("GET_EMAIL", "2000", {
+    expires: 7,
+    path: window.location.hostname
+});*/
+if ( document.getElementById( 'emailModal' )) {
+  if ( Cookies.get( "GET_EMAIL" )) {//code from Alex needed
+    setTimeout( function() {
+      $( '.modal.in' ).modal( 'hide' );
+      setTimeout( function() {//to prevent body scrolling
+        $( '#emailModal' ).modal( 'show' );
+      }, 500 );
+    }, 1*Cookies.get( "GET_EMAIL" ));
+  }
+
+  $( '#emailModal form' ).submit( function(e) {
+    e.preventDefault();
+    
+    //highlite empty fields
+    if ( $.trim( $( '#email-form' ).val()) === '' ) {
+      $( '#email-form' ).focus().closest( '.input-field' ).addClass( 'i-empty' );
+      return false;
+    } else {
+      $( '#email-form' ).removeClass( 'i-empty' );
+    }
+    
+    //send ajax
+    var $form = $( this );
+    $.ajax({
+      url: $form.attr( 'action' ),
+      type: $form.attr( 'method' ),
+      dataType: "json",
+      data: $form.serialize(),
+      success: function( data ) {
+        if ( data && data.STATUS === 'Y' ) {//success
+          //close the window
+          $( '#emailModal' ).modal( 'hide' );
+          //remove the cookie
+          Cookies.remove( "GET_EMAIL", { path: window.location.hostname });
+        }
+        if ( data && data.STATUS === 'N' && data.ERROR ) {//error
+          $( '.b-email-modal__error' ).remove();
+          $( '.b-email-modal__form' ).before( '<div class="b-auth-modal__error">' + data.ERROR + '</div>' );
+        }
+      },
+      error: function( a, b, c ) {
+        if ( window.console ) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      }
+    });
+  });
+}
+
+
+$( '.b-placeholder-load' ).each( function() {
+  
+  var $placeholderLoad = $( this );
+  var $placeholderBlock = $placeholderLoad.parent();
+  
+  $.ajax({
+    url: $placeholderLoad.data( 'url' ),
+    type: $placeholderLoad.data( 'method' ),
+    dataType: "html",
+    success: function ( html ) {
+      $placeholderLoad.html( html );
+      $placeholderBlock.children( 'style, .i-placeholder' ).remove();
+    },
+    error: function ( a, b, c ) {
+      if ( window.console ) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+    }
+  });
+  
+});
+
+$( '.b-recipe-thumb__photo' ).lazyload();
+if($.placeholder) $("#helper_smartsearch").placeholder();
+
+//slide down, show helper
+$("#search_helper_link").click(function() {
+  showHideLayer("top_layer");
+  $("#search_helper div.body div.menu div.item").removeClass("act");
+  $("#search_helper div.body div.menu div.item:eq(0)").addClass("act");
+  $("#search_helper div.body div.search_blocks").css({display:"none"});
+  $("#h_helper").css({display:"block"});
+  $("#i_have_list div.bg table").empty();
+  $("#i_have_dash").css({display:"block"});
+  $("#search_helper").css({top:"0"}).removeClass("stage_helper").slideDown("middle");
+  return false;
+});
+//slide up helper
+$("#search_helper div.body div.slide_up_button").click(function() {
+  $("#search_helper").slideUp("middle", function() {
+    showHideLayer("top_layer");
+  });
+});
+//topmenu switch
+$("#search_helper div.body div.menu div.item a").click(function() {
+  $("#search_helper div.body div.search_blocks").css({display:"none"});
+  $("#" + $(this).attr("rel")).css({display:"block"});
+  $(this).parent().parent().children("div.item").removeClass("act");
+  $(this).parent().addClass("act");
+  if ($(this).attr("rel") == "h_ingredients") {
+    $("#i_have_ingredients_list div.column ul").empty();
+    $("#i_have_ingredients_list h2").empty();
+    createGroupList();
+  }
+  return false;
+});
+$("#i_have_button").click(function() {
+  var location = "/search/";
+  $(this).parent().find("tr").each(function() {
+    location += $(this).find("span").text().toLowerCase() + "/";
+  });
+  window.location.href = location;
+});
+
+$("#helper_smartsearch").focus(function() {
+  if (this.value == "") {
+    this.value = "";
+  }
+});
+$("#helper_smartsearch").blur(function() {
+  if (this.value == "") {
+    this.value = "";
+  }
+});
+var keyPress = 0;//ie&chrome 
+$("#helper_smartsearch").keyup(function(event) {
+  if (window.event) event = window.event;
+  switch (event.keyCode ? event.keyCode : event.which ? event.which : null) {
+    case 38:
+      if(keyPress == 0) {smartsearchNavUp(this);
+      }
+      break;
+    case 40:
+      if(keyPress == 0) {smartsearchNavDown(this);
+      }
+      break;
+    default:smartsearchFunction(this);
+  }
+});
+$("#helper_smartsearch").keypress(function(event) {
+  if (window.event) event = window.event;
+  switch (event.keyCode ? event.keyCode : event.which ? event.which : null) {
+    case 38:
+      keyPress = 1;
+      smartsearchNavUp(this);
+    break;
+    case 40:
+      keyPress = 1;
+      smartsearchNavDown(this);
+    break;
+    case 13:
+      keyPress = 0;
+      pressEnter();
+    break;
+  }
+});
+
+
+if (document.querySelector('.b-smm-ajax')) {
+  setTimeout(function () {
+    var $smmAjax = $('.b-smm-ajax');
+    $.ajax({
+      url: $smmAjax.data('ajax-url'),
+      type: $smmAjax.data('ajax-method'), //GET
+      dataType: 'html',
+      success: function (html) {
+        var $smm = $(html);
+        $smm.appendTo('body');
+        var $smmButton = $smm.find('.b-smm-button');
+        $smmAjax.remove();
+        setTimeout(function () {
+          $smmButton.addClass('i-show');
+        }, 0);
+      },
+      error: function (a, b, c) {
+        if (window.console) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      },
+    });
+  }, 8000);
+}
+
+$(function(){function a(){$(".b-social-buttons__i__icon").unbind("click").bind("click",function(){var a=$(this),b=a.parent(),c=a.data("url"),d="get";return b.addClass("i-preload"),$.ajax({url:c,type:d,dataType:"json",success:function(a){try{$(".b-social-buttons__i__icon").each(function(){var b=$(this);b.data("url")===c&&b.parent().find(".b-social-buttons__i__num").text(a.num)})}catch(d){}b.removeClass("i-preload")},error:function(a){window.console&&console.log(a)}}),!1})}a()});
+
+if( Cookies.get('SUBSCRIBED') === 'Y' ) {
+  $( '.b-subscribe' ).height( '58px' ).html( '<div class="text-success">Спасибо за подписку!</div>' );
+}
+
+$( '.b-subscribe form' ).submit( function(e) {
+  e.preventDefault();
+  
+  var $form = $( this ),
+      mail = $form.find( '[type=email]' ).val(),
+      mailRegex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
+	
+  if ( !mail.match( mailRegex )) {
+    return;
+  }
+  
+  $form.addClass( 'i-preload' );
+  
+  
+  $.ajax({
+    url: $form.data( 'url' ),
+    type: $form.attr( 'method' ),
+    dataType: 'json',
+    data: $form.serialize(),
+    success: function( data ) {
+      $form
+        .removeClass( 'i-preload' )
+        .find( 'p.text-warning' ).remove();
+      try {
+      
+        if ( data.response === 'success' ) {
+          $form.parent().height( $form.parent().height() );
+          $form.before( '<div class="text-success">' + data.text + '</div>' );
+          $form.remove();
+          Cookies.set('SUBSCRIBED', 'Y', { expires: 7, path: window.location.hostname });
+        } else {
+          $form.prepend( '<p class="text-warning">' + data.text + '</p>' );
+        }
+      } catch ( err ) {
+        throw err;
+      }
+    }
+  });
+});
+$(document).bind("click", function() {
+
+  $("#top_panel .kitchen .submenu")
+    .slideUp("middle")
+      .siblings("a")
+        .children("span")
+          .addClass("up")
+          .removeClass("down");
+          
+  $("#top_panel .add .body").slideUp( "middle" );
+  
+});
+
+$( "#top_panel span.kitchen > a" ).click( function(e) {
+  $( this )
+    .siblings( ".submenu" )
+      .slideToggle( "middle" ).end()
+    .children( "span" )
+      .toggleClass( "up" )
+      .toggleClass( "down" );
+      
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+$("#top_panel .add .button").click( function(e) {
+  $( this )
+    .siblings( ".submenu" ).children( ".body" )
+      .slideToggle( "middle" );
+    
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+if ( window.BX ) {
+	BX.addCustomEvent( "onFrameDataReceived", function () {
+
+    $( "#top_panel span.kitchen > a" ).click( function(e) {
+      $( this )
+        .siblings( ".submenu" )
+          .slideToggle( "middle" ).end()
+        .children( "span" )
+          .toggleClass( "up" )
+          .toggleClass( "down" );
+          
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    $("#top_panel .add .button").click( function(e) {
+      $( this )
+        .siblings( ".submenu" ).children( ".body" )
+          .slideToggle( "middle" );
+        
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+	});
+}
+
+if ( $( '.b-zen-ajax' ).length ) {
+  setTimeout( function() {
+    var $zenAjax = $( '.b-zen-ajax' );
+    $.ajax({
+      url: $zenAjax.data( 'ajax-url' ),
+      type: $zenAjax.data( 'ajax-method' ),//GET
+      dataType: "html",
+      success: function( html ) {
+        var $zenButton = $( html );
+        $zenButton.appendTo( 'body' ).hover( hoverZen, houtZen );
+        $zenAjax.remove();
+        setTimeout( function() {
+          $zenButton.addClass( 'i-show' );
+        }, 0);
+      },
+      error: function( a, b, c ) {
+        if ( window.console ) {
+          console.log(a);
+          console.log(b);
+          console.log(c);
+        }
+      }
+    });
+  }, 7800);
+}
+
+function hoverZen() {
+  var $zenButton = $(this);
+  
+  $zenButton.addClass( 'i-open' );
+}
+
+function houtZen() {
+  var $zenButton = $(this);
+  
+  $zenButton.removeClass( 'i-open' );
+}
+
+  });
+
+}( jQuery ));
+
+// JavaScript micro-templating, from underscore.js
+function tmpl(str) {
+  var tmpl = 'var __p=[],print=function(){__p.push.apply(__p,arguments);};' +
+    'with(obj||{}){__p.push(\'' +
+    str.replace(/\\/g, '\\\\')
+       .replace(/'/g, "\\'")
+       .replace(/<%-([\s\S]+?)%>/g, function(match, code) {
+         return "',esc(" + code.replace(/\\'/g, "'") + "),'";
+       })
+       .replace(/<%=([\s\S]+?)%>/g, function(match, code) {
+         return "'," + code.replace(/\\'/g, "'") + ",'";
+       })
+       .replace(/<%([\s\S]+?)%>/g, function(match, code) {
+         return "');" + code.replace(/\\'/g, "'")
+                            .replace(/[\r\n\t]/g, ' ') + ";__p.push('";
+       })
+       .replace(/\r/g, '\\r')
+       .replace(/\n/g, '\\n')
+       .replace(/\t/g, '\\t')
+       + "');}return __p.join('');";
+  var func = new Function('obj', tmpl);
+  return function(data) {
+    return func.call(this, data);
+  };
+};
+
+//showHideLayer
+function showHideLayer(layer_id) {
+	var layer = document.getElementById(layer_id);
+	if (layer.style.display == "none") {
+		layer.style.display = "block";
+		if (layer_id == "top_layer") {
+			layer.style.height = getyScroll() + "px";
+			for (var i = 0; i < layer.childNodes.length; i++) {
+				if (layer.childNodes[i].tagName == "IFRAME") {
+					layer.childNodes[i].style.height = getyScroll() + "px";
+					layer.childNodes[i].style.width = "100%";
+				}
+			}
+		}
+		else {
+			var layerHeight = $(layer).height();
+			if ($(layer).find("div.padding").height() != "") {
+				layerHeight = $(layer).find("div.padding").height();
+			}
+			if (document.documentElement.clientHeight > layerHeight) {
+				var lTop = (document.documentElement.clientHeight)/2 + $(window).scrollTop() - layerHeight/2 - 20 + "px";
+			}
+			else {
+				var lTop = $(window).scrollTop() + 20 + "px";
+			}
+			if (layer_id == "ingredients_list_layer" || layer_id == "stage_ingredients_list_layer") {
+				var lTop = $(window).scrollTop() + 20 + "px";
+			}
+			$("#" + layer_id).animate({top:lTop}, 500, function() {
+				$("#top_layer").height($(document).height() + 30);
+				$("#top_layer iframe").height($(document).height() + 30);
+			});
+		}
+	}
+	else {layer.style.display = "none";
+	}
+}
+
+function getyScroll() {
+	var yScroll = 0;
+	
+	if (window.innerHeight && window.scrollMaxY) {
+		yScroll = window.innerHeight + window.scrollMaxY;
+		
+		var deff = document.documentElement;
+		var hff = (deff&&deff.clientHeight) || document.body.clientHeight || window.innerHeight || self.innerHeight;
+	
+		yScroll -= (window.innerHeight - hff);
+	} 
+	else if (document.body.scrollHeight > document.body.offsetHeight) { // all but Explorer Mac
+		yScroll = document.body.scrollHeight;
+	} 
+	else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari
+		yScroll = document.body.offsetHeight;
+	}
+	return yScroll;
+}
+
+//helper.js
+function showList(listArray, chosenArray, header) {//list of ingredients
+	var itemsNumbering = Math.ceil(listArray.length/3);
+	var ul_1 = $("<ul>").appendTo($("#search_list_layer div.relative div.padding div.column:eq(0)"));
+	for (var i = 0; i < itemsNumbering; i++ ) {
+		if (listArray[i]) {
+			var li = $('<li rel="' + i + '">').appendTo($(ul_1));
+			var anc = $('<a href="#">' + listArray[i] + '</a>').appendTo($(li));
+			
+			for (var j = 0; j < chosenArray.length; j++) {
+				if (chosenArray[j] == i) {
+					$(li).addClass("selected");
+				}
+			}
+			$(anc).click(function() {
+				$(this).parent().toggleClass("selected");
+				return false;
+			});
+		}
+	}
+	
+	var ul_2 = $("<ul>").appendTo($("#search_list_layer div.relative div.padding div.column:eq(1)"));
+	for (var i = itemsNumbering; i < itemsNumbering*2; i++ ) {
+		if (listArray[i]) {
+			var li = $('<li rel="' + i + '">').appendTo($(ul_2));
+			var anc = $('<a href="#">' + listArray[i] + '</a>').appendTo($(li));
+			
+			for (var j = 0; j < chosenArray.length; j++) {
+				if (chosenArray[j] == i) {
+					$(li).addClass("selected");
+				}
+			}
+			$(anc).click(function() {
+				$(this).parent().toggleClass("selected");
+				return false;
+			});
+		}
+	}
+	
+	var ul_3 = $("<ul>").appendTo($("#search_list_layer div.relative div.padding div.column:eq(2)"));
+	for (var i = itemsNumbering*2; i < listArray.length; i++ ) {
+		if (listArray[i]) {
+			var li = $('<li rel="' + i + '">').appendTo($(ul_3));
+			var anc = $('<a href="#">' + listArray[i] + '</a>').appendTo($(li));
+			
+			for (var j = 0; j < chosenArray.length; j++) {
+				if (chosenArray[j] == i) {
+					$(li).addClass("selected");
+				}
+			}
+			$(anc).click(function() {
+				$(this).parent().toggleClass("selected");
+				return false;
+			});
+		}
+	}
+	$("#search_list_layer div.relative div.padding h2").text(header);
+}
+
+//открытие формы выбора ингредиентов - формирование списка групп
+function createGroupList(topIcon) {
+	var groupUl = $("#i_have_ingredients_group ul").empty();
+	//ul
+	var liArray = new Array();//массив со всеми li групп ингредиентов
+	for (var i = 0; i < ingredientArray[1].length; i++) {
+		var groupLi = $('<li><a href="#" onClick="showIngredients(' + i + ', ' + topIcon + '); return false;">' + ingredientArray[1][i] + '</a><span>' + ingredientArray[1][i] + '</span></li>').appendTo($(groupUl));
+		liArray.push(groupLi);
+	}
+	$("#i_have_ingredients_group ul li:eq(0)").addClass("act");
+	showIngredients(0, topIcon);
+	//если вызываем окно с ингредиентами повторно для данного этапа
+	if (chosenSearchIngredient[0].length != 0) {
+		for (var i = 0; i < chosenSearchIngredient[0].length; i++) {
+			showSubList(liArray[chosenSearchIngredient[0][i]], true, chosenSearchIngredient[0][i], chosenSearchIngredient[1][i]);
+		}
+	}
+}
+
+//заполнение поля со списком ингредиентов (верхний слой)
+function showIngredients(group_number, topIcon) {
+	var groupNumber = group_number;
+	$("#i_have_ingredients_list div.column ul").empty();
+	
+	$("#i_have_ingredients_group ul li").removeClass("act");
+	$("#i_have_ingredients_group ul li:eq(" + groupNumber + ")").addClass("act");
+		
+	//h2
+	$("#i_have_ingredients_list h2").text(ingredientArray[1][group_number]);
+	
+	//ul
+	var iHaveArray = new Array();
+	$("#i_have_list").find("tr").each(function() {
+		iHaveArray.push($(this).attr("class"));
+	});
+	if (((ingredientArray[2][groupNumber][0].length*18) + 50) > $("#i_have_ingredients_group").height()) {
+		if (((ingredientArray[2][groupNumber][0].length/2*18) + 50) >= $("#i_have_ingredients_group").height()) {
+			var columnUl = $("#i_have_ingredients_list div.column ul:eq(0)");
+			for (var i = 0; i < ingredientArray[2][groupNumber][0].length/2; i++) {
+				var classId = ingredientArray[2][groupNumber][0][i];
+				for (var j = 0; j < iHaveArray.length; j++) {
+					if (iHaveArray[j] == classId) {
+						classId += " selected";
+					}
+				}
+				$(columnUl).append('<li class="' + classId + '"><a href="#" onClick="selectIngredient(this, ' +  groupNumber + ', ' + i + ', ' + topIcon + '); return false;">' + ingredientArray[2][groupNumber][1][i] + '</a></li>');
+			}
+			columnUl = $("#i_have_ingredients_list div.column ul:eq(1)");
+			for (var i = Math.ceil(ingredientArray[2][groupNumber][0].length/2); i < ingredientArray[2][groupNumber][0].length; i++) {
+				var classId = ingredientArray[2][groupNumber][0][i];
+				for (var j = 0; j < iHaveArray.length; j++) {
+					if (iHaveArray[j] == classId) {
+						classId += " selected";
+					}
+				}
+				$(columnUl).append('<li class="' + classId + '"><a href="#" onClick="selectIngredient(this, ' +  groupNumber + ', ' + i + ', ' + topIcon + '); return false;">' + ingredientArray[2][groupNumber][1][i] + '</a></li>');
+			}
+		}
+		else {
+			var columnUl = $("#i_have_ingredients_list div.column ul:eq(0)");
+			for (var i = 0; i < ingredientArray[2][groupNumber][0].length; i++) {
+				if ($("#i_have_ingredients_group").height() > $("#i_have_ingredients_list").height()) {
+					var classId = ingredientArray[2][groupNumber][0][i];
+					for (var j = 0; j < iHaveArray.length; j++) {
+						if (iHaveArray[j] == classId) {
+							classId += " selected";
+						}
+					}
+					$(columnUl).append('<li class="' + classId + '"><a href="#" onClick="selectIngredient(this, ' +  groupNumber + ', ' + i + ', ' + topIcon + '); return false;">' + ingredientArray[2][groupNumber][1][i] + '</a></li>');
+				}
+				else {
+					columnUl = $("#i_have_ingredients_list div.column ul:eq(1)");
+					var classId = ingredientArray[2][groupNumber][0][i];
+					for (var j = 0; j < iHaveArray.length; j++) {
+						if (iHaveArray[j] == classId) {
+							classId += " selected";
+						}
+					}
+					$(columnUl).append('<li class="' + classId + '"><a href="#" onClick="selectIngredient(this, ' +  groupNumber + ', ' + i + ', ' + topIcon + '); return false;">' + ingredientArray[2][groupNumber][1][i] + '</a></li>');
+				}
+			}
+		}
+	}
+	else {
+		var columnUl = $("#i_have_ingredients_list div.column ul:eq(0)");
+		for (var i = 0; i < ingredientArray[2][groupNumber][0].length; i++) {
+			var classId = ingredientArray[2][groupNumber][0][i];
+			for (var j = 0; j < iHaveArray.length; j++) {
+				if (iHaveArray[j] == classId) {
+					classId += " selected";
+				}
+			}
+			$(columnUl).append('<li class="' + classId + '"><a href="#" onClick="selectIngredient(this, ' +  groupNumber + ', ' + i + ', ' + topIcon + '); return false;">' + ingredientArray[2][groupNumber][1][i] + '</a></li>');
+		}
+	}
+	
+	increaseTopLayer();
+}
+
+function selectIngredient(anchor_element, group_number, ingredient_number, topIcon) {
+	if(topIcon == 10) {
+		var anchorElement = anchor_element;
+		$("#dish_description input.smartsearch").attr({value:$(anchorElement).text()}).closest("div.form_field").find(":hidden").attr({value:$(anchorElement).parent().attr("class")});
+		hideStageIngredientsLayer();
+	}
+	else {
+		var anchorElement = anchor_element;
+		$(anchor_element).parent().toggleClass("selected");
+		if (anchorElement.parentNode.className.search("selected") != -1) {
+			var addInr = 1;
+		}
+		else {var addInr = 0;
+		}
+		fillIHaveTable(addInr, group_number, ingredient_number);
+	}
+}
+
+//fill i-have table
+function fillIHaveTable(addInr, group_number, ingredient_number) {
+	if (addInr == 1) {
+		var trObject = $('<tr class="' + ingredientArray[2][group_number][0][ingredient_number] + '"><td><span>' + ingredientArray[2][group_number][1][ingredient_number] + '</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');
+		$(trObject).find("a.delete").hover(function() {
+			$(this).addClass("hover");
+		}, function() {
+			$(this).removeClass("hover");
+		}).click(function() {
+			var id = this.parentNode.parentNode.className;
+			$("#i_have_ingredients_list").find("li." + id).removeClass("selected");
+			$(this).parent().parent().remove();
+			if($("#i_have_list div.bg table tr").length == 0) {
+				$("#i_have_dash").css({display:"block"});
+			}
+			return false;
+		});
+		$("#i_have_list div.bg table").append(trObject);
+		$("#i_have_dash").css({display:"none"});
+	}
+	else {
+		$("#i_have_list div.bg table").find("tr." + ingredientArray[2][group_number][0][ingredient_number]).remove();
+		if($("#i_have_list div.bg table tr").length == 0) {
+			$("#i_have_dash").css({display:"block"});
+		}
+	}
+}
+
+//формирование массива ингредиентов этапа для вывода в форме со списком ингредиентов
+function addIngredients() {	
+	//формирование массива ингредиентов, поступивших из формы
+	var length1 = chosenSearchIngredient[0].length;
+	for (var i = 0; i < length1; i++) {
+		chosenSearchIngredient[0].pop();
+	}
+	var length2 = chosenSearchIngredient[1].length;
+	for (var i = 0; i < length2; i++) {
+		chosenSearchIngredient[1].pop();
+	}
+	var ingredientsGroupDiv = document.getElementById("ingredients_group");
+	for (var i = 0; i < ingredientsGroupDiv.childNodes.length; i++) {
+		if (ingredientsGroupDiv.childNodes[i].tagName == "UL") {
+			var groupUl = ingredientsGroupDiv.childNodes[i];
+			var groupLiArray = new Array();
+			for (var j = 0; j < groupUl.childNodes.length; j++) {
+				if (groupUl.childNodes[j].tagName == "LI") {
+					groupLiArray.push(groupUl.childNodes[j]);
+				}
+			}
+		}
+	}
+	for (var i = 0; i < groupLiArray.length; i++) {
+		for (var j = 0; j < groupLiArray[i].childNodes.length; j++) {
+			if (groupLiArray[i].childNodes[j].className == "items") {
+				var itemsSpan = groupLiArray[i].childNodes[j];
+				for (var k = 0; k < itemsSpan.childNodes.length; k++) {
+					if (itemsSpan.childNodes[k].tagName == "UL") {
+						for (var n = 0; n < itemsSpan.childNodes[k].childNodes.length; n++) {
+							if (itemsSpan.childNodes[k].childNodes[n].tagName == "LI" && itemsSpan.childNodes[k].childNodes[n].className != "separator") {
+								chosenSearchIngredient[0].push(i);
+								chosenSearchIngredient[1].push(itemsSpan.childNodes[k].childNodes[n].className);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	fillSearchField();
+	hideIngredientsLayer();
+}
+
+function fillSearchField() {
+	//записываем выбранные ингредиенты в поле
+	var inputString = new String();
+	var kitchenInput = new Array();
+	var dishInput = new Array();
+	var ingredientInput = new Array();
+	for (var i = 0; i < chosenSearchKitchen.length; i++) {
+		if (inputString == "") {
+			inputString = kitchenArray[1][chosenSearchKitchen[i]];
+		}
+		else {
+			inputString += ", ";
+			inputString += kitchenArray[1][chosenSearchKitchen[i]].toLowerCase();
+		}
+	}
+	for (var i = 0; i < chosenSearchDish.length; i++) {
+		if (inputString == "") {
+			inputString = dishArray[1][chosenSearchDish[i]];
+		}
+		else {
+			inputString += ", ";
+			inputString += dishArray[1][chosenSearchDish[i]].toLowerCase();
+		}
+	}
+	for (var i = 0; i < chosenSearchIngredient[0].length; i++) {
+		if (inputString == "") {
+			inputString = ingredientArray[2][chosenSearchIngredient[0][i]][1][chosenSearchIngredient[1][i]];
+		}
+		else {
+			inputString += ", ";
+			inputString += ingredientArray[2][chosenSearchIngredient[0][i]][1][chosenSearchIngredient[1][i]].toLowerCase();
+		}
+//		ingredientInput.push($('<input type="hidden" name="ingredient_id[]" value="' + ingredientArray[2][chosenSearchIngredient[0][i]][0][chosenSearchIngredient[1][i]] + '">'));
+	}
+	$("#recipe_search_field").attr({value:""}).attr({value:inputString});
+/*	$("#recipe_search div.search_field form input:hidden").remove();
+	for (var i = 0; i < ingredientInput.length; i++) {
+		$("#recipe_search div.search_field form").prepend(ingredientInput[i]);
+	}
+	for (var i = 0; i < dishInput.length; i++) {
+		$("#recipe_search div.search_field form").prepend(dishInput[i]);
+	}
+	for (var i = 0; i < kitchenInput.length; i++) {
+		$("#recipe_search div.search_field form").prepend(kitchenInput[i]);
+	}*/
+}
+
+var smartsearchInputValue;
+function smartsearchNavUp(inputObject) {
+	var preLi = $(inputObject).siblings("div.search_list").children("ul").children("li.hover");
+	if ($(preLi).text() == "") {
+		smartsearchInputValue = $(inputObject).attr("value");
+		var nowLi = $(inputObject).siblings("div.search_list").children("ul").children("li:last");
+		$(nowLi).addClass("hover");
+		$(inputObject).attr({value:$(nowLi).text()});
+	}
+	else {
+		$(preLi).removeClass("hover");
+		var nowLi = $(preLi).prev("li");
+		if ($(nowLi).text() != "") {
+			$(nowLi).addClass("hover");
+			$(inputObject).attr({value:$(nowLi).text()});
+		}
+		else {
+			$(inputObject).attr({value:smartsearchInputValue});
+		}
+	}
+}
+
+function smartsearchNavDown(inputObject) {
+	var preLi = $(inputObject).siblings("div.search_list").children("ul").children("li.hover");
+	if ($(preLi).text() == "") {
+		smartsearchInputValue = $(inputObject).attr("value");
+		var nowLi = $(inputObject).siblings("div.search_list").children("ul").children("li:first");
+		$(nowLi).addClass("hover");
+		$(inputObject).attr({value:$(nowLi).text()});
+	}
+	else {
+		$(preLi).removeClass("hover");
+		var nowLi = $(preLi).next("li");
+		if ($(nowLi).text() != "") {
+			$(nowLi).addClass("hover");
+			$(inputObject).attr({value:$(nowLi).text()});
+		}
+		else {
+			$(inputObject).attr({value:smartsearchInputValue});
+		}
+	}
+}
+
+function smartsearchFunction(inputObject) {
+	$(inputObject).siblings("div.search_list").children("ul").empty();
+	if($(inputObject).attr("value") != "") {
+		var searchString = new String($(inputObject).attr("value")).toLowerCase().split(" ");
+		
+		var smartsearchArrayLower = new Array();
+		for (var i = 0; i < smartsearchArray.length; i++) {
+			smartsearchArrayLower.push(String(smartsearchArray[i]).toLowerCase());
+		}
+		var indexOfArray = new Array();
+		for (var i = 0; i < smartsearchArrayLower.length; i++) {
+			//perfect match //if ($(inputObject).attr("value").toLowerCase() != smartsearchArrayLower[i]) {
+				var indexOfValue = 100;
+				for (var e = 0; e < searchString.length; e++) {
+					indexOfValue = Math.min(indexOfValue, smartsearchArrayLower[i].indexOf(searchString[e]));
+				}
+				if (indexOfValue != -1) {
+					if(!indexOfArray[indexOfValue]) {
+						indexOfArray[indexOfValue] = new Array();
+					}
+					indexOfArray[indexOfValue].push(smartsearchArray[i]);
+				}
+			//}
+		}
+		var sortedArray = new Array();
+		for (var i = 0; i < indexOfArray.length; i++) {
+			if (indexOfArray[i]) {
+				indexOfArray[i].sort();
+				for (var j = 0; j < indexOfArray[i].length; j++) {
+					sortedArray.push(indexOfArray[i][j]);
+				}
+			}
+		}
+		if (sortedArray.length != 0) {
+			$(inputObject).siblings("div.search_list").children("ul").css({display:"block"});
+		}
+		else {
+			$(inputObject).siblings("div.search_list").children("ul").css({display:"none"});
+		}
+		for (var i = 0; i < sortedArray.length; i++) {
+			if (i < 7) {
+				$(inputObject).siblings("div.search_list").children("ul").append('<li>' + sortedArray[i] + '</li>');
+			}
+		}
+		$(inputObject).siblings("div.search_list").children("ul").children("li").hover(function() {
+			$(this).addClass("hover");
+			$(inputObject).siblings("input.click_field").attr({value:$(this).text()});
+		}, function() {
+			$(this).removeClass("hover");
+		}).click(function() {
+			if (this.parentNode.parentNode.parentNode.className == "item") {
+				$(this).parent().css({display:"none"}).empty();
+				$(inputObject).attr({value:$(inputObject).siblings("input.click_field").attr("value")}).focus();
+				showUnitField(inputObject);
+			}
+			else if (this.parentNode.parentNode.parentNode.parentNode.className == "dish_parents") {
+				$(this).parent().css({display:"none"}).empty();
+				$(inputObject).attr({value:$(this).text()}).focus();
+				var liId;
+				for (var r = 0; r < smartsearchArray.length; r++) {
+					if ($(this).text() == smartsearchArray[r]) {
+						liId = smartsearchIdArray[r];
+					}
+				}
+				$(inputObject).siblings("input[name*='id']").attr({value:liId});
+			}
+			else {
+				$(inputObject).attr({value:""}).focus();
+				$(this).parent().css({display:"none"}).empty();
+				
+				var liId;
+				for (var r = 0; r < smartsearchArray.length; r++) {
+					if ($(this).text() == smartsearchArray[r]) {
+						liId = smartsearchIdArray[r];
+					}
+				}
+				
+				if (!$("#i_have_list div.bg table").find("tr." + liId).html()) {
+					var trObject = $('<tr class="' + liId + '"><td><span>' + $(this).text() + '</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');
+					$(trObject).find("a.delete").hover(function() {
+						$(this).addClass("hover");
+					}, function() {
+						$(this).removeClass("hover");
+					}).click(function() {
+						var id = this.parentNode.parentNode.className;
+						$("#i_have_ingredients_list").find("li." + id).removeClass("selected");
+						$(this).parent().parent().remove();
+						if($("#i_have_list div.bg table tr").length == 0) {
+							$("#i_have_dash").css({display:"block"});
+						}
+						return false;
+					});
+					$("#i_have_list div.bg table").append(trObject);
+					$("#i_have_ingredients_list").find("li." + liId).addClass("selected");
+					$("#i_have_dash").css({display:"none"});
+				}
+			}
+		});
+	}
+	else {
+		$(inputObject).siblings("div.search_list").children("ul").css({display:"none"});
+	}
+}
+
+function pressEnter() {
+	var liHover = $("#helper_smartsearch").parent().find("li.hover");
+	
+	if ($(liHover).text()) {
+		$("#helper_smartsearch").attr({value:""}).focus();
+		$(this).parent().css({display:"none"}).empty();
+		
+		var liId;
+		for (var r = 0; r < smartsearchArray.length; r++) {
+			if ($(liHover).text() == smartsearchArray[r]) {
+				liId = smartsearchIdArray[r];
+			}
+		}
+		
+		if (!$("#i_have_list div.bg table").find("tr." + liId).html()) {
+			var trObject = $('<tr class="' + liId + '"><td><span>' + $(liHover).text() + '</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');
+			$(trObject).find("a.delete").hover(function() {
+				$(this).addClass("hover");
+			}, function() {
+				$(this).removeClass("hover");
+			}).click(function() {
+				var id = this.parentNode.parentNode.className;
+				$("#i_have_ingredients_list").find("li." + id).removeClass("selected");
+				$(this).parent().parent().remove();
+				if($("#i_have_list div.bg table tr").length == 0) {
+					$("#i_have_dash").css({display:"block"});
+				}
+				return false;
+			});
+			$("#i_have_list div.bg table").append(trObject);
+			$("#i_have_ingredients_list").find("li." + liId).addClass("selected");
+			$("#i_have_dash").css({display:"none"});
+		} 
+	}
+	else {
+		for (var t = 0; t < smartsearchArray.length; t++) {
+			if ($("#helper_smartsearch").attr("value").toLowerCase() == smartsearchArray[t].toLowerCase()) {
+				var ingName = smartsearchArray[t];
+				var ingId = smartsearchIdArray[t];
+				if (!$("#i_have_list div.bg table").find("tr." + ingId).html()) {
+					var trObject = $('<tr class="' + ingId + '"><td><span>' + ingName + '</span></td><td class="icon"><a href="#" class="delete" title="Удалить ингредиент"></a></td></tr>');
+					$(trObject).find("a.delete").hover(function() {
+						$(this).addClass("hover");
+					}, function() {
+						$(this).removeClass("hover");
+					}).click(function() {
+						var id = this.parentNode.parentNode.className;
+						$("#i_have_ingredients_list").find("li." + id).removeClass("selected");
+						$(this).parent().parent().remove();
+						if($("#i_have_list div.bg table tr").length == 0) {
+							$("#i_have_dash").css({display:"block"});
+						}
+					});
+					$("#i_have_list div.bg table").append(trObject);
+					$("#i_have_ingredients_list").find("li." + ingId).addClass("selected");
+					$("#i_have_dash").css({display:"none"});
+				} 
+				$("#helper_smartsearch").attr({value:""}).focus();
+				$(this).parent().css({display:"none"}).empty();
+			}
+		}
+	}
+}
 function ajaxError(a, b, c) {
 	if(window.console) {
 		console.log(a);

@@ -1,1 +1,253 @@
-!function(a){function b(a){a.on("action:like",function(b,c){a.find(".b-recipe-menu__i .b-like-button__num").text(c)}).on("action:cooked",function(b,c){a.find(".b-recipe-menu__i .b-cooked-button__num").text(c)}),a.find(".b-print-button").click(function(){return i(),!1}),a.find(".b-info-block__icon.i-cooked").click(c),a.find(".b-info-block__icon.i-like").click(d)}function c(a){var b="cooked";e(a,b)}function d(a){var b="like";e(a,b)}function e(b,c){var d=a(b.target),e=d.data("href"),g="POST";return e?(b.preventDefault(),void a.ajax({url:e,type:g,dataType:"json",success:function(a){"Y"===a.success&&f(d,a,c)},error:ajaxError})):!0}function f(b,c,d){var e,f,i,j;j=b.data("href"),-1!==j.search("dislike")?j=j.replace("dislike","like"):-1!==j.search("like")?j=j.replace("like","dislike"):-1!==j.search("uncooked")?j=j.replace("uncooked","cooked"):-1!==j.search("cooked")&&(j=j.replace("cooked","uncooked")),b.data("href",j),c.total=c.total||(c.users?c.users.length:0),a(".b-recipe-menu").trigger("action:"+d,[c.total]),b.toggleClass("i-active"),e=b.hasClass("i-active"),f=b.siblings(".b-info-block__text"),f.length||(g(b),f=b.siblings(".b-info-block__text")),i=h(c.users),i||f.after('<div class="b-info-block__title"><b>'+f.find("b").text()+"</b></div>").remove(),f.find(".b-info-block__users").html(i),f.find(".b-info-block__others").text(c.others||"")}function g(a){var b=a.siblings(".b-info-block__title").remove();a.after('<div class="b-info-block__text">'+b.html()+'<div class="b-info-block__users"></div><div class="b-info-block__others"></div></div>')}function h(a){var b="";return a instanceof Array?(a.forEach(function(a){b+='<a href="'+a.href+'" title="'+a.name+'" class="b-info-block__user"><img src="'+a.src+'" width="20" height="20" alt=""></a> '}),b):b}function i(){function b(b){var c=a("<div></div>").html(b),d=c.find("img"),e=c.find(".screen"),f=e.children("div"),g=parseInt(f.css("width")),h=parseInt(f.css("height")),i=200/g;return f.css({width:g*i+"px",height:h*i+"px"}),d.attr({width:g*i,height:h*i}),c.html()}function c(){var c={browser:a.browser,title:a("title").text(),h1:a("h1").text(),recipeInfo:d.find(".recipe_info").html(),needed:e.find(".needed").find("table").html(),titleImage:b(e.find(".image").html()),description:d.find(".description").html(),stages:g},f=document.getElementById("print-recipe").innerHTML,h=tmpl(f);return h(c)}var d=a(".recipe"),e=d.find(".title"),f=d.find(".instructions"),g=[];f.find(".stage").each(function(){var c=a("<div></div>").html(a(this).html());c.find(".body").append('<div class="i-clearfix"></div>');var d=c.find(".image");d.html(b(d.html())),g.push(c.html())});var h=window.open("","","width=800, height=800,toolbar=0,scrollbars=yes,status=0,directories=0,location=0,menubar=0,resizable=0");h.document.write(c())}a(function(){function c(){a(".b-recipe-menu").each(function(c,d){var e=a(d);e.hasClass("i-ready")||(e.addClass("i-ready"),b(e))}),window.BX&&BX.addCustomEvent("onFrameDataReceived",function(){a(".b-recipe-menu").each(function(c,d){var e=a(d);e.hasClass("i-ready")||(e.addClass("i-ready"),b(e))})})}var d=!1;a(window).bind("scroll",function(){if(""==a.trim(a(".b-recipe-menu.i-bottom").text())){var b=a(document).scrollTop()+parseInt(window.screen.height)-50;a(".b-recipe-menu.i-bottom").each(function(){var e=a(this);e.offset().top<b&&(d||(d=!0,a.ajax({url:e.data("load-action"),type:e.data("load-method"),dataType:"html",success:function(a){e.html(a),c()},error:function(a,b,c){d=!1,window.console&&(console.log(a),console.log(b),console.log(c))}})))})}})})}(jQuery);
+( function($) {
+  
+  $(function() {
+  
+    var sendFlag = false;
+    
+    $( window ).bind( 'scroll', function() {
+      //load
+      
+      if ( $.trim($( ".b-recipe-menu.i-bottom" ).text()) == '' ) {
+        var top = $( document ).scrollTop() + parseInt( window.screen.height ) - 50;
+      
+        $( ".b-recipe-menu.i-bottom" ).each( function() {
+          var $menuBlock = $( this );
+          if ( $menuBlock.offset().top < top ) {
+            if ( !sendFlag ) {
+              sendFlag = true;
+              $.ajax({
+                url: $menuBlock.data( 'load-action' ),
+                type: $menuBlock.data( 'load-method' ),//GET
+                dataType: "html",
+                success: function( html) {
+                  $menuBlock.html( html );
+                  init();
+                },
+                error: function( a, b, c ) {
+                  sendFlag = false;
+                  if ( window.console ) {
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                  }
+                }
+              });
+            }
+          }
+        });
+        
+      }
+    });
+    
+    function init() {
+      // the menu
+      $( '.b-recipe-menu' ).each( function( index, menu ) {
+        var $menu = $( menu );
+        if ( !$menu.hasClass( 'i-ready' )) {
+          $menu.addClass( 'i-ready' );
+          recipeMenu( $menu );
+        }
+      });
+
+      if ( window.BX ) {
+        BX.addCustomEvent( "onFrameDataReceived", function () {
+        
+          $( '.b-recipe-menu' ).each( function( index, menu ) {
+            var $menu = $( menu );
+            if ( !$menu.hasClass( 'i-ready' )) {
+              $menu.addClass( 'i-ready' );
+              recipeMenu( $menu );
+            }
+          });
+          
+        });
+      }
+    }
+    
+  });
+  
+  function recipeMenu( $menu ) {
+    
+    $menu
+      .on( 'action:like', function( e, total ) {
+        $menu.find( '.b-recipe-menu__i .b-like-button__num' ).text( total );
+      })
+      .on( 'action:cooked', function( e, total ) {
+        $menu.find( '.b-recipe-menu__i .b-cooked-button__num' ).text( total );
+      });
+
+    $menu.find( '.b-print-button' ).click( function() {
+      openPrintWindow();
+      return false;
+    });
+    
+    //Cooked/like action
+    $menu.find( '.b-info-block__icon.i-cooked' ).click( clickCooked );
+    $menu.find( '.b-info-block__icon.i-like' ).click( clickLike );
+  
+  }
+  
+  function clickCooked(e) {
+    var action = 'cooked';
+    click( e, action );
+  }
+  
+  function clickLike(e) {
+    var action = 'like';
+    click( e, action );
+  }
+  
+  function click( e, action ) {
+    
+    var $this = $( e.target ),
+        url = $this.data( 'href' ),
+        method = 'POST';
+    
+    if ( !url ) return true;
+    
+    e.preventDefault();
+    
+    $.ajax({
+      url: url,
+      type: method,
+      dataType: 'json',
+      success: function( data ) {
+        if ( data.success !== 'Y' ) return;
+        successFunc( $this, data, action );
+      },
+      error: ajaxError
+    });
+  }
+    
+  function successFunc( $this, data, action ) {
+    var activeFlag,
+        $text,
+        users,
+        href;
+        
+    //change href
+    href = $this.data( 'href' );
+    
+    if ( href.search( 'dislike' ) !== -1 ) {
+      href = href.replace( 'dislike', 'like' );
+    } else if ( href.search( 'like' ) !== -1 ) {
+      href = href.replace( 'like', 'dislike' );
+    } else if ( href.search( 'uncooked' ) !== -1 ) {
+      href = href.replace( 'uncooked', 'cooked' );
+    } else if ( href.search( 'cooked' ) !== -1 ) {
+      href = href.replace( 'cooked', 'uncooked' );
+    }
+    
+    $this.data( 'href', href );
+    
+    //set nums
+    data.total = data.total || ( data.users ? data.users.length : 0 );
+    $( '.b-recipe-menu' ).trigger( 'action:' + action, [ data.total ]);
+    
+    //toggle class
+    $this.toggleClass( 'i-active' );
+    activeFlag = $this.hasClass( 'i-active' );
+    
+    //render 4- avatars
+    $text = $this.siblings( '.b-info-block__text' );
+    
+    if ( !$text.length ) {
+      createTextBlock( $this );
+      $text = $this.siblings( '.b-info-block__text' );
+    }
+    
+    users = renderUsers( data.users );
+    if ( !users ) {
+      $text.after( '<div class="b-info-block__title"><b>' + $text.find( 'b' ).text() + '</b></div>' ).remove();
+    }
+    $text.find( '.b-info-block__users' ).html( users );
+    
+    //change others
+    $text.find( '.b-info-block__others' ).text( data.others || '' );
+  }
+    
+  function createTextBlock( $this ) {
+    var $title = $this.siblings( '.b-info-block__title' ).remove();
+    $this.after( '<div class="b-info-block__text">' + $title.html() + '<div class="b-info-block__users"></div><div class="b-info-block__others"></div></div>' );
+  }
+  
+  function renderUsers( users ) {
+    var html = '';
+    
+    if ( !(users instanceof Array) ) return html;
+    
+    users.forEach( function( user ) {
+      html += '<a href="' + user.href + '" title="' + user.name + '" class="b-info-block__user"><img src="' + user.src + '" width="20" height="20" alt=""></a> ';
+    });
+    
+    return html;
+  }
+
+	//Open window to print a recipe
+	function openPrintWindow() {
+		var $recipe = $(".recipe");
+		var $title = $recipe.find(".title");
+		var $instructions = $recipe.find(".instructions");
+		var $stages = [];
+		
+		/*var heading = [
+			["Первый", "Второй", "Третий", "Четвёртый", "Пятый", "Шестой", "Седьмой", "Восьмой", "Девятый"],
+			["Одиннадцатый", "Двенадцатый", "Тринадцатый", "Четырнадцатый", "Пятнадцатый", "Шестнадцатый", "Семнадцатый", "Восемнадцатый", "Девятнадцатый"],
+			["Десятый", "Двадцатый", "Тридцатый", "Сороковой", "Пятидесятый", "Шестидесятый", "Семидесятый", "Восьмидесятый", "Девяностый"],
+			["", "Двадцать", "Тридцать", "Сорок", "Пятьдесят", "Шестьдесят", "Семьдесят", "Восемьдесят", "Девяносто"],
+			["первый", "второй", "третий", "четвёртый", "пятый", "шестой", "седьмой", "восьмой", "девятый"]
+		];*/
+		
+		$instructions.find(".stage").each(function() {
+			var $div = $('<div></div>').html($(this).html());
+			$div.find(".body").append('<div class="i-clearfix"></div>');
+			var $image = $div.find(".image");
+			$image.html(resizeImage($image.html()));
+			
+			$stages.push($div.html());
+		});
+		
+		var printWindow = window.open("", "", "width=800, height=800,toolbar=0,scrollbars=yes,status=0,directories=0,location=0,menubar=0,resizable=0");
+		printWindow.document.write(compileBody());
+		
+		function resizeImage(html) {
+			var $block = $('<div></div>').html(html);
+			var $image = $block.find("img");
+			var $screen = $block.find(".screen");
+			var $div = $screen.children("div");
+			
+			var width = parseInt($div.css("width"));
+			var height = parseInt($div.css("height"));
+			
+			var ratio = 200/width;
+			
+			//var newWidth = width * ratio;
+			//var newHeight = height * ratio;
+			
+			$div.css({width: width * ratio + "px", height: height * ratio + "px"});
+			$image.attr({width: width * ratio, height: height * ratio});
+			
+			return $block.html();
+		}
+		
+		function compileBody() {
+			
+			var bodyObj = {
+				browser: $.browser,
+				title: $("title").text(),
+				h1: $("h1").text(),
+				recipeInfo: $recipe.find(".recipe_info").html(),
+				needed: $title.find(".needed").find("table").html(),
+				titleImage: resizeImage($title.find(".image").html()),
+				description: $recipe.find(".description").html(),
+				stages: $stages			
+			};
+			
+			var template = document.getElementById('print-recipe').innerHTML;
+			var compiled = tmpl(template);
+			return compiled(bodyObj);
+		}
+	}
+
+
+}( jQuery ));

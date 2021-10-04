@@ -1,1 +1,940 @@
-!function(a){"use strict";function b(a,b){function c(){d(),i.$name=i.$elem.find("div.new_file_name"),i.$input.change(function(){e()})}function d(){i.$elem.html('<div class="browse_button" title="Выбрать файл"></div><div class="blocker"></div><div class="new_file_name"></div>'),i.$elem.find(".browse_button").after(i.$input)}function e(){var a=h(),b=g(a);f(b)?(i.$name.text(a),i.$name.removeClass("i-attention")):(i.$name.text(j.messages.wrongExtention),i.$name.addClass("i-attention")),i.$name.css({display:"block"})}function f(a){for(var b=!1,c=0;c<j.extentions.length;c++)a.toLowerCase()==j.extentions[c]&&(b=!0);return b}function g(a){var b=/.*\.(.*)/,c=a.replace(b,"$1");return c}function h(){var a=i.$input.val(),b=/.*\\(.*)/,c=a.replace(b,"$1"),d=/.*\/(.*)/;return c=c.replace(d,"$1"),c.length>18&&(c="..."+c.substr(c.length-16,16)),c}var i=this;i.$elem=a,i.$input=i.$elem.find(":file");var j={},b=b||{};j.extentions=b.extentions||["jpg","jpeg"],j.messages=b.maessages||{wrongExtention:"Загружайте изображения в jpeg формате"},c()}a(function(){function c(){a(function(){a(".b-recipe-comments").each(function(){new g(this)}),a("#b-comment-form").each(function(){new f(this)}),e()})}function d(){for(var a={},b=window.location.search.substring(1).split("&"),c=0;c<b.length;c++){var d=b[c].split("=");a[d[0]]="undefined"==typeof d[1]?"":d[1]}return a}function e(){var b=d();b.commentid&&b.commentid.length&&(a("#liketn_"+b.commentid+":eq(0)").click(),setTimeout(function(){a.scrollTo(a("[data-id="+b.commentid+"]").offset().top-100,500)},1e3))}function f(c){function d(){e(),f()}function e(){m.$elem=a(c),m.$elem.data("CommentForm",m)}function f(){m.$elem.delegate("form","submit",j).delegate(".b-admin-buttons .b-delete-icon","click",a(".b-recipe-comments").data("RecipeComments").clickDelete),m.$elem.find("[type=submit]").click(g)}function g(b){b.preventDefault(),a(this).closest("form").submit()}function j(c){function d(a){g.removeClass("i-preloader"),a&&a.error?f.find(".error_message").text(a.error):(k(f),e(a))}function e(c){setTimeout(function(){f.find("[type=submit]").removeClass("i-preload");var d=a('<div style="display:none;"></div>');d.html(i(c)),a(".b-recipe-comments").prepend(d),d.find(".input_file").each(function(){new b(a(this))}),l(d),a.scrollTo(a("#b-comments").offset().top-100,500,function(){d.css({opacity:0}).show().animate({opacity:1},500)}),window.upButton.styleElements()},500)}c.preventDefault();var f=a(this),g=f.find("[type=submit]");n(f)&&!g.hasClass("i-preloader")&&(g.addClass("i-preloader"),a.ajax({url:f.attr("action"),type:f.attr("method"),dataType:"json",data:f.serialize(),async:!1,success:d,error:ajaxError}))}function k(a){if(a.find("textarea").val("").end().find(".error_message").text(""),""!=a.find(".b-comment-form__photo__url").val()){var b=a.find(":file").closest(".b-form-field");h(b,"comment")}}var m=this;d()}function g(c){function d(){e(),f(),l()}function e(){A.$elem=a(c),A.$elem.data("RecipeComments",A),A.$replyForm=A.$elem.find("#b-rc__reply-form"),A.$editForm=A.$elem.find("#b-rc__edit-form"),A.$getMoreButton=A.$elem.find(".b-more-button a"),A.commentsPerPage=5,A.page=1}function f(){A.$getMoreButton.click(y),A.$elem.delegate(".b-rc__props__reply a","click",g).delegate(".b-rc__admin-buttons .b-edit-icon","click",o).delegate(".b-close-icon","click",p).delegate("button[type=submit]","click",q).delegate(".b-textarea","keyup",r).delegate(".b-like-icon__type-button","click",t).delegate(".b-admin-buttons .b-delete-icon","click",u).delegate("form","submit",v).delegate(".b-rc__item__content__text__img","click",w).find(".b-textarea").resizeTextarea()}function g(b){function c(){A.$elem.find(".i-edit").removeClass("i-edit")}function d(){function b(){A.$elem.find(".i-reply").each(function(){a(this).removeClass("i-reply").find(".b-rc__props__reply a").text("Ответить")}),e()}A.$replyForm.is(":visible")?A.$replyForm.slideUp(300,b):b()}function e(){A.$replyForm.hide().insertAfter(g.closest(".b-rc__item__content")).slideDown("middle").find(".b-textarea").val("").resizeTextarea(),setTimeout(function(){A.$replyForm.find(".b-textarea").focus()},100);var a=h.attr("data-id");A.$replyForm.find("input[name='rId']").val(a),f()}function f(){g.text("Скрыть"),h.addClass("i-reply")}b.preventDefault();var g=a(this),h=g.closest(".b-rc__item");return h.hasClass("i-reply")?void A.$replyForm.find(".b-close-icon").click():(c(),void d())}function o(b){b.preventDefault();var c=a(this).closest(".b-rc__item");c.addClass("i-edit")}function p(b){function c(a){A.$replyForm.closest(".b-rc__item").removeClass("i-reply").find(".b-rc__props__reply a").text("Ответить"),A.$replyForm.slideUp("middle",function(){A.$replyForm.find(".b-form-field").removeClass("i-attention")}),a.preventDefault()}function d(a){a.preventDefault();var b=e.closest(".b-rc__item");b.removeClass("i-edit").find(".b-form-field").removeClass("i-attention")}var e=a(this);0!==e.closest("#b-rc__reply-form").length?c(b):e.hasClass("b-rc__item__close")&&d(b)}function q(b){b.preventDefault(),a(this).closest("form").submit()}function r(b){if(b.ctrlKey&&13==b.keyCode){if(""==a(this).val())return!1;A.$replyForm.find("form").submit()}}function s(){return 1===a("#b-comment-form .b-rc__item.i-foodclub").length?!1:!0}function t(b){function c(b){var c;return a.ajax({type:"GET",dataType:"text",url:f,async:!1,data:"id="+e.closest(".b-rc__item").attr("data-id")+"&action="+b,success:function(a){c=a}}),c}function d(a,b){b&&"0"!=b||(b=""),a.siblings(".b-like-num").text(b),a.toggleClass("b-like-icon__type-active")}if(!s())return document.getElementById("authModal")&&(a("#authModal form").each(function(){a(this).find("div:first").append('<input type="hidden" name="commentLikeFlag" value="Y">'),Cookies.set("likeComment",a(this).closest(".b-rc__item").data("id"))}),a(".b-header__auth-button").click()),!1;b.preventDefault();var e=a(this),f=e.attr("data-ajax-url"),g="like";e.hasClass("b-like-icon__type-active")&&(g="dislike");var h=c(g);d(e,h)}function u(c,d){function e(b){function c(){var a=d.find(".b-form__photo-block__img img").attr("data-id"),b={id:d.attr("data-id"),sessid:d.closest(".b-recipe-comments").attr("data-sessId")};return a&&(b.imgId=a),b}var d=b.closest(".b-rc__item"),e=c();a.ajax({url:A.$elem.attr("data-delete-action"),type:A.$elem.attr("data-delete-method"),data:e,success:function(){d.parent().is(".b-rc__block")?b.closest(".b-rc__block").remove():d.remove()},error:ajaxError})}function f(c){var d=c.closest(".b-rc__item");a.ajax({url:A.$elem.attr("data-delete-photo-action"),type:A.$elem.attr("data-delete-photo-method"),data:"id="+d.attr("data-id")+"&imgId="+d.find(".b-form__photo-block__img img").attr("data-id"),success:function(){var e=d.attr("data-id"),f=c.closest(".b-form__photo-block").empty(),g=k({id:e,type:"edit"},"file-input-template");if(f.html(g),f.find(".input_file").each(function(){new b(a(this))}),l(f),0!==d.find(".b-rc__item__content__text__content").length){var h=d.find(".b-rc__item__content__text__content").html();d.find(".b-rc__item__content__text").html(h)}},error:ajaxError})}function g(b,c){var d=b.closest(".b-form-field");a.ajax({url:A.$elem.attr("data-delete-photo-action"),type:A.$elem.attr("data-delete-photo-method"),data:"src="+d.find(".b-form__photo-block__img img").attr("src"),success:function(){h(d,c)},error:ajaxError})}if(d=d||this,c.preventDefault(),confirm(a(d).attr("title")+"?"))if(a(d).closest(".b-admin-buttons").hasClass("b-rc__admin-buttons"))e(a(d));else{var i=a(d).closest(".b-form-field");0!==i.closest(".b-rc-edit-form").length?f(a(d)):0!==i.closest("#b-rc__reply-form").length?g(a(d),"reply"):0!==i.closest("#b-comment-form").length&&g(a(d),"comment")}return!1}function v(c){function d(a){i.removeClass("i-preloader");var b=g.closest(".b-rc__item");b.hasClass("i-edit")?e(a,b):b.hasClass("i-reply")&&f(a,b)}function e(a,b){if(b.removeClass("i-edit"),a&&a.image&&a.image.src&&""!=a.image.src)var c="<div style=\"background-image: url('"+a.image.src+'\');" data-id="'+a.image.id+'" class="b-rc__item__content__text__img"></div><div class="b-rc__item__content__text__content">'+a.text.html+'</div><div class="i-clearfix"></div>';else c=a.text.html;if(b.children(".b-rc__item__content").find(".b-rc__item__content__text").empty().html(c).end().find(".b-form__text-block textarea").val(a.text.text),a.image&&a.image.src){b.find(".b-rc-edit-form .b-image-icon__photo-url").val(a.image.src);var d=b.find(".b-rc-edit-form .b-form__photo-block__img");""!=d.text()?b.find(".b-rc-edit-form .b-form__photo-block__img").data({id:a.image.id}).css({backgroundImage:"url('"+a.image.src+"')"}):m({result:{files:[{url:a.image.src}]}},b.find(".b-rc-edit-form input[id*=fileupload]"),"edit")}a&&a.date&&b.find(".b-rc__props__date").text(a.date)}function f(c,d){c.root=d.attr("data-id");var e=a(j(c));0===d.parent().find(".b-rc__reply-block").length&&d.after('<div class="b-rc__reply-block"></div>'),d.parent().find(".b-rc__reply-block").prepend(e),d.find(".b-rc__reply-form__close").click(),e.find(".input_file").each(function(){new b(a(this))}),l(e);var f=A.$replyForm.find(".b-form__photo-block");h(f,"reply")}c.preventDefault();var g=a(this),i=g.find("[type=submit]");if(n(g)&&!i.hasClass("i-preloader")){i.addClass("i-preloader");var k=g.attr("action"),o=g.attr("method");k&&""!=k||(k=A.$elem.attr("data-edit-form-action")),o&&""!=o||(o=A.$elem.attr("data-edit-form-method")),a.ajax({url:k,type:o,dataType:"json",data:g.serialize(),async:!1,success:d,error:ajaxError})}}function w(){var b=a(this),c=b.closest(".b-rc__item"),d=new Image;if(d.src=b.css("backgroundImage").substring(5,b.css("backgroundImage").length-2),b.hasClass("b-rc__item__content__text__img__type_block")){if(b.css({width:"65px",height:"65px",margin:"0 12px 0 0"}).removeClass("b-rc__item__content__text__img__type_block"),c.data("scroll")&&""!=c.data("scroll"))var e=c.data("scroll");else e=parseInt(b.closest(".b-rc__item").offset().top,10)-parseInt(a("#top_panel").height(),10);a.scrollTo(e,500)}else{b.addClass("b-rc__item__content__text__img__type_block");var f=d.width,g=d.height;d.width>b.closest(".b-rc__item__content__text").width()&&(f=b.closest(".b-rc__item__content__text").width(),g=Math.floor(d.height*f/d.width)),b.css({width:f,height:g,margin:"0 0 15px"}),a.scrollTo(),c.data({scroll:x()}),a.scrollTo(parseInt(b.closest(".b-rc__item").offset().top,10)-parseInt(a("#top_panel").height(),10),500)}}function x(){return window.pageYOffset||document.documentElement.scrollTop}function y(){return a.ajax({url:"/php/get_more_comments.php",dataType:"json",data:{page:++A.page},beforeSend:function(){A.$getMoreButton.parent().addClass("i-preload")},success:function(b){setTimeout(function(){A.$getMoreButton.parent().removeClass("i-preload");for(var c=a('<div style="display:none;"></div>'),d=0;d<b.comments.length;d++)c.append(i(b.comments[d]));A.$getMoreButton.parent().before(c),c.css({opacity:0}).show().animate({opacity:1},500),a.scrollTo(c,1e3),z(),window.upButton.styleElements()},500)},error:ajaxError}),!1}function z(){var a=parseInt(A.$getMoreButton.attr("data-pages"),10);a--,A.$getMoreButton.attr({"data-pages":a}),1==a&&A.$getMoreButton.hide()}var A=this;d(),this.clickDelete=function(a){u(a,this),a.preventDefault(),a.stopPropagation()}}function h(c,d){c.empty();var e=k({id:"",type:d},"file-input-template");c.html(e),c.find(".input_file").each(function(){new b(a(this))}),l(c)}function i(b){var c={id:"",rId:"",sessid:a(".b-recipe-comments").attr("data-sessId"),author:{href:"",src:"",name:""},text:{html:"",text:""},image:{},likeNum:0,mine:!1,date:"",reply:[]};b=a.extend(c,b);for(var d=document.getElementById("comment-template").innerHTML,e=tmpl(d),f=a(e(b)),g=0;g<b.reply.length;g++)b.reply[g].root=b.id,f.append(j(b.reply[g]));return f}function j(b){b.cId=b.id;var c={id:"",cId:"",rId:"",sessid:a(".b-recipe-comments").attr("data-sessId"),root:"",image:{},text:{html:"",text:""},author:{href:"",src:"",name:""},mine:!1,date:"",likeNum:0};b=a.extend(c,b);var d=document.getElementById("reply-template").innerHTML,e=tmpl(d);return e(b)}function k(a,b){a.id||(a.id="");var c=document.getElementById(b).innerHTML,d=tmpl(c);return d(a)}function l(c){function d(a,b){var c={maxNumberOfFiles:"Загружайте только одну фотографию",acceptFileTypes:"Загружайте фотографии формата jpg, jpeg, gif, png",maxFileSize:"Размер файла превышает 2 Мб"},d=c[a];alert(d),b.closest(".b-form-field").removeClass("i-progress").removeClass("i-hover")}function e(c,d,e){a.each(d.result.files,function(c,d){var f=k({id:"",url:d.url,type:"comment"},"photo-template"),g=e.closest(".b-form-field");g.html(f),g.find(".input_file").each(function(){new b(a(this))}),l(g)})}c=c||a("#b-comments"),c.find("input[id*=fileupload]").each(function(){var b=a(this),c=b.attr("id"),f=b.attr("data-ajax-url");b.fileupload({url:f,dataType:"json",add:function(a,c){c.files.length>1?d("maxNumberOfFiles",b):/(\.|\/)(gif|jpe?g|png)$/i.test(c.files[0].type)?c.files[0].size>2e6?d("maxFileSize",b):c.submit():d("acceptFileTypes",b)},progress:function(){a("#"+c).closest(".b-form-field").addClass("i-progress")},done:function(b,d){var f=a("#"+c);if(f.closest(".b-form-field").removeClass("i-progress").removeClass("i-hover"),0!==f.closest("#b-comment-form").length)e(b,d,f);else{if(0!==f.closest(".b-rc-edit-form").length)var g="edit";0!==f.closest("#b-rc__reply-form").length&&(g="reply"),m(d,f,g)}}})})}function m(c,d,e){a.each(c.result.files,function(c,f){var g=k({id:d.closest(".b-rc__item").attr("data-id"),url:f.url,type:e},"photo-template"),h=d.closest(".b-form-field");h.html(g),h.find(".input_file").each(function(){new b(a(this))}),l(h)})}function n(b){var c,d=!0;return b.find("[required]").each(function(){var b=a(this);""==a.trim(b.val())?(d=!1,b.closest(".b-form-field").addClass("i-attention"),c||(b.focus(),c=b)):b.closest(".b-form-field").removeClass("i-attention")}),b.find(":file").each(function(){a(this).closest(".b-form-field").hasClass("i-progress")&&(d=!1)}),d}var o=!1;a(window).bind("scroll",function(){if(a(".b-recipe-comments").is(":empty")){var b=a(document).scrollTop()+parseInt(window.screen.height)-150;a(".b-recipe-comments").each(function(){var d=a(this);d.offset().top<b&&(o||(o=!0,a.ajax({url:d.data("load-action"),type:d.data("load-method"),dataType:"html",success:function(a){d.html(a),c()},error:function(a,b,c){o=!1,window.console&&(console.log(a),console.log(b),console.log(c))}})))})}}),a("#b-comment-form .b-textarea").resizeTextarea()})}(jQuery);
+﻿( function($) {
+
+  'use strict';
+  
+  $( function() {
+  
+    /*if ( window.BX ) {
+      BX.addCustomEvent( "onFrameDataReceived", function () {
+        init();
+      });
+    } else {*/
+      var sendFlag = false;
+    
+      $( window ).bind( 'scroll', function() {
+        //load
+        
+        if ( $( ".b-recipe-comments" ).is( ':empty' )) {
+          var top = $( document ).scrollTop() + parseInt( window.screen.height ) - 150;
+        
+          $( ".b-recipe-comments" ).each( function() {
+            var $recipeBlock = $( this );
+            if ( $recipeBlock.offset().top < top ) {
+              if ( !sendFlag ) {
+                sendFlag = true;
+                $.ajax({
+                  url: $recipeBlock.data( 'load-action' ),
+                  type: $recipeBlock.data( 'load-method' ),//GET
+                  dataType: "html",
+                  success: function( html) {
+                    $recipeBlock.html( html );
+                    init();
+                  },
+                  error: function( a, b, c ) {
+                    sendFlag = false;
+                    if ( window.console ) {
+                      console.log(a);
+                      console.log(b);
+                      console.log(c);
+                    }
+                  }
+                });
+              }
+            }
+          });
+          
+        }
+      });
+    
+      $( '#b-comment-form .b-textarea' ).resizeTextarea();
+      
+    //}
+
+    function init() {
+      $(function() {
+        $(".b-recipe-comments").each(function() {
+          new RecipeComments(this);
+        });
+        
+        $("#b-comment-form").each(function() {
+          new CommentForm(this);
+        });
+        
+        autolike();
+      });
+    }
+  
+    //check like action
+    
+    function parseGetParams() { 
+       var $_GET = {}; 
+       var __GET = window.location.search.substring(1).split("&"); 
+       for ( var i = 0; i < __GET.length; i++ ) { 
+          var getVar = __GET[i].split( "=" ); 
+          $_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+       } 
+       return $_GET; 
+    }
+    
+    function autolike() {
+      var getParams = parseGetParams();
+      if ( getParams['commentid'] && getParams['commentid'].length ) {
+        $( '#liketn_' + getParams['commentid'] + ':eq(0)' ).click();
+        setTimeout( function() {
+          $.scrollTo( $( '[data-id=' + getParams['commentid'] + ']' ).offset().top - 100, 500 );
+        }, 1000);
+      }
+    }
+      
+    function CommentForm(elem) {
+      var self = this;
+      
+      init();
+      
+      function init() {
+        initVarsAndElems();
+        handleEvents();
+      }
+      
+      function initVarsAndElems() {
+        self.$elem = $(elem);
+        self.$elem.data("CommentForm", self);
+      }
+      
+      function handleEvents() {
+        self.$elem
+          .delegate("form", "submit", submitForm)
+          .delegate(".b-admin-buttons .b-delete-icon", "click", $(".b-recipe-comments").data("RecipeComments").clickDelete);
+        
+        self.$elem.find("[type=submit]").click(clickSubmit);
+      }
+      
+      function clickSubmit(e) {
+        e.preventDefault();
+        $(this).closest("form").submit();
+      }
+      
+      function submitForm(e) {
+        e.preventDefault();
+        
+        var $form = $(this);
+        var $submit = $form.find("[type=submit]");
+        
+        if(!isValid($form) || $submit.hasClass("i-preloader")) {
+          return;
+        }
+        
+        $submit.addClass("i-preloader");
+        $.ajax({
+          url: $form.attr("action"),
+          type: $form.attr("method"),
+          dataType: "json",
+          data: $form.serialize(),
+          async: false,
+          success: successSubmit,
+          error: ajaxError
+        });
+        
+        function successSubmit(data) {
+          $submit.removeClass("i-preloader");
+          if(data && data.error) {
+            $form.find(".error_message").text(data.error);
+          } else {
+            reset($form);
+            addComment(data);
+          }
+        }
+      
+        function addComment(data) {
+          setTimeout(function() {
+            $form.find("[type=submit]").removeClass("i-preload");
+            var $div = $('<div style="display:none;"></div>');
+            
+            $div.html(compileComment(data));
+            $(".b-recipe-comments").prepend($div);
+            //alignImg($div);
+            $div.find(".input_file").each(function() {
+              new InputFile($(this));
+            });
+            initFileUpload($div);
+            $.scrollTo($("#b-comments").offset().top - 100, 500, function() {
+              $div.css({opacity:0}).show().animate({opacity:1}, 500);
+            });
+            
+            window.upButton.styleElements();
+          }, 500);
+        }
+      }
+      
+      function reset($form) {
+        $form
+          .find("textarea").val("").end()
+          .find(".error_message").text("");
+        
+        if($form.find(".b-comment-form__photo__url").val() == "") return;
+        
+        var $field = $form.find( ":file" ).closest( ".b-form-field" );
+        resetInputFile($field, "comment");
+      }
+    }
+
+    function RecipeComments(elem) {
+      var self = this;
+      
+      init();
+      
+      function init() {
+        initElements();
+        handleEvents();
+        initFileUpload();
+      }
+      
+      function initElements() {
+        self.$elem = $(elem);
+        self.$elem.data("RecipeComments", self);
+        self.$replyForm = self.$elem.find("#b-rc__reply-form");
+        self.$editForm = self.$elem.find("#b-rc__edit-form");
+        self.$getMoreButton = self.$elem.find(".b-more-button a");
+        self.commentsPerPage = 5;
+        self.page = 1;
+      }
+        
+      function handleEvents() {
+        self.$getMoreButton.click(clickMoreRecipes);
+        
+        self.$elem
+          //actions
+          .delegate(".b-rc__props__reply a", "click", clickReply)
+          .delegate(".b-rc__admin-buttons .b-edit-icon", "click", clickEdit)
+          .delegate(".b-close-icon", "click", clickClose)
+          .delegate("button[type=submit]", "click", clickSubmitButton)
+          .delegate(".b-textarea", "keyup", keyupReplyFormSubmit)
+          //requests
+          .delegate(".b-like-icon__type-button", "click", clickLike)
+          .delegate(".b-admin-buttons .b-delete-icon", "click", clickDelete)
+          .delegate("form", "submit", submitForm)
+          //effects
+          .delegate(".b-rc__item__content__text__img", "click", clickCommentImg)
+          .find(".b-textarea").resizeTextarea();
+      }
+      
+      //actions
+      function clickReply(e) {
+        e.preventDefault();
+        var $replyButton = $(this);
+        var $item = $replyButton.closest(".b-rc__item");
+        
+        if ( $item.hasClass("i-reply")) {
+          self.$replyForm.find(".b-close-icon").click();
+          return;
+        }
+        
+        hideEdit();
+        hideReply();
+        
+        function hideEdit() {
+          self.$elem.find(".i-edit").removeClass("i-edit");
+        }
+        
+        function hideReply() {
+          if(self.$replyForm.is(":visible")) {
+            self.$replyForm.slideUp(300, onHide);
+          } else {
+            onHide();
+          }
+          
+          function onHide() {
+            self.$elem.find(".i-reply").each(function() {
+              $(this)
+                .removeClass("i-reply")
+                .find(".b-rc__props__reply a").text("Ответить");
+            });
+            showReplyForm();
+          }
+        }
+        
+        function showReplyForm() {
+          self.$replyForm
+            .hide()
+            .insertAfter($replyButton.closest(".b-rc__item__content"))
+            .slideDown("middle")
+            .find(".b-textarea").val("").resizeTextarea();
+          
+          setTimeout(function() {
+            self.$replyForm.find(".b-textarea").focus();
+          }, 100);
+          
+          var rId = $item.attr("data-id");
+          self.$replyForm.find("input[name='rId']").val(rId);
+          
+          modifyItem();
+        }
+        
+        function modifyItem() {
+          $replyButton.text("Скрыть");
+          $item.addClass("i-reply");
+        }
+      }
+      
+      function clickEdit(e) {
+        e.preventDefault();
+        var $item = $(this).closest(".b-rc__item");
+        $item.addClass("i-edit");
+        //alignImg($item.find(".b-rc-edit-form"));
+      }
+      
+      function clickClose(e) {
+        var $closeIcon = $(this);
+        if($closeIcon.closest("#b-rc__reply-form").length !== 0) {
+          clickReplyFormClose(e);
+        } else if($closeIcon.hasClass("b-rc__item__close")) {
+          closeEditForm(e);
+        }
+      
+        function clickReplyFormClose(e) {
+          self.$replyForm.closest(".b-rc__item").removeClass("i-reply").find(".b-rc__props__reply a").text("Ответить");
+          self.$replyForm.slideUp("middle", function() {
+            self.$replyForm.find(".b-form-field").removeClass("i-attention");
+          });
+          e.preventDefault();
+        }
+      
+        function closeEditForm(e) {
+          e.preventDefault();
+          var $item = $closeIcon.closest(".b-rc__item");
+          $item.removeClass("i-edit").find(".b-form-field").removeClass("i-attention");
+        }
+      }
+      
+      function clickSubmitButton(e) {
+        e.preventDefault();
+        $(this).closest("form").submit();
+      }
+      
+      function keyupReplyFormSubmit(e) {
+        if (e.ctrlKey && e.keyCode == 13) {
+          if($(this).val() == "") return false;
+          self.$replyForm.find("form").submit();
+        }
+      }
+      //__actions
+      
+      function isAuthorized() {
+        if ($('#b-comment-form .b-rc__item.i-foodclub').length === 1) return false;
+        return true;
+      }
+      
+      //requests
+      function clickLike(e) {
+        if ( !isAuthorized()) {
+          //window.location.href = $( this ).attr( 'href' );
+          if ( document.getElementById( 'authModal' )) {
+            $( '#authModal form' ).each( function() {
+              $( this ).find( 'div:first' ).append( '<input type="hidden" name="commentLikeFlag" value="Y">' );
+              Cookies.set( 'likeComment', $( this ).closest( '.b-rc__item' ).data( 'id' ));
+            });
+            
+            $( '.b-header__auth-button' ).click();
+            //$('#authModal').modal( 'show' );
+          }
+          return false;
+        };
+        
+        e.preventDefault();
+        var $button = $(this);
+        var url = $button.attr("data-ajax-url");
+        
+        var action = "like";
+        if($button.hasClass("b-like-icon__type-active")) action = "dislike";
+        
+        var likeNum = sendLike(action);
+        markLike($button, likeNum);
+        
+        function sendLike(action) {
+          var result;
+          
+          $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: url,
+            async: false,
+            data: "id=" + $button.closest(".b-rc__item").attr("data-id") + "&action=" + action,
+            success: function(data) {
+              result = data;
+            }
+          });
+          
+          return result;
+        }
+        
+        function markLike($button, likeNum) {
+          if(!likeNum || likeNum == '0') likeNum = '';
+          $button.siblings(".b-like-num").text(likeNum);
+          $button.toggleClass("b-like-icon__type-active");
+        }
+      }
+      
+      function clickDelete(e, elem) {
+        elem = elem || this;
+        e.preventDefault();
+        if ( confirm($(elem).attr("title") + "?" )) {
+          if ( $(elem).closest(".b-admin-buttons").hasClass("b-rc__admin-buttons")) {//wish to delete comment or its reply
+            deleteComment($(elem));
+          } else {
+            var $formField = $(elem).closest(".b-form-field");
+            if($formField.closest(".b-rc-edit-form").length !== 0) {//wish to delete a pic of a comment or its reply
+              deleteCommentPhoto($(elem));
+            } else if ( $formField.closest("#b-rc__reply-form").length !== 0) {//wish to delete a pic in the reply
+              deleteTempPhoto($(elem), "reply");
+            } else if ( $formField.closest("#b-comment-form").length !== 0) {//wish to delete a pic in the comment form
+              deleteTempPhoto($(elem), "comment");
+            }				
+          }
+        }
+        return false;
+        
+        function deleteComment($icon) {
+          var $item = $icon.closest(".b-rc__item");
+          var data = getData();
+          $.ajax({
+            url: self.$elem.attr("data-delete-action"),
+            type: self.$elem.attr("data-delete-method"),
+            data: data,
+            success: function(data) {
+              if($item.parent().is(".b-rc__block")) {
+                $icon.closest(".b-rc__block").remove();
+              } else {
+                $item.remove();
+              }
+            },
+            error: ajaxError
+          });
+          
+          function getData() {
+            var imgId = $item.find(".b-form__photo-block__img img").attr("data-id");
+            var data = {
+              id: $item.attr("data-id"),
+              sessid: $item.closest( ".b-recipe-comments" ).attr( "data-sessId" )
+            };
+            if(imgId) data.imgId = imgId;
+            return data;
+          }
+        }
+        
+        function deleteCommentPhoto($icon) {
+          var $item = $icon.closest(".b-rc__item");
+          $.ajax({
+            url: self.$elem.attr("data-delete-photo-action"),
+            type: self.$elem.attr("data-delete-photo-method"),
+            data: "id=" + $item.attr("data-id") + "&imgId=" + $item.find(".b-form__photo-block__img img").attr("data-id"),
+            success: function(data) {
+              var id = $item.attr("data-id");
+              //add html to the form
+              var $formField = $icon.closest(".b-form__photo-block").empty();
+              var html = compilePhoto({id: id, type: "edit"}, "file-input-template");
+              $formField.html(html);
+              $formField.find(".input_file").each(function() {
+                new InputFile($(this));
+              });
+              initFileUpload($formField);
+              //remove comment photo
+              if($item.find(".b-rc__item__content__text__content").length !== 0) {
+                var content = $item.find(".b-rc__item__content__text__content").html();
+                $item.find(".b-rc__item__content__text").html(content);
+              }
+            },
+            error: ajaxError
+          });
+        }
+        
+        function deleteTempPhoto($icon, type) {
+          var $field = $icon.closest(".b-form-field");
+          $.ajax({
+            url: self.$elem.attr("data-delete-photo-action"),
+            type: self.$elem.attr("data-delete-photo-method"),
+            data: "src=" + $field.find(".b-form__photo-block__img img").attr("src"),
+            success: function(data) {
+              //add html to the form
+              resetInputFile($field, type);
+            },
+            error: ajaxError
+          });
+        }
+      }
+      
+      function submitForm(e) {
+        e.preventDefault();
+        
+        var $form = $(this);
+        var $submit = $form.find("[type=submit]");
+        
+        if(!isValid($form) || $submit.hasClass("i-preloader")) return;
+        
+        $submit.addClass("i-preloader");
+        
+        var url = $form.attr("action");
+        var type = $form.attr("method");
+        
+        if(!url || url == "") url = self.$elem.attr("data-edit-form-action");
+        if(!type || type == "") type = self.$elem.attr("data-edit-form-method");
+        
+        $.ajax({
+          url: url,
+          type: type,
+          dataType: "json",
+          data: $form.serialize(),
+          async: false,
+          success: successSubmit,
+          error: ajaxError
+        });
+        
+        function successSubmit(data) {
+          $submit.removeClass("i-preloader");
+          var $item = $form.closest(".b-rc__item");
+          if($item.hasClass("i-edit")) {
+            edit(data, $item);
+          } else if($item.hasClass("i-reply")) {
+            reply(data, $item);
+          }
+        }
+        
+        function edit(data, $item) {
+          $item.removeClass("i-edit");
+          if(data && data.image && data.image.src && data.image.src != "") {
+            var html = '<div style="background-image: url(\'' + data.image.src + '\');" data-id="' + data.image.id + '" class="b-rc__item__content__text__img"></div><div class="b-rc__item__content__text__content">' + data.text.html + '</div><div class="i-clearfix"></div>';
+          } else {
+            html = data.text.html;
+          }
+          $item.children(".b-rc__item__content").find('.b-rc__item__content__text').empty().html(html).end()
+            .find(".b-form__text-block textarea").val(data.text.text);
+          
+          if(data.image && data.image.src) {
+            $item.find(".b-rc-edit-form .b-image-icon__photo-url").val(data.image.src);
+            var $imgBlock = $item.find(".b-rc-edit-form .b-form__photo-block__img");
+            if($imgBlock.text() != "") {
+              $item.find(".b-rc-edit-form .b-form__photo-block__img").data({ id: data.image.id }).css({ backgroundImage: "url(\'" + data.image.src + "\')" });
+            } else {
+              showEditFormImage({result: {files: [{url: data.image.src}]}}, $item.find(".b-rc-edit-form input[id*=fileupload]"), "edit");
+            }
+          }
+          
+          if ( data && data.date ) {
+            $item.find( ".b-rc__props__date" ).text( data.date );
+          }
+          
+          //alignImg( $item );
+        }
+        
+        function reply(data, $item) {
+          data.root = $item.attr( "data-id" );
+          var $html = $(compileReply(data));
+          if($item.parent().find(".b-rc__reply-block").length === 0) {
+            $item.after('<div class="b-rc__reply-block"></div>');
+          }
+          $item.parent().find(".b-rc__reply-block").prepend($html);
+          //alignImg($html);
+          $item.find(".b-rc__reply-form__close").click();
+          $html.find(".input_file").each(function() {
+            new InputFile($(this));
+          });
+          initFileUpload($html);
+          
+          //reset photo
+          var $field = self.$replyForm.find(".b-form__photo-block");
+          resetInputFile($field, "reply");
+        }
+      }
+      //__requests
+      
+      //effects
+      function clickCommentImg() {
+        var $img = $(this);
+        var $item = $img.closest(".b-rc__item");
+        var img = new Image();
+        img.src = $img.css( "backgroundImage" ).substring(5,$img.css( "backgroundImage" ).length-2);
+        
+        if(!$img.hasClass("b-rc__item__content__text__img__type_block")) {//expand photo
+          $img.addClass("b-rc__item__content__text__img__type_block");
+          
+          var width = img.width;
+          var height = img.height;
+            
+          if(img.width > $img.closest( '.b-rc__item__content__text' ).width()) {
+            width = $img.closest( '.b-rc__item__content__text' ).width();
+            height = Math.floor(img.height * width / img.width);
+          }
+          
+          $img.css({
+            width: width,
+            height: height,
+            margin: '0 0 15px'
+          });
+          $.scrollTo();
+          $item.data({"scroll": getScrolled()});
+          $.scrollTo(parseInt($img.closest(".b-rc__item").offset().top, 10) - parseInt($("#top_panel").height(), 10), 500);
+        } else {//resize photo back
+          $img.css({
+            width: '65px',
+            height: '65px',
+            margin: '0 12px 0 0'
+          })
+          .removeClass( "b-rc__item__content__text__img__type_block" );
+            
+          if($item.data( "scroll" ) && $item.data( "scroll" ) != "") {
+            var scroll = $item.data( "scroll" );
+          } else {
+            scroll = parseInt($img.closest(".b-rc__item").offset().top, 10) - parseInt($("#top_panel").height(), 10);
+          }
+          $.scrollTo(scroll, 500);
+        }
+        
+      }
+      
+      function enterPhoto(e, elem) {
+        elem = elem || this;
+        $(elem).addClass("i-hover");
+        $(elem).find(".b-form__photo-block__img img").stop().animate({opacity: 0.35}, 200);
+      }
+      
+      function leavePhoto(e, elem) {
+        elem = elem || this;
+        $(elem).removeClass("i-hover");
+        $(elem).find(".b-form__photo-block__img img").stop().animate({opacity: 1}, 200);
+      }
+      //__effects
+      
+      //secondary
+      function getScrolled() {
+        return window.pageYOffset || document.documentElement.scrollTop;
+      }
+      
+      function clickMoreRecipes() {
+        
+        $.ajax({
+          url: "/php/get_more_comments.php",
+          dataType: "json",
+          data: {
+            page: ++self.page
+          },
+          beforeSend: function() {
+            self.$getMoreButton.parent().addClass("i-preload");
+          },
+          success: function(data){
+            setTimeout(function() {
+              self.$getMoreButton.parent().removeClass("i-preload");
+              var $div = $('<div style="display:none;"></div>');
+              
+              for(var i=0; i < data.comments.length; i++) {
+                $div.append(compileComment(data.comments[i]));
+              }
+              self.$getMoreButton.parent().before($div);
+              $div.css({opacity:0}).show().animate({opacity:1}, 500);
+              
+              $.scrollTo($div, 1000);
+              
+              showHideGetMoreButton();
+              window.upButton.styleElements();
+            }, 500);
+          },
+          error: ajaxError
+        });
+        
+        return false;
+        
+      }
+      
+      function showHideGetMoreButton() {
+        var pages = parseInt(self.$getMoreButton.attr("data-pages"), 10);
+        pages--;
+
+        self.$getMoreButton.attr({"data-pages": pages});
+        
+        if(pages == 1) {
+          self.$getMoreButton.hide();
+        }
+      }
+      //__secondary
+      
+      /*--- public methods ---*/      
+      this.clickDelete = function(e) {
+        clickDelete(e, this);
+        e.preventDefault();
+        e.stopPropagation();
+      };
+    }
+      
+    function resetInputFile($field, type) {
+        $field.empty();
+        var html = compilePhoto({id: "", type: type}, "file-input-template");
+        $field.html(html);
+        $field.find(".input_file").each(function() {
+          new InputFile($(this));
+        });
+        initFileUpload($field);
+    }
+
+    function compileComment(commentObj) {
+      var comment = {
+        id: "",
+        rId: "",
+        sessid: $( ".b-recipe-comments" ).attr( "data-sessId" ),
+        author: {
+          href: "",
+          src: "",
+          name: ""
+        },
+        text: {
+          html: "",
+          text: ""
+        },
+        image: {},
+        likeNum: 0,
+        mine: false,
+        date: "",
+        reply: []
+      };
+      commentObj = $.extend(comment, commentObj);
+      
+      var template = document.getElementById("comment-template").innerHTML;
+      var compiled = tmpl(template);
+      var $comment = $(compiled(commentObj));
+      
+      for(var i = 0; i < commentObj.reply.length; i++) {
+        commentObj.reply[i].root = commentObj.id ;
+        $comment.append(compileReply(commentObj.reply[i]));
+      }
+
+      return $comment;
+    }
+
+    function compileReply(replyObj) {
+      replyObj.cId = replyObj.id;
+      var reply = {
+        id: "",
+        cId: "",
+        rId: "",
+        sessid: $( ".b-recipe-comments" ).attr( "data-sessId" ),
+        root: "",
+        image: {},
+        text: {
+          html: "",
+          text: ""
+        },
+        author: {
+          href: "",
+          src: "",
+          name: ""
+        },
+        mine: false,
+        date: "",
+        likeNum: 0
+      };
+      replyObj = $.extend(reply, replyObj);
+      
+      var template = document.getElementById("reply-template").innerHTML;
+      var compiled = tmpl(template);
+
+      return compiled(replyObj);
+    }
+	
+    function compilePhoto(photoObj, tmplId) {
+      if(!photoObj.id) photoObj.id = "";
+      var template = document.getElementById(tmplId).innerHTML;
+      var compiled = tmpl(template);
+
+      return compiled(photoObj);
+    }
+
+    function initFileUpload($context) {
+      $context = $context || $("#b-comments");
+      
+      $context.find("input[id*=fileupload]").each(function() {
+        var $fileupload = $(this);
+        var id = $fileupload.attr("id");
+        var url = $fileupload.attr("data-ajax-url");
+        
+        $fileupload.fileupload({
+          url: url,
+          dataType: 'json',
+          add: function (e, data) {
+            if ( data.files.length > 1 ) {
+              showError( "maxNumberOfFiles", $fileupload );
+            } else if ( !/(\.|\/)(gif|jpe?g|png)$/i.test( data.files[0].type ) ) {
+              showError( "acceptFileTypes", $fileupload );
+            } else if ( data.files[0].size > 2e6 ) {
+              showError( "maxFileSize", $fileupload );
+            } else {
+              data.submit();
+            }
+          },
+          progress: function (e, data) {
+            $("#" + id).closest(".b-form-field").addClass("i-progress");
+          },
+          done: function (e, data) {
+            var $fileupload = $("#" + id);
+            $fileupload.closest(".b-form-field").removeClass("i-progress").removeClass("i-hover");
+            
+            if($fileupload.closest("#b-comment-form").length !== 0) {//comment form in the bottom
+              showCommentFormImage(e, data, $fileupload);
+            } else {//if we reply or edit a comment
+              if($fileupload.closest(".b-rc-edit-form").length !== 0) var type = "edit";//edit form
+              if($fileupload.closest("#b-rc__reply-form").length !== 0) type = "reply";//reply form
+              showEditFormImage(data, $fileupload, type);
+            }
+          }
+        });
+      });
+      
+      function showError ( errorName, $fileupload ) {
+        var messages =  {
+          maxNumberOfFiles: 'Загружайте только одну фотографию',
+          acceptFileTypes: 'Загружайте фотографии формата jpg, jpeg, gif, png',
+          maxFileSize: 'Размер файла превышает 2 Мб'
+        };
+        var text = messages[ errorName ];
+        alert( text );
+        $fileupload.closest( ".b-form-field" ).removeClass( "i-progress" ).removeClass( "i-hover" );
+      }
+      
+      function showCommentFormImage( e, data, $fileupload ) {
+        $.each( data.result.files, function ( index, file ) {
+          var html = compilePhoto({id: "", url: file.url, type: "comment"}, "photo-template");
+          var $photoBlock = $fileupload.closest(".b-form-field");
+          $photoBlock.html(html);
+          $photoBlock.find(".input_file").each(function() {
+            new InputFile($(this));
+          });
+          initFileUpload($photoBlock);
+          //alignImg($photoBlock);
+        });
+      }
+    }
+      
+    function showEditFormImage(data, $fileupload, type) {
+      $.each(data.result.files, function (index, file) {
+        var html = compilePhoto({id: $fileupload.closest(".b-rc__item").attr("data-id"), url: file.url, type: type}, "photo-template");
+        var $photoBlock = $fileupload.closest(".b-form-field");
+        $photoBlock.html(html);
+        $photoBlock.find(".input_file").each(function() {
+          new InputFile($(this));
+        });
+        initFileUpload($photoBlock);
+        //alignImg($photoBlock);
+      });
+    }
+    
+    function isValid ( $form ) {//used only in recipe comments
+      var result = true;
+      var firstElem;
+      $form.find( "[required]" ).each( function() {
+        var $elem = $( this );
+        if ( $.trim( $elem.val() ) == "" ) {
+          result = false;
+          $elem.closest( ".b-form-field" ).addClass( "i-attention" );
+          if ( !firstElem ) {
+            $elem.focus();
+            firstElem = $elem;
+          }
+        } else {
+          $elem.closest( ".b-form-field" ).removeClass( "i-attention" );
+        }
+      });
+      $form.find( ":file" ).each( function () {
+        if ( $(this).closest( ".b-form-field" ).hasClass( "i-progress" ) ) {
+          result = false;
+        }
+      });
+      
+      return result;
+    }
+
+  });
+  
+  function InputFile($elem, params) {
+    var self = this;
+    self.$elem = $elem;
+    self.$input = self.$elem.find(":file");
+    var options = {}, params = params || {};
+    options.extentions = params.extentions || [ "jpg", "jpeg" ];
+    options.messages = params.maessages || {
+        wrongExtention: "Загружайте изображения в jpeg формате"
+    };
+    init();
+    function init() {
+        createHTML();
+        self.$name = self.$elem.find("div.new_file_name");
+        self.$input.change(function() {
+            handleChanges();
+        });
+    }
+    function clearValue() {
+        self.$elem.find(":file").remove();
+        self.$elem.find(".browse_button").after(self.$input);
+    }
+    function createHTML() {
+        self.$elem.html('<div class="browse_button" title="Выбрать файл"></div><div class="blocker"></div><div class="new_file_name"></div>');
+        self.$elem.find(".browse_button").after(self.$input);
+    }
+    function handleChanges() {
+        var fileTitle = getFileTitle();
+        var fileExt = getFileExt(fileTitle);
+        if (isValidFileExt(fileExt)) {
+            self.$name.text(fileTitle);
+            self.$name.removeClass("i-attention");
+        } else {
+            self.$name.text(options.messages.wrongExtention);
+            self.$name.addClass("i-attention");
+        }
+        self.$name.css({
+            display: "block"
+        });
+    }
+    function filesize(url) {
+        var req = this.window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
+        if (!req) {
+            throw new Error("XMLHttpRequest not supported");
+        }
+        req.open("HEAD", url, false);
+        req.send(null);
+        if (!req.getResponseHeader) {
+            try {
+                throw new Error("No getResponseHeader!");
+            } catch (e) {
+                return false;
+            }
+        } else if (!req.getResponseHeader("Content-Length")) {
+            try {
+                throw new Error("No Content-Length!");
+            } catch (e2) {
+                return false;
+            }
+        } else {
+            return req.getResponseHeader("Content-Length");
+        }
+    }
+    function isValidFileExt(fileExt) {
+        var flag = false;
+        for (var i = 0; i < options.extentions.length; i++) {
+            if (fileExt.toLowerCase() == options.extentions[i]) flag = true;
+        }
+        return flag;
+    }
+    function getFileExt(fileTitle) {
+        var RegExExt = /.*\.(.*)/;
+        var fileExt = fileTitle.replace(RegExExt, "$1");
+        return fileExt;
+    }
+    function getFileTitle() {
+        var value = self.$input.val();
+        var reWin = /.*\\(.*)/;
+        var fileTitle = value.replace(reWin, "$1");
+        var reUnix = /.*\/(.*)/;
+        fileTitle = fileTitle.replace(reUnix, "$1");
+        if (fileTitle.length > 18) {
+            fileTitle = "..." + fileTitle.substr(fileTitle.length - 16, 16);
+        }
+        return fileTitle;
+    }
+}
+
+}( jQuery ));

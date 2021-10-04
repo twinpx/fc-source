@@ -513,7 +513,7 @@ module.exports = function( grunt ) {
   
   //grunt.registerTask( 'bootstrap', [ 'stylus:bootstrap', 'uglify:devBootstrap' ] );
   grunt.registerTask( 'css', [ 'stylus:template', 'stylus:components', 'concat:pluginsCSS' ] );
-  grunt.registerTask( 'js', [ 'concat:js', /*'jshint:dev',*/ 'concat:pluginsJS', 'uglify:devTemplate', 'uglify:devComponents', 'clean:js' ] );
+  grunt.registerTask( 'js', [ 'concat:js', /*'jshint:dev',*/ 'concat:pluginsJS', /*'uglify:devTemplate', 'uglify:devComponents',*/ 'clean:js' ] );
   grunt.registerTask( 'html', [ 'copy:images', 'jade:dev' ] );
   grunt.registerTask( 'default', [ 'connect', 'css', 'js', /*'bootstrap', */'html', 'watch' ] );
   
@@ -525,9 +525,9 @@ module.exports = function( grunt ) {
     'concat:prod',
     'copy:prodComponents',
     //'jshint:prod',
-    'uglify:prodTemplate',
+    //'uglify:prodTemplate',
     'concat:prodPluginsJS',
-    'uglify:prodComponents',
+    //'uglify:prodComponents',
     //images
     'clean:images',
     'copy:tempImages',

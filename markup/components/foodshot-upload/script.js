@@ -1,1 +1,234 @@
-!function(a){"use strict";a(function(){function b(){var b=a(this);if(a("#foodshotURL").val()!==o&&(o=a("#foodshotURL").val(),""!==a("#foodshotURL").val())){if(!/^http/.exec(a("#foodshotURL").val()))return;if(!/jpg|jpeg|png|webp/.exec(c(a("#foodshotURL").val())))return;a.ajax({url:b.data("url"),type:b.data("method"),dataType:"json",data:"url="+b.val(),success:function(a){a&&"Y"===a.STATUS&&(d(a.URL),b.val(a.URL))},error:function(a,b,c){window.console&&(console.log(a),console.log(b),console.log(c))}})}}function c(a){return a=a.split("?")[0],a.slice((a.lastIndexOf(".")-1>>>0)+2)}function d(b){l(""),a(".b-foodshot-upload__block-body").fadeOut(),a("#foodshotPreview").css({backgroundImage:"url( "+b+")"}).fadeIn(),a(".b-foodshot-upload__remove-image").show()}function e(){a(".b-foodshot-upload__block-body").fadeIn(),a("#foodshotPreview").fadeOut(500,function(){a("#foodshotPreview, .b-foodshot-upload__remove-image").hide()}),a("#foodshotURL").val("").parent().find("label").removeClass("active"),a("#foodshotFileBase64, #foodshotFileName, #foodshotFileElem").val("")}function f(a){a.preventDefault(),a.stopPropagation()}function g(){a(".b-foodshot-upload__block").addClass("i-highlight")}function h(){a(".b-foodshot-upload__block").removeClass("i-highlight")}function i(a){var b=a.dataTransfer,c=b.files;j(c)}function j(a){var b=Array.from(a);b.forEach(k)}function k(a){return a.size>15e6?void l("Размер файла больше 15 Mб."):/jpg|jpeg|png|webp/.exec(c(a.name))?void m(a):void l("Загрузите изображение JPG, PNG, WEBP.")}function l(b){a(".b-foodshot-upload__error").text(b)}function m(a){var b=new FileReader;b.readAsDataURL(a),b.onloadend=function(){d(b.result),n(a,b.result)}}function n(b,c){a("#foodshotFileName").val(b.name),a("#foodshotFileBase64").val(c)}a(".chips-placeholder").chips({placeholder:"Введите тэг + Enter",secondaryPlaceholder:"+Тэг",onChipAdd:function(b,c){var d=String(a(c).text()).split("close")[0];a(b).append('<input type="hidden" name="tag[]" value="'+d+'">')},onChipDelete:function(b,c){var d=String(a(c).text()).split("close")[0];a('input[value="'+d+'"]').remove()}}),a("#foodshotURL").keyup(b).click(b).blur(b);var o="",p=document.getElementById("foodshotDropArea");["dragenter","dragover","dragleave","drop"].forEach(function(a){p.addEventListener(a,f,!1)}),["dragenter","dragover"].forEach(function(a){p.addEventListener(a,g,!1)}),["dragleave","drop"].forEach(function(a){p.addEventListener(a,h,!1)}),p.addEventListener("drop",i,!1),a("#foodshotFileElem").change(function(){var a=this.files;if(a.size>15e6)return void l("Размер файла больше 15 Mб.");if(!/jpg|jpeg|png|webp/.exec(c(a[0].name)))return void l("Загрузите изображение JPG, PNG, WEBP.");var b=new FileReader;b.readAsDataURL(a[0]),b.onloadend=function(){d(b.result)}}),a(".b-foodshot-upload__remove-image").click(function(a){a.preventDefault(),e()}),a(".b-foodshot-upload__buttons span").click(function(b){b.preventDefault(),a(".b-foodshot-upload__text .input-field input, .b-foodshot-upload__text .input-field textarea").val(""),e(),a(".b-foodshot-upload__buttons button").removeClass("i-disabled")}),a(".b-foodshot-upload form").submit(function(){a(".b-foodshot-upload__buttons button").addClass("i-disabled")})})}(jQuery);
+( function($) {
+
+  'use strict';
+  
+  $( function() {
+    
+    //tags
+    $( '.chips-placeholder' ).chips({
+      placeholder: 'Введите тэг + Enter',
+      secondaryPlaceholder: '+Тэг',
+      onChipAdd: function( field, chip ) {
+        var text = String( $( chip ).text()).split( 'close' )[0];
+        $( field ).append( '<input type="hidden" name="tag[]" value="' + text + '">' );
+      },
+      onChipDelete: function( field, chip ) {
+        var text = String( $( chip ).text()).split( 'close' )[0];
+        $( 'input[value="' + text + '"]' ).remove();
+      }
+    });
+    
+    //URL
+    $( '#foodshotURL' ).keyup( fillURL ).click( fillURL ).blur( fillURL );
+    
+    var inputValue = '';
+    
+    function fillURL(e) {
+      var $input = $( this );
+      
+      if ( $( '#foodshotURL' ).val() === inputValue ) {
+        return;
+      } else {
+        inputValue = $( '#foodshotURL' ).val();
+      }
+      
+      if ( $( '#foodshotURL' ).val() !== '' ) {
+        //check http
+        if ( !/^http/.exec( $( '#foodshotURL' ).val())) {
+          return;
+        }
+        //check extention
+        if ( !/jpg|jpeg|png|webp/.exec(getFileExtension( $( '#foodshotURL' ).val())) ) {
+          return;
+        }
+        
+        //send to the server
+        $.ajax({
+          url: $input.data( 'url' ),
+          type: $input.data( 'method' ),
+          dataType: "json",
+          data: 'url=' + $input.val(),
+          success: function( data ) {
+            if ( data && data.STATUS === 'Y' ) {
+              //get new image URL
+              //show the picture
+              showImage( data.URL );
+              //set URL as a value
+              $input.val( data.URL );
+            }
+          },
+          error: function( a, b, c ) {
+            if ( window.console ) {
+              console.log(a);
+              console.log(b);
+              console.log(c);
+            }
+          }
+        });
+        
+      }
+    }
+    
+    function getFileExtension( filename ) {
+      filename = filename.split( '?' )[0];
+      return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+    }
+    
+    function showImage( imgURL ) {
+      showErrorMessage( '' );
+      $( '.b-foodshot-upload__block-body' ).fadeOut();
+      $( '#foodshotPreview' ).css({ backgroundImage: 'url( ' + imgURL + ')' }).fadeIn();
+      $( '.b-foodshot-upload__remove-image' ).show();
+    }
+    
+    function clearImage() {
+      $( '.b-foodshot-upload__block-body' ).fadeIn();
+      $( '#foodshotPreview' ).fadeOut( 500, function() {
+        $( '#foodshotPreview, .b-foodshot-upload__remove-image' ).hide();
+      });
+      //clear URL input
+      $( '#foodshotURL' ).val( '' ).parent().find( 'label' ).removeClass( 'active' );
+      //clear file inputs
+      $( '#foodshotFileBase64, #foodshotFileName, #foodshotFileElem' ).val( '' );
+    }
+    
+    //drag and drop
+    var dropArea = document.getElementById( 'foodshotDropArea' );
+    
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach( function( eventName ) {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    ['dragenter', 'dragover'].forEach( function( eventName ) {
+      dropArea.addEventListener( eventName, highlight, false );
+    });
+    
+    ['dragleave', 'drop'].forEach( function( eventName ) {
+      dropArea.addEventListener( eventName, unhighlight, false );
+    });
+    
+    dropArea.addEventListener( 'drop', handleDrop, false );
+    
+    $( '#foodshotFileElem' ).change( function(e) {
+      
+      var file = this.files;
+      
+      //check file size
+      if ( file.size > 15000000 ) {
+        //throw the error
+        showErrorMessage( 'Размер файла больше 15 Mб.' );
+        return;
+      }
+      
+      //check file extention
+      if ( !/jpg|jpeg|png|webp/.exec(getFileExtension( file[0].name ))) {
+        //throw the error
+        showErrorMessage( 'Загрузите изображение JPG, PNG, WEBP.' );
+        return;
+      }
+      
+      var reader = new FileReader();
+      reader.readAsDataURL( file[0] );
+      
+      reader.onloadend = function() {
+        showImage( reader.result );//base64
+      }
+      
+    });
+    
+    $( '.b-foodshot-upload__remove-image' ).click( function(e) {
+      e.preventDefault();
+      clearImage();
+    });
+    
+    $( '.b-foodshot-upload__buttons span' ).click( function(e) {
+      e.preventDefault();
+      $( '.b-foodshot-upload__text .input-field input, .b-foodshot-upload__text .input-field textarea' ).val( '' );
+      clearImage();
+      $( '.b-foodshot-upload__buttons button' ).removeClass( 'i-disabled' );
+    });
+    
+    $( '.b-foodshot-upload form' ).submit( function(e) {
+      //e.preventDefault();
+      $( '.b-foodshot-upload__buttons button' ).addClass( 'i-disabled' );
+    });
+    
+    function preventDefaults (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    function highlight(e) {
+      $( '.b-foodshot-upload__block' ).addClass( 'i-highlight' );
+    }
+    
+    function unhighlight(e) {
+      $( '.b-foodshot-upload__block' ).removeClass( 'i-highlight' );
+    }
+    
+    function handleDrop(e) {
+      var dt = e.dataTransfer;
+      var files = dt.files;
+      handleFiles( files );
+    }
+    
+    function handleFiles(files) {
+      var f = Array.from( files );
+      f.forEach( uploadFile );     
+    }
+    
+    function uploadFile( file ) {
+      
+      //check file size
+      if ( file.size > 15000000 ) {
+        //throw the error
+        showErrorMessage( 'Размер файла больше 15 Mб.' );
+        return;
+      }
+      
+      //check file extention
+      if ( !/jpg|jpeg|png|webp/.exec(getFileExtension( file.name ))) {
+        //throw the error
+        showErrorMessage( 'Загрузите изображение JPG, PNG, WEBP.' );
+        return;
+      }
+      
+      previewFile( file );
+      
+      /*var url = 'ВАШ URL ДЛЯ ЗАГРУЗКИ ФАЙЛОВ';
+      var formData = new FormData();
+      formData.append( 'file', file );
+      fetch( url, {
+        method: 'POST',
+        body: formData
+      })
+      .then( function() {})
+      .catch( function() {});*/
+    }
+    
+    function showErrorMessage( message ) {
+      $( '.b-foodshot-upload__error' ).text( message );
+    }
+    
+    function previewFile(file) {
+      var reader = new FileReader();
+      reader.readAsDataURL( file );
+      
+      reader.onloadend = function() {
+        showImage( reader.result );//base64
+        fillImgFields( file, reader.result );
+      }
+      
+    }
+    
+    function fillImgFields( file, base64 ) {
+      $( '#foodshotFileName' ).val( file.name );
+      $( '#foodshotFileBase64' ).val( base64 );
+    }
+  
+    /*if ( window.BX ) {
+      BX.addCustomEvent( "onFrameDataReceived", function () {});
+    }*/
+  });
+
+}( jQuery ));

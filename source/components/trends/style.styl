@@ -34,6 +34,57 @@
     @media( max-width 767px )
       margin-left 15px
 
+  &-wrapper
+    overflow-y hidden
+    overflow-x auto
+    height 40px
+    position relative
+    padding-right 100px
+
+    &:after
+      content ''
+      display block
+      height 40px
+      width 20px
+      background linear-gradient(to left, #fff, transparent)
+      position absolute
+      top 0
+      right 100px
+      z-index 10
+
+    &:before
+      content ''
+      display block
+      height 40px
+      width 20px
+      background linear-gradient(to right, #fff, transparent)
+      position absolute
+      top 0
+      left 0
+      z-index 10
+
+    &.start:before
+      display none
+
+    &.finish:after
+      display none
+
+    @media( max-width 767px )
+      padding-right 0
+
+      &:after
+        display none
+
+    &__body
+      overflow-x auto
+      white-space nowrap
+
+      @media( max-width 767px )
+        padding 0 10px 13px
+
+    &__content
+      white-space nowrap
+
   &__item
     border-radius 7px
     font-size 12px
@@ -42,34 +93,63 @@
     padding 0 20px
     display inline-block
     vertical-align top
-    margin 0 30px 17px 0
+    margin-right 20px
+    margin-bottom 20px
+    width auto !important
 
-  span&__item
-    background-color #F7E847
-    cursor default
+    &:last-child
+      margin-right 0
 
-  a&__item
-    background-color #F4F4F4
-    color $link
-    transition( color .3s ease )
-
-    &:hover
-      text-decoration none
-      color $link-hover
-
-  @media( max-width 767px )
-
-    &-wrapper
-      overflow-y hidden
-      height 53px
-
-      &__body
-        overflow-x auto
-        white-space nowrap
-        padding 0 10px 13px
-
-    &__item
+    @media( max-width 767px )
       margin 0 2px 0 0
 
-      &:last-child
-        margin-right 0
+    span&
+      background-color #F7E847
+      cursor default
+
+    a&
+      background-color #F4F4F4
+      color $link
+      transition( color .3s ease )
+
+      &:hover
+        text-decoration none
+        color $link-hover
+
+  &-button-prev
+  &-button-next
+    position absolute
+    top 0
+    right 0
+    width 40px
+    height 40px
+    background-color #f2f2f2
+    border-radius 50%
+    cursor pointer
+    display flex
+    justify-content center
+    align-items center
+    z-index 10
+
+    @media( max-width 767px )
+      display none
+
+    .b-trends-button-path
+      transition( fill .3s ease-out)
+      fill #850a0f
+
+    &:hover
+
+      .b-trends-button-path
+        fill #d13636
+
+    &.disabled
+      background-color #f2f2f2aa
+      cursor default
+      pointer-events none
+
+      .b-trends-button-path
+        fill #ccc
+
+  &-button-prev
+    right 50px

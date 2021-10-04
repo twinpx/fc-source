@@ -1,1 +1,56 @@
-!function(a){"use strict";a(function(){a(".b-last-comments").each(function(){function b(){d=f.find(".b-last-comments__item:first"),c(".b-last-comments__text",10)}function c(a,b){var c=d.find(a),e=c.text(),f=0,i=setInterval(function(){return f<e.length?c.html(e.substring(0,++f)):clearTimeout(i),c.height()>g*(h-1)&&" "===e.substring(f-1,f)?(clearTimeout(i),void c.html(e.substring(0,f-1)+"...")):void 0},b)}var d,e=a(this),f=e.find(".b-last-comments__item").parent(),g=parseInt(e.find(".b-last-comments__text").css("lineHeight"),10),h=3;b();setInterval(function(){f.find(".b-last-comments__item:first").appendTo(f),b()},4e3)})})}(jQuery);
+( function($) {
+
+  'use strict';
+  
+  $( function() {
+    
+    $( '.b-last-comments' ).each( function() {
+      
+      var $lastComments = $( this );
+      var $lastCommentsWrapper = $lastComments.find( '.b-last-comments__item' ).parent();
+      var $activeItem;
+      var lineHeight = parseInt( $lastComments.find( '.b-last-comments__text' ).css( 'lineHeight' ), 10);
+      var lines = 3;
+      
+      slideComments();
+      
+      var intervalID = setInterval( function() {
+        $lastCommentsWrapper.find( '.b-last-comments__item:first' ).appendTo( $lastCommentsWrapper );
+        slideComments();
+      }, 4000);
+      
+      function slideComments() {
+        $activeItem = $lastCommentsWrapper.find( '.b-last-comments__item:first' );
+        typingText( '.b-last-comments__text', 10 );
+      }
+      
+      function typingText( elem, time ) {
+        var $activeItemElem = $activeItem.find( elem ),
+            text = $activeItemElem.text(),
+            index = 0;
+            
+        var typingIntervalId = setInterval( function() {
+          
+          if ( index < text.length ) {
+            $activeItemElem.html( text.substring(0, ++index) );
+          } else {
+            clearTimeout( typingIntervalId );
+          }
+          
+          if ( $activeItemElem.height() > lineHeight*(lines-1) && text.substring(index-1, index) === ' ' ) {
+            clearTimeout( typingIntervalId );
+            $activeItemElem.html( text.substring(0, index-1) + '...' );
+            return;
+          }
+          
+        }, time );
+      }
+      
+    });
+  
+    /*if ( window.BX ) {
+      BX.addCustomEvent( "onFrameDataReceived", function () {});
+    }*/
+  });
+
+}( jQuery ));
