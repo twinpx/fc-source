@@ -1,3 +1,13 @@
+//install PWA counter event
+window.addEventListener('appinstalled', () => {
+  // Hide the app-provided install promotion
+  hideInstallPromotion();
+  // Clear the deferredPrompt so it can be garbage collected
+  deferredPrompt = null;
+  // Optionally, send analytics event to indicate successful install
+  if ( window.ym ) { ym(7715218,'reachGoal','INSTALL-PWA') }
+});
+
 //placeholders
 setTimeout( function() {
   $( '.b-ph-block, h1, .b-heading-linethrough h2' ).addClass( 'i-ph-animated' );
