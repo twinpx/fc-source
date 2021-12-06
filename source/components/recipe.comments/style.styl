@@ -166,7 +166,27 @@
 
 .b-rc__item
   margin-bottom 20px
+
+  &.i-preload
+    opacity .5
+    pointer-events none
+
+    .b-textarea-wrapper
+      position relative
+
+      &:before
+        content ''
+        position absolute
+        width 100%
+        height calc(100% - 23px)
+        background-repeat no-repeat
+        background-position center
+        background-image url('/template/images/button-preloader-static.png')
+        -webkit-animation rotate-preloader 1s linear infinite normal
+        animation rotate-preloader 1s linear infinite normal
+
   &.i-edit
+
     .b-rc__item__content
       background #fff
       border none
@@ -276,7 +296,7 @@
   
   .btn.btn-default
     float left
-  
+
 #b-rc__reply-form .btn.btn-default
   float left
 
@@ -352,3 +372,5 @@
 .b-form__photo-block .new_file_name
   display none !important
 
+@-webkit-keyframes rotate-preloader { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes rotate-preloader { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

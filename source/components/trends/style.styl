@@ -96,6 +96,13 @@
     margin-right 20px
     margin-bottom 20px
     width auto !important
+    background-color #F4F4F4
+    color $link
+    transition( color .3s ease )
+
+    &:hover
+      text-decoration none
+      color $link-hover
 
     &:last-child
       margin-right 0
@@ -103,18 +110,12 @@
     @media( max-width 767px )
       margin 0 2px 0 0
 
-    span&
+    &.active
       background-color #F7E847
-      cursor default
-
-    a&
-      background-color #F4F4F4
-      color $link
-      transition( color .3s ease )
+      color #000
 
       &:hover
-        text-decoration none
-        color $link-hover
+        color #000
 
   &-button-prev
   &-button-next

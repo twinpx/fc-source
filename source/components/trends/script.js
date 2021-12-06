@@ -5,6 +5,8 @@ window.addEventListener('load', function () {
     document.querySelectorAll('.b-trends').forEach(function (trendsElem) {
       var nextButton = trendsElem.querySelector('.b-trends-button-next');
       var prevButton = trendsElem.querySelector('.b-trends-button-prev');
+      var bodyElem = trendsElem.querySelector('.b-trends-wrapper__body');
+      var wrapperElem = trendsElem.querySelector('.b-trends-wrapper');
 
       var itemsWidth = 0;
       trendsElem.querySelectorAll('.b-trends__item').forEach(function (item) {
@@ -13,11 +15,19 @@ window.addEventListener('load', function () {
       itemsWidth +=
         (trendsElem.querySelectorAll('.b-trends__item').length - 1) * 20;
 
+      //mouse wheel
+      bodyElem.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        if (e.deltaY > 0) {
+          nextButton.click();
+        } else {
+          prevButton.click();
+        }
+      });
+
       //next button
       nextButton.addEventListener('click', function (e) {
         e.preventDefault();
-        var bodyElem = trendsElem.querySelector('.b-trends-wrapper__body');
-        var wrapperElem = trendsElem.querySelector('.b-trends-wrapper');
         var scroll = bodyElem.clientWidth / 2;
         wrapperElem.classList.remove('start');
         animateScroll(
@@ -41,8 +51,6 @@ window.addEventListener('load', function () {
       //prev button
       prevButton.addEventListener('click', function (e) {
         e.preventDefault();
-        var bodyElem = trendsElem.querySelector('.b-trends-wrapper__body');
-        var wrapperElem = trendsElem.querySelector('.b-trends-wrapper');
         var scroll = bodyElem.clientWidth / 2;
         wrapperElem.classList.remove('finish');
         animateScroll(

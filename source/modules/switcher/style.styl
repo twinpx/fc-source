@@ -1,0 +1,30 @@
+@import '../../styl/component-include.styl'
+
+.b-switcher
+  position relative
+
+  &__underline
+    content ''
+    position absolute
+    bottom 0
+    left 0
+    border-top 2px solid #666666
+    transition(all .3s ease)
+    z-index 10
+
+  &__item
+    display inline-block
+    font-size 10.5pt
+    font-weight bold
+    margin-right 30px
+    color $link
+    transition(color .3s ease)
+    cursor pointer
+
+    &:hover
+      color $link-hover
+
+    &.active
+      color #666666
+      cursor default
+      pointer-events none

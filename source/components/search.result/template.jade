@@ -47,13 +47,25 @@ block components-array
         div
         div
        
-  .b-ph-content
+  .b-ph-contentinclude 
   
-    //-.b-search-result__right-links
-      a( href="" ) Только рецепты
-      a( href="" ) Только записи журнала
+    include ../../modules/switcher/include
+
+    hr
     
-    .b-search-result__results
+    .b-search-result__results( data-tab="recipes" )
+    
+      .b-search-result__result-block( data-page="1" )
+               
+          include ../../modules/recipe-thumb/recipe-thumb.jade
+          include ../../modules/recipe-thumb/recipe-thumb.jade
+        
+        .b-search-result__button
+          a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
+          img( src="/images/preloader.gif" width="281" height="52" alt="" )
+          hr.i-size-XL
+    
+    .b-search-result__results( data-tab="foodshots" )
     
       .b-search-result__result-block( data-page="1" )
                

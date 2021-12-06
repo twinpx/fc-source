@@ -112,8 +112,17 @@
       init();
 
       function init() {
-        if (!document.getElementById('filter_lists')) return false;
-        initList();
+        if (document.getElementById('filter_lists')) {
+          initList();
+        }
+
+        $('#get_more_recipes a').click(clickMoreRecipes);
+
+        //on load
+        var page = parseQuery(window.location.search).page;
+        if (page) {
+          clickMoreRecipes(page * 1 - 2);
+        }
       }
 
       function initList() {
@@ -140,14 +149,6 @@
             e.stopPropagation();
           })
           .delegate('a', 'click', clickListLink);
-
-        $('#get_more_recipes a').click(clickMoreRecipes);
-
-        //on load
-        var page = parseQuery(window.location.search).page;
-        if (page) {
-          clickMoreRecipes(page * 1 - 2);
-        }
       }
 
       function clickListLink() {
