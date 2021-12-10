@@ -1,91 +1,85 @@
-(function ($) {
-  'use strict';
+window.addEventListener('load', () => {
+  class Switcher {
+    constructor(elem) {
+      this.elem = elem;
+      this.items = this.elem.querySelectorAll('.b-switcher__item');
+      this.underline = this.elem.querySelector('.b-switcher__underline');
+    }
 
-  $(function () {
-    document
-      .querySelectorAll('.b-search-result__results')
-      .forEach(function (results) {
-        var page;
-        var tab = results.getAttribute('data-tab');
+    setActiveItem(elem) {
+      //remove active
+      this.items.forEach((item) => item.classList.remove('active'));
+      //set active
+      elem.classList.add('active');
+      //move underline
+      this.moveUnderline(elem);
+    }
 
-        if (
-          window.location.search &&
-          parseQuery(window.location.search).tab === tab
-        ) {
-          page = parseQuery(window.location.search).PAGEN_1;
-          if (
-            $(results).find(
-              '.b-search-result__result-block[ data-page=' + page + ' ]'
-            ).length
-          ) {
-            $.scrollTo(
-              $(results)
-                .find(
-                  '.b-search-result__result-block[ data-page=' + page + ' ]'
-                )
-                .offset().top - 100,
-              500
-            );
-          }
-        }
+    moveUnderline(item) {
+      this.underline.style.width = item.offsetWidth + 'px';
+      this.underline.style.left =
+        item.getBoundingClientRect().left -
+        this.elem.getBoundingClientRect().left +
+        'px';
+    }
+  }
 
-        var ajaxMethod = $('.b-search-result').data('ajax-method');
-
-        $('.b-search-result').delegate(
-          '.b-search-result__more',
-          'click',
-          function (e) {
-            e.preventDefault();
-            $(this).parent().addClass('i-preload');
-
-            $.ajax({
-              url: $(this).attr('href'),
-              type: ajaxMethod,
-              dataType: 'html',
-              success: function (data) {
-                $('.b-search-result__button.i-preload').remove();
-                $('.b-search-result__results')
-                  .append(data)
-                  .find('a[ data-original ]')
-                  .lazyload();
-                $('.b-search-result__result-block:last').slideDown();
-                var page = $('.b-search-result__result-block:last').data(
-                  'page'
-                );
-
-                //set address parameter PAGEN
-                var search = window.location.search;
-                var searchObj = {};
-
-                if (search) {
-                  search = String(search).substring(1).split('&');
-
-                  search.forEach(function (item) {
-                    item = String(item).split('=');
-                    searchObj[item[0]] = item[1];
-                  });
-
-                  searchObj.PAGEN_1 = page;
-                  search = '?';
-
-                  for (var key in searchObj) {
-                    search += key + '=' + searchObj[key] + '&';
-                  }
-
-                  search = String(search).substring(0, search.length - 1);
-                } else {
-                  search = '?PAGEN_1=' + page;
-                }
-
-                history.replaceState({}, '', search);
-              },
-              error: function () {},
-            });
-          }
-        );
+  class Tabs {
+    constructor(elem) {
+      this.elem = elem;
+      this.tabs = this.elem.querySelectorAll('.b-search-result__results');
+      this.tabs.forEach((tab) => {
+        this[tab.getAttribute('data-tab')] = tab;
       });
+    }
 
-    function parseQuery(queryString) {
+    setActiveTab(tabName) {
+      //remove active
+      this.tabs.forEach((tab) => tab.classList.remove('active'));
+      //set active
+      let activeTab = this[tabName];
+      activeTab.classList.add('active');
+    }
+
+    async fetchData(tabName) {
+      this.elem.classList.remove('i-ph-animated');
+      try {
+        const response = await fetch(
+          '/components/search.result/result.html?page=3'
+        );
+        const result = await response.text();
+        this[tabName].innerHTML = result;
+        this.elem.classList.add('i-ph-animated');
+      } catch (err) {
+        throw err;
+      }
+    }
+
+    isEmpty(tabName) {
+      return !this[tabName].querySelectorAll('div').length;
+    }
+  }
+
+  class URL {
+    constructor() {}
+
+    setURL(type, page) {
+      const queryObject = { type };
+      if (page) {
+        queryObject.page = page;
+      }
+      window.history.replaceState({}, '', this.getQuery(queryObject));
+    }
+
+    getQuery(queryObject) {
+      var result = [];
+      for (var k in queryObject) {
+        result.push(k + '=' + queryObject[k]);
+      }
+      return '?' + result.join('&');
+    }
+
+    parseQuery(queryString) {
       var query = {};
       var pairs = (queryString[0] === '?'
         ? queryString.substr(1)
@@ -97,5 +91,34 @@
       }
       return query;
     }
+  }
+
+  document.querySelectorAll('.b-search-result').forEach((searchResultBlock) => {
+    const switcherElem = searchResultBlock.querySelector('.b-switcher');
+    const switcher = new Switcher(switcherElem);
+    const tabsElem = searchResultBlock.querySelector(
+      '.b-search-result__results-tabs'
+    );
+    const tabs = new Tabs(tabsElem);
+    const url = new URL();
+    switcher.items.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabName = item.getAttribute('data-tab');
+        switcher.setActiveItem(item);
+        //show tab
+        tabs.setActiveTab(tabName);
+        //fetch data
+        if (tabs.isEmpty(tabName)) {
+          tabs.fetchData(tabName);
+        } else {
+          tabs.reduce(tabName);
+        }
+
+        //set url
+        url.setURL(tabName);
+      });
+    });
+    switcher.items[0].click();
   });
-})(jQuery);
+});

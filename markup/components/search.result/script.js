@@ -1,93 +1,76 @@
-(function ($) {
-  'use strict';
-
-  $(function () {
-    document
-      .querySelectorAll('.b-search-result__results')
-      .forEach(function (results) {
-        var page;
-
-        if (window.location.search) {
-          page = parseQuery(window.location.search).PAGEN_1;
-          if (
-            $('.b-search-result__result-block[ data-page=' + page + ' ]').length
-          ) {
-            $.scrollTo(
-              $(
-                '.b-search-result__result-block[ data-page=' + page + ' ]'
-              ).offset().top - 100,
-              500
-            );
-          }
-        }
-
-        var ajaxMethod = $('.b-search-result').data('ajax-method');
-
-        $('.b-search-result').delegate(
-          '.b-search-result__more',
-          'click',
-          function (e) {
-            e.preventDefault();
-            $(this).parent().addClass('i-preload');
-
-            $.ajax({
-              url: $(this).attr('href'),
-              type: ajaxMethod,
-              dataType: 'html',
-              success: function (data) {
-                $('.b-search-result__button.i-preload').remove();
-                $('.b-search-result__results')
-                  .append(data)
-                  .find('a[ data-original ]')
-                  .lazyload();
-                $('.b-search-result__result-block:last').slideDown();
-                var page = $('.b-search-result__result-block:last').data(
-                  'page'
-                );
-
-                //set address parameter PAGEN
-                var search = window.location.search;
-                var searchObj = {};
-
-                if (search) {
-                  search = String(search).substring(1).split('&');
-
-                  search.forEach(function (item) {
-                    item = String(item).split('=');
-                    searchObj[item[0]] = item[1];
-                  });
-
-                  searchObj.PAGEN_1 = page;
-                  search = '?';
-
-                  for (var key in searchObj) {
-                    search += key + '=' + searchObj[key] + '&';
-                  }
-
-                  search = String(search).substring(0, search.length - 1);
-                } else {
-                  search = '?PAGEN_1=' + page;
-                }
-
-                history.replaceState({}, '', search);
-              },
-              error: function () {},
-            });
-          }
-        );
-      });
-
-    function parseQuery(queryString) {
-      var query = {};
-      var pairs = (queryString[0] === '?'
-        ? queryString.substr(1)
-        : queryString
-      ).split('&');
-      for (var i = 0; i < pairs.length; i++) {
-        var pair = pairs[i].split('=');
-        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-      }
-      return query;
+window.addEventListener('load', () => {
+  class Switcher {
+    constructor(elem) {
+      this.elem = elem;
+      this.items = this.elem.querySelectorAll('.b-switcher__item');
+      this.underline = this.elem.querySelector('.b-switcher__underline');
     }
+
+    setActiveItem(elem) {
+      //remove active
+      this.items.forEach((item) => item.classList.remove('active'));
+      //set active
+      elem.classList.add('active');
+      //move underline
+      this.moveUnderline(elem);
+    }
+
+    moveUnderline(item) {
+      this.underline.style.width = item.offsetWidth + 'px';
+      this.underline.style.left =
+        item.getBoundingClientRect().left -
+        this.elem.getBoundingClientRect().left +
+        'px';
+    }
+  }
+
+  class Tabs {
+    constructor(elem) {
+      this.elem = elem;
+      this.tabs = this.elem.querySelectorAll('.b-search-result__results');
+      this.tabs.forEach((tab) => {
+        this[tab.getAttribute('data-tab')] = tab;
+      });
+    }
+
+    setActiveTab(tabName) {
+      //remove active
+      this.tabs.forEach((tab) => tab.classList.remove('active'));
+      //set active
+      let activeTab = this[tabName];
+      activeTab.classList.add('active');
+    }
+
+    async fetchData(tabName) {
+      try {
+        const response = await fetch(
+          '/components/search.result/result.html?page=3'
+        );
+        const result = await response.text();
+        this[tabName].innerHTML = result;
+      } catch (err) {
+        throw err;
+      }
+    }
+  }
+
+  document.querySelectorAll('.b-search-result').forEach((searchResultBlock) => {
+    const switcherElem = searchResultBlock.querySelector('.b-switcher');
+    const switcher = new Switcher(switcherElem);
+    const tabsElem = searchResultBlock.querySelector(
+      '.b-search-result__results-tabs'
+    );
+    const tabs = new Tabs(tabsElem);
+    switcher.items.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        switcher.setActiveItem(item);
+        //show tab
+        tabs.setActiveTab(item.getAttribute('data-tab'));
+        //fetch data
+        tabs.fetchData(item.getAttribute('data-tab'));
+      });
+    });
+    switcher.items[0].click();
   });
-})(jQuery);
+});

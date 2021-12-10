@@ -1,4 +1,4 @@
-document.querySelectorAll('.b-switcher').forEach(function (switcher) {
+/*document.querySelectorAll('.b-switcher').forEach(function (switcher) {
   var underline = switcher.querySelector('.b-switcher__underline');
   switcher.querySelectorAll('.b-switcher__item').forEach(function (item) {
     item.addEventListener('click', function (e) {
@@ -20,4 +20,4 @@ document.querySelectorAll('.b-switcher').forEach(function (switcher) {
       switcher.getBoundingClientRect().left +
       'px';
   }
-});
+});*/

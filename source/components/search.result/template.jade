@@ -7,74 +7,88 @@ block components-array
   else
     - var componentsArray = [ 'search.result' ]
 
-.b-search-result.b-ph-block( data-ajax-method="GET" )
-
-  .b-ph
-
-    .b-ph__recipe
-      .b-ph__img
-      .b-ph__text
-        div
-        div
-      
-    .b-ph__recipe
-      .b-ph__img
-      .b-ph__text
-        div
-        div
-        
-    .b-ph__recipe
-      .b-ph__img
-      .b-ph__text
-        div
-        div
-
-    .b-ph__recipe
-      .b-ph__img
-      .b-ph__text
-        div
-        div
-      
-    .b-ph__recipe
-      .b-ph__img
-      .b-ph__text
-        div
-        div
-        
-    .b-ph__recipe
-      .b-ph__img
-      .b-ph__text
-        div
-        div
-       
-  .b-ph-contentinclude 
+.b-search-result( data-ajax-method="GET" ) 
   
-    include ../../modules/switcher/include
+  include ../../modules/switcher/include
 
-    hr
-    
-    .b-search-result__results( data-tab="recipes" )
-    
-      .b-search-result__result-block( data-page="1" )
-               
-          include ../../modules/recipe-thumb/recipe-thumb.jade
-          include ../../modules/recipe-thumb/recipe-thumb.jade
+  hr
+  
+  .b-search-result__results-tabs.b-ph-block
+
+    .b-ph
+
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
         
-        .b-search-result__button
-          a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
-          img( src="/images/preloader.gif" width="281" height="52" alt="" )
-          hr.i-size-XL
-    
-    .b-search-result__results( data-tab="foodshots" )
-    
-      .b-search-result__result-block( data-page="1" )
-               
-          include ../../modules/recipe-thumb/recipe-thumb.jade
-          include ../../modules/recipe-thumb/recipe-thumb.jade
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
+          
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
+
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
         
-        .b-search-result__button
-          a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
-          img( src="/images/preloader.gif" width="281" height="52" alt="" )
-          hr.i-size-XL
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
+          
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
+        
+    .b-ph-content
+
+      .b-search-result__results( data-tab="all" )
+      
+        .b-search-result__result-block( data-page="1" )
+                
+            include ../../modules/recipe-thumb/recipe-thumb.jade
+            include ../../modules/recipe-thumb/recipe-thumb.jade
+          
+          .b-search-result__button
+            a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
+            img( src="/images/preloader.gif" width="281" height="52" alt="" )
+            hr.i-size-XL
+      
+      .b-search-result__results( data-tab="recipes" )
+      
+        .b-search-result__result-block( data-page="1" )
+                
+            include ../../modules/recipe-thumb/recipe-thumb.jade
+            include ../../modules/recipe-thumb/recipe-thumb.jade
+          
+          .b-search-result__button
+            a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
+            img( src="/images/preloader.gif" width="281" height="52" alt="" )
+            hr.i-size-XL
+      
+      .b-search-result__results( data-tab="foodshots" )
+      
+        .b-search-result__result-block( data-page="1" )
+                
+            include ../../modules/recipe-thumb/recipe-thumb.jade
+            include ../../modules/recipe-thumb/recipe-thumb.jade
+          
+          .b-search-result__button
+            a.btn.btn-default.btn-gray.b-search-result__more( href="/components/search.result/result.html?page=3" ) Показать ещё
+            img( src="/images/preloader.gif" width="281" height="52" alt="" )
+            hr.i-size-XL
 
 // end /components/search.result/

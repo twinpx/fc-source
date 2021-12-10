@@ -1,21 +1,23 @@
 @import '../../styl/component-include.styl'
 
 .b-search-result
-  position relative
-  
-  &.i-ph-animated
+
+  &__results-tabs
+    position relative
     
-    .b-ph-content
-      position static
-      width auto
-      opacity 1
+    &.i-ph-animated
       
-    .b-ph
-      position absolute
-      top 0
-      left 0
-      opacity 0
-      z-index -1
+      .b-ph-content
+        position static
+        width auto
+        opacity 1
+        
+      .b-ph
+        position absolute
+        top 0
+        left 0
+        opacity 0
+        z-index -1
 
   &__right-links
     position absolute
@@ -33,6 +35,29 @@
       
       a
         margin 0 25px 0 0
+
+  &__results
+    position absolute
+    top 0
+    left 0
+    width 100%
+    pointer-events none
+    height 0
+    overflow hidden
+    opacity 0
+    transition( opacity .5s ease )
+    z-index -1
+
+    &.active
+      height auto
+      position static
+      pointer-events auto
+      overflow visible
+      opacity 1
+      z-index 100
+
+    &-tabs
+      position relative
         
   &__result-block
     display none
