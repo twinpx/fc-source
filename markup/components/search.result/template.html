@@ -1,15 +1,13 @@
 
 <!-- start /components/search.result/-->
-<div data-ajax-method="GET" class="b-search-result"> 
-  <div class="b-switcher">
-    <div class="b-switcher__underline"></div>
-    <div data-tab="all" class="b-switcher__item">Все</div>
-    <div data-tab="recipes" class="b-switcher__item">Рецепты</div>
-    <div data-tab="foodshots" class="b-switcher__item">Фудшоты</div>
-  </div>
-  <hr/>
-  <div class="b-search-result__results-tabs b-ph-block">
-    <div class="b-ph">
+<div data-ajax-method="GET" class="b-search-result b-ph-block"> 
+  <div class="b-ph">
+    <div class="b-ph-switcher">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="b-ph-recipes">
       <div class="b-ph__recipe">
         <div class="b-ph__img"></div>
         <div class="b-ph__text">
@@ -53,7 +51,16 @@
         </div>
       </div>
     </div>
-    <div class="b-ph-content">
+  </div>
+  <div class="b-ph-content">
+    <div class="b-switcher">
+      <div class="b-switcher__underline"></div>
+      <div data-tab="all" class="b-switcher__item">Все</div>
+      <div data-tab="recipes" class="b-switcher__item">Рецепты</div>
+      <div data-tab="foodshots" class="b-switcher__item">Фудшоты</div>
+    </div>
+    <hr/>
+    <div class="b-search-result__results-tabs">
       <div data-tab="all" class="b-search-result__results">
         <div data-page="1" class="b-search-result__result-block">
           <div class="row">

@@ -7,33 +7,16 @@ block components-array
   else
     - var componentsArray = [ 'search.result' ]
 
-.b-search-result( data-ajax-method="GET" ) 
-  
-  include ../../modules/switcher/include
+.b-search-result.b-ph-block( data-ajax-method="GET" ) 
 
-  hr
-  
-  .b-search-result__results-tabs.b-ph-block
+  .b-ph
 
-    .b-ph
+    .b-ph-switcher
+      div
+      div
+      div
 
-      .b-ph__recipe
-        .b-ph__img
-        .b-ph__text
-          div
-          div
-        
-      .b-ph__recipe
-        .b-ph__img
-        .b-ph__text
-          div
-          div
-          
-      .b-ph__recipe
-        .b-ph__img
-        .b-ph__text
-          div
-          div
+    .b-ph-recipes
 
       .b-ph__recipe
         .b-ph__img
@@ -52,8 +35,32 @@ block components-array
         .b-ph__text
           div
           div
+
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
         
-    .b-ph-content
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
+          
+      .b-ph__recipe
+        .b-ph__img
+        .b-ph__text
+          div
+          div
+        
+  .b-ph-content
+
+    include ../../modules/switcher/include
+
+    hr
+  
+    .b-search-result__results-tabs
 
       .b-search-result__results( data-tab="all" )
       
