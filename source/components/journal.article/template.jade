@@ -1,7 +1,13 @@
-﻿// start /components/articles.article/
+﻿// start /components/journal.article/
 
-link( rel="stylesheet", href="/components/articles.article/style.css" )
-script( src="/components/articles.article/script.js" )
+//- push style and script file to the end of the page
+if componentsArray
+  - componentsArray[ componentsArray.length ] = 'journal.article'
+else
+  - var componentsArray = [ 'journal.article' ]
+
+script
+  | window.reclistUrl = "/components/journal.article/reclist.html"
 
 .b-article
 
@@ -11,6 +17,8 @@ script( src="/components/articles.article/script.js" )
     a(href='/journal/foodclub/') Foodclub
     a(href='/journal/podborka/') Советы
     a(href='/journal/chto-prigotovit/') Что приготовить
+
+  hr( style="margin-top: 0;")
   
   .b-article-head
   
@@ -34,7 +42,7 @@ script( src="/components/articles.article/script.js" )
   hr.i-size-L
   
   p Пропало кулинарное вдохновение? Не знаете, что нового и вкусного можно приготовить на семейный обед? В подборке вы найдете 10 идей для новых вкусных блюд и рецепты от кулинарных блоггеров! 
-  div( data-reslist="1")
+  div( data-reclist="1")
   p В журнале Alely- интересный тарт с заварным кремом, белым шоколадом и малиной. Хрустящее галетное тесто, нежный крем и сочные ягоды…Настоящее праздничное летнее лакомство.
   
   hr.i-size-L
@@ -44,7 +52,7 @@ script( src="/components/articles.article/script.js" )
   hr.i-size-L
   
   h3 Новогодние десерты! Дайджест по рецептам кулинарной блогосферы
-  div( data-reslist="2")
+  div( data-reclist="2")
   p Побаловать себя несладкой выпечкой предлагает блоггер Zveruska. Галета с молодым горошком, зеленым луком, брынзой и пряными травами выглядит очень необычно и сочно. Отлично подходит в качестве летней закуски. 
   
   hr.i-size-L
@@ -60,7 +68,7 @@ script( src="/components/articles.article/script.js" )
     li Стиль списка в одну строчку и нумерованого.
     li Стиль списка в нумерованного, но в несколько строчек и с очень длинным текстом, который часто мы используем на фудклубе.
     
-  div( data-reslist="3")
+  div( data-reclist="3")
 
   p Стиль списка с булитами должен быть таким:
   ul
@@ -159,4 +167,4 @@ hr.i-size-L
 
 include ../../components/journal/similar.jade
 
-// end /components/articles.article/
+// end /components/journal.article/

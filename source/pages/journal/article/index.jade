@@ -1,0 +1,18 @@
+﻿block vars
+  - var page = article
+  - var authorized = false
+
+extends ../../../layouts/header.jade
+
+block title
+  title Article  | Foodclub
+
+block content
+
+  .container
+
+    hr
+  
+    include ../../../components/journal.article/template.jade
+      
+    hr.i-size-L

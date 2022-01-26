@@ -1,0 +1,63 @@
+.b-ph-reclist
+  width calc( 100% + 30px )
+  transition( opacity .5s ease )
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  margin 0 -15px
+  z-index 0
+    
+  @media( max-width 767px )
+    width 100%
+    display block
+    margin 0
+
+  .b-article-reclist-wrapper.i-loaded &
+    opacity 0
+
+.b-ph
+
+  &__recipe
+    width calc( 100% / 3 )
+    padding 0 15px
+    margin-bottom 40px
+    
+    @media( max-width 767px )
+      width auto
+      padding 0
+      margin-bottom 20px
+      
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6)
+        display none
+    
+  &__img
+    background-color $placeholder-color
+    padding-top calc( 100% / 3 * 2 )
+    border-radius 15px
+    margin-bottom calc( 18px + 9px )
+      
+  &__text
+    height calc( 34px - 9px )
+      
+    div
+      height 7px
+      background-color $placeholder-color
+      margin 0 auto 9px
+      width 80%
+      
+      &:last-child
+        width 30%
+        margin-bottom 0
+          
+  &-content
+    position absolute
+    top 0
+    left 0
+    width 100%
+    transition( opacity .5s ease )
+    opacity 0
+    z-index 0
+

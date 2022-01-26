@@ -1,7 +1,10 @@
 ﻿// start /components/journal/
 
-link( rel="stylesheet", href="/components/journal/style.css" )
-script( src="/components/journal/script.js" )
+//- push style and script file to the end of the page
+if componentsArray
+  - componentsArray[ componentsArray.length ] = 'journal'
+else
+  - var componentsArray = [ 'journal' ]
 
 .b-journal
 

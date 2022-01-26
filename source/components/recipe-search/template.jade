@@ -1,11 +1,10 @@
 ﻿// start /components/recipe-search/
 
 //- push style and script file to the end of the page
-block components-array
-  if componentsArray
-    - componentsArray[ componentsArray.length ] = 'recipe-search'
-  else
-    - var componentsArray = [ 'recipe-search' ]
+if componentsArray
+  - componentsArray[ componentsArray.length ] = 'recipe-search'
+else
+  - var componentsArray = [ 'recipe-search' ]
 
 if page == 'search'
   - var wrapper = ' i-mobile-search'

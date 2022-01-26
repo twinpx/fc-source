@@ -68,4 +68,26 @@
     
     @media( max-width $screen-phone )
       text-align center
+  
+  &-reclist-wrapper
+    position relative
+    margin 30px 0
+    overflow hidden
+    transition( height .5s ease )
+
+    .b-article-recipes
+      position absolute
+      top 0
+      left 0
+      width 100%
+      opacity 0
+      transition( opacity .5s ease )
+      z-index 10
+
+    &.i-loaded
+
+      .b-article-recipes
+        opacity 1
+
+@import "styles/recipes-ph.styl"
       
